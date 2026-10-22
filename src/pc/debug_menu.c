@@ -6,6 +6,43 @@
 #include <game.h>
 #include "pc.h"
 #include <psxsdk/libgpu.h>
+#include <stdio.h>
+
+// Writes the whole PS1 VRAM (1024x512, 16-bit) to vram_dump.bin and the
+// visible entities to entities_dump.txt, for offline palette/texture debugging.
+static void DebugDumpVram(void) {
+    static u16 vram[1024 * 512];
+    RECT rect = {0, 0, 1024, 512};
+    FILE* f;
+    s32 i;
+
+    DrawSync(0);
+    StoreImage(&rect, (u_long*)vram);
+    DrawSync(0);
+    f = fopen("vram_dump.bin", "wb");
+    if (f) {
+        fwrite(vram, sizeof(vram), 1, f);
+        fclose(f);
+    }
+    f = fopen("entities_dump.txt", "w");
+    if (f) {
+        fprintf(f, "stage=%d player=%d\n", g_StageId, g_PlayableCharacter);
+        for (i = 0; i < TOTAL_ENTITY_COUNT; i++) {
+            Entity* e = &g_Entities[i];
+            if (!e->pfnUpdate) {
+                continue;
+            }
+            fprintf(f,
+                    "slot=%d id=0x%X params=0x%X x=%d y=%d palette=0x%X "
+                    "animSet=0x%X frame=%d unk5A=0x%X blend=0x%X "
+                    "drawFlags=0x%X flags=0x%X\n",
+                    i, e->entityId, e->params, e->posX.i.hi, e->posY.i.hi,
+                    e->palette, (u16)e->animSet, e->animCurFrame, e->unk5A,
+                    e->blendMode, e->drawFlags, e->flags);
+        }
+        fclose(f);
+    }
+}
 
 typedef struct {
     const char* label;
@@ -19,6 +56,7 @@ static DebugMenuRow g_DebugMenuRows[] = {
     {"No-Clip (L2 to fly)", &g_DebugPlayer, NULL},
     {"Infinite Hearts", &g_PcInfiniteHearts, NULL},
     {"Give All Items", NULL, DebugGiveAllItems},
+    {"Dump VRAM", NULL, DebugDumpVram},
 };
 #define NUM_DEBUG_MENU_ROWS \
     ((s32)(sizeof(g_DebugMenuRows) / sizeof(g_DebugMenuRows[0])))

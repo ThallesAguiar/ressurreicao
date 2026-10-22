@@ -115,5 +115,7 @@ void PatchPlayerRicArmTiles(u8* data, size_t length);
 void ResetPlayerRicForm(void);
 void GlorifyPlayerRic(void);
 bool IsPlayerRicGlorified(void);
+struct Entity;
+extern void (*g_JesusBlessingUpdate)(struct Entity*);
 
 #endif

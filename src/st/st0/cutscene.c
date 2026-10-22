@@ -2,6 +2,52 @@
 #include "st0.h"
 #include "../pfn_entity_update.h"
 #include <cutscene.h>
+#ifdef VERSION_PC
+#include "../../pc/pc.h"
+extern s16 D_801545AC;
+
+static u16 father_portrait[] = {
+#include "../../pc/gen/deus_portrait.h"
+};
+
+// Reuse the original dialogue interpreter and Dracula's portrait orientation.
+// Opcode 21 marks the last word, before the window's closing animation.
+static u8 father_blessing_script[] = {
+    SET_POS(60, 36), LOAD_PORTRAIT(0, 1), SET_PORTRAIT(1, 129),
+    SET_SPEED(4),
+    'E', 's', 't', 'e', ' ', 0xE9, ' ', 'm', 'e', 'u', ' ',
+    'F', 'i', 'l', 'h', 'o', LINE_BREAK(),
+    'a', 'm', 'a', 'd', 'o', '.', '.', '.',
+    LINE_BREAK(), SET_WAIT(18),
+    'e', 'm', ' ', 'q', 'u', 'e', 'm', ' ', 'm', 'e', ' ',
+    'c', 'o', 'm', 'p', 'r', 'a', 'z', 'o', '.',
+    SCRIPT_UNKNOWN_21(), SET_WAIT(30), NEXT_DIALOG(), CLOSE_DIALOG(),
+    END_CUTSCENE(),
+};
+
+static void PrepareBlessingAccent(void) {
+    // The US font has no Portuguese e-acute. Derive it from its own e glyph
+    // in an unused slot, keeping the original font's size and shading.
+    RECT rect = {906, 288, 2, 8}; // US dialogue font: ASCII e
+    u16 glyph[16];
+    u8* pixels = (u8*)glyph;
+    int color = 0;
+    StoreImage(&rect, (u_long*)glyph);
+    for (int i = 0; i < sizeof(glyph); i++) {
+        if ((pixels[i] & 15) > color) {
+            color = pixels[i] & 15;
+        }
+        if ((pixels[i] >> 4) > color) {
+            color = pixels[i] >> 4;
+        }
+    }
+    pixels[2] = (pixels[2] & 0xF0) | color;
+    pixels[5] = (pixels[5] & 0x0F) | (color << 4);
+    rect.x = 914;
+    rect.y = 352; // unused US dialogue glyph 0xE9
+    LoadImage(&rect, (u_long*)glyph);
+}
+#endif
 
 enum DialogueSteps {
     DIALOGUE_INIT,
@@ -170,7 +216,12 @@ extern u32 D_894568C;
 #include "../set_cutscene_events.h"
 #include "../cutscene_events.h"
 #else
-static const char* actor_names[] = {_S("Jesus"), _S("Death")};
+static const char* actor_names[] = {
+    _S("Jesus"), _S("Death"),
+#ifdef VERSION_PC
+    _S("Deus, o Pai"),
+#endif
+};
 
 // bss
 s32 g_SkipCutscene;
@@ -246,7 +297,13 @@ static u8 SetCutsceneScript(u8* script) {
 
 #include "../cutscene_unk3.h"
 #include "../cutscene_unk4.h"
+#ifdef VERSION_PC
+#define DRAW_NAME_ACTOR_INDEX ((self->params == 1) ? 2 : actorIndex)
+#endif
 #include "../cutscene_actor_name.h"
+#ifdef VERSION_PC
+#undef DRAW_NAME_ACTOR_INDEX
+#endif
 #include "../set_cutscene_events.h"
 #include "../cutscene_events.h"
 #include "../cutscene_scale_avatar.h"
@@ -268,7 +325,17 @@ void EntityCutscene(Entity* self) {
     RECT rect;
     u_long ptr;
 
+#ifdef VERSION_PC
+    if (self->params == 1 && self->step == DIALOGUE_INIT &&
+        self->ext.timer.t > 0) {
+        self->ext.timer.t--;
+        return;
+    }
+#endif
     if (g_IsCutsceneDone && !g_SkipCutscene &&
+#ifdef VERSION_PC
+        self->params != 1 &&
+#endif
         ((g_Settings.D_8003CB04 & 1) || g_GameClearFlag) &&
         (g_pads[0].tapped == PAD_START)) {
         g_SkipCutscene = true;
@@ -295,9 +362,18 @@ void EntityCutscene(Entity* self) {
             0, &cutscene_script_en, &cutscene_script_fr, &cutscene_script_sp,
             &cutscene_script_ge, &cutscene_script_it);
 #endif
-        if (SetCutsceneScript(cutscene_script)) {
+        if (SetCutsceneScript(
+#ifdef VERSION_PC
+                self->params == 1 ? father_blessing_script :
+#endif
+                                 cutscene_script)) {
             self->flags |= FLAG_HAS_PRIMS;
             self->primIndex = g_Dialogue.primIndex[2];
+#ifdef VERSION_PC
+            if (self->params == 1) {
+                PrepareBlessingAccent();
+            } else
+#endif
             g_CutsceneFlags = CUTSCENE_FLAG_NONE;
             g_IsCutsceneDone = false;
             g_SkipCutscene = false;
@@ -405,6 +481,14 @@ void EntityCutscene(Entity* self) {
 #endif
                     prim->clut = cluts[i];
                     prim->tpage = 144;
+#ifdef VERSION_PC
+                    if (self->params == 1) {
+                        // Direct-color portrait: one VRAM word per texel.
+                        // Fit inside the two existing portrait slots (64 words).
+                        uCoord = 0;
+                        prim->tpage = 0x110;
+                    }
+#endif
                     if (j & 0x80) {
                         prim->u0 = prim->u2 = uCoord + 47;
                         prim->u1 = prim->u3 = uCoord;
@@ -616,8 +700,13 @@ void EntityCutscene(Entity* self) {
                         LoadTPage((u_long*)ptr, 1, 0, x_vals[j], 256, 48, 72);
 #elif defined(VERSION_PC)
                     j = *g_Dialogue.scriptCur++;
-                    LoadTPage(
-                        (u_long*)CS_PTR(ptr), 1, 0, x_vals[j], 256, 48, 72);
+                    if (self->params == 1) {
+                        LoadTPage((u_long*)father_portrait, 2, 0, 0,
+                                  256, 48, 72);
+                    } else {
+                        LoadTPage((u_long*)CS_PTR(ptr), 1, 0, x_vals[j], 256,
+                                  48, 72);
+                    }
 #else
                         ptr += 0x100000;
                         j = *g_Dialogue.scriptCur++;
@@ -632,6 +721,13 @@ void EntityCutscene(Entity* self) {
                     nextByte |= *g_Dialogue.scriptCur++;
                     g_api.PlaySfx(nextByte);
                     continue;
+#ifdef VERSION_PC
+                case CSOP_SCRIPT_UNKNOWN_21:
+                    if (self->params == 1) {
+                        D_801545AC = 1;
+                    }
+                    continue;
+#endif
                 // Note: Other cutscenes have Case 21-24 here, this one is
                 // missing it.
                 default:

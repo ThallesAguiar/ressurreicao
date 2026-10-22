@@ -1614,6 +1614,21 @@ add_custom_command(
     COMMENT "Compiling Jesus glorificado sprites and palette")
 add_custom_target(jesus_sprites
     DEPENDS ${JESUS_GENERATED_HEADERS} ${JESUS_GLORIFICADO_HEADERS})
+find_package(Python3 REQUIRED COMPONENTS Interpreter)
+set(JESUS_BLESSING_PORTRAIT
+    "${CMAKE_SOURCE_DIR}/src/pc/gen/deus_portrait.h")
+add_custom_command(
+    OUTPUT "${JESUS_BLESSING_PORTRAIT}"
+    COMMAND "${Python3_EXECUTABLE}"
+        "${CMAKE_SOURCE_DIR}/tools/build_blessing_portrait.py"
+        "${CMAKE_SOURCE_DIR}/assets/st/st0/deus_48x72_transparente.png"
+        "${JESUS_BLESSING_PORTRAIT}"
+    DEPENDS "${CMAKE_SOURCE_DIR}/tools/build_blessing_portrait.py"
+        "${CMAKE_SOURCE_DIR}/assets/st/st0/deus_48x72_transparente.png"
+    VERBATIM
+    COMMENT "Packing the Father's dialogue portrait")
+add_custom_target(jesus_blessing_portrait DEPENDS "${JESUS_BLESSING_PORTRAIT}")
+add_dependencies(jesus_sprites jesus_blessing_portrait)
 add_dependencies(${PROJECT_NAME} jesus_sprites)
 
 target_include_directories(${PROJECT_NAME} PUBLIC

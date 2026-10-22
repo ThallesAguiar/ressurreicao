@@ -44,10 +44,12 @@ void Psyz_ModuleStart(void* param) {
     Overlay* o = param;
 
     memcpy(o, &g_Overlay, sizeof(Overlay));
+    // The player rescue keeps updating while ordinary stage actors freeze.
+    g_JesusBlessingUpdate = EntityUpdates[E_CUTSCENE - 1];
     PfnEntityUpdates = EntityUpdates;
     g_pStObjLayoutHorizontal = entityLayoutHorizontal;
     g_pStObjLayoutVertical = entityLayoutVertical;
     InitCutscenePc();
 }
 
-void Psyz_ModuleStop(void) {}
+void Psyz_ModuleStop(void) { g_JesusBlessingUpdate = NULL; }

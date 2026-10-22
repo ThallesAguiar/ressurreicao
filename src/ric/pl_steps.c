@@ -1183,6 +1183,15 @@ void RicStepDeadPrologue(void) {
         PLAYER.drawFlags = ENTITY_SCALEY;
         PLAYER.scaleY = (rsin(D_801545AA) >> 0xA) + 256;
         if (D_801545AC) {
+#ifdef VERSION_PC
+            // The dialogue signals its last word. Start the original column
+            // immediately, without Maria's entrance or animal-power sequence.
+            D_801545AC = 0;
+            PLAYER.drawFlags = ENTITY_DEFAULT;
+            PLAYER.scaleY = 0x100;
+            g_DeadPrologueTimer = 1;
+            PLAYER.step_s++;
+#else
             if (--D_801545AC == 0) {
                 PLAYER.drawFlags = ENTITY_DEFAULT;
                 PLAYER.scaleY = 0x100;
@@ -1191,6 +1200,7 @@ void RicStepDeadPrologue(void) {
                 g_DeadPrologueTimer = 0x90;
                 PLAYER.step_s++;
             }
+#endif
         }
         break;
     case 2:

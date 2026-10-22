@@ -26,6 +26,7 @@ static u8 s_JesusFeridoArmTiles[0x2000];
 static bool s_RicLoaded;
 static bool s_RicArmsLoaded;
 static bool s_JesusGlorified;
+void (*g_JesusBlessingUpdate)(Entity*);
 STATIC_ASSERT(LEN(s_JesusFeridoPalette) == COLORS_PER_PAL);
 STATIC_ASSERT(LEN(s_JesusGlorificadoPalette) == COLORS_PER_PAL);
 STATIC_ASSERT(sizeof(s_JesusGlorificadoArmTiles) == 0x2000);

@@ -1,5 +1,8 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 #include "ric.h"
+#ifdef VERSION_PC
+#include "../pc/pc.h"
+#endif
 
 #if defined(VERSION_PSP)
 extern AnimationFrame* g_RicEmptyAnimGroup[ZERO_LEN]; // BSS
@@ -1644,6 +1647,22 @@ static AnimationFrame anim_maria_offering_powers[] = {
     POSE(0x0A, 0x14, 0), POSE(0x0A, 0x15, 0), POSE(0x0A, 0x16, 0),
     POSE(0x30, 0x17, 0), POSE(0xD0, 0x18, 0), POSE_END};
 void RicEntityMaria(Entity* self) {
+#ifdef VERSION_PC
+    if (g_StageId == STAGE_ST0) {
+        // Reuse the rescue controller, not Maria's sprite, animation or voice.
+        // The overlay owns the dialogue; this actor still runs during revival.
+        if (self->params == 0) {
+            self->params = 1;
+            self->flags = FLAG_KEEP_ALIVE_OFFCAMERA | FLAG_UNK_10000 |
+                          FLAG_POS_CAMERA_LOCKED;
+            self->ext.timer.t = 42;
+        }
+        if (g_JesusBlessingUpdate) {
+            g_JesusBlessingUpdate(self);
+        }
+        return;
+    }
+#endif
     switch (self->step) {
     case 0:
         self->flags = FLAG_UNK_100000 | FLAG_KEEP_ALIVE_OFFCAMERA |

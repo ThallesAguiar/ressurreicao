@@ -13,8 +13,7 @@
   "native_dimensions_and_pivots_match_richter": true,
   "generated_body_arrays_match_every_png_pixel": true,
   "arm_transparency_mask_matches_original": true,
-  "all_three_compressed_atlases_round_trip_exactly": true,
-  "engine_activation": "pending: integrate glorified form, rigid sword behavior and separate fire layers",
+  "engine_activation": "PC: revival column after Maria rescue; persistent invincibility and native fire whip; rigid sword integration deferred",
   "frames": [
     {
       "frame": 0,
@@ -1198,5 +1197,7 @@
       "height": 44,
       "sha256": "f15d28c4b5b476f99c379d0c6fb8719a89163c35aa2d145d22020499e2d17fc3"
     }
-  ]
+  ],
+  "compiled_arm_atlas_format": "rawgfx, 128x128, 4bpp",
+  "compiled_arm_atlas_matches_png": true
 }

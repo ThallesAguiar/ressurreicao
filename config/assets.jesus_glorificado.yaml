@@ -10,5 +10,5 @@ files:
           - [0x0, spritesheet, jesus_glorificado]
           - [0x0, palette, jesus_glorificado_palette, 16]
           - [0x0, cmpgfx, jesus_glorificado_cutscene, 128, 128, 4]
-          - [0x0, cmpgfx, jesus_glorificado_braco, 128, 128, 4]
+          - [0x0, rawgfx, jesus_glorificado_braco, 128, 128, 4]
           - [0x0, cmpgfx, jesus_glorificado_espada, 128, 128, 4]

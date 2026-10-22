@@ -1,6 +1,9 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 #include "ric.h"
 #include "sfx.h"
+#ifdef VERSION_PC
+#include "../pc/pc.h"
+#endif
 
 static void func_80158B04(u16 arg0) {
     s16 xMod = 3;
@@ -1199,6 +1202,10 @@ void RicStepDeadPrologue(void) {
             g_CurrentEntity->velocityY = FIX(-1);
             RicCreateEntFactoryFromEntity(
                 g_CurrentEntity, BP_REVIVAL_COLUMN, 0);
+#ifdef VERSION_PC
+            GlorifyPlayerRic();
+            g_Player.timers[PL_T_POISON] = 0x800;
+#endif
             g_DeadPrologueTimer = 0x30;
             g_api.PlaySfx(SFX_RIC_SUC_REVIVE);
             dead_prologue_timer = 0xA0;
@@ -1271,6 +1278,11 @@ void RicStepDeadPrologue(void) {
             RicSetFall();
             RicSetAnimation(D_801558DC);
             g_Player.timers[PL_T_INVINCIBLE_SCENE] = 4;
+#ifdef VERSION_PC
+            // The new outfit identifies the permanent blessing; the original
+            // persistent blink would obscure its colors after the rescue.
+            if (!IsPlayerRicGlorified())
+#endif
             RicCreateEntFactoryFromEntity(
                 g_CurrentEntity, FACTORY(BP_RIC_BLINK, 9), 0);
         }

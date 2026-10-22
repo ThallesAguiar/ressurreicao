@@ -1368,10 +1368,14 @@ int Draw_PushPrim(u_long* packets, int max_len) {
 }
 
 void Draw_SetAreaStart(int x, int y) {
+    // Flushing also resolves scaled pixels into native VRAM using this area.
+    // Finish the old batch before replacing either edge of its bounds.
+    Draw_FlushBuffer();
     draw_area_start.x = x;
     draw_area_start.y = y;
 }
 void Draw_SetAreaEnd(int x, int y) {
+    Draw_FlushBuffer();
     draw_area_end.x = x;
     draw_area_end.y = y;
     UpdateScissor();

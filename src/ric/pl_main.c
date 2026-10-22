@@ -1,5 +1,8 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 #include "ric.h"
+#ifdef VERSION_PC
+#include "../pc/pc.h"
+#endif
 
 #include "../get_lang.h"
 
@@ -101,6 +104,9 @@ void RicInit(s16 initParam) {
 
     g_CurrentEntity = &PLAYER;
     DestroyEntity(g_CurrentEntity);
+#ifdef VERSION_PC
+    ResetPlayerRicForm();
+#endif
     PLAYER.posX.val = FIX(32);
     PLAYER.posY.val = FIX(32);
     PLAYER.animSet = ANIMSET_OVL(0x10);
@@ -413,6 +419,14 @@ void RicMain(void) {
     draw = &g_PlayerDraw[0];
     g_Player.unk4C = 0;
     g_Player.unk72 = func_80156DE4();
+#ifdef VERSION_PC
+    if (IsPlayerRicGlorified()) {
+        // The native fire-whip special normally expires after 0x800 frames.
+        // Keep it available for the rest of this rescued prologue battle.
+        g_Player.timers[PL_T_POISON] = 0x800;
+        RicSetInvincibilityFrames(1, 4);
+    }
+#endif
 #ifndef VERSION_PSP
     FntPrint("pl_head_f:%02x\n", g_Player.unk72);
 #if defined(VERSION_HD)
@@ -552,6 +566,16 @@ void RicMain(void) {
 #endif
                     damage.damageTaken = PLAYER.hitPoints;
                     isDamageTakenDeadly = g_api.CalcPlayerDamage(&damage);
+#ifdef VERSION_PC
+                    // The wounded form loses to Dracula on its first hit.
+                    // Use the normal prologue defeat path so Maria rescues him.
+                    if (!g_GodMode && g_StageId == STAGE_ST0 &&
+                        g_Player.unk5C && !IsPlayerRicGlorified() &&
+                        (D_8003C744 == 1 || D_8003C744 == 2) &&
+                        damage.damageTaken > 0) {
+                        isDamageTakenDeadly = true;
+                    }
+#endif
                     damageKind = damage.damageKind;
                     damageEffects = damage.effects;
                     if (isDamageTakenDeadly) {
@@ -756,6 +780,11 @@ void RicMain(void) {
     if ((PLAYER.anim == ric_anim_stand_in_air) && (PLAYER.pose == 4)) {
         PLAYER.palette = D_80154594[PLAYER.poseTimer & 3];
     }
+#ifdef VERSION_PC
+    if (IsPlayerRicGlorified() && PLAYER.step != PL_S_DEAD_PROLOGUE) {
+        PLAYER.palette = PAL_FLAG(PAL_RICHTER);
+    }
+#endif
     if (PLAYER.step == PL_S_DEAD) {
         if (PLAYER.poseTimer < 0) {
             PLAYER.animCurFrame |= ANIM_FRAME_LOAD;

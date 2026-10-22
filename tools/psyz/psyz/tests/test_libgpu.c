@@ -515,6 +515,42 @@ ZTEST(gpu, move_image) {
     ASSERT_FRAME("move_image", 0, 1.0f);
 }
 
+// ST0 captures the scene into offscreen VRAM before breaking it into tiles.
+// Both batches must finish with the clipping area they were submitted under.
+ZTEST(gpu, drawenv_switch_preserves_pending_primitives) {
+    DRAWENV offscreen;
+    DR_ENV capture, restore;
+    RECT screenPixel = {24, 24, 1, 1};
+    RECT capturePixel = {768 + 24, 24, 1, 1};
+    u16 screenColor, captureColor;
+
+    zskip_targets("psp;ps1");
+    zassert_s32_eq(0, Psyz_VideoSetInternalResolution(3));
+
+    SetPolyF4(&cdb->f4[0]);
+    setXYWH(&cdb->f4[0], 16, 16, 32, 32);
+    setRGB0(&cdb->f4[0], 255, 0, 0);
+    SetDefDrawEnv(&offscreen, 768, 0, 256, 240);
+    offscreen.isbg = 0;
+    SetDrawEnv(&capture, &offscreen);
+    SetPolyF4(&cdb->f4[1]);
+    setXYWH(&cdb->f4[1], 16, 16, 32, 32);
+    setRGB0(&cdb->f4[1], 0, 255, 0);
+    SetDrawEnv(&restore, &cdb->draw);
+
+    ClearOTagR(cdb->ot, OTSIZE);
+    AddPrim(cdb->ot, &restore);
+    AddPrim(cdb->ot, &cdb->f4[1]);
+    AddPrim(cdb->ot, &capture);
+    AddPrim(cdb->ot, &cdb->f4[0]);
+    DrawOTag(cdb->ot);
+    DrawSync(0);
+    StoreImage(&screenPixel, (u_long*)&screenColor);
+    StoreImage(&capturePixel, (u_long*)&captureColor);
+    zexpect_s32_eq(31, screenColor & 0x7FFF);
+    zexpect_s32_eq(31 << 5, captureColor & 0x7FFF);
+}
+
 ZTEST(gpu, move_image_overlap) {
     u_short tpage, clut;
     RECT rect = {960, 0, 16, 64};

@@ -1590,7 +1590,30 @@ add_custom_command(
     WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
     VERBATIM
     COMMENT "Compiling Jesus ferido sprites and palette")
-add_custom_target(jesus_sprites DEPENDS ${JESUS_GENERATED_HEADERS})
+file(GLOB JESUS_GLORIFICADO_PNGS CONFIGURE_DEPENDS
+    "${CMAKE_SOURCE_DIR}/assets/ric/jesus_glorificado/*.png")
+set(JESUS_GLORIFICADO_HEADERS
+    "${CMAKE_SOURCE_DIR}/src/pc/gen/jesus_glorificado.h"
+    "${CMAKE_SOURCE_DIR}/src/pc/gen/jesus_glorificado_palette.h"
+    "${CMAKE_SOURCE_DIR}/src/pc/gen/jesus_glorificado_cutscene.h"
+    "${CMAKE_SOURCE_DIR}/src/pc/gen/jesus_glorificado_braco.h"
+    "${CMAKE_SOURCE_DIR}/src/pc/gen/jesus_glorificado_espada.h")
+add_custom_command(
+    OUTPUT ${JESUS_GLORIFICADO_HEADERS}
+    COMMAND "${SOTN_ASSETS_BIN}" build-assets config/assets.jesus_glorificado.yaml
+    DEPENDS ${JESUS_GLORIFICADO_PNGS} "${SOTN_ASSETS_BIN}"
+        "${CMAKE_SOURCE_DIR}/assets/ric/jesus_glorificado.yaml"
+        "${CMAKE_SOURCE_DIR}/assets/ric/jesus_glorificado_palette.yaml"
+        "${CMAKE_SOURCE_DIR}/assets/ric/jesus_glorificado_palette.pal"
+        "${CMAKE_SOURCE_DIR}/assets/ric/jesus_glorificado_cutscene.png"
+        "${CMAKE_SOURCE_DIR}/assets/ric/jesus_glorificado_braco.png"
+        "${CMAKE_SOURCE_DIR}/assets/ric/jesus_glorificado_espada.png"
+        "${CMAKE_SOURCE_DIR}/config/assets.jesus_glorificado.yaml"
+    WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+    VERBATIM
+    COMMENT "Compiling Jesus glorificado sprites and palette")
+add_custom_target(jesus_sprites
+    DEPENDS ${JESUS_GENERATED_HEADERS} ${JESUS_GLORIFICADO_HEADERS})
 add_dependencies(${PROJECT_NAME} jesus_sprites)
 
 target_include_directories(${PROJECT_NAME} PUBLIC

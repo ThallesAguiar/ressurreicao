@@ -203,6 +203,64 @@ static const char fragment_shader_body[] = {
     "    }\n"
     "}\n"};
 
+// Second pass, run once per frame on the small presentation crop (not on
+// every in-game sprite/tile draw): a Catmull-Rom bicubic upscale into an
+// offscreen target, later blitted to the window with GL_LINEAR. This keeps
+// the PS1 texture-atlas sampling above exact (no bleeding between adjacent
+// sprites) while making the final image on screen look sharper than plain
+// bilinear, since we are not bound to real PS1 hardware here.
+static const char upres_vertex_shader_body[] = {
+    "layout(location = 0) in vec2 aPos;\n"
+    "out vec2 vUV;\n"
+    "void main() {\n"
+    "    vUV = aPos * 0.5 + 0.5;\n"
+    "    gl_Position = vec4(aPos, 0.0, 1.0);\n"
+    "}\n"};
+
+static const char upres_fragment_shader_body[] = {
+    "uniform sampler2D srcTex;\n"
+    "uniform vec2 texDim;\n"  // full source texture size, in texels
+    "uniform vec4 srcRect;\n" // crop to upscale: x, y, w, h, in texels
+    "in vec2 vUV;\n"
+    "out vec4 FragColor;\n"
+    "vec4 CatmullRomWeights(float t) {\n"
+    "    float t2 = t * t;\n"
+    "    float t3 = t2 * t;\n"
+    "    float w0 = -0.5 * t3 + t2 - 0.5 * t;\n"
+    "    float w1 = 1.5 * t3 - 2.5 * t2 + 1.0;\n"
+    "    float w2 = -1.5 * t3 + 2.0 * t2 + 0.5 * t;\n"
+    "    float w3 = 0.5 * t3 - 0.5 * t2;\n"
+    "    return vec4(w0, w1, w2, w3);\n"
+    "}\n"
+    "void main() {\n"
+    "    vec2 texelSize = 1.0 / texDim;\n"
+    "    vec2 rectMin = srcRect.xy;\n"
+    "    vec2 rectMax = srcRect.xy + srcRect.zw - 1.0;\n"
+    "    vec2 samplePos = srcRect.xy + vUV * srcRect.zw - 0.5;\n"
+    "    vec2 texPos1 = floor(samplePos);\n"
+    "    vec2 f = samplePos - texPos1;\n"
+    "    vec4 wx = CatmullRomWeights(f.x);\n"
+    "    vec4 wy = CatmullRomWeights(f.y);\n"
+    "    vec4 result = vec4(0.0);\n"
+    // clamp every tap to the crop rect, not just the full texture: the
+    // 4x4 kernel would otherwise reach into unrelated VRAM content right
+    // at the edge of the visible screen area
+    "    for (int j = 0; j < 4; j++) {\n"
+    "        float wyj = j == 0 ? wy.x : j == 1 ? wy.y : j == 2 ? wy.z : "
+    "wy.w;\n"
+    "        for (int i = 0; i < 4; i++) {\n"
+    "            float wxi = i == 0 ? wx.x : i == 1 ? wx.y : i == 2 ? wx.z "
+    ": wx.w;\n"
+    "            vec2 samplePx = clamp(\n"
+    "                texPos1 + vec2(float(i - 1), float(j - 1)), rectMin, "
+    "rectMax);\n"
+    "            vec2 sampleUV = (samplePx + 0.5) * texelSize;\n"
+    "            result += texture(srcTex, sampleUV) * wxi * wyj;\n"
+    "        }\n"
+    "    }\n"
+    "    FragColor = result;\n"
+    "}\n"};
+
 typedef struct {
     GLint x, y, w, h;
 } GLrecti;
@@ -227,6 +285,20 @@ static GLuint scratch_texture = 0;
 static GLuint scratch_fbo = 0;
 static GLuint scaled_vram_texture = 0;
 static GLuint scaled_vram_fbo = 0; // it's vram_fbo * internal_res
+
+// Presentation upscale pass (see upres_fragment_shader_body above)
+#define UPRES_SCALE 4
+static GLuint upres_shader_program = 0;
+static GLint upres_uniform_src_tex = 0;
+static GLint upres_uniform_tex_dim = 0;
+static GLint upres_uniform_src_rect = 0;
+static GLuint upres_vao = 0;
+static GLuint upres_vbo = 0;
+static GLuint upres_texture = 0;
+static GLuint upres_fbo = 0;
+static int upres_cur_w = 0;
+static int upres_cur_h = 0;
+
 static unsigned internal_res = 1;
 static unsigned set_internal_res = 1;
 static GLposi display_area = {0, 0};
@@ -286,6 +358,90 @@ static GLuint Init_SetupShader() {
     glDeleteShader(vertShader);
     glDeleteShader(fragShader);
     return program;
+}
+
+static GLuint Init_SetupUpresShader() {
+    GLuint vertShader =
+        Init_CompileShader(upres_vertex_shader_body, GL_VERTEX_SHADER);
+    GLuint fragShader =
+        Init_CompileShader(upres_fragment_shader_body, GL_FRAGMENT_SHADER);
+    GLuint program = glCreateProgram();
+    glAttachShader(program, vertShader);
+    glAttachShader(program, fragShader);
+    glLinkProgram(program);
+
+    int success = 0;
+    glGetProgramiv(program, GL_LINK_STATUS, &success);
+    if (!success) {
+        char compilerLog[512];
+        glGetShaderInfoLog(program, 512, NULL, compilerLog);
+        ERRORF("upres shader linking failed:\n%s", compilerLog);
+    }
+    glDeleteShader(vertShader);
+    glDeleteShader(fragShader);
+    return program;
+}
+
+// (Re)allocates the offscreen target the bicubic pass renders into, only
+// when the requested size actually changed (display resize, VRAM debug
+// view toggle).
+static void EnsureUpresTarget(int w, int h) {
+    if (upres_texture && upres_cur_w == w && upres_cur_h == h) {
+        return;
+    }
+    if (upres_texture) {
+        glDeleteTextures(1, &upres_texture);
+    }
+    if (upres_fbo) {
+        glDeleteFramebuffers(1, &upres_fbo);
+    }
+    glGenTextures(1, &upres_texture);
+    glBindTexture(GL_TEXTURE_2D, upres_texture);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE,
+                 NULL);
+    glGenFramebuffers(1, &upres_fbo);
+    glBindFramebuffer(GL_FRAMEBUFFER, upres_fbo);
+    glFramebufferTexture2D(
+        GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, upres_texture, 0);
+    if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
+        ERRORF("upres FBO creation failed (%dx%d)", w, h);
+    }
+    upres_cur_w = w;
+    upres_cur_h = h;
+}
+
+// Upscales the [sx,sy,sw,sh] crop of the native VRAM texture by UPRES_SCALE
+// into upres_fbo, using the bicubic shader. vram_texture always holds an
+// up-to-date copy of the current frame at native resolution regardless of
+// --scale (kept in sync by SyncScaledVramToNative on every flush), so this
+// is independent from the internal rendering resolution.
+static void RunUpresPass(int sx, int sy, int sw, int sh) {
+    int outW = sw * UPRES_SCALE;
+    int outH = sh * UPRES_SCALE;
+    EnsureUpresTarget(outW, outH);
+
+    glBindFramebuffer(GL_FRAMEBUFFER, upres_fbo);
+    glViewport(0, 0, outW, outH);
+    glDisable(GL_SCISSOR_TEST);
+    glDisable(GL_BLEND);
+
+    glUseProgram(upres_shader_program);
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, vram_texture);
+    glUniform1i(upres_uniform_src_tex, 0);
+    glUniform2f(upres_uniform_tex_dim, (float)VRAM_W, (float)VRAM_H);
+    glUniform4f(
+        upres_uniform_src_rect, (float)sx, (float)sy, (float)sw, (float)sh);
+
+    glBindVertexArray(upres_vao);
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+
+    glEnable(GL_BLEND);
+    glUseProgram(shader_program);
 }
 
 static PsyzOverlayInitCB_SDL3GL overlay_init_cb;
@@ -403,6 +559,34 @@ bool InitPlatform() {
 
     glUniform1i(uniform_tex_vram, 0);
     glUniform2f(uniform_draw_offset, 0, 0);
+
+    upres_shader_program = Init_SetupUpresShader();
+    if (!upres_shader_program) {
+        ERRORF("failed to compile upres shaders: %s", SDL_GetError());
+        return false;
+    }
+    upres_uniform_src_tex =
+        glGetUniformLocation(upres_shader_program, "srcTex");
+    upres_uniform_tex_dim =
+        glGetUniformLocation(upres_shader_program, "texDim");
+    upres_uniform_src_rect =
+        glGetUniformLocation(upres_shader_program, "srcRect");
+    {
+        static const GLfloat upresQuad[] = {
+            -1.0f, -1.0f, 1.0f, -1.0f, -1.0f, 1.0f, 1.0f, 1.0f,
+        };
+        glGenVertexArrays(1, &upres_vao);
+        glBindVertexArray(upres_vao);
+        glGenBuffers(1, &upres_vbo);
+        glBindBuffer(GL_ARRAY_BUFFER, upres_vbo);
+        glBufferData(
+            GL_ARRAY_BUFFER, sizeof(upresQuad), upresQuad, GL_STATIC_DRAW);
+        glVertexAttribPointer(
+            0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), (void*)0);
+        glEnableVertexAttribArray(0);
+        glBindVertexArray(0);
+    }
+
     glGenTextures(1, &vram_texture);
 
     glActiveTexture(GL_TEXTURE0);
@@ -597,11 +781,6 @@ static void PlatformBackend_Present(void) {
     }
     ApplyPendingInternalRes();
 
-    const int n = (int)internal_res;
-    glBindFramebuffer(GL_READ_FRAMEBUFFER, GetDrawFbo());
-    glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
-    glDisable(GL_SCISSOR_TEST);
-
     SDL_Rect src = {display_area.x, display_area.y, display_size.x,
                     display_size.y};
     float game_aspect =
@@ -615,14 +794,23 @@ static void PlatformBackend_Present(void) {
     SDL_GetWindowSizeInPixels(sdl3_window, &win.w, &win.h);
     SDL_Rect dst = FitGameToWindow(game_aspect, win);
 
+    if (disp_on) {
+        RunUpresPass(src.x, src.y, src.w, src.h);
+    }
+
+    glBindFramebuffer(GL_READ_FRAMEBUFFER, upres_fbo);
+    glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
+    glDisable(GL_SCISSOR_TEST);
+
     glViewport(0, 0, win.w, win.h);
     glClearColor(0, 0, 0, 1);
     glClear(GL_COLOR_BUFFER_BIT);
 
     if (disp_on) {
-        glBlitFramebuffer(src.x * n, (src.y + src.h) * n, (src.x + src.w) * n,
-                          src.y * n, dst.x, dst.y, dst.x + dst.w, dst.y + dst.h,
-                          GL_COLOR_BUFFER_BIT, GL_LINEAR);
+        int outW = src.w * UPRES_SCALE;
+        int outH = src.h * UPRES_SCALE;
+        glBlitFramebuffer(0, outH, outW, 0, dst.x, dst.y, dst.x + dst.w,
+                          dst.y + dst.h, GL_COLOR_BUFFER_BIT, GL_LINEAR);
     }
     if (overlay_frame_cb) {
         overlay_frame_cb();

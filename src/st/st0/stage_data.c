@@ -74,7 +74,11 @@ u8 bg_tower_g1[] = {
 #include <gen/bg_tower_g1.h>
 };
 u8 richter_cutscene[] = {
+#ifdef VERSION_PC
+#include "../../pc/gen/jesus_ferido_cutscene.h"
+#else
 #include <gen/richter_cutscene.h>
+#endif
 };
 u8 e_secret_stairs_g[] = {
 #include <gen/e_secret_stairs_g.h>

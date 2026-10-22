@@ -110,4 +110,7 @@ typedef struct {
 void CutscenePcAlloc(const CutsceneSymbolRange* symbols, int count);
 u8* CutsceneAddrToPc(u32 psxAddr);
 
+void LoadPlayerRicPalette(void);
+void PatchPlayerRicArmTiles(u8* data, size_t length);
+
 #endif

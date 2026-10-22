@@ -390,10 +390,14 @@ bool LoadFilePc(const struct FileUseContent* file) {
     switch (sim->kind) { // slowly replacing the original func
     case SIM_1:
         PatchPrologueHudName(sim->addr, file->length);
+        if (strcmp(sim->path, "BIN/F_GAME2.BIN") == 0) {
+            PatchPlayerRicArmTiles(sim->addr, file->length);
+        }
         LoadStageTileset(sim->addr, file->length, 0x100);
         LoadImage(&g_Vram.D_800ACD98, D_800A04CC);
         LoadImage(&g_Vram.D_800ACDA8, (u8*)sim->addr + 0x40000);
         StoreImage(&g_Vram.D_800ACDA8, g_Clut[1]);
+        LoadPlayerRicPalette();
         break;
     case SIM_STAGE_CHR:
     case SIM_11:

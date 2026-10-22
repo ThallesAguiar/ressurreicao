@@ -1,0 +1,2794 @@
+{
+  "frames": [
+    {
+      "index": 0,
+      "master": 0,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_0.png",
+      "width": 24,
+      "height": 44,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_0.png"
+    },
+    {
+      "index": 1,
+      "master": 1,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_1.png",
+      "width": 24,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_1.png"
+    },
+    {
+      "index": 2,
+      "master": 2,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_2.png",
+      "width": 24,
+      "height": 42,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_2.png"
+    },
+    {
+      "index": 3,
+      "master": 3,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_3.png",
+      "width": 20,
+      "height": 44,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_3.png"
+    },
+    {
+      "index": 4,
+      "master": 4,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_4.png",
+      "width": 20,
+      "height": 44,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_4.png"
+    },
+    {
+      "index": 5,
+      "master": 5,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_5.png",
+      "width": 24,
+      "height": 45,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_5.png"
+    },
+    {
+      "index": 6,
+      "master": 6,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_6.png",
+      "width": 24,
+      "height": 45,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_6.png"
+    },
+    {
+      "index": 7,
+      "master": 7,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_7.png",
+      "width": 28,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_7.png"
+    },
+    {
+      "index": 8,
+      "master": 8,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_8.png",
+      "width": 24,
+      "height": 44,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_8.png"
+    },
+    {
+      "index": 9,
+      "master": 9,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_9.png",
+      "width": 20,
+      "height": 45,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_9.png"
+    },
+    {
+      "index": 10,
+      "master": 10,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_10.png",
+      "width": 20,
+      "height": 44,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_10.png"
+    },
+    {
+      "index": 11,
+      "master": 11,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_11.png",
+      "width": 28,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_11.png"
+    },
+    {
+      "index": 12,
+      "master": 12,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_12.png",
+      "width": 20,
+      "height": 44,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_12.png"
+    },
+    {
+      "index": 13,
+      "master": 13,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_13.png",
+      "width": 20,
+      "height": 45,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_13.png"
+    },
+    {
+      "index": 14,
+      "master": 14,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_14.png",
+      "width": 20,
+      "height": 44,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_14.png"
+    },
+    {
+      "index": 15,
+      "master": 15,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_15.png",
+      "width": 24,
+      "height": 37,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_15.png"
+    },
+    {
+      "index": 16,
+      "master": 16,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_16.png",
+      "width": 24,
+      "height": 30,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_16.png"
+    },
+    {
+      "index": 17,
+      "master": 17,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_17.png",
+      "width": 24,
+      "height": 28,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_17.png"
+    },
+    {
+      "index": 18,
+      "master": 18,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_18.png",
+      "width": 24,
+      "height": 45,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_18.png"
+    },
+    {
+      "index": 19,
+      "master": 19,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_19.png",
+      "width": 28,
+      "height": 45,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_19.png"
+    },
+    {
+      "index": 20,
+      "master": 20,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_20.png",
+      "width": 24,
+      "height": 37,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_20.png"
+    },
+    {
+      "index": 21,
+      "master": 16,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_21.png",
+      "width": 24,
+      "height": 30,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_21.png"
+    },
+    {
+      "index": 22,
+      "master": 22,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_22.png",
+      "width": 28,
+      "height": 37,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_22.png"
+    },
+    {
+      "index": 23,
+      "master": 23,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_23.png",
+      "width": 32,
+      "height": 42,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_23.png"
+    },
+    {
+      "index": 24,
+      "master": 24,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_24.png",
+      "width": 20,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_24.png"
+    },
+    {
+      "index": 25,
+      "master": 25,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_25.png",
+      "width": 24,
+      "height": 42,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_25.png"
+    },
+    {
+      "index": 26,
+      "master": 26,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_26.png",
+      "width": 44,
+      "height": 28,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_26.png"
+    },
+    {
+      "index": 27,
+      "master": 27,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_27.png",
+      "width": 32,
+      "height": 29,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_27.png"
+    },
+    {
+      "index": 28,
+      "master": 28,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_28.png",
+      "width": 28,
+      "height": 44,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_28.png"
+    },
+    {
+      "index": 29,
+      "master": 29,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_29.png",
+      "width": 44,
+      "height": 28,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_29.png"
+    },
+    {
+      "index": 30,
+      "master": 30,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_30.png",
+      "width": 32,
+      "height": 29,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_30.png"
+    },
+    {
+      "index": 31,
+      "master": 31,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_31.png",
+      "width": 24,
+      "height": 45,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_31.png"
+    },
+    {
+      "index": 32,
+      "master": 32,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_32.png",
+      "width": 32,
+      "height": 29,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_32.png"
+    },
+    {
+      "index": 33,
+      "master": 33,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_33.png",
+      "width": 44,
+      "height": 24,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_33.png"
+    },
+    {
+      "index": 34,
+      "master": 34,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_34.png",
+      "width": 24,
+      "height": 37,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_34.png"
+    },
+    {
+      "index": 35,
+      "master": 35,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_35.png",
+      "width": 32,
+      "height": 29,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_35.png"
+    },
+    {
+      "index": 36,
+      "master": 36,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_36.png",
+      "width": 32,
+      "height": 35,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_36.png"
+    },
+    {
+      "index": 37,
+      "master": 37,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_37.png",
+      "width": 24,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_37.png"
+    },
+    {
+      "index": 38,
+      "master": 38,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_38.png",
+      "width": 32,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_38.png"
+    },
+    {
+      "index": 39,
+      "master": 39,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_39.png",
+      "width": 28,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_39.png"
+    },
+    {
+      "index": 40,
+      "master": 40,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_40.png",
+      "width": 24,
+      "height": 42,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_40.png"
+    },
+    {
+      "index": 41,
+      "master": 41,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_41.png",
+      "width": 36,
+      "height": 40,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_41.png"
+    },
+    {
+      "index": 42,
+      "master": 42,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_42.png",
+      "width": 36,
+      "height": 40,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_42.png"
+    },
+    {
+      "index": 43,
+      "master": 43,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_43.png",
+      "width": 36,
+      "height": 40,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_43.png"
+    },
+    {
+      "index": 44,
+      "master": 44,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_44.png",
+      "width": 28,
+      "height": 38,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_44.png"
+    },
+    {
+      "index": 45,
+      "master": 45,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_45.png",
+      "width": 24,
+      "height": 41,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_45.png"
+    },
+    {
+      "index": 46,
+      "master": 46,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_46.png",
+      "width": 24,
+      "height": 29,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_46.png"
+    },
+    {
+      "index": 47,
+      "master": 47,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_47.png",
+      "width": 32,
+      "height": 29,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_47.png"
+    },
+    {
+      "index": 48,
+      "master": 48,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_48.png",
+      "width": 28,
+      "height": 30,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_48.png"
+    },
+    {
+      "index": 49,
+      "master": 49,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_49.png",
+      "width": 24,
+      "height": 31,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_49.png"
+    },
+    {
+      "index": 50,
+      "master": 50,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_50.png",
+      "width": 32,
+      "height": 30,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_50.png"
+    },
+    {
+      "index": 51,
+      "master": 51,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_51.png",
+      "width": 36,
+      "height": 30,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_51.png"
+    },
+    {
+      "index": 52,
+      "master": 52,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_52.png",
+      "width": 36,
+      "height": 30,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_52.png"
+    },
+    {
+      "index": 53,
+      "master": 53,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_53.png",
+      "width": 24,
+      "height": 44,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_53.png"
+    },
+    {
+      "index": 54,
+      "master": 54,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_54.png",
+      "width": 36,
+      "height": 42,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_54.png"
+    },
+    {
+      "index": 55,
+      "master": 55,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_55.png",
+      "width": 28,
+      "height": 46,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_55.png"
+    },
+    {
+      "index": 56,
+      "master": 56,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_56.png",
+      "width": 48,
+      "height": 32,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_56.png"
+    },
+    {
+      "index": 57,
+      "master": 57,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_57.png",
+      "width": 64,
+      "height": 32,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_57.png"
+    },
+    {
+      "index": 58,
+      "master": 58,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_58.png",
+      "width": 64,
+      "height": 42,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_58.png"
+    },
+    {
+      "index": 59,
+      "master": 59,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_59.png",
+      "width": 36,
+      "height": 42,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_59.png"
+    },
+    {
+      "index": 60,
+      "master": 60,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_60.png",
+      "width": 28,
+      "height": 44,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_60.png"
+    },
+    {
+      "index": 61,
+      "master": 61,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_61.png",
+      "width": 28,
+      "height": 44,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_61.png"
+    },
+    {
+      "index": 62,
+      "master": 62,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_62.png",
+      "width": 28,
+      "height": 44,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_62.png"
+    },
+    {
+      "index": 63,
+      "master": 63,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_63.png",
+      "width": 28,
+      "height": 44,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_63.png"
+    },
+    {
+      "index": 64,
+      "master": 64,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_64.png",
+      "width": 28,
+      "height": 24,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_64.png"
+    },
+    {
+      "index": 65,
+      "master": 65,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_65.png",
+      "width": 40,
+      "height": 24,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_65.png"
+    },
+    {
+      "index": 66,
+      "master": 66,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_66.png",
+      "width": 28,
+      "height": 30,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_66.png"
+    },
+    {
+      "index": 67,
+      "master": 67,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_67.png",
+      "width": 20,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_67.png"
+    },
+    {
+      "index": 68,
+      "master": 67,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_68.png",
+      "width": 20,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_68.png"
+    },
+    {
+      "index": 69,
+      "master": 67,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_69.png",
+      "width": 20,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_69.png"
+    },
+    {
+      "index": 70,
+      "master": 67,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_70.png",
+      "width": 20,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_70.png"
+    },
+    {
+      "index": 71,
+      "master": 67,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_71.png",
+      "width": 20,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_71.png"
+    },
+    {
+      "index": 72,
+      "master": 67,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_72.png",
+      "width": 20,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_72.png"
+    },
+    {
+      "index": 73,
+      "master": 67,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_73.png",
+      "width": 20,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_73.png"
+    },
+    {
+      "index": 74,
+      "master": 67,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_74.png",
+      "width": 20,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_74.png"
+    },
+    {
+      "index": 75,
+      "master": 67,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_75.png",
+      "width": 20,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_75.png"
+    },
+    {
+      "index": 76,
+      "master": 67,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_76.png",
+      "width": 20,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_76.png"
+    },
+    {
+      "index": 77,
+      "master": 67,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_77.png",
+      "width": 20,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_77.png"
+    },
+    {
+      "index": 78,
+      "master": 67,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_78.png",
+      "width": 20,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_78.png"
+    },
+    {
+      "index": 79,
+      "master": 67,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_79.png",
+      "width": 20,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_79.png"
+    },
+    {
+      "index": 80,
+      "master": 67,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_80.png",
+      "width": 20,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_80.png"
+    },
+    {
+      "index": 81,
+      "master": 67,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_81.png",
+      "width": 20,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_81.png"
+    },
+    {
+      "index": 82,
+      "master": 67,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_82.png",
+      "width": 20,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_82.png"
+    },
+    {
+      "index": 83,
+      "master": 67,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_83.png",
+      "width": 20,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_83.png"
+    },
+    {
+      "index": 84,
+      "master": 67,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_84.png",
+      "width": 20,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_84.png"
+    },
+    {
+      "index": 85,
+      "master": 67,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_85.png",
+      "width": 20,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_85.png"
+    },
+    {
+      "index": 86,
+      "master": 67,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_86.png",
+      "width": 20,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_86.png"
+    },
+    {
+      "index": 87,
+      "master": 67,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_87.png",
+      "width": 20,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_87.png"
+    },
+    {
+      "index": 88,
+      "master": 67,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_88.png",
+      "width": 20,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_88.png"
+    },
+    {
+      "index": 89,
+      "master": 67,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_89.png",
+      "width": 20,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_89.png"
+    },
+    {
+      "index": 90,
+      "master": 67,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_90.png",
+      "width": 20,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_90.png"
+    },
+    {
+      "index": 91,
+      "master": 67,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_91.png",
+      "width": 20,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_91.png"
+    },
+    {
+      "index": 92,
+      "master": 67,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_92.png",
+      "width": 20,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_92.png"
+    },
+    {
+      "index": 93,
+      "master": 67,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_93.png",
+      "width": 20,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_93.png"
+    },
+    {
+      "index": 94,
+      "master": 55,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_94.png",
+      "width": 28,
+      "height": 46,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_94.png"
+    },
+    {
+      "index": 95,
+      "master": 22,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_95.png",
+      "width": 28,
+      "height": 37,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_95.png"
+    },
+    {
+      "index": 96,
+      "master": 96,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_96.png",
+      "width": 24,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_96.png"
+    },
+    {
+      "index": 97,
+      "master": 96,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_97.png",
+      "width": 24,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_97.png"
+    },
+    {
+      "index": 98,
+      "master": 96,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_98.png",
+      "width": 24,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_98.png"
+    },
+    {
+      "index": 99,
+      "master": 96,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_99.png",
+      "width": 24,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_99.png"
+    },
+    {
+      "index": 100,
+      "master": 96,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_100.png",
+      "width": 24,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_100.png"
+    },
+    {
+      "index": 101,
+      "master": 96,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_101.png",
+      "width": 24,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_101.png"
+    },
+    {
+      "index": 102,
+      "master": 96,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_102.png",
+      "width": 24,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_102.png"
+    },
+    {
+      "index": 103,
+      "master": 96,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_103.png",
+      "width": 24,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_103.png"
+    },
+    {
+      "index": 104,
+      "master": 96,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_104.png",
+      "width": 24,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_104.png"
+    },
+    {
+      "index": 105,
+      "master": 96,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_105.png",
+      "width": 24,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_105.png"
+    },
+    {
+      "index": 106,
+      "master": 96,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_106.png",
+      "width": 24,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_106.png"
+    },
+    {
+      "index": 107,
+      "master": 55,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_107.png",
+      "width": 28,
+      "height": 46,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_107.png"
+    },
+    {
+      "index": 108,
+      "master": 22,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_108.png",
+      "width": 28,
+      "height": 37,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_108.png"
+    },
+    {
+      "index": 109,
+      "master": 60,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_109.png",
+      "width": 28,
+      "height": 44,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_109.png"
+    },
+    {
+      "index": 110,
+      "master": 62,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_110.png",
+      "width": 28,
+      "height": 44,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_110.png"
+    },
+    {
+      "index": 111,
+      "master": 111,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_111.png",
+      "width": 20,
+      "height": 40,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_111.png"
+    },
+    {
+      "index": 112,
+      "master": 112,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_112.png",
+      "width": 32,
+      "height": 57,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_112.png"
+    },
+    {
+      "index": 113,
+      "master": 113,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_113.png",
+      "width": 36,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_113.png"
+    },
+    {
+      "index": 114,
+      "master": 114,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_114.png",
+      "width": 32,
+      "height": 44,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_114.png"
+    },
+    {
+      "index": 115,
+      "master": 115,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_115.png",
+      "width": 24,
+      "height": 45,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_115.png"
+    },
+    {
+      "index": 116,
+      "master": 116,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_116.png",
+      "width": 32,
+      "height": 44,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_116.png"
+    },
+    {
+      "index": 117,
+      "master": 117,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_117.png",
+      "width": 36,
+      "height": 41,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_117.png"
+    },
+    {
+      "index": 118,
+      "master": 118,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_118.png",
+      "width": 36,
+      "height": 45,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_118.png"
+    },
+    {
+      "index": 119,
+      "master": 119,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_119.png",
+      "width": 24,
+      "height": 45,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_119.png"
+    },
+    {
+      "index": 120,
+      "master": 120,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_120.png",
+      "width": 32,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_120.png"
+    },
+    {
+      "index": 121,
+      "master": 121,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_121.png",
+      "width": 32,
+      "height": 37,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_121.png"
+    },
+    {
+      "index": 122,
+      "master": 122,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_122.png",
+      "width": 44,
+      "height": 31,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_122.png"
+    },
+    {
+      "index": 123,
+      "master": 123,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_123.png",
+      "width": 48,
+      "height": 19,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_123.png"
+    },
+    {
+      "index": 124,
+      "master": 124,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_124.png",
+      "width": 56,
+      "height": 16,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_124.png"
+    },
+    {
+      "index": 125,
+      "master": 125,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_125.png",
+      "width": 32,
+      "height": 29,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_125.png"
+    },
+    {
+      "index": 126,
+      "master": 126,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_126.png",
+      "width": 48,
+      "height": 25,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_126.png"
+    },
+    {
+      "index": 127,
+      "master": 127,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_127.png",
+      "width": 48,
+      "height": 22,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_127.png"
+    },
+    {
+      "index": 128,
+      "master": 30,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_128.png",
+      "width": 32,
+      "height": 29,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_128.png"
+    },
+    {
+      "index": 129,
+      "master": 129,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_129.png",
+      "width": 44,
+      "height": 28,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_129.png"
+    },
+    {
+      "index": 130,
+      "master": 130,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_130.png",
+      "width": 32,
+      "height": 37,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_130.png"
+    },
+    {
+      "index": 131,
+      "master": 131,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_131.png",
+      "width": 32,
+      "height": 37,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_131.png"
+    },
+    {
+      "index": 132,
+      "master": 132,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_132.png",
+      "width": 44,
+      "height": 31,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_132.png"
+    },
+    {
+      "index": 133,
+      "master": 133,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_133.png",
+      "width": 56,
+      "height": 45,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_133.png"
+    },
+    {
+      "index": 134,
+      "master": 134,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_134.png",
+      "width": 44,
+      "height": 44,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_134.png"
+    },
+    {
+      "index": 135,
+      "master": 135,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_135.png",
+      "width": 52,
+      "height": 31,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_135.png"
+    },
+    {
+      "index": 136,
+      "master": 136,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_136.png",
+      "width": 44,
+      "height": 32,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_136.png"
+    },
+    {
+      "index": 137,
+      "master": 137,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_137.png",
+      "width": 48,
+      "height": 39,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_137.png"
+    },
+    {
+      "index": 138,
+      "master": 138,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_138.png",
+      "width": 32,
+      "height": 29,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_138.png"
+    },
+    {
+      "index": 139,
+      "master": 139,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_139.png",
+      "width": 24,
+      "height": 36,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_139.png"
+    },
+    {
+      "index": 140,
+      "master": 140,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_140.png",
+      "width": 28,
+      "height": 36,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_140.png"
+    },
+    {
+      "index": 141,
+      "master": 141,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_141.png",
+      "width": 24,
+      "height": 64,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_141.png"
+    },
+    {
+      "index": 142,
+      "master": 142,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_142.png",
+      "width": 24,
+      "height": 64,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_142.png"
+    },
+    {
+      "index": 143,
+      "master": 143,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_143.png",
+      "width": 28,
+      "height": 45,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_143.png"
+    },
+    {
+      "index": 144,
+      "master": 144,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_144.png",
+      "width": 24,
+      "height": 28,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_144.png"
+    },
+    {
+      "index": 145,
+      "master": 145,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_145.png",
+      "width": 24,
+      "height": 28,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_145.png"
+    },
+    {
+      "index": 146,
+      "master": 146,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_146.png",
+      "width": 24,
+      "height": 28,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_146.png"
+    },
+    {
+      "index": 147,
+      "master": 147,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_147.png",
+      "width": 32,
+      "height": 42,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_147.png"
+    },
+    {
+      "index": 148,
+      "master": 148,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_148.png",
+      "width": 32,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_148.png"
+    },
+    {
+      "index": 149,
+      "master": 149,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_149.png",
+      "width": 32,
+      "height": 42,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_149.png"
+    },
+    {
+      "index": 150,
+      "master": 150,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_150.png",
+      "width": 32,
+      "height": 40,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_150.png"
+    },
+    {
+      "index": 151,
+      "master": 151,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_151.png",
+      "width": 32,
+      "height": 39,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_151.png"
+    },
+    {
+      "index": 152,
+      "master": 152,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_152.png",
+      "width": 32,
+      "height": 55,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_152.png"
+    },
+    {
+      "index": 153,
+      "master": 153,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_153.png",
+      "width": 32,
+      "height": 56,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_153.png"
+    },
+    {
+      "index": 154,
+      "master": 154,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_154.png",
+      "width": 32,
+      "height": 42,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_154.png"
+    },
+    {
+      "index": 155,
+      "master": 155,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_155.png",
+      "width": 32,
+      "height": 42,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_155.png"
+    },
+    {
+      "index": 156,
+      "master": 156,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_156.png",
+      "width": 32,
+      "height": 42,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_156.png"
+    },
+    {
+      "index": 157,
+      "master": 157,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_157.png",
+      "width": 32,
+      "height": 42,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_157.png"
+    },
+    {
+      "index": 158,
+      "master": 158,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_158.png",
+      "width": 32,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_158.png"
+    },
+    {
+      "index": 159,
+      "master": 159,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_159.png",
+      "width": 32,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_159.png"
+    },
+    {
+      "index": 160,
+      "master": 160,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_160.png",
+      "width": 32,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_160.png"
+    },
+    {
+      "index": 161,
+      "master": 161,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_161.png",
+      "width": 32,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_161.png"
+    },
+    {
+      "index": 162,
+      "master": 162,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_162.png",
+      "width": 32,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_162.png"
+    },
+    {
+      "index": 163,
+      "master": 163,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_163.png",
+      "width": 32,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_163.png"
+    },
+    {
+      "index": 164,
+      "master": 164,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_164.png",
+      "width": 32,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_164.png"
+    },
+    {
+      "index": 165,
+      "master": 165,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_165.png",
+      "width": 32,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_165.png"
+    },
+    {
+      "index": 166,
+      "master": 166,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_166.png",
+      "width": 32,
+      "height": 45,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_166.png"
+    },
+    {
+      "index": 167,
+      "master": 167,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_167.png",
+      "width": 32,
+      "height": 46,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_167.png"
+    },
+    {
+      "index": 168,
+      "master": 168,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_168.png",
+      "width": 32,
+      "height": 44,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_168.png"
+    },
+    {
+      "index": 169,
+      "master": 169,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_169.png",
+      "width": 32,
+      "height": 44,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_169.png"
+    },
+    {
+      "index": 170,
+      "master": 170,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_170.png",
+      "width": 32,
+      "height": 47,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_170.png"
+    },
+    {
+      "index": 171,
+      "master": 171,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_171.png",
+      "width": 44,
+      "height": 46,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_171.png"
+    },
+    {
+      "index": 172,
+      "master": 172,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_172.png",
+      "width": 32,
+      "height": 59,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_172.png"
+    },
+    {
+      "index": 173,
+      "master": 173,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_173.png",
+      "width": 32,
+      "height": 45,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_173.png"
+    },
+    {
+      "index": 174,
+      "master": 174,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_174.png",
+      "width": 40,
+      "height": 44,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_174.png"
+    },
+    {
+      "index": 175,
+      "master": 175,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_175.png",
+      "width": 32,
+      "height": 48,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_175.png"
+    },
+    {
+      "index": 176,
+      "master": 176,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_176.png",
+      "width": 24,
+      "height": 45,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_176.png"
+    },
+    {
+      "index": 177,
+      "master": 177,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_177.png",
+      "width": 28,
+      "height": 45,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_177.png"
+    },
+    {
+      "index": 178,
+      "master": 178,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_178.png",
+      "width": 28,
+      "height": 45,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_178.png"
+    },
+    {
+      "index": 179,
+      "master": 179,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_179.png",
+      "width": 24,
+      "height": 46,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_179.png"
+    },
+    {
+      "index": 180,
+      "master": 179,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_180.png",
+      "width": 24,
+      "height": 46,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_180.png"
+    },
+    {
+      "index": 181,
+      "master": 179,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_181.png",
+      "width": 24,
+      "height": 46,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_181.png"
+    },
+    {
+      "index": 182,
+      "master": 179,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_182.png",
+      "width": 24,
+      "height": 46,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_182.png"
+    },
+    {
+      "index": 183,
+      "master": 179,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_183.png",
+      "width": 24,
+      "height": 46,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_183.png"
+    },
+    {
+      "index": 184,
+      "master": 184,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_184.png",
+      "width": 28,
+      "height": 32,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_184.png"
+    },
+    {
+      "index": 185,
+      "master": 185,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_185.png",
+      "width": 28,
+      "height": 32,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_185.png"
+    },
+    {
+      "index": 186,
+      "master": 186,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_186.png",
+      "width": 32,
+      "height": 19,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_186.png"
+    },
+    {
+      "index": 187,
+      "master": 187,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_187.png",
+      "width": 24,
+      "height": 31,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_187.png"
+    },
+    {
+      "index": 188,
+      "master": 188,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_188.png",
+      "width": 32,
+      "height": 19,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_188.png"
+    },
+    {
+      "index": 189,
+      "master": 189,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_189.png",
+      "width": 24,
+      "height": 31,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_189.png"
+    },
+    {
+      "index": 190,
+      "master": 190,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_190.png",
+      "width": 24,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_190.png"
+    },
+    {
+      "index": 191,
+      "master": 191,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_191.png",
+      "width": 24,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_191.png"
+    },
+    {
+      "index": 192,
+      "master": 192,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_192.png",
+      "width": 24,
+      "height": 43,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_192.png"
+    },
+    {
+      "index": 193,
+      "master": 193,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_193.png",
+      "width": 24,
+      "height": 30,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_193.png"
+    },
+    {
+      "index": 194,
+      "master": 194,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_194.png",
+      "width": 16,
+      "height": 45,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_194.png"
+    },
+    {
+      "index": 195,
+      "master": 195,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_195.png",
+      "width": 20,
+      "height": 45,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_195.png"
+    },
+    {
+      "index": 196,
+      "master": 196,
+      "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_196.png",
+      "width": 20,
+      "height": 44,
+      "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_196.png"
+    }
+  ],
+  "batches": [
+    [
+      {
+        "index": 0,
+        "master": 0,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_0.png",
+        "width": 24,
+        "height": 44,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_0.png"
+      },
+      {
+        "index": 1,
+        "master": 1,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_1.png",
+        "width": 24,
+        "height": 43,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_1.png"
+      },
+      {
+        "index": 2,
+        "master": 2,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_2.png",
+        "width": 24,
+        "height": 42,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_2.png"
+      },
+      {
+        "index": 3,
+        "master": 3,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_3.png",
+        "width": 20,
+        "height": 44,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_3.png"
+      },
+      {
+        "index": 4,
+        "master": 4,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_4.png",
+        "width": 20,
+        "height": 44,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_4.png"
+      },
+      {
+        "index": 5,
+        "master": 5,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_5.png",
+        "width": 24,
+        "height": 45,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_5.png"
+      },
+      {
+        "index": 6,
+        "master": 6,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_6.png",
+        "width": 24,
+        "height": 45,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_6.png"
+      },
+      {
+        "index": 7,
+        "master": 7,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_7.png",
+        "width": 28,
+        "height": 43,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_7.png"
+      },
+      {
+        "index": 8,
+        "master": 8,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_8.png",
+        "width": 24,
+        "height": 44,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_8.png"
+      },
+      {
+        "index": 9,
+        "master": 9,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_9.png",
+        "width": 20,
+        "height": 45,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_9.png"
+      },
+      {
+        "index": 10,
+        "master": 10,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_10.png",
+        "width": 20,
+        "height": 44,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_10.png"
+      },
+      {
+        "index": 11,
+        "master": 11,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_11.png",
+        "width": 28,
+        "height": 43,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_11.png"
+      },
+      {
+        "index": 12,
+        "master": 12,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_12.png",
+        "width": 20,
+        "height": 44,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_12.png"
+      },
+      {
+        "index": 13,
+        "master": 13,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_13.png",
+        "width": 20,
+        "height": 45,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_13.png"
+      },
+      {
+        "index": 14,
+        "master": 14,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_14.png",
+        "width": 20,
+        "height": 44,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_14.png"
+      },
+      {
+        "index": 15,
+        "master": 15,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_15.png",
+        "width": 24,
+        "height": 37,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_15.png"
+      }
+    ],
+    [
+      {
+        "index": 16,
+        "master": 16,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_16.png",
+        "width": 24,
+        "height": 30,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_16.png"
+      },
+      {
+        "index": 17,
+        "master": 17,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_17.png",
+        "width": 24,
+        "height": 28,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_17.png"
+      },
+      {
+        "index": 18,
+        "master": 18,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_18.png",
+        "width": 24,
+        "height": 45,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_18.png"
+      },
+      {
+        "index": 19,
+        "master": 19,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_19.png",
+        "width": 28,
+        "height": 45,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_19.png"
+      },
+      {
+        "index": 20,
+        "master": 20,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_20.png",
+        "width": 24,
+        "height": 37,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_20.png"
+      },
+      {
+        "index": 22,
+        "master": 22,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_22.png",
+        "width": 28,
+        "height": 37,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_22.png"
+      },
+      {
+        "index": 23,
+        "master": 23,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_23.png",
+        "width": 32,
+        "height": 42,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_23.png"
+      },
+      {
+        "index": 24,
+        "master": 24,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_24.png",
+        "width": 20,
+        "height": 43,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_24.png"
+      },
+      {
+        "index": 25,
+        "master": 25,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_25.png",
+        "width": 24,
+        "height": 42,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_25.png"
+      },
+      {
+        "index": 26,
+        "master": 26,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_26.png",
+        "width": 44,
+        "height": 28,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_26.png"
+      },
+      {
+        "index": 27,
+        "master": 27,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_27.png",
+        "width": 32,
+        "height": 29,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_27.png"
+      },
+      {
+        "index": 28,
+        "master": 28,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_28.png",
+        "width": 28,
+        "height": 44,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_28.png"
+      },
+      {
+        "index": 29,
+        "master": 29,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_29.png",
+        "width": 44,
+        "height": 28,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_29.png"
+      },
+      {
+        "index": 30,
+        "master": 30,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_30.png",
+        "width": 32,
+        "height": 29,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_30.png"
+      },
+      {
+        "index": 31,
+        "master": 31,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_31.png",
+        "width": 24,
+        "height": 45,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_31.png"
+      },
+      {
+        "index": 32,
+        "master": 32,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_32.png",
+        "width": 32,
+        "height": 29,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_32.png"
+      }
+    ],
+    [
+      {
+        "index": 33,
+        "master": 33,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_33.png",
+        "width": 44,
+        "height": 24,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_33.png"
+      },
+      {
+        "index": 34,
+        "master": 34,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_34.png",
+        "width": 24,
+        "height": 37,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_34.png"
+      },
+      {
+        "index": 35,
+        "master": 35,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_35.png",
+        "width": 32,
+        "height": 29,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_35.png"
+      },
+      {
+        "index": 36,
+        "master": 36,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_36.png",
+        "width": 32,
+        "height": 35,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_36.png"
+      },
+      {
+        "index": 37,
+        "master": 37,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_37.png",
+        "width": 24,
+        "height": 43,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_37.png"
+      },
+      {
+        "index": 38,
+        "master": 38,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_38.png",
+        "width": 32,
+        "height": 43,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_38.png"
+      },
+      {
+        "index": 39,
+        "master": 39,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_39.png",
+        "width": 28,
+        "height": 43,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_39.png"
+      },
+      {
+        "index": 40,
+        "master": 40,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_40.png",
+        "width": 24,
+        "height": 42,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_40.png"
+      },
+      {
+        "index": 41,
+        "master": 41,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_41.png",
+        "width": 36,
+        "height": 40,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_41.png"
+      },
+      {
+        "index": 42,
+        "master": 42,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_42.png",
+        "width": 36,
+        "height": 40,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_42.png"
+      },
+      {
+        "index": 43,
+        "master": 43,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_43.png",
+        "width": 36,
+        "height": 40,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_43.png"
+      },
+      {
+        "index": 44,
+        "master": 44,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_44.png",
+        "width": 28,
+        "height": 38,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_44.png"
+      },
+      {
+        "index": 45,
+        "master": 45,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_45.png",
+        "width": 24,
+        "height": 41,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_45.png"
+      },
+      {
+        "index": 46,
+        "master": 46,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_46.png",
+        "width": 24,
+        "height": 29,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_46.png"
+      },
+      {
+        "index": 47,
+        "master": 47,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_47.png",
+        "width": 32,
+        "height": 29,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_47.png"
+      },
+      {
+        "index": 48,
+        "master": 48,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_48.png",
+        "width": 28,
+        "height": 30,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_48.png"
+      }
+    ],
+    [
+      {
+        "index": 49,
+        "master": 49,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_49.png",
+        "width": 24,
+        "height": 31,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_49.png"
+      },
+      {
+        "index": 50,
+        "master": 50,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_50.png",
+        "width": 32,
+        "height": 30,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_50.png"
+      },
+      {
+        "index": 51,
+        "master": 51,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_51.png",
+        "width": 36,
+        "height": 30,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_51.png"
+      },
+      {
+        "index": 52,
+        "master": 52,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_52.png",
+        "width": 36,
+        "height": 30,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_52.png"
+      },
+      {
+        "index": 53,
+        "master": 53,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_53.png",
+        "width": 24,
+        "height": 44,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_53.png"
+      },
+      {
+        "index": 54,
+        "master": 54,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_54.png",
+        "width": 36,
+        "height": 42,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_54.png"
+      },
+      {
+        "index": 55,
+        "master": 55,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_55.png",
+        "width": 28,
+        "height": 46,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_55.png"
+      },
+      {
+        "index": 56,
+        "master": 56,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_56.png",
+        "width": 48,
+        "height": 32,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_56.png"
+      },
+      {
+        "index": 57,
+        "master": 57,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_57.png",
+        "width": 64,
+        "height": 32,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_57.png"
+      },
+      {
+        "index": 58,
+        "master": 58,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_58.png",
+        "width": 64,
+        "height": 42,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_58.png"
+      },
+      {
+        "index": 59,
+        "master": 59,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_59.png",
+        "width": 36,
+        "height": 42,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_59.png"
+      },
+      {
+        "index": 60,
+        "master": 60,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_60.png",
+        "width": 28,
+        "height": 44,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_60.png"
+      },
+      {
+        "index": 61,
+        "master": 61,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_61.png",
+        "width": 28,
+        "height": 44,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_61.png"
+      },
+      {
+        "index": 62,
+        "master": 62,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_62.png",
+        "width": 28,
+        "height": 44,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_62.png"
+      },
+      {
+        "index": 63,
+        "master": 63,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_63.png",
+        "width": 28,
+        "height": 44,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_63.png"
+      },
+      {
+        "index": 64,
+        "master": 64,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_64.png",
+        "width": 28,
+        "height": 24,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_64.png"
+      }
+    ],
+    [
+      {
+        "index": 65,
+        "master": 65,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_65.png",
+        "width": 40,
+        "height": 24,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_65.png"
+      },
+      {
+        "index": 66,
+        "master": 66,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_66.png",
+        "width": 28,
+        "height": 30,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_66.png"
+      },
+      {
+        "index": 67,
+        "master": 67,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_67.png",
+        "width": 20,
+        "height": 43,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_67.png"
+      },
+      {
+        "index": 96,
+        "master": 96,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_96.png",
+        "width": 24,
+        "height": 43,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_96.png"
+      },
+      {
+        "index": 111,
+        "master": 111,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_111.png",
+        "width": 20,
+        "height": 40,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_111.png"
+      },
+      {
+        "index": 112,
+        "master": 112,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_112.png",
+        "width": 32,
+        "height": 57,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_112.png"
+      },
+      {
+        "index": 113,
+        "master": 113,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_113.png",
+        "width": 36,
+        "height": 43,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_113.png"
+      },
+      {
+        "index": 114,
+        "master": 114,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_114.png",
+        "width": 32,
+        "height": 44,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_114.png"
+      },
+      {
+        "index": 115,
+        "master": 115,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_115.png",
+        "width": 24,
+        "height": 45,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_115.png"
+      },
+      {
+        "index": 116,
+        "master": 116,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_116.png",
+        "width": 32,
+        "height": 44,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_116.png"
+      },
+      {
+        "index": 117,
+        "master": 117,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_117.png",
+        "width": 36,
+        "height": 41,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_117.png"
+      },
+      {
+        "index": 118,
+        "master": 118,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_118.png",
+        "width": 36,
+        "height": 45,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_118.png"
+      },
+      {
+        "index": 119,
+        "master": 119,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_119.png",
+        "width": 24,
+        "height": 45,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_119.png"
+      },
+      {
+        "index": 120,
+        "master": 120,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_120.png",
+        "width": 32,
+        "height": 43,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_120.png"
+      },
+      {
+        "index": 121,
+        "master": 121,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_121.png",
+        "width": 32,
+        "height": 37,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_121.png"
+      },
+      {
+        "index": 122,
+        "master": 122,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_122.png",
+        "width": 44,
+        "height": 31,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_122.png"
+      }
+    ],
+    [
+      {
+        "index": 123,
+        "master": 123,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_123.png",
+        "width": 48,
+        "height": 19,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_123.png"
+      },
+      {
+        "index": 124,
+        "master": 124,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_124.png",
+        "width": 56,
+        "height": 16,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_124.png"
+      },
+      {
+        "index": 125,
+        "master": 125,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_125.png",
+        "width": 32,
+        "height": 29,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_125.png"
+      },
+      {
+        "index": 126,
+        "master": 126,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_126.png",
+        "width": 48,
+        "height": 25,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_126.png"
+      },
+      {
+        "index": 127,
+        "master": 127,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_127.png",
+        "width": 48,
+        "height": 22,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_127.png"
+      },
+      {
+        "index": 129,
+        "master": 129,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_129.png",
+        "width": 44,
+        "height": 28,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_129.png"
+      },
+      {
+        "index": 130,
+        "master": 130,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_130.png",
+        "width": 32,
+        "height": 37,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_130.png"
+      },
+      {
+        "index": 131,
+        "master": 131,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_131.png",
+        "width": 32,
+        "height": 37,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_131.png"
+      },
+      {
+        "index": 132,
+        "master": 132,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_132.png",
+        "width": 44,
+        "height": 31,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_132.png"
+      },
+      {
+        "index": 133,
+        "master": 133,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_133.png",
+        "width": 56,
+        "height": 45,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_133.png"
+      },
+      {
+        "index": 134,
+        "master": 134,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_134.png",
+        "width": 44,
+        "height": 44,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_134.png"
+      },
+      {
+        "index": 135,
+        "master": 135,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_135.png",
+        "width": 52,
+        "height": 31,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_135.png"
+      },
+      {
+        "index": 136,
+        "master": 136,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_136.png",
+        "width": 44,
+        "height": 32,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_136.png"
+      },
+      {
+        "index": 137,
+        "master": 137,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_137.png",
+        "width": 48,
+        "height": 39,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_137.png"
+      },
+      {
+        "index": 138,
+        "master": 138,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_138.png",
+        "width": 32,
+        "height": 29,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_138.png"
+      },
+      {
+        "index": 139,
+        "master": 139,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_139.png",
+        "width": 24,
+        "height": 36,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_139.png"
+      }
+    ],
+    [
+      {
+        "index": 140,
+        "master": 140,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_140.png",
+        "width": 28,
+        "height": 36,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_140.png"
+      },
+      {
+        "index": 141,
+        "master": 141,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_141.png",
+        "width": 24,
+        "height": 64,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_141.png"
+      },
+      {
+        "index": 142,
+        "master": 142,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_142.png",
+        "width": 24,
+        "height": 64,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_142.png"
+      },
+      {
+        "index": 143,
+        "master": 143,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_143.png",
+        "width": 28,
+        "height": 45,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_143.png"
+      },
+      {
+        "index": 144,
+        "master": 144,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_144.png",
+        "width": 24,
+        "height": 28,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_144.png"
+      },
+      {
+        "index": 145,
+        "master": 145,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_145.png",
+        "width": 24,
+        "height": 28,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_145.png"
+      },
+      {
+        "index": 146,
+        "master": 146,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_146.png",
+        "width": 24,
+        "height": 28,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_146.png"
+      },
+      {
+        "index": 147,
+        "master": 147,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_147.png",
+        "width": 32,
+        "height": 42,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_147.png"
+      },
+      {
+        "index": 148,
+        "master": 148,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_148.png",
+        "width": 32,
+        "height": 43,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_148.png"
+      },
+      {
+        "index": 149,
+        "master": 149,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_149.png",
+        "width": 32,
+        "height": 42,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_149.png"
+      },
+      {
+        "index": 150,
+        "master": 150,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_150.png",
+        "width": 32,
+        "height": 40,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_150.png"
+      },
+      {
+        "index": 151,
+        "master": 151,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_151.png",
+        "width": 32,
+        "height": 39,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_151.png"
+      },
+      {
+        "index": 152,
+        "master": 152,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_152.png",
+        "width": 32,
+        "height": 55,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_152.png"
+      },
+      {
+        "index": 153,
+        "master": 153,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_153.png",
+        "width": 32,
+        "height": 56,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_153.png"
+      },
+      {
+        "index": 154,
+        "master": 154,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_154.png",
+        "width": 32,
+        "height": 42,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_154.png"
+      },
+      {
+        "index": 155,
+        "master": 155,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_155.png",
+        "width": 32,
+        "height": 42,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_155.png"
+      }
+    ],
+    [
+      {
+        "index": 156,
+        "master": 156,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_156.png",
+        "width": 32,
+        "height": 42,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_156.png"
+      },
+      {
+        "index": 157,
+        "master": 157,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_157.png",
+        "width": 32,
+        "height": 42,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_157.png"
+      },
+      {
+        "index": 158,
+        "master": 158,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_158.png",
+        "width": 32,
+        "height": 43,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_158.png"
+      },
+      {
+        "index": 159,
+        "master": 159,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_159.png",
+        "width": 32,
+        "height": 43,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_159.png"
+      },
+      {
+        "index": 160,
+        "master": 160,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_160.png",
+        "width": 32,
+        "height": 43,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_160.png"
+      },
+      {
+        "index": 161,
+        "master": 161,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_161.png",
+        "width": 32,
+        "height": 43,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_161.png"
+      },
+      {
+        "index": 162,
+        "master": 162,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_162.png",
+        "width": 32,
+        "height": 43,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_162.png"
+      },
+      {
+        "index": 163,
+        "master": 163,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_163.png",
+        "width": 32,
+        "height": 43,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_163.png"
+      },
+      {
+        "index": 164,
+        "master": 164,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_164.png",
+        "width": 32,
+        "height": 43,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_164.png"
+      },
+      {
+        "index": 165,
+        "master": 165,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_165.png",
+        "width": 32,
+        "height": 43,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_165.png"
+      },
+      {
+        "index": 166,
+        "master": 166,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_166.png",
+        "width": 32,
+        "height": 45,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_166.png"
+      },
+      {
+        "index": 167,
+        "master": 167,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_167.png",
+        "width": 32,
+        "height": 46,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_167.png"
+      },
+      {
+        "index": 168,
+        "master": 168,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_168.png",
+        "width": 32,
+        "height": 44,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_168.png"
+      },
+      {
+        "index": 169,
+        "master": 169,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_169.png",
+        "width": 32,
+        "height": 44,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_169.png"
+      },
+      {
+        "index": 170,
+        "master": 170,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_170.png",
+        "width": 32,
+        "height": 47,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_170.png"
+      },
+      {
+        "index": 171,
+        "master": 171,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_171.png",
+        "width": 44,
+        "height": 46,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_171.png"
+      }
+    ],
+    [
+      {
+        "index": 172,
+        "master": 172,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_172.png",
+        "width": 32,
+        "height": 59,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_172.png"
+      },
+      {
+        "index": 173,
+        "master": 173,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_173.png",
+        "width": 32,
+        "height": 45,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_173.png"
+      },
+      {
+        "index": 174,
+        "master": 174,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_174.png",
+        "width": 40,
+        "height": 44,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_174.png"
+      },
+      {
+        "index": 175,
+        "master": 175,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_175.png",
+        "width": 32,
+        "height": 48,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_175.png"
+      },
+      {
+        "index": 176,
+        "master": 176,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_176.png",
+        "width": 24,
+        "height": 45,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_176.png"
+      },
+      {
+        "index": 177,
+        "master": 177,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_177.png",
+        "width": 28,
+        "height": 45,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_177.png"
+      },
+      {
+        "index": 178,
+        "master": 178,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_178.png",
+        "width": 28,
+        "height": 45,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_178.png"
+      },
+      {
+        "index": 179,
+        "master": 179,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_179.png",
+        "width": 24,
+        "height": 46,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_179.png"
+      },
+      {
+        "index": 184,
+        "master": 184,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_184.png",
+        "width": 28,
+        "height": 32,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_184.png"
+      },
+      {
+        "index": 185,
+        "master": 185,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_185.png",
+        "width": 28,
+        "height": 32,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_185.png"
+      },
+      {
+        "index": 186,
+        "master": 186,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_186.png",
+        "width": 32,
+        "height": 19,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_186.png"
+      },
+      {
+        "index": 187,
+        "master": 187,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_187.png",
+        "width": 24,
+        "height": 31,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_187.png"
+      },
+      {
+        "index": 188,
+        "master": 188,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_188.png",
+        "width": 32,
+        "height": 19,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_188.png"
+      },
+      {
+        "index": 189,
+        "master": 189,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_189.png",
+        "width": 24,
+        "height": 31,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_189.png"
+      },
+      {
+        "index": 190,
+        "master": 190,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_190.png",
+        "width": 24,
+        "height": 43,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_190.png"
+      },
+      {
+        "index": 191,
+        "master": 191,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_191.png",
+        "width": 24,
+        "height": 43,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_191.png"
+      }
+    ],
+    [
+      {
+        "index": 192,
+        "master": 192,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_192.png",
+        "width": 24,
+        "height": 43,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_192.png"
+      },
+      {
+        "index": 193,
+        "master": 193,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_193.png",
+        "width": 24,
+        "height": 30,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_193.png"
+      },
+      {
+        "index": 194,
+        "master": 194,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_194.png",
+        "width": 16,
+        "height": 45,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_194.png"
+      },
+      {
+        "index": 195,
+        "master": 195,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_195.png",
+        "width": 20,
+        "height": 45,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_195.png"
+      },
+      {
+        "index": 196,
+        "master": 196,
+        "source": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\richter\\richter_196.png",
+        "width": 20,
+        "height": 44,
+        "output": "C:\\www\\rea\\sotn-decomp\\assets\\ric\\jesus_ferido\\jesus_ferido_196.png"
+      }
+    ]
+  ]
+}

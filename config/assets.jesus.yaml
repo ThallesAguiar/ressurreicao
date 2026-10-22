@@ -1,0 +1,12 @@
+version: us
+files:
+  - target: disks/us/BIN/RIC.BIN
+    asset_path: assets/ric
+    src_path: src/pc
+    segments:
+      - start: 0
+        vram: 0x8013C000
+        assets:
+          - [0x0, spritesheet, jesus_ferido]
+          - [0x0, palette, jesus_ferido_palette, 16]
+          - [0x0, cmpgfx, jesus_ferido_cutscene, 128, 128, 4]

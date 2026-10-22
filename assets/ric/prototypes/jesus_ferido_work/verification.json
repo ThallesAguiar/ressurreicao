@@ -1,0 +1,10 @@
+{
+  "frames": 197,
+  "png_files": 197,
+  "unique_source_frames": 149,
+  "max_colors_including_transparency": 16,
+  "dimensions_match_sources": true,
+  "issues": [],
+  "game_integration": "not performed",
+  "weapon_rule": "No added weapons; only redraw whips visible in the corresponding source frame. Visual review needed before integration."
+}

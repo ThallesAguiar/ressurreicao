@@ -101,7 +101,7 @@ func Decode(r io.Reader) ([]byte, *Info, error) {
 	if err != nil {
 		return nil, nil, fmt.Errorf("%w", err)
 	}
-	bytesPerPixel := min(1, bitsPerPixel/8)
+	bytesPerPixel := max(1, bitsPerPixel/8)
 
 	// Decompress the IDAT data
 	zr, err := zlib.NewReader(&idatData)
@@ -133,7 +133,13 @@ func Decode(r io.Reader) ([]byte, *Info, error) {
 		pixelData = append(pixelData, rowData...)
 		copy(prevRow, rowData)
 	}
-	if bitsPerPixel == 1 || ihdr.NumPaletteColors <= 2 {
+	if bitsPerPixel == 4 {
+		// PNG already packs two indices per byte, most significant first.
+		// PSX stores the left pixel in the low nibble; do not pack it twice.
+		for i, b := range pixelData {
+			pixelData[i] = b>>4 | b<<4
+		}
+	} else if bitsPerPixel == 1 || ihdr.NumPaletteColors <= 2 {
 		out := make([]byte, len(pixelData)/8)
 		for i := 0; i < len(pixelData); i += 8 {
 			out[i>>3] = ((pixelData[i] & 1) << 7) |
@@ -146,7 +152,7 @@ func Decode(r io.Reader) ([]byte, *Info, error) {
 				((pixelData[i+7] & 1) << 0)
 		}
 		pixelData = out
-	} else if bitsPerPixel == 4 || ihdr.NumPaletteColors > 0 && ihdr.NumPaletteColors <= 16 {
+	} else if ihdr.NumPaletteColors > 0 && ihdr.NumPaletteColors <= 16 {
 		out := make([]byte, len(pixelData)/2)
 		for i := 0; i < len(pixelData); i += 2 {
 			out[i>>1] = (pixelData[i] & 0xF) | ((pixelData[i+1] & 0xF) << 4)
@@ -207,7 +213,7 @@ func reverseFilter(filter uint8, row, prevRow []byte, bitDepth, bytesPerPixel in
 				left = row[i-bytesPerPixel]
 			}
 			above := prevRow[i]
-			row[i] += (left + above) / 2
+			row[i] += byte((int(left) + int(above)) / 2)
 		}
 		return nil
 	case 4: // Paeth: byte = byte + PaethPredictor(left, above, upper_left)

@@ -1568,6 +1568,31 @@ add_executable(${PROJECT_NAME}
     ${SOURCE_FILES_PC}
     ${SOURCE_FILES_CORE})
 
+# Compile the Jesus artwork with the existing PSX asset converter. Depend on
+# the PNGs so rebuilding after an art edit cannot leave stale player sprites.
+find_program(SOTN_ASSETS_BIN NAMES sotn-assets
+    HINTS "${CMAKE_SOURCE_DIR}/bin" REQUIRED)
+file(GLOB JESUS_SPRITE_PNGS CONFIGURE_DEPENDS
+    "${CMAKE_SOURCE_DIR}/assets/ric/jesus_ferido/*.png")
+set(JESUS_GENERATED_HEADERS
+    "${CMAKE_SOURCE_DIR}/src/pc/gen/jesus_ferido.h"
+    "${CMAKE_SOURCE_DIR}/src/pc/gen/jesus_ferido_palette.h"
+    "${CMAKE_SOURCE_DIR}/src/pc/gen/jesus_ferido_cutscene.h")
+add_custom_command(
+    OUTPUT ${JESUS_GENERATED_HEADERS}
+    COMMAND "${SOTN_ASSETS_BIN}" build-assets config/assets.jesus.yaml
+    DEPENDS ${JESUS_SPRITE_PNGS} "${SOTN_ASSETS_BIN}"
+        "${CMAKE_SOURCE_DIR}/assets/ric/jesus_ferido.yaml"
+        "${CMAKE_SOURCE_DIR}/assets/ric/jesus_ferido_palette.yaml"
+        "${CMAKE_SOURCE_DIR}/assets/ric/jesus_ferido_palette.pal"
+        "${CMAKE_SOURCE_DIR}/assets/ric/jesus_ferido_cutscene.png"
+        "${CMAKE_SOURCE_DIR}/config/assets.jesus.yaml"
+    WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+    VERBATIM
+    COMMENT "Compiling Jesus ferido sprites and palette")
+add_custom_target(jesus_sprites DEPENDS ${JESUS_GENERATED_HEADERS})
+add_dependencies(${PROJECT_NAME} jesus_sprites)
+
 target_include_directories(${PROJECT_NAME} PUBLIC
     include
     src/dra
@@ -1648,6 +1673,7 @@ add_overlay(nz0 ${SOURCE_FILES_STAGE_NZ0})
 add_overlay(wrp ${SOURCE_FILES_STAGE_WRP})
 add_overlay(dre ${SOURCE_FILES_STAGE_DRE})
 add_overlay(st0 ${SOURCE_FILES_STAGE_ST0})
+add_dependencies(${st0_COMPILE_TARGET} jesus_sprites)
 add_overlay(rwrp ${SOURCE_FILES_STAGE_RWRP})
 add_overlay(no3 ${SOURCE_FILES_STAGE_NO3})
 add_overlay(lib ${SOURCE_FILES_STAGE_LIB})

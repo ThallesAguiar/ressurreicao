@@ -12,6 +12,8 @@ construído sobre a engine recriada pela decompilação open-source
 - Scroll de abertura com novo texto
 - Port nativo para Windows (via [psyz](https://github.com/Xeeynamo/psyz) +
   SDL3), sem emulador
+- Jesus ferido jogável, com 197 quadros em pixel art e paleta própria;
+  as sprites são incorporadas automaticamente ao recompilar o port de PC.
 - Renderização de texto no PC (fonte Shinonome 14dot, domínio público)
 - Menu de debug in-game (**R2**) com God Mode, One-Hit-Kill, No-Clip,
   Corações Infinitos e Dar Todos os Itens — além das flags equivalentes

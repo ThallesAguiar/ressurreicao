@@ -1577,7 +1577,8 @@ file(GLOB JESUS_SPRITE_PNGS CONFIGURE_DEPENDS
 set(JESUS_GENERATED_HEADERS
     "${CMAKE_SOURCE_DIR}/src/pc/gen/jesus_ferido.h"
     "${CMAKE_SOURCE_DIR}/src/pc/gen/jesus_ferido_palette.h"
-    "${CMAKE_SOURCE_DIR}/src/pc/gen/jesus_ferido_cutscene.h")
+    "${CMAKE_SOURCE_DIR}/src/pc/gen/jesus_ferido_cutscene.h"
+    "${CMAKE_SOURCE_DIR}/src/st/st0/gen/cutscene_script_psx.h")
 add_custom_command(
     OUTPUT ${JESUS_GENERATED_HEADERS}
     COMMAND "${SOTN_ASSETS_BIN}" build-assets config/assets.jesus.yaml
@@ -1586,6 +1587,7 @@ add_custom_command(
         "${CMAKE_SOURCE_DIR}/assets/ric/jesus_ferido_palette.yaml"
         "${CMAKE_SOURCE_DIR}/assets/ric/jesus_ferido_palette.pal"
         "${CMAKE_SOURCE_DIR}/assets/ric/jesus_ferido_cutscene.png"
+        "${CMAKE_SOURCE_DIR}/assets/st/st0/cutscene_script_psx.yaml"
         "${CMAKE_SOURCE_DIR}/config/assets.jesus.yaml"
     WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
     VERBATIM

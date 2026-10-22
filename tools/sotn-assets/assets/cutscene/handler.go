@@ -96,7 +96,8 @@ func (h *handler) Build(e assets.BuildArgs) error {
 
 					// If the byte is in the PSP's upper language character position,
 					// output the hex literal
-					if platform == sotn.PlatformPSP && byteValue >= 0xA0 && byteValue <= 0xDF {
+					if (platform == sotn.PlatformPSP && byteValue >= 0xA0 && byteValue <= 0xDF) ||
+						(platform == sotn.PlatformPSX && r >= 0x80 && r <= 0xFF) {
 						// TODO: This can probably output something like _SE() which
 						// can be handled by sotn_str
 						sb.WriteString(fmt.Sprintf("'\\x%02X',", byteValue))

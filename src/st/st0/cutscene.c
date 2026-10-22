@@ -4,6 +4,7 @@
 #include <cutscene.h>
 #ifdef VERSION_PC
 #include "../../pc/pc.h"
+#include "portuguese_font.h"
 extern s16 D_801545AC;
 
 static u16 father_portrait[] = {
@@ -25,27 +26,20 @@ static u8 father_blessing_script[] = {
     END_CUTSCENE(),
 };
 
-static void PrepareBlessingAccent(void) {
-    // The US font has no Portuguese e-acute. Derive it from its own e glyph
-    // in an unused slot, keeping the original font's size and shading.
-    RECT rect = {906, 288, 2, 8}; // US dialogue font: ASCII e
-    u16 glyph[16];
-    u8* pixels = (u8*)glyph;
-    int color = 0;
-    StoreImage(&rect, (u_long*)glyph);
-    for (int i = 0; i < sizeof(glyph); i++) {
-        if ((pixels[i] & 15) > color) {
-            color = pixels[i] & 15;
-        }
-        if ((pixels[i] >> 4) > color) {
-            color = pixels[i] >> 4;
-        }
+static void PreparePortugueseDialogueFont(void) {
+    static const u8 letters[] = {
+        0xE1, 0xE3, 0xE9, 0xEA, 0xF5};
+    for (int i = 0; i < LEN(letters); i++) {
+        u8 ch = letters[i];
+        u8 base = PortugueseBaseLetter(ch);
+        RECT rect = {896 + (base & 15) * 2, 240 + ((base & 0xF0) >> 1), 2, 8};
+        u16 glyph[16];
+        StoreImage(&rect, (u_long*)glyph);
+        AccentPortugueseGlyph(glyph, 8, 8, ch);
+        rect.x = 896 + (ch & 15) * 2;
+        rect.y = 240 + ((ch & 0xF0) >> 1);
+        LoadImage(&rect, (u_long*)glyph);
     }
-    pixels[2] = (pixels[2] & 0xF0) | color;
-    pixels[5] = (pixels[5] & 0x0F) | (color << 4);
-    rect.x = 914;
-    rect.y = 352; // unused US dialogue glyph 0xE9
-    LoadImage(&rect, (u_long*)glyph);
 }
 #endif
 
@@ -370,9 +364,8 @@ void EntityCutscene(Entity* self) {
             self->flags |= FLAG_HAS_PRIMS;
             self->primIndex = g_Dialogue.primIndex[2];
 #ifdef VERSION_PC
-            if (self->params == 1) {
-                PrepareBlessingAccent();
-            } else
+            PreparePortugueseDialogueFont();
+            if (self->params != 1)
 #endif
             g_CutsceneFlags = CUTSCENE_FLAG_NONE;
             g_IsCutsceneDone = false;

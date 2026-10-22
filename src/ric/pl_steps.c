@@ -5,6 +5,16 @@
 #include "../pc/pc.h"
 #endif
 
+static bool RicIsBrandishHeld(void) {
+#ifdef VERSION_PC
+    // Jesus must attack again with a new press, in either form.
+    if (g_StageId == STAGE_ST0) {
+        return false;
+    }
+#endif
+    return (g_Player.padPressed & PAD_SQUARE) != 0;
+}
+
 static void func_80158B04(u16 arg0) {
     s16 xMod = 3;
     if (PLAYER.facingLeft) {
@@ -82,7 +92,7 @@ void RicStepStand(void) {
             }
 
             if (PLAYER.poseTimer < 0) {
-                if (g_Player.padPressed & PAD_SQUARE) {
+                if (RicIsBrandishHeld()) {
                     PLAYER.step_s++;
                     g_Player.unk46 = 2;
                     RicSetAnimation(ric_anim_brandish_whip);
@@ -96,7 +106,7 @@ void RicStepStand(void) {
             break;
         case 65:
             DisableAfterImage(1, 1);
-            if (g_Player.padPressed & PAD_SQUARE) {
+            if (RicIsBrandishHeld()) {
                 break;
             }
             g_Player.unk46 = 0;
@@ -242,7 +252,7 @@ void RicStepJump(void) {
             }
         }
         if (PLAYER.poseTimer < 0) {
-            if (g_Player.padPressed & PAD_SQUARE) {
+            if (RicIsBrandishHeld()) {
                 PLAYER.step_s += 1;
                 g_Player.unk46 = 2;
                 RicSetAnimation(D_80155740);
@@ -257,7 +267,7 @@ void RicStepJump(void) {
         break;
     case 0x41:
         DisableAfterImage(1, 1);
-        if (!(g_Player.padPressed & PAD_SQUARE)) {
+        if (!RicIsBrandishHeld()) {
             g_Player.unk46 = 0;
             PLAYER.step_s = 0;
             RicSetAnimation(D_80155528);
@@ -417,7 +427,7 @@ void RicStepCrouch(void) {
             }
         }
         if (PLAYER.poseTimer < 0) {
-            if (g_Player.padPressed & PAD_SQUARE) {
+            if (RicIsBrandishHeld()) {
                 PLAYER.step_s++;
                 g_Player.unk46 = 2;
                 RicSetAnimation(D_80155738);
@@ -432,7 +442,7 @@ void RicStepCrouch(void) {
         break;
     case 0x41:
         DisableAfterImage(1, 1);
-        if (!(g_Player.padPressed & PAD_SQUARE)) {
+        if (!RicIsBrandishHeld()) {
             g_Player.unk46 = 0;
             PLAYER.step_s = 0;
             RicSetAnimation(ric_anim_crouch);

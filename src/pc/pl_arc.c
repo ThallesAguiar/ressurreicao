@@ -26,6 +26,7 @@ static u8 s_JesusFeridoArmTiles[0x2000];
 static bool s_RicLoaded;
 static bool s_RicArmsLoaded;
 static bool s_JesusGlorified;
+static bool s_JesusFeridoTonesPrepared;
 void (*g_JesusBlessingUpdate)(Entity*);
 STATIC_ASSERT(LEN(s_JesusFeridoPalette) == COLORS_PER_PAL);
 STATIC_ASSERT(LEN(s_JesusGlorificadoPalette) == COLORS_PER_PAL);
@@ -34,6 +35,39 @@ STATIC_ASSERT(LEN(jesus_glorificado_sprites) == LEN(jesus_ferido_sprites));
 STATIC_ASSERT(LEN(jesus_ferido_sprites) <= LEN(g_PlOvlSpritesheet));
 
 extern s16* spritebank2[];
+
+static void PrepareJesusFeridoActionTones(void) {
+    // Movement artwork is the reference. Action artwork uses brighter skin
+    // highlights; lower those two shades without changing cloth, blood,
+    // outlines, transparency, dimensions or pivots. Keep the revival frames.
+    static const u8 tones[16] = {
+        0, 1, 2, 3, 4, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15};
+    if (s_JesusFeridoTonesPrepared) {
+        return;
+    }
+    for (int frame = 15; frame < LEN(jesus_ferido_sprites); frame++) {
+        if (frame >= 175 && frame <= 178) {
+            continue;
+        }
+        u8* sprite = jesus_ferido_sprites[frame];
+        bool shared = false;
+        for (int previous = 0; previous < frame; previous++) {
+            if (sprite == jesus_ferido_sprites[previous]) {
+                shared = true;
+                break;
+            }
+        }
+        if (shared) {
+            continue;
+        }
+        int length = sprite[0] * sprite[1] / 2;
+        for (int i = 4; i < length + 4; i++) {
+            u8 pixel = sprite[i];
+            sprite[i] = tones[pixel & 15] | (tones[pixel >> 4] << 4);
+        }
+    }
+    s_JesusFeridoTonesPrepared = true;
+}
 
 bool IsPlayerRicGlorified(void) {
     return s_RicLoaded && s_JesusGlorified && g_StageId == STAGE_ST0;
@@ -95,7 +129,7 @@ void GlorifyPlayerRic(void) {
 // only their texels to the Jesus palette; other weapon tiles keep their colors.
 void PatchPlayerRicArmTiles(u8* data, size_t length) {
     static const u8 colors[16] = {
-        0, 1, 11, 10, 9, 7, 7, 11, 3, 4, 5, 6, 7, 4, 9, 13};
+        0, 1, 11, 10, 9, 7, 7, 11, 3, 4, 4, 5, 6, 4, 9, 13};
     const size_t blockOffset = 6 * 0x2000;
     u8 touched[0x2000] = {0};
 
@@ -184,6 +218,7 @@ void InitPlayerArc(const struct FileUseContent* file) {
 
     s_RicLoaded = strcmp(file->filename, "disks/us/BIN/RIC.BIN") == 0;
     if (s_RicLoaded) {
+        PrepareJesusFeridoActionTones();
         memcpy(g_PlOvlSpritesheet,
                IsPlayerRicGlorified() ? jesus_glorificado_sprites
                                      : jesus_ferido_sprites,

@@ -2,6 +2,10 @@
 #include <stdio.h>
 #include "st0.h"
 #include <cutscene.h>
+#ifdef VERSION_PC
+#include <string.h>
+#include "portuguese_font.h"
+#endif
 
 // This file uses g_Dialogue with a different struct than cutscene.c
 typedef struct {
@@ -100,6 +104,10 @@ void func_801B1198(s16 yVal) {
 
 u16* func_801B11E8(u8 ch) {
     u16 jCh;
+#ifdef VERSION_PC
+    u8 accented = ch;
+    ch = PortugueseBaseLetter(ch);
+#endif
     if (ch >= 'a') {
         jCh = (0x8281 - 'a') + ch;
     } else if (ch >= 'A') {
@@ -110,6 +118,10 @@ u16* func_801B11E8(u8 ch) {
         jCh = 0x8144;
     } else if (ch == '\'') {
         jCh = 0x8168;
+#ifdef VERSION_PC
+    } else if (ch == '-') {
+        jCh = 0x815D; // Shift-JIS hyphen; the alphabet offset is not punctuation.
+#endif
     } else if (ch == ' ') {
         return NULL;
     } else {
@@ -119,7 +131,18 @@ u16* func_801B11E8(u8 ch) {
         }
     }
 
+#ifdef VERSION_PC
+    u16* glyph = g_api.func_80106A28(jCh, 0);
+    if (accented != ch) {
+        static u16 accentedGlyph[48];
+        memcpy(accentedGlyph, glyph, sizeof(accentedGlyph));
+        AccentPortugueseGlyph(accentedGlyph, 12, 16, accented);
+        return accentedGlyph;
+    }
+    return glyph;
+#else
     return g_api.func_80106A28(jCh, 0);
+#endif
 }
 
 #include "prologue_cutscene_script.h"

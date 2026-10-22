@@ -1,0 +1,45 @@
+options:
+  platform:     psx
+  basename:     tt_000
+  base_path:    ..
+  build_path:   build/hd
+  target_path:  disks/pspeu/PSP_GAME/USRDIR/res/ps/hdbin/tt_000.bin
+  asm_path:     asm/hd/servant/tt_000
+  asset_path:   assets/servant/tt_000
+  src_path:     src/servant/tt_000
+  ld_script_path: build/hd/tt_000.ld
+  compiler:     GCC
+  symbol_addrs_path:
+    - config/symbols.hd.txt
+    - config/symbols.hd.tt_000.txt
+  undefined_funcs_auto_path: build/hd/config/undefined_funcs_auto.hd.tt_000.txt
+  undefined_syms_auto_path:  build/hd/config/undefined_syms_auto.hd.tt_000.txt
+  find_file_boundaries: yes
+  use_legacy_include_asm: no
+  migrate_rodata_to_functions: no
+  asm_jtbl_label_macro: jlabel
+  disassemble_all: true
+  section_order:
+    - ".data"
+    - ".rodata"
+    - ".text"
+    - ".bss"
+  ld_bss_is_noload: False
+  ld_generate_symbol_per_data_segment: true
+sha1: 2253aee1338fff85351887b4473fb0b02798222b
+segments:
+  - name: tt_000
+    type: code
+    start: 0x00000000
+    vram:  0x80170000
+    align: 4
+    subalign: 4
+    subsegments:
+      - [0x0, .data, init]
+      - [0x40, .data, servant_spriteparts]
+      - [0x448, .data, servant_clutdata]
+      - [0x4A8, .data, bat]
+      - [0x10AC, .rodata, bat]
+      - [0x10E8, c, bat]
+      - [0x48B8, .bss, bat]
+  - [0x4D8C]

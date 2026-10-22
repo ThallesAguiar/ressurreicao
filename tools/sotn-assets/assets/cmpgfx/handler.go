@@ -1,0 +1,107 @@
+package cmpgfx
+
+import (
+	"fmt"
+	"image/color"
+	"os"
+	"path/filepath"
+	"strconv"
+	"strings"
+
+	"github.com/xeeynamo/sotn-decomp/tools/sotn-assets/assets"
+	"github.com/xeeynamo/sotn-decomp/tools/sotn-assets/sotn"
+	"github.com/xeeynamo/sotn-decomp/tools/sotn-assets/util"
+	"github.com/xeeynamo/sotn-decomp/tools/sotn-assets/util/png"
+)
+
+type handler struct{}
+
+var Handler = &handler{}
+
+func (h *handler) Name() string { return "cmpgfx" }
+
+func (h *handler) Extract(e assets.ExtractArgs) error {
+	if e.Start == e.End {
+		return fmt.Errorf("a compressed image cannot be 0 bytes long")
+	}
+	if len(e.Args) < 3 || len(e.Args) > 4 {
+		return fmt.Errorf("invalid arguments, expected <width> <height> <bpp> <palette>")
+	}
+	width, err := strconv.Atoi(e.Args[0])
+	if err != nil {
+		return fmt.Errorf("width value %v is not a number", e.Args[0])
+	}
+	height, err := strconv.Atoi(e.Args[1])
+	if err != nil {
+		return fmt.Errorf("height value %v is not a number", e.Args[1])
+	}
+	bpp, err := strconv.Atoi(e.Args[2])
+	if err != nil {
+		return fmt.Errorf("bpp value %v is not a number", e.Args[2])
+	}
+	var palette []color.RGBA
+	if len(e.Args) == 4 {
+		str := e.Args[3]
+		if len(str) > 2 {
+			str = str[2:]
+		}
+		palOffset, err := util.ParseCNumber(e.Args[3])
+		if err != nil {
+			return err
+		}
+		if palOffset < 0 || palOffset >= len(e.Data) {
+			return fmt.Errorf("palette offset value %s is out of bounds", e.Args[3])
+		}
+		palData := e.Data[int(palOffset) : palOffset+(1<<bpp)*2]
+		palette = util.MakePaletteFromR5G5B5A1(palData, false)
+	} else {
+		palette = util.MakeGreyPalette(bpp)
+	}
+	cmp := e.Data[e.Start:e.End]
+	if (len(cmp)%8) == 0 && e.Version.GetPlatform() == sotn.PlatformPSP {
+		// HACK: PSP adds 4-bytes zero padding at the end of the file that must
+		// be removed to match 1:1 with PS1
+		footer := cmp[len(cmp)-8:]
+		if footer[4] == 0 && footer[5] == 0 && footer[6] == 0 && footer[7] == 0 {
+			cmp = cmp[:len(cmp)-4]
+		}
+	}
+	fout, err := util.CreateAtomicWriter(assetPath(e.AssetDir, e.Name))
+	if err != nil {
+		return fmt.Errorf("error creating file: %v", err)
+	}
+	defer fout.Close()
+	if err := png.Encode(fout, sotn.Inflate(cmp), width, height, palette); err != nil {
+		return fmt.Errorf("png encode: %w", err)
+	}
+	return nil
+}
+
+func (h *handler) Build(e assets.BuildArgs) error {
+	inFileName := assetPath(e.AssetDir, e.Name)
+	f, err := os.Open(inFileName)
+	if err != nil {
+		return fmt.Errorf("failed to read file: %w", err)
+	}
+	defer f.Close()
+	bitmap, _, err := png.Decode(f)
+	if err != nil {
+		return fmt.Errorf("png decode %s: %w", inFileName, err)
+	}
+	sb := strings.Builder{}
+	sb.WriteString("// clang-format off\n")
+	util.WriteBytesAsHex(&sb, sotn.Deflate(bitmap))
+	return util.WriteFile(sourcePath(e.SrcDir, e.Name), []byte(sb.String()))
+}
+
+func (h *handler) Info(a assets.InfoArgs) (assets.InfoResult, error) {
+	return assets.InfoResult{}, nil
+}
+
+func assetPath(dir, name string) string {
+	return filepath.Join(dir, fmt.Sprintf("%s.png", name))
+}
+
+func sourcePath(dir, name string) string {
+	return filepath.Join(dir, fmt.Sprintf("gen/%s.h", name))
+}

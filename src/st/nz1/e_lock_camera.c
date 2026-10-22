@@ -1,0 +1,13 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+#include "nz1.h"
+
+static u8 entityLockCameraHitbox[] = {0x20, 0x20, 0x20, 0x20};
+
+static u8 entityLockCameraData[] = {0, 1, 0, 0};
+
+static u16 entityLockCameraTilemapProps[] = {
+    0x000, 0x000, 0x300, 0x200, 0x000, 0x000, 0x300, 0x100,
+    0x000, 0x000, 0x300, 0x100, 0x000, 0x000, 0x300, 0x200,
+};
+
+#include "../e_lock_camera.h"

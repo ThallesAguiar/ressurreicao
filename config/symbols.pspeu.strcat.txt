@@ -1,0 +1,2 @@
+rooms_layers = 0x09256978;
+cluts = 0x092570E8;

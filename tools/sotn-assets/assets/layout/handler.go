@@ -1,0 +1,141 @@
+package layout
+
+import (
+	"bytes"
+	"fmt"
+	"io"
+	"path/filepath"
+	"strings"
+
+	"github.com/xeeynamo/sotn-decomp/tools/sotn-assets/assets"
+	"github.com/xeeynamo/sotn-decomp/tools/sotn-assets/assets/gfxbanks"
+	"github.com/xeeynamo/sotn-decomp/tools/sotn-assets/datarange"
+	"github.com/xeeynamo/sotn-decomp/tools/sotn-assets/psx"
+	"github.com/xeeynamo/sotn-decomp/tools/sotn-assets/sotn"
+	"github.com/xeeynamo/sotn-decomp/tools/sotn-assets/util"
+)
+
+const entryCount = 53 // the number seems to be fixed
+
+type handler struct{}
+
+var Handler = &handler{}
+
+func (h *handler) Name() string { return "layout" }
+
+func (h *handler) Extract(e assets.ExtractArgs) error {
+	r := bytes.NewReader(e.Data)
+	layoutOff, err := layoutOffset(r, e.RamBase)
+	if err != nil {
+		return err
+	}
+	layouts, _, err := readEntityLayout(r, e.OvlName, layoutOff, e.RamBase, entryCount, true)
+	if err != nil {
+		return err
+	}
+	return util.WriteJsonFile(assetPath(e.AssetDir, e.Name), layouts)
+}
+
+func (h *handler) Build(e assets.BuildArgs) error {
+	// If the layout is version specific, get the version name from e.Name
+	// Note: sotn.GetVersion() is not used in case VERSION=""
+	subDir := ""
+	if e.Name != "entity_layouts" {
+		subDir = strings.TrimSuffix(e.Name, "/entity_layouts")
+	}
+	ovlHeader := fmt.Sprintf("\"../%s.h\"", e.OvlName)
+	if subDir != "" {
+		ovlHeader = fmt.Sprintf("\"../../%s.h\"", e.OvlName)
+	}
+	return buildEntityLayouts(
+		assetPath(e.AssetDir, e.Name), e.SrcDir, subDir, ovlHeader)
+}
+
+func BuildWithOverlayHeader(e assets.BuildArgs) error {
+	subDir := ""
+	if e.Name != "entity_layouts" {
+		subDir = strings.TrimSuffix(e.Name, "/entity_layouts")
+	}
+	return buildEntityLayouts(
+		assetPath(e.AssetDir, e.Name), e.SrcDir, subDir,
+		fmt.Sprintf("<%s.h>", e.OvlName))
+}
+
+func assetPath(dir, name string) string {
+	return filepath.Join(dir, fmt.Sprintf("%s.json", name))
+}
+
+func (h *handler) Info(a assets.InfoArgs) (assets.InfoResult, error) {
+	r := bytes.NewReader(a.StageData)
+	boundaries := psx.Addr(0x80000000).Boundaries()
+	layoutOff, err := layoutOffset(r, boundaries.StageBegin)
+	if err != nil {
+		return assets.InfoResult{}, err
+	}
+	_, layoutRanges, err := readEntityLayout(
+		r, "dummy", layoutOff, boundaries.StageBegin, entryCount, true)
+	if err != nil {
+		return assets.InfoResult{}, fmt.Errorf("unable to gather all entity layouts: %w", err)
+	}
+	blockRanges, err := datarange.ConsolidateDataRanges(layoutRanges[1:])
+	if err != nil {
+		return assets.InfoResult{}, fmt.Errorf("unable to consolidate entity layouts: %w", err)
+	}
+
+	splatEntries := []assets.InfoSplatEntry{
+		{
+			DataRange: layoutRanges[0],
+			Name:      "e_laydef",
+			Comment:   "layout entries header",
+		},
+	}
+	for i, blockRange := range blockRanges {
+		name := "e_layout"
+		comment := "layout entries data"
+		if i > 0 {
+			name = fmt.Sprintf("e_layout_%d", i+1)
+			gapBegin := blockRanges[i-1].End()
+			comment = fmt.Sprintf(
+				"layout entries data, resuming after %d unclaimed bytes at 0x%X",
+				gapBegin.DistanceTo(blockRange.Begin()),
+				gapBegin.Real(boundaries.StageBegin))
+		}
+		splatEntries = append(splatEntries, assets.InfoSplatEntry{
+			DataRange: blockRange,
+			Name:      name,
+			Comment:   comment,
+		})
+	}
+
+	return assets.InfoResult{
+		AssetEntries: []assets.InfoAssetEntry{
+			{
+				DataRange: layoutRanges[0],
+				Kind:      "layout",
+				Name:      "entity_layouts",
+			},
+		},
+		SplatEntries: splatEntries,
+	}, nil
+}
+
+func layoutOffset(r io.ReadSeeker, baseAddr psx.Addr) (psx.Addr, error) {
+	header, err := sotn.ReadStageHeader(r)
+	if err != nil {
+		return psx.RamNull, err
+	}
+	if header.Layouts != psx.RamNull {
+		return header.Layouts, nil
+	}
+
+	// ⚠️ assumption
+	// some overlays have this field nulled, we have to find the offset ourselves
+	// it should be usually be right after header.Graphics
+	_, graphicsRange, err := gfxbanks.ReadGraphics(r, baseAddr, header.Graphics, func(addr psx.Addr) string {
+		return ""
+	})
+	if err != nil {
+		return psx.RamNull, fmt.Errorf("unable to gather all graphics: %w", err)
+	}
+	return graphicsRange.End(), nil
+}

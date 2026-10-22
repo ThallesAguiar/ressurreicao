@@ -1,0 +1,129 @@
+package spriteset
+
+import (
+	"encoding/binary"
+	"fmt"
+	"io"
+	"strings"
+
+	"github.com/xeeynamo/sotn-decomp/tools/sotn-assets/datarange"
+	"github.com/xeeynamo/sotn-decomp/tools/sotn-assets/psx"
+)
+
+type SpriteSet []*spriteParts
+
+func ReadSpriteSet(r io.ReadSeeker, baseAddr, addr psx.Addr) (SpriteSet, datarange.DataRange, error) {
+	if err := addr.MoveFile(r, baseAddr); err != nil {
+		return nil, datarange.DataRange{}, fmt.Errorf("invalid sprite offset: %w", err)
+	}
+	// the end of the Sprite array is the beginning of the earliest Sprite offset
+	boundaries := baseAddr.Boundaries()
+	earliestSpriteOff := boundaries.GameEnd
+	currentOff := addr
+	var spriteOffsets []psx.Addr
+	for {
+		if currentOff >= earliestSpriteOff {
+			break
+		}
+		currentOff += 4
+
+		var spriteOffset psx.Addr
+		if err := binary.Read(r, binary.LittleEndian, &spriteOffset); err != nil {
+			return nil, datarange.DataRange{}, err
+		}
+		spriteOffsets = append(spriteOffsets, spriteOffset)
+		if spriteOffset != psx.RamNull {
+			if !spriteOffset.InRange(baseAddr, boundaries.GameEnd) {
+				err := fmt.Errorf("sprite offset %s is not valid", spriteOffset)
+				return nil, datarange.DataRange{}, err
+			}
+			earliestSpriteOff = min(earliestSpriteOff, spriteOffset)
+		}
+	}
+	headerRange := datarange.New(addr, earliestSpriteOff)
+	bank := make(SpriteSet, len(spriteOffsets))
+	var spriteRanges []datarange.DataRange
+	for i, offset := range spriteOffsets {
+		if offset == psx.RamNull {
+			bank[i] = nil
+			continue
+		}
+		sprites, ranges, err := readSpriteParts(r, baseAddr, offset)
+		if err != nil {
+			return nil, datarange.DataRange{}, fmt.Errorf("unable to read sprites: %w", err)
+		}
+		bank[i] = &sprites
+		if !ranges.Empty() {
+			spriteRanges = append(spriteRanges, ranges)
+		}
+	}
+
+	// nb. use Merge here rather than MergeDataRanges so we can probe addresses
+	// looking for a sprite bank rather than panicking.
+	merged, err := datarange.Merge(append(spriteRanges, headerRange))
+	if err != nil {
+		return nil, datarange.DataRange{}, fmt.Errorf("sprite set at %s does not add up: %w", addr, err)
+	}
+	return bank, merged, nil
+}
+
+func BuildSpriteSet(sb *strings.Builder, set SpriteSet, mainSymbol string, isStatic bool) {
+	var symbols []string
+	for i, spriteGroup := range set {
+		if spriteGroup != nil {
+			symbol := fmt.Sprintf("%s_%d", mainSymbol, i)
+			var size int
+			if isPlayerSprite(*spriteGroup) {
+				size = 4 // {flags|0x8000, X, Y, 0}
+			} else {
+				size = len(*spriteGroup)*11 + 1
+				if (len(*spriteGroup) & 1) == 1 { // perform alignment at the end
+					size += 2
+				} else {
+					size += 1
+				}
+			}
+			sb.WriteString(fmt.Sprintf("static s16 %s[%d];\n", symbol, size))
+			symbols = append(symbols, symbol)
+		} else {
+			symbols = append(symbols, "")
+		}
+	}
+	if isStatic {
+		sb.WriteString(fmt.Sprintf("static s16* %s[] = {\n", mainSymbol))
+	} else {
+		sb.WriteString(fmt.Sprintf("s16* %s[] = {\n", mainSymbol))
+	}
+	for _, symbol := range symbols {
+		if len(symbol) > 0 {
+			sb.WriteString(fmt.Sprintf("    %s,\n", symbol))
+		} else {
+			sb.WriteString("    0,\n")
+		}
+	}
+	sb.WriteString("};\n")
+	for i, spriteGroup := range set {
+		if spriteGroup == nil {
+			continue
+		}
+		if isPlayerSprite(*spriteGroup) {
+			s := (*spriteGroup)[0]
+			sb.WriteString(fmt.Sprintf("static s16 %s[] = {0x%02X | 0x8000, %d, %d, %d};\n",
+				symbols[i], s.Flags&0x7FFF, s.X, s.Y, s.Width))
+			continue
+		}
+		sb.WriteString(fmt.Sprintf("static s16 %s[] = {\n", symbols[i]))
+		sb.WriteString(fmt.Sprintf("    %d,\n", len(*spriteGroup)))
+		for _, sprite := range *spriteGroup {
+			sb.WriteString(fmt.Sprintf("    %d, %d, %d, %d, %d, %d, %d, %d, %d, %d, %d,\n",
+				sprite.Flags, sprite.X, sprite.Y, sprite.Width, sprite.Height,
+				sprite.Clut, sprite.Tileset, sprite.Left, sprite.Top, sprite.Right, sprite.Bottom))
+		}
+		if (len(*spriteGroup) & 1) == 1 { // perform alignment at the end
+			sb.WriteString("    0, 0\n")
+		} else {
+			sb.WriteString("    0\n")
+		}
+		sb.WriteString("};\n")
+	}
+}

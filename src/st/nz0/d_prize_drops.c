@@ -1,0 +1,18 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+#include "nz0.h"
+
+u16 PrizeDrops[] = {
+    ITEMDROP_HIDE_CUIRASS,
+    ITEMDROP_HEART_VESSEL,
+    ITEMDROP_CLOTH_CAPE,
+    ITEMDROP_LIFE_VESSEL,
+    // Flamberge is an enemy drop, not an item drop, likely cut
+    ITEMDROP_FLAMBERGE,
+    // Bandanna does not appear in NZ0, unused?
+    ITEMDROP_BANDANNA,
+    ITEMDROP_SUNGLASSES,
+    ITEMDROP_RESIST_THUNDER,
+    ITEMDROP_LEATHER_SHIELD,
+    ITEMDROP_BASILARD,
+    ITEMDROP_POTION,
+};

@@ -1,0 +1,153 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+#ifdef BOSS_IS_BO0
+// n.b.! this seems like an incorrect symbol, likely an object that wasn't
+//       recompiled after symbols shifted
+extern AnimationFrame PrizeDrops[];
+#define ANIMATION PrizeDrops
+#else
+static AnimationFrame D_us_80180F8C[] = {
+    {8, 8}, {8, 9}, {8, 10}, {8, 11}, {-1, 0}};
+#define ANIMATION D_us_80180F8C
+#endif
+
+// check if "sit" has been triggered
+static s32 func_us_801BEDD8(Entity* self) {
+    s16 offsetX;
+    s16 offsetY;
+
+    if (g_pads[0].pressed != PAD_UP) {
+        return 0;
+    }
+
+    offsetX = self->posX.i.hi - PLAYER.posX.i.hi;
+    offsetY = self->posY.i.hi - PLAYER.posY.i.hi;
+
+    if (offsetY > 4 || offsetY < -4) {
+        return 0;
+    }
+
+    if (offsetX > 4 || offsetX < -4) {
+        return 0;
+    }
+
+    return 1;
+}
+
+void EntityChair(Entity* self) {
+    Entity* entity;
+    s16 offsetX;
+
+#ifdef BOSS_IS_BO0
+    FntPrint("isu\n"); // TL: chair
+    if (self->step) {
+        if (self->params == 1) {
+            entity = self - 1;
+            if (entity->flags & FLAG_DEAD) {
+                DestroyEntity(self);
+                return;
+            }
+        } else {
+            entity = self + 5;
+            if (entity->flags & FLAG_DEAD) {
+                DestroyEntity(self);
+                return;
+            }
+        }
+    }
+#endif
+
+    switch (self->step) {
+    case 0:
+        InitializeEntity(g_EInitCommon);
+        break;
+
+    case 1:
+        if (func_us_801BEDD8(self) != 0) {
+            g_Player.demo_timer = 10;
+            g_Player.padSim = PAD_UP;
+            g_Player.unk14 = self->params;
+
+            self->step++;
+        }
+        break;
+
+    case 2:
+        g_Player.unk14 = self->params;
+        offsetX = self->posX.i.hi - PLAYER.posX.i.hi;
+        if (offsetX > 0) {
+            PLAYER.posX.i.hi++;
+        }
+        if (offsetX < 0) {
+            PLAYER.posX.i.hi--;
+        }
+        if (offsetX == 0) {
+            self->step++;
+        }
+        break;
+
+    case 3:
+        g_Player.unk14 = self->params;
+        if (PLAYER.poseTimer < 0) {
+            self->ext.chair.unk0 = 0xA00;
+            self->step++;
+        }
+
+        if (PLAYER.step != 0 || PLAYER.step_s != 4) {
+            self->step = 1;
+        }
+        break;
+
+    case 4:
+        g_Player.unk14 = self->params;
+        if (PLAYER.step != 0 || PLAYER.step_s != 4) {
+            self->step = 1;
+        }
+        break;
+    }
+    g_api.UpdateAnim(NULL, NULL);
+
+#ifdef CHAIR_DEBUG
+    FntPrint("obj_step:%02x\n", self->step);
+    FntPrint("pl_step:%02x,pl_step_s:%02x\n", PLAYER.step, PLAYER.step_s);
+#endif
+}
+
+void func_us_801B81E8(Entity* self) {
+    Entity* tempEntity;
+
+    tempEntity = self->ext.chair.unkEntity;
+    if (tempEntity->step != 4) {
+        DestroyEntity(self);
+        return;
+    }
+    switch (self->step) {
+    case 0:
+        InitializeEntity(g_EInitCommon);
+        self->animSet = ANIMSET_OVL(2);
+        self->velocityY = FIX(-3.0 / 8.0);
+        self->velocityX = FIX(0.25);
+        if (self->facingLeft) {
+            self->velocityX = -FIX(0.25);
+        }
+        self->unk5A = 0x20;
+        self->palette = PAL_FLAG(PAL_UNK_19F);
+        self->pose = 0;
+        self->poseTimer = 0;
+        self->anim = ANIMATION;
+        self->posY.i.hi -= 16;
+        self->posX.val += self->velocityX << 5;
+        self->facingLeft = false;
+        break;
+
+    case 1:
+        self->posX.val += self->velocityX;
+        self->posY.val += self->velocityY;
+        if (self->poseTimer < 0) {
+            DestroyEntity(self);
+            return;
+        }
+        break;
+    }
+    g_api.UpdateAnim(NULL, NULL);
+}

@@ -1,0 +1,168 @@
+package gfxbanks
+
+import (
+	"bytes"
+	"encoding/binary"
+	"encoding/json"
+	"fmt"
+	"github.com/xeeynamo/sotn-decomp/tools/sotn-assets/assets"
+	"github.com/xeeynamo/sotn-decomp/tools/sotn-assets/psx"
+	"github.com/xeeynamo/sotn-decomp/tools/sotn-assets/sotn"
+	"github.com/xeeynamo/sotn-decomp/tools/sotn-assets/util"
+	"os"
+	"path/filepath"
+	"strings"
+)
+
+type handler struct{}
+
+var Handler = &handler{}
+
+func (h *handler) Name() string { return "gfx_banks" }
+
+func (h *handler) Extract(e assets.ExtractArgs) error {
+	r := bytes.NewReader(e.Data)
+	baseStart := e.RamBase.Sum(e.Start)
+	if err := baseStart.MoveFile(r, e.RamBase); err != nil {
+		return fmt.Errorf("failed to extract graphics: %v", err)
+	}
+	// the data starts from the first GfxBank, not from the GfxBanks array
+	// we need to search the actual begin. The array is laid out after the banks
+	// and every one of its entries points backwards into the bank data, so the
+	// array starts at the first word pointing inside the range already scanned.
+	// Note the first entry is not guaranteed to point to the first bank.
+	actualStart := baseStart
+	for {
+		var a psx.Addr
+		if err := binary.Read(r, binary.LittleEndian, &a); err != nil {
+			return fmt.Errorf("failed to extract graphics: %v", err)
+		}
+		if a.InRange(baseStart, actualStart) {
+			break
+		}
+		actualStart = actualStart.Sum(4)
+	}
+	banks, _, err := ReadGraphics(r, e.RamBase, actualStart, e.Symbol)
+	if err != nil {
+		return fmt.Errorf("failed to read graphics banks: %w", err)
+	}
+	return util.WriteJsonFile(assetPath(e.AssetDir, e.Name), banks)
+}
+
+func (h *handler) Build(e assets.BuildArgs) error {
+	data, err := os.ReadFile(assetPath(e.AssetDir, e.Name))
+	if err != nil {
+		return err
+	}
+
+	var gfxBanks GfxBanks
+	if err := json.Unmarshal(data, &gfxBanks); err != nil {
+		return err
+	}
+	bankSymbolNames := make([]string, len(gfxBanks.Banks))
+	sb := strings.Builder{}
+	sb.WriteString("// clang-format off\n")
+	for i, bank := range gfxBanks.Banks {
+		bankSymbolNames[i] = fmt.Sprintf("%s_gfxbank_%d", e.OvlName, i)
+		for _, e := range bank.Entries {
+			if e.isEmpty() {
+				continue
+			}
+			sb.WriteString(fmt.Sprintf("extern u8 %s[];\n", e.symbol()))
+		}
+		sb.WriteString(fmt.Sprintf("static u_long* %s[] = {\n", bankSymbolNames[i]))
+		switch bank.Kind {
+		case GfxBankNone:
+			sb.WriteString("    GFX_BANK_NONE,\n")
+		case GfxBank4bpp:
+			sb.WriteString("    GFX_BANK_4BPP,\n")
+		case GfxBank8bpp:
+			sb.WriteString("    GFX_BANK_8BPP,\n")
+		case GfxBank16bpp:
+			sb.WriteString("    GFX_BANK_16BPP,\n")
+		case GfxBankCompressed:
+			sb.WriteString("    (u_long*)GFX_BANK_COMPRESSED,\n")
+		case GfxBankTerminate:
+			break
+		default:
+			return fmt.Errorf("unknown gfx kind %v, valid values are "+
+				"0 (none), 1 (4bpp), 2 (8bpp), 3 (16bpp) or 4 (compressed)", bank.Kind)
+		}
+		for _, e := range bank.Entries {
+			sb.WriteString(fmt.Sprintf("    GFX_ENTRY(0x%03X, 0x%03X, %d, %d, %s),\n",
+				e.X, e.Y, e.Width, e.Height, e.symbol()))
+		}
+		sb.WriteString("    GFX_TERMINATE(),\n")
+		sb.WriteString("};\n")
+	}
+	sb.WriteString("u_long** gfxBanks[] = {\n")
+	for _, i := range gfxBanks.Indices {
+		if i == -1 { // exception for ST0
+			sb.WriteString("    NULL,\n")
+			continue
+		}
+		if i < 0 || i >= len(gfxBanks.Banks) {
+			return fmt.Errorf("graphics index %d (min:0, max:%d) out of range", i, len(gfxBanks.Banks))
+		}
+		sb.WriteString(fmt.Sprintf("    %s,\n", bankSymbolNames[i]))
+	}
+	sb.WriteString("};\n")
+	return util.WriteFile(sourcePath(e.SrcDir, e.Name), []byte(sb.String()))
+}
+
+func (h *handler) Info(a assets.InfoArgs) (assets.InfoResult, error) {
+	r := bytes.NewReader(a.StageData)
+	header, err := sotn.ReadStageHeader(r)
+	if err != nil {
+		return assets.InfoResult{}, err
+	}
+	boundaries := header.Graphics.Boundaries()
+	gfx, headerDataRange, err := ReadGraphics(r, boundaries.StageBegin, header.Graphics, func(addr psx.Addr) string {
+		return ""
+	})
+	if err != nil {
+		return assets.InfoResult{}, fmt.Errorf("failed to read graphics banks: %w", err)
+	}
+	// report each bank entry as a raw fact; resolving boundaries and picking
+	// the handler is the graphics classifier's job
+	var graphics []assets.InfoGraphic
+	seen := map[psx.Addr]bool{}
+	for _, bank := range gfx.Banks {
+		for _, entry := range bank.Entries {
+			if entry.isEmpty() || entry.addr == psx.RamNull || seen[entry.addr] {
+				continue
+			}
+			seen[entry.addr] = true
+			graphics = append(graphics, assets.InfoGraphic{
+				Addr:   entry.addr,
+				Kind:   uint32(bank.Kind),
+				Width:  int(entry.Width),
+				Height: int(entry.Height),
+			})
+		}
+	}
+	return assets.InfoResult{
+		AssetEntries: []assets.InfoAssetEntry{
+			{
+				DataRange: headerDataRange,
+				Kind:      h.Name(),
+				Name:      "graphics_banks",
+			},
+		},
+		SplatEntries: []assets.InfoSplatEntry{
+			{
+				DataRange: headerDataRange,
+				Name:      "header",
+				Comment:   "graphics banks",
+			},
+		},
+		Graphics: graphics,
+	}, nil
+}
+
+func assetPath(dir, name string) string {
+	return filepath.Join(dir, fmt.Sprintf("%s.json", name))
+}
+func sourcePath(dir, name string) string {
+	return filepath.Join(dir, fmt.Sprintf("gen/%s.h", name))
+}

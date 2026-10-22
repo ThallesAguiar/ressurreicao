@@ -1,0 +1,50 @@
+name: Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    container: ghcr.io/grumpycoders/pcsx-redux-build:latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          set-safe-directory: true
+
+      - name: OpenBIOS
+        run: make -C openbios -j2 all
+
+      - name: Libraries and examples
+        # cube is left out: it links against the converted Sony libraries,
+        # which are not redistributable and have to be built locally. See
+        # psyq/README.md.
+        run: |
+          for d in crc32 cxxhello helloworld modplayer psmplayer psyqo \
+                   psyqo-lua psyqo-paths scratchstack shell spdplayer gpdplayer ucl-demo; do
+            echo "::group::$d"
+            make -C $d -j2 all
+            echo "::endgroup::"
+          done
+
+      - name: Tests
+        run: make -C tests -j2 all PCSX_TESTS=true
+
+      - name: Emulator
+        # The dev channel AppImage, extracted because a runner has no FUSE.
+        run: |
+          curl -sL -o pcsx-redux.zip https://distrib.app/pub/org/pcsx-redux/project/dev-linux-x64/latest
+          unzip -q pcsx-redux.zip
+          ./PCSX-Redux-*.AppImage --appimage-extract > /dev/null
+
+      - name: Run tests
+        run: tests/run-emulator.sh "$GITHUB_WORKSPACE/squashfs-root/AppRun" openbios/openbios.bin

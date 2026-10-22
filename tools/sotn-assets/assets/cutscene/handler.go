@@ -1,0 +1,289 @@
+package cutscene
+
+import (
+	"bytes"
+	"fmt"
+	"io"
+	"os"
+	"path/filepath"
+	"strconv"
+	"strings"
+
+	"github.com/goccy/go-yaml"
+	"github.com/goccy/go-yaml/ast"
+	"github.com/xeeynamo/sotn-decomp/tools/sotn-assets/assets"
+	"github.com/xeeynamo/sotn-decomp/tools/sotn-assets/psx"
+	"github.com/xeeynamo/sotn-decomp/tools/sotn-assets/sotn"
+	"github.com/xeeynamo/sotn-decomp/tools/sotn-assets/util"
+)
+
+type handler struct{}
+
+var Handler = &handler{}
+
+func (h *handler) Name() string { return "cutscene" }
+
+func (h *handler) Extract(e assets.ExtractArgs) error {
+	if e.Start == e.End {
+		return fmt.Errorf("a cutscene script cannot be 0 bytes")
+	}
+	r := bytes.NewReader(e.Data)
+	script, err := parseScript(r, e.RamBase, e.RamBase.Sum(e.Start), e.End-e.Start)
+	if err != nil {
+		return err
+	}
+	yaml := "script:\n"
+	for _, command := range script {
+		if len(command) == 0 {
+			continue
+		}
+		switch command[0] {
+		case "TEXT":
+			yaml += fmt.Sprintf("  - [TEXT, \"%s\"]\n", command[1])
+		case "BYTE":
+			yaml += fmt.Sprintf("  - [BYTE, %s]\n", command[1])
+		default:
+			yaml += fmt.Sprintf("  - [%s]\n", strings.Join(command, ", "))
+		}
+	}
+	return util.WriteFile(assetPath(e.AssetDir, e.Name), []byte(yaml))
+}
+
+type scriptRow []string
+
+// skip conversion of hex values into decimals
+func (r *scriptRow) UnmarshalYAML(node ast.Node) error {
+	seq, ok := node.(*ast.SequenceNode)
+	if !ok {
+		return fmt.Errorf("expected sequence, got %T", node)
+	}
+	for _, n := range seq.Values {
+		*r = append(*r, n.GetToken().Value)
+	}
+	return nil
+}
+
+type scriptSrc struct {
+	Script []scriptRow `yaml:"script"`
+}
+
+func (h *handler) Build(e assets.BuildArgs) error {
+	platform := sotn.GetPlatform()
+	inFileName := assetPath(e.AssetDir, e.Name)
+	data, err := os.ReadFile(inFileName)
+	if err != nil {
+		return fmt.Errorf("failed to read cutscene file: %w", err)
+	}
+	var script scriptSrc
+	if err := yaml.Unmarshal(data, &script); err != nil {
+		return fmt.Errorf("failed to parse cutscene file: %w", err)
+	}
+	pool := getCommandPool()
+	sb := strings.Builder{}
+	sb.WriteString("// clang-format off\n")
+	for i, args := range script.Script {
+		if len(args) == 0 {
+			return fmt.Errorf("")
+		}
+		op := args[0]
+		if op == "TEXT" {
+			text := args[1]
+			for _, r := range text {
+				if r == '\'' {
+					sb.WriteString("'\\'',")
+				} else {
+					byteValue := byte(r)
+
+					// If the byte is in the PSP's upper language character position,
+					// output the hex literal
+					if platform == sotn.PlatformPSP && byteValue >= 0xA0 && byteValue <= 0xDF {
+						// TODO: This can probably output something like _SE() which
+						// can be handled by sotn_str
+						sb.WriteString(fmt.Sprintf("'\\x%02X',", byteValue))
+					} else {
+						// Otherwise, just output the character as-is
+						sb.WriteString(fmt.Sprintf("'%c',", r))
+					}
+				}
+			}
+			sb.WriteString("\n")
+			continue
+		}
+		if op == "BYTE" {
+			if len(args) != 2 {
+				return fmt.Errorf("BYTE must have exactly one argument")
+			}
+			sb.WriteString(args[1])
+			sb.WriteString(",\n")
+			continue
+		}
+		cmd, found := pool[op]
+		if !found {
+			return fmt.Errorf("script %q does not have a command", args[0])
+		}
+		sb.WriteString(args[0])
+		if op == "SCRIPT_SWITCH" {
+			sb.WriteString("(")
+			sb.WriteString(args[1])
+			sb.WriteString("),\n")
+			for _, arg := range args[2:] {
+				sb.WriteString("    SCRIPT_CASE(")
+				sb.WriteString(arg)
+				sb.WriteString("),\n")
+			}
+			continue
+		}
+		sb.WriteString("(")
+		if len(cmd.params) != len(args)-1 {
+			return fmt.Errorf("command %q at line %d expects %d arguments but got %d",
+				op, i+1, len(cmd.params), len(args)-1)
+		}
+		sb.WriteString(strings.Join(args[1:], ","))
+		sb.WriteString("),\n")
+	}
+	return util.WriteFile(sourcePath(e.SrcDir, e.Name), []byte(sb.String()))
+}
+
+func (h *handler) Info(a assets.InfoArgs) (assets.InfoResult, error) {
+	return assets.InfoResult{}, nil
+}
+
+func assetPath(dir, name string) string {
+	if name == "" {
+		name = "cutscene_script"
+	}
+	return filepath.Join(dir, fmt.Sprintf("%s.yaml", name))
+}
+
+func sourcePath(dir, name string) string {
+	if name == "" {
+		name = "cutscene_script"
+	}
+	return filepath.Join(dir, fmt.Sprintf("gen/%s.h", name))
+}
+
+type cmdDef struct {
+	name   string
+	params []int
+}
+
+var commandDefinitions = []cmdDef{
+	{name: "END_CUTSCENE", params: []int{}},
+	{name: "LINE_BREAK", params: []int{}},
+	{name: "SET_SPEED", params: []int{1}},
+	{name: "SET_WAIT", params: []int{1}},
+	{name: "HIDE_DIALOG", params: []int{}},
+	{name: "SET_PORTRAIT", params: []int{1, 1}},
+	{name: "NEXT_DIALOG", params: []int{}},
+	{name: "SET_POS", params: []int{1, 1}},
+	{name: "CLOSE_DIALOG", params: []int{}},
+	{name: "PLAY_SOUND", params: []int{2}},
+	{name: "WAIT_FOR_SOUND", params: []int{}},
+	{name: "SCRIPT_UNKNOWN_11", params: []int{}},
+	{name: "SET_EVENTS", params: []int{4}},
+	{name: "SCRIPT_UNKNOWN_13", params: []int{}},
+	{name: "SCRIPT_SWITCH", params: []int{4, 4, 4}},
+	{name: "SCRIPT_UNKNOWN_15", params: []int{4}},
+	{name: "WAIT_FOR_FLAG", params: []int{1}},
+	{name: "SET_FLAG", params: []int{1}},
+	{name: "SCRIPT_UNKNOWN_18", params: []int{}},
+	{name: "LOAD_PORTRAIT", params: []int{4, 1}},
+	{name: "SCRIPT_UNKNOWN_20", params: []int{2}},
+	{name: "SCRIPT_UNKNOWN_21", params: []int{}},
+	{name: "RESET_FLAG", params: []int{1}},
+	{name: "SCRIPT_UNKNOWN_23", params: []int{}},
+	{name: "WAIT_FOR_FLAG_RESET", params: []int{1}},
+}
+
+func getCommandPool() map[string]cmdDef {
+	cmdPool := map[string]cmdDef{}
+	for _, command := range commandDefinitions {
+		cmdPool[command.name] = command
+	}
+	return cmdPool
+}
+
+func parseScript(r io.ReadSeeker, baseAddr, addr psx.Addr, length int) ([][]string, error) {
+	if err := addr.MoveFile(r, baseAddr); err != nil {
+		return nil, fmt.Errorf("unable to read cutscene script: %w", err)
+	}
+	platform := sotn.GetPlatform()
+
+	script := make([][]string, 0)
+	text := ""
+	flushText := func() {
+		if len(text) > 0 {
+			script = append(script, []string{"TEXT", text})
+			text = ""
+		}
+	}
+	read1 := func(r io.ReadSeeker) byte {
+		b := make([]byte, 1)
+		_, _ = r.Read(b)
+		length -= 1
+		return b[0]
+	}
+	read2 := func(r io.ReadSeeker) int {
+		b := make([]byte, 2)
+		_, _ = r.Read(b)
+		length -= 2
+		return int(b[1]) | (int(b[0]) << 4)
+	}
+	read4 := func(r io.ReadSeeker) int {
+		b := make([]byte, 4)
+		_, _ = r.Read(b)
+		length -= 4
+		return int(b[3]) | (int(b[2]) << 4) | (int(b[1]) << 8) | (int(b[0]) << 12) | 0x80100000
+	}
+	for length > 0 {
+		op := int(read1(r))
+		if op < len(commandDefinitions) {
+			flushText()
+			command := []string{commandDefinitions[op].name}
+			if op == 14 {
+				// special case for opcode 14, where the parameter list is dynamic
+				command = append(command, "0x"+strconv.FormatInt(int64(read4(r)), 16)) // condition offset
+				// poke next 4 bytes and verify if it is a pointer
+				for {
+					b := make([]byte, 4)
+					_, _ = r.Read(b)
+					_, _ = r.Seek(-4, io.SeekCurrent)
+					if b[0]&0x0F != (b[1]>>4) || b[1]&0x0F != (b[2]>>4) || b[2]&0x0F != (b[3]>>4) {
+						// pointer invalid, we reached out the end of the op14 statement
+						break
+					}
+					command = append(command, "0x"+strconv.FormatInt(int64(read4(r)), 16))
+				}
+				script = append(script, command)
+				continue
+			}
+			for _, param := range commandDefinitions[op].params {
+				switch param {
+				case 1:
+					command = append(command, strconv.FormatInt(int64(read1(r)), 10))
+				case 2:
+					command = append(command, "0x"+strconv.FormatInt(int64(read2(r)), 16))
+				case 4:
+					command = append(command, "0x"+strconv.FormatInt(int64(read4(r)), 16))
+				}
+			}
+			script = append(script, command)
+		} else if op < 0x20 {
+			text += fmt.Sprintf("\\x%02X", byte(op))
+		} else if op < 0x7F {
+			if op == 0x22 {
+				text += "\\\""
+			} else {
+				text += string([]byte{byte(op)})
+			}
+		} else if platform == sotn.PlatformPSP && op >= 0xA0 && op <= 0xDF {
+			// PSP has multi-language support with characters that exceed the ASCII range
+			text += fmt.Sprintf("\\x%02X", byte(op))
+		} else {
+			strByte := "0x" + strconv.FormatInt(int64(op), 16)
+			script = append(script, []string{"BYTE", strByte})
+		}
+	}
+	flushText()
+	return script, nil
+}

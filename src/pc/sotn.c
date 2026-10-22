@@ -1,0 +1,316 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+#include "pc.h"
+#include "spawn_point.h"
+#include "dra.h"
+#include "psyz/log.h"
+#include "stage.h"
+#include "dra_bss.h"
+#include "servant.h"
+#include <scratchpad.h>
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#undef HARD_LINK
+
+u8 g_Scratchpad[SP_LEN];
+
+u16 g_RawVram[VRAM_W * VRAM_H];
+GameApi g_ApiInit = {0};
+u8 g_DemoRecordingBuffer[DEMO_MAX_LEN];
+extern bool g_IsQuitRequested;
+
+PfnEntityUpdate* PfnEntityUpdates;
+LayoutEntity** g_pStObjLayoutHorizontal;
+LayoutEntity** g_pStObjLayoutVertical;
+
+ServantDesc g_ServantDesc;
+
+GfxBank* g_FakeGfxBank = NULL;
+GfxBank** g_GfxStageBank[0x40] = {
+    &g_FakeGfxBank, &g_FakeGfxBank, &g_FakeGfxBank, &g_FakeGfxBank,
+    &g_FakeGfxBank, &g_FakeGfxBank, &g_FakeGfxBank, &g_FakeGfxBank,
+    &g_FakeGfxBank, &g_FakeGfxBank, &g_FakeGfxBank, &g_FakeGfxBank,
+    &g_FakeGfxBank, &g_FakeGfxBank, &g_FakeGfxBank, &g_FakeGfxBank,
+    &g_FakeGfxBank, &g_FakeGfxBank, &g_FakeGfxBank, &g_FakeGfxBank,
+    &g_FakeGfxBank, &g_FakeGfxBank, &g_FakeGfxBank, &g_FakeGfxBank,
+    &g_FakeGfxBank, &g_FakeGfxBank, &g_FakeGfxBank, &g_FakeGfxBank,
+    &g_FakeGfxBank, &g_FakeGfxBank, &g_FakeGfxBank, &g_FakeGfxBank,
+    &g_FakeGfxBank, &g_FakeGfxBank, &g_FakeGfxBank, &g_FakeGfxBank,
+    &g_FakeGfxBank, &g_FakeGfxBank, &g_FakeGfxBank, &g_FakeGfxBank,
+    &g_FakeGfxBank, &g_FakeGfxBank, &g_FakeGfxBank, &g_FakeGfxBank,
+    &g_FakeGfxBank, &g_FakeGfxBank, &g_FakeGfxBank, &g_FakeGfxBank,
+    &g_FakeGfxBank, &g_FakeGfxBank, &g_FakeGfxBank, &g_FakeGfxBank,
+    &g_FakeGfxBank, &g_FakeGfxBank, &g_FakeGfxBank, &g_FakeGfxBank,
+    &g_FakeGfxBank, &g_FakeGfxBank, &g_FakeGfxBank, &g_FakeGfxBank,
+    &g_FakeGfxBank, &g_FakeGfxBank, &g_FakeGfxBank, &g_FakeGfxBank,
+};
+extern u_long* D_800A3BB8[];
+
+FactoryBlueprint g_FactoryBlueprints[0xC0] = {0};
+u8 g_BmpCastleMap[0x20000];
+u8 g_DemoRecordingBuffer[DEMO_MAX_LEN];
+
+extern u16 g_PalEquipIcon[320 * 16];
+
+// list of exposed API
+void FreePrimitives(s32 index);
+s16 AllocPrimitives(u8 primType, s32 count);
+void ShakeCamera(cameraShakeTypes);
+void SetSpeedX(s32 speed);
+Entity* GetFreeEntity(s16 start, s16 end);
+void GetEquipProperties(s32 handId, Equipment* res, s32 equipId);
+s32 func_800EA5E4(u32);
+void LoadGfxAsync(s32 gfxId);
+void PlaySfx(s16 sfxId);
+void func_800EA538(s32 arg0);
+void func_800EA5AC(u16 a, u8 r, u8 g, u8 b);
+void SetFadeMode(u32 arg0);
+void func_800EB758(s16 px, s16 py, Entity* e, u8 flags, POLY_GT4* p, u8 flipX);
+bool func_80131F68(void);
+DR_ENV* func_800EDB08(Primitive* prim);
+u16* func_80106A28(u32 arg0, u16 kind);
+void func_80118894(Entity* self);
+Entity* func_80118970(void);
+s16 func_80118B18(Entity* ent1, Entity* ent2, s16 facingLeft);
+s32 UpdateUnarmedAnim(s8* frameProps, u16** frames);
+void PlayAnimation(s8* frameProps, AnimationFrame** frames);
+void func_80118C28(s32 arg0);
+void func_8010E168(s32 arg0, s16 arg1);
+void func_8010DFF0(s32 arg0, s32 arg1);
+u16 DealDamage(Entity* enemyEntity, Entity* attackerEntity);
+void LoadEquipIcon(s32 equipIcon, s32 palette, s32 index);
+void AddHearts(s32 value);
+bool LoadMonsterLibrarianPreview(s32 monsterId);
+s32 TimeAttackController(TimeAttackEvents eventId, TimeAttackActions action);
+void ForceAfterImageOn(void);
+s32 func_800FE044(s32 amount, s32 type);
+void AddToInventory(u16 itemId, s32 itemCategory);
+void InitStatsAndGear(bool isDeathTakingItems);
+s32 PlaySfxVolPan(s16 sfxId, u16 sfxVol, s16 sfxPan);
+s32 SetVolumeCommand22_23(s16 vol, s16 distance);
+u32 CheckEquipmentItemCount(u32 itemId, u32 equipType);
+void GetPlayerSensor(Collider* col);
+void RevealSecretPassageAtPlayerPositionOnMap(s32 arg0);
+void func_800F2288(s32 arg0);
+s32 func_800FF460(s32 arg0);
+s32 func_800FF494(EnemyDef* arg0);
+bool CdSoundCommandQueueEmpty(void);
+bool func_80133950(void);
+bool func_800F27F4(s32 arg0);
+s32 GetStatBuffTimer(s32 arg0);
+bool CalcPlayerDamage(DamageParam* damage);
+void LearnSpell(s32 spellId);
+void DebugInputWait(const char* msg);
+
+// called before MainGame
+bool InitPlatform(void);
+bool InitEquipDefs(const char* jsonContent);
+bool InitAccessoryDefs(const char* jsonContent);
+void InitRelicDefs(void);
+void InitEnemyDefs(void);
+void InitSubwpnDefs(void);
+bool InitDraData(void);
+
+s32 func_800EDB58(u8 primType, s32 count);
+
+void DebugGiveAllItems(void) {
+    s32 i;
+    for (i = 1; i < NUM_HAND_ITEMS; i++) {
+        AddToInventory(i, EQUIP_HAND);
+    }
+    for (i = 1; i < NUM_BODY_ITEMS; i++) {
+        AddToInventory(i, EQUIP_HEAD);
+    }
+}
+
+static void GameLoopCallback(void) {
+    Replay_OnFrame();
+    SpawnPoint_OnFrame();
+
+    // Deferred: AddToInventory walks g_Status.equipHandOrder/equipBodyOrder,
+    // which only hold a valid permutation after InitStatsAndGear() has run
+    // for the current game (identity-initialized on new game start). Doing
+    // this straight out of InitGame() runs before that and walks
+    // zero-filled arrays looking for an id that's never there, reading out
+    // of bounds. Wait a few frames into actual gameplay instead.
+    if (g_GameParams.giveAllItems) {
+        static s32 framesWaited = 0;
+        static bool applied = false;
+        if (!applied && ++framesWaited > 10) {
+            DebugGiveAllItems();
+            applied = true;
+        }
+    }
+
+    DebugMenu_Update();
+}
+
+struct InitGameParams g_GameParams;
+bool InitGame(struct InitGameParams* params) {
+    g_GameParams = *params;
+    Replay_Init(params);
+    SpawnPoint_Init(params);
+    Psyz_SetVSyncCb(GameLoopCallback);
+    if (params->diskPath) {
+        if (Psyz_CdSetDiskPath(params->diskPath) < 0) {
+            WARNF("failed to parse CD layout at '%s'. Music will be disabled",
+                  params->diskPath);
+        }
+    }
+    if (!InitPlatform()) {
+        return false;
+    }
+
+    // These two are necessary to make HandleTitle working
+    GameApi api;
+    api.FreePrimitives = FreePrimitives;
+    api.AllocPrimitives = AllocPrimitives;
+    api.CheckCollision = CheckCollision;
+    api.ShakeCamera = ShakeCamera;
+    api.UpdateAnim = UpdateAnim;
+    api.SetSpeedX = SetSpeedX;
+    api.GetFreeEntity = GetFreeEntity;
+    api.GetEquipProperties = GetEquipProperties;
+    api.func_800EA5E4 = func_800EA5E4;
+    api.LoadGfxAsync = LoadGfxAsync;
+    api.PlaySfx = PlaySfx;
+    api.func_800EDB58 = func_800EDB58;
+    api.func_800EA538 = func_800EA538;
+    api.func_800EA5AC = func_800EA5AC;
+    api.SetFadeMode = SetFadeMode;
+    api.func_800EB758 = func_800EB758;
+    api.CreateEntFactoryFromEntity = CreateEntFactoryFromEntity;
+    api.func_80131F68 = func_80131F68;
+    api.func_800EDB08 = func_800EDB08;
+    api.func_80106A28 = func_80106A28;
+    api.func_80118894 = func_80118894;
+    api.enemyDefs = g_EnemyDefs;
+    api.func_80118970 = func_80118970;
+    api.func_80118B18 = func_80118B18;
+    api.UpdateUnarmedAnim = UpdateUnarmedAnim;
+    api.PlayAnimation = PlayAnimation;
+    api.func_80118C28 = func_80118C28;
+    api.func_8010E168 = func_8010E168;
+    api.func_8010DFF0 = func_8010DFF0;
+    api.DealDamage = DealDamage;
+    api.LoadEquipIcon = LoadEquipIcon;
+    api.equipDefs = g_EquipDefs;
+    api.accessoryDefs = g_AccessoryDefs;
+    api.AddHearts = AddHearts;
+    api.LoadMonsterLibrarianPreview = LoadMonsterLibrarianPreview;
+    api.TimeAttackController = TimeAttackController;
+    api.ForceAfterImageOn = ForceAfterImageOn;
+    api.func_800FE044 = func_800FE044;
+    api.AddToInventory = AddToInventory;
+    api.relicDefs = g_RelicDefs;
+    api.InitStatsAndGear = InitStatsAndGear;
+    api.PlaySfxVolPan = PlaySfxVolPan;
+    api.SetVolumeCommand22_23 = SetVolumeCommand22_23;
+    api.MakeAll = NULL;
+    api.CheckEquipmentItemCount = CheckEquipmentItemCount;
+    api.GetPlayerSensor = GetPlayerSensor;
+    api.RevealSecretPassageAtPlayerPositionOnMap =
+        RevealSecretPassageAtPlayerPositionOnMap;
+    api.func_800F2288 = func_800F2288;
+    api.GetServantStats = GetServantStats;
+    api.func_800FF460 = func_800FF460;
+    api.func_800FF494 = func_800FF494;
+    api.CdSoundCommandQueueEmpty = CdSoundCommandQueueEmpty;
+    api.func_80133950 = func_80133950;
+    api.func_800F27F4 = func_800F27F4;
+    api.GetStatBuffTimer = GetStatBuffTimer;
+    api.func_800FD664 = func_800FD664;
+    api.CalcPlayerDamage = CalcPlayerDamage;
+    api.LearnSpell = LearnSpell;
+    api.DebugInputWait = DebugInputWait;
+    api.CalcDealDamageMaria = func_800FD664;
+    api.CalcPlayerDamageMaria = CalcPlayerDamage;
+    api.func_psp_0913FA28 = NULL;
+    api.func_psp_0913F960 = NULL;
+    api.unused13C = NULL;
+    memset(&g_ApiInit.o, 0, sizeof(Overlay));
+    memcpy(&g_ApiInit, &api, sizeof(g_ApiInit));
+
+    // forcing g_Vram values while waiting to import the data
+    g_Vram.D_800ACD98.x = 0x0380;
+    g_Vram.D_800ACD98.y = 0x0180;
+    g_Vram.D_800ACD98.w = 0x0010;
+    g_Vram.D_800ACD98.h = 0x0001;
+    g_Vram.D_800ACDA0.x = 0;
+    g_Vram.D_800ACDA0.y = 0;
+    g_Vram.D_800ACDA0.w = 0x0200;
+    g_Vram.D_800ACDA0.h = 0x0200;
+    g_Vram.D_800ACDA8.x = 0;
+    g_Vram.D_800ACDA8.y = 0x00F0;
+    g_Vram.D_800ACDA8.w = 0x0100;
+    g_Vram.D_800ACDA8.h = 0x0010;
+
+    if (!InitDraData()) {
+        ERRORF("failed to load DRA files, game will terminate.");
+        return false;
+    }
+
+    g_GodMode = params->godMode;
+    g_OneHitKill = params->oneHitKill;
+    g_DebugPlayer = params->noClip;
+    g_PcInfiniteHearts = params->infiniteHearts;
+
+    return true;
+}
+
+void ResetPlatform(void);
+void ResetGame(void) {
+    Replay_Reset();
+    ResetPlatform();
+}
+
+int MyClearImage(RECT* rect, u_char r, u_char g, u_char b) {
+    u16* vram = g_RawVram;
+    vram += rect->x + rect->y * VRAM_W;
+
+    for (int i = 0; i < rect->h; i++) {
+        for (int j = 0; j < rect->w; j++) {
+            vram[j] = (r >> 3 << 5) | (g >> 3 << 10) | (b >> 3 << 15) | 0x8000;
+        }
+        vram += VRAM_W;
+    }
+    return 0;
+}
+
+int MyStoreImage(RECT* rect, u_long* p) {
+    DEBUGF("(%X, %X, %X, %X): %p", rect->x, rect->y, rect->w, rect->h, p);
+    u16* mem = (u16*)p;
+    u16* vram = g_RawVram;
+    vram += rect->x + rect->y * VRAM_W;
+
+    for (int i = 0; i < rect->h; i++) {
+        memcpy(mem, vram, rect->w * 2);
+        mem += rect->w;
+        vram += VRAM_W;
+    }
+    return 0;
+}
+
+static bool ReadFromDra(u32 addr, void* dst, size_t len) {
+    const char* path = "disks/us/DRA.BIN";
+    int readlen = FileReadToBuf(path, dst, addr - DRA_PRG_PTR, len);
+    if (readlen >= 0 && (size_t)readlen != len) {
+        ERRORF("file read for '%s' at %08X failed (%d/%zu)", path, addr,
+               readlen, len);
+        return false;
+    }
+    return true;
+}
+
+bool InitDraData(void) {
+    bool ok = true;
+
+    ok &= ReadFromDra(0x800D88D4, g_PalEquipIcon, sizeof(g_PalEquipIcon));
+    ok &= ReadFromDra(0x8013B6A0, D_8013B6A0, LEN(D_8013B6A0));
+    ok &= ReadFromDra(0x8017D350, D_8017D350, LEN(D_8017D350));
+    ok &= ReadFromDra(0x8018B4E0, D_8018B4E0, LEN(D_8018B4E0));
+    ok &= ReadFromDra(0x801A9C80, D_801A9C80, LEN(D_801A9C80));
+    return ok;
+}

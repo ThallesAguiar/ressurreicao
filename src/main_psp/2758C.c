@@ -1,0 +1,244 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+#include <game_psp.h>
+#include "main_psp_private.h"
+
+// https://pspdev.github.io/pspsdk/
+#define PSP_LEGACY_TYPES_DEFINED // avoid processing psptypes.h
+#include <pspgu.h>
+#include <psppower.h>
+#include <psxsdk/libgpu.h>
+
+extern s32 D_psp_08C63B24;
+extern bool D_psp_08C62A70;
+extern s32 D_psp_08C62A6C;
+extern s32 D_psp_08C62A68;
+extern char D_psp_08C63124[];
+extern u8 g_BmpCastleMap[0x8000];
+extern u16 g_Clut[3][0x1000];
+extern u16 D_psp_08C63324[];
+
+void InitVCount(void);
+
+int FntPrint(const char* id, ...) {
+    char* args;
+
+    if (D_psp_08C62A70) {
+        args = (char*)__builtin_next_arg(id) -
+               (__builtin_args_info(2) >= 8 ? 0
+                                            : (8 - __builtin_args_info(2)) * 4);
+        func_psp_0890E970(D_psp_08C63124, id, args);
+        sceGuDebugPrint(
+            D_psp_08C62A68 + 0x20, D_psp_08C62A6C, -1, D_psp_08C63124);
+        D_psp_08C62A6C += 8;
+    }
+    return 0;
+}
+
+void func_psp_08925F7C(s32 x, s32 y0, s32 w, s32 h) {
+    RECT rect;
+    s32 y;
+    s32 i;
+
+    for (y = y0; y < (y0 + h); y++) {
+        rect.x = x;
+        rect.y = y;
+        rect.w = w;
+        rect.h = 1;
+        StoreImage(&rect, (u_long*)D_psp_08C63324);
+        if (D_psp_08C63324[0] == 0x7FFF) {
+            D_psp_08C63324[0] = 0xFFFF;
+        }
+        for (i = 0; i < w; i++) {
+            if (D_psp_08C63324[i] == 0x8000) {
+                D_psp_08C63324[i] = 0x8001;
+            }
+        }
+        LoadImage(&rect, (u_long*)D_psp_08C63324);
+    }
+}
+
+INCLUDE_ASM("main_psp/nonmatchings/main_psp/2758C", func_psp_089260AC);
+
+INCLUDE_ASM("main_psp/nonmatchings/main_psp/2758C", func_psp_089260D0);
+
+int CdInit(void) { return 0; }
+
+int CdMix(void* vol) { return 0; }
+
+long CdDataCallback(void (*func)()) {
+    if (func != NULL) {
+        func();
+    }
+    return 0;
+}
+
+long CdReadyCallback(void (*func)()) { return NULL; }
+
+void ChangeClearPAD(long) {}
+
+void InitCARD(long val) { InitSaveData(); }
+
+long StartCARD(void) { return 0; }
+
+void _bu_init(void) {}
+
+void SsSetStereo(void) {}
+
+void SsSetMono(void) {}
+
+void SsSetMVol(short voll, short volr) {}
+
+void SsSetSerialAttr(char s_num, char attr, char mode) {}
+
+void SsUtSetReverbDepth(short ldepth, short rdepth) {}
+
+void SsSeqPlay(short seq_access_num, char play_mode, short l_count) {}
+
+s16 SsSeqOpen(u32 addr, s16 vab_id) { return 0; }
+
+void SsSeqClose(short seq_access_num) {}
+
+void SsSeqStop(short seq_access_num) {}
+
+void SsSeqSetVol(short arg0, short arg1, short arg2) {}
+
+void FntLoad(s32 tx, s32 ty) {}
+
+s32 FntOpen(s32 x, s32 y, s32 w, s32 h, s32 isbg, s32 n) { return 0; }
+
+void SetDumpFnt(int id) {}
+
+int SetGraphDebug(int level) { return 0; }
+
+void PadInit(int mode) {}
+
+u_long PadRead(int id) { return 0; }
+
+void GsInitVcount(void) { InitVCount(); }
+
+void InitVCount(void) { D_psp_08C63B24 = GetVCount(); }
+
+long GsGetVcount(void) { return ((GetVCount() - D_psp_08C63B24) + 1) << 8; }
+
+int CdControl(u_char com, u_char* param, u_char* result) { return 2; }
+
+int CdSync(int mode, u_char* result) { return 2; }
+
+static void DrawWallpaperOffscreen(void) {
+    u8* tm2Data;
+
+    tm2Data = (u8*)func_psp_08919C8C(0);
+    if (LoadWallpaper(0, tm2Data) > 0) {
+        func_psp_08910D28();
+        ClearDispLists();
+        func_psp_0890FF84();
+        SetCurrDispList(1);
+        PutBlitTexture(GU_PSM_5551, 0, 0, 0x100, 0x110, 0xF0,
+                       (u8*)GetWallpaperTex(tm2Data), 0, 0, 0x100,
+                       (u8*)WALLPAPER_TEX_ADDR);
+        PutBlitTexture(
+            GU_PSM_8888, 0, 0, 0x100, 1, 0x100, (u8*)GetWallpaperClut(tm2Data),
+            0, 0, 0x100, (u8*)WALLPAPER_CLUT_ADDR);
+        FinishDispLists();
+        sceKernelDcacheWritebackAll();
+        DrawDispLists();
+        DrawSync(0);
+    }
+}
+
+void DisableAutoPowerOff(void) {
+    sceKernelPowerTick(PSP_POWER_TICK_ALL);
+    FntPrint("Disable Auto Power Off\n");
+}
+
+void func_psp_089264CC(s32 paletteID, u16* data, bool arg2) {
+    RECT rect;
+    u16* clutPtr;
+
+    clutPtr = (u16*)g_Clut;
+    paletteID &= 0x3FF;
+    if (paletteID >= 0 && paletteID < 0x100) {
+        rect.x = 0x200;
+    } else if (paletteID >= 0x100 && paletteID < 0x200) {
+        rect.x = 0;
+        clutPtr += 0x1000;
+    } else if (paletteID >= 0x200 && paletteID < 0x300) {
+        rect.x = 0x100;
+        clutPtr += 0x2000;
+    } else {
+        return;
+    }
+    if (arg2) {
+        u8* p = (u8*)data;
+        p[0] = 0;
+        p[1] = 0;
+    }
+    rect.x += (paletteID & 0xF) * 0x10;
+    rect.y = ((paletteID / 0x10) & 0xF) + 0xF0;
+    rect.w = 0x100;
+    rect.h = 1;
+    LoadImage(&rect, (u_long*)data);
+    clutPtr += (((paletteID / 0x10) & 0xF) << 8) + ((paletteID & 0xF) * 0x10);
+    memcpy(clutPtr, data, 0x200);
+}
+
+void func_psp_0892667C(s32 paletteID, u16* data) {
+    RECT rect;
+    u16* clutPtr;
+
+    clutPtr = (u16*)g_Clut;
+    paletteID &= 0x3FF;
+    if (paletteID >= 0 && paletteID < 0x100) {
+        rect.x = 0x200;
+    } else if (paletteID >= 0x100 && paletteID < 0x200) {
+        rect.x = 0;
+        clutPtr += 0x1000;
+    } else if (paletteID >= 0x200 && paletteID < 0x300) {
+        rect.x = 0x100;
+        clutPtr += 0x2000;
+    } else {
+        return;
+    }
+    rect.x += (paletteID & 0xF) * 0x10;
+    rect.y = ((paletteID / 0x10) & 0xF) + 0xF0;
+    rect.w = 0x10;
+    rect.h = 1;
+    LoadImage(&rect, (u_long*)data);
+    clutPtr += (((paletteID / 0x10) & 0xF) << 8) + ((paletteID & 0xF) * 0x10);
+    memcpy(clutPtr, data, 0x20);
+}
+
+void func_psp_08926808(s32 paletteID, u16* data) {
+    RECT rect;
+    u16* clutPtr;
+
+    clutPtr = (u16*)g_Clut;
+    paletteID &= 0x3FF;
+    if (paletteID >= 0 && paletteID < 0x100) {
+        rect.x = 0x200;
+    } else if (paletteID >= 0x100 && paletteID < 0x200) {
+        rect.x = 0;
+        clutPtr += 0x1000;
+    } else if (paletteID >= 0x200 && paletteID < 0x300) {
+        rect.x = 0x100;
+        clutPtr += 0x2000;
+    } else {
+        return;
+    }
+    rect.x += (paletteID & 0xF) * 0x10;
+    rect.y = ((paletteID / 0x10) & 0xF) + 0xF0;
+    rect.w = 0x10;
+    rect.h = 1;
+    func_psp_0891C1C0(&rect, (u_long*)data);
+    clutPtr += (((paletteID / 0x10) & 0xF) << 8) + ((paletteID & 0xF) * 0x10);
+    memcpy(clutPtr, data, 0x20);
+}
+
+void GameEntrypoint(void) {
+    DrawWallpaperOffscreen();
+    func_psp_0892A1EC(0);
+    while (func_psp_0890FB70("F_MAP.BIN;1", g_BmpCastleMap, 0, 0x8000) == 0) {
+        sceKernelDelayThreadCB(1000000);
+    }
+    MainGame();
+}

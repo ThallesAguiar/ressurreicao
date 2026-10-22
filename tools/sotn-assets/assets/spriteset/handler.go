@@ -1,0 +1,83 @@
+package spriteset
+
+import (
+	"bytes"
+	"encoding/json"
+	"fmt"
+	"os"
+	"path/filepath"
+	"regexp"
+	"strings"
+
+	"github.com/xeeynamo/sotn-decomp/tools/sotn-assets/assets"
+	"github.com/xeeynamo/sotn-decomp/tools/sotn-assets/sotn"
+	"github.com/xeeynamo/sotn-decomp/tools/sotn-assets/util"
+)
+
+// HACK: only weapon spritesets are static. This is required for PC, as
+// two-handed weapons are both loaded at once, and symbols must not collide.
+var weaponAnimsetSymbol = regexp.MustCompile(`^w_\d{3}_\d+$`)
+
+type handler struct{}
+
+var Handler = &handler{}
+
+func (h *handler) Name() string { return "spriteset" }
+
+func (h *handler) Extract(e assets.ExtractArgs) error {
+	if e.AssetDir == "assets/maria" {
+		e.AssetDir = e.AssetDir
+	}
+	var sprites []*spriteParts
+	var err error
+	if e.Start != e.End {
+		r := bytes.NewReader(e.Data)
+		sprites, _, err = ReadSpriteSet(r, e.RamBase, e.RamBase.Sum(e.Start))
+		if err != nil {
+			return fmt.Errorf("failed to read sprites: %w", err)
+		}
+
+		// HACK: PSP adds zero padding at the end of the file that must
+		// be removed to match 1:1 with PS1
+		if sprites[len(sprites)-1] == nil && e.Version.GetPlatform() == sotn.PlatformPSP {
+			sprites = sprites[:len(sprites)-1]
+		}
+	} else {
+		sprites = make([]*spriteParts, 0)
+	}
+	return util.WriteJsonFile(assetPath(e.AssetDir, e.Name), sprites)
+}
+
+func (h *handler) Build(e assets.BuildArgs) error {
+	in := assetPath(e.AssetDir, e.Name)
+	out := sourcePath(e.SrcDir, e.Name)
+	data, err := os.ReadFile(in)
+	if err != nil {
+		return fmt.Errorf("unable to open %q: %v", in, err)
+	}
+
+	var ss []*spriteParts
+	if err := json.Unmarshal(data, &ss); err != nil {
+		return fmt.Errorf("unable to parse %q: %v", in, err)
+	}
+	sb := strings.Builder{}
+	sb.WriteString("// clang-format off\n")
+	if len(ss) > 0 {
+		mainSymbol := filepath.Base(e.Name)
+		isWeapon := weaponAnimsetSymbol.MatchString(mainSymbol)
+		BuildSpriteSet(&sb, ss, mainSymbol, isWeapon)
+	}
+	return util.WriteFile(out, []byte(sb.String()))
+}
+
+func (h *handler) Info(a assets.InfoArgs) (assets.InfoResult, error) {
+	return assets.InfoResult{}, nil
+}
+
+func assetPath(dir, name string) string {
+	return filepath.Join(dir, fmt.Sprintf("%s.animset.json", name))
+}
+
+func sourcePath(dir, name string) string {
+	return filepath.Join(dir, fmt.Sprintf("gen/%s.h", name))
+}

@@ -1,0 +1,54 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+#include <stage.h>
+#include <sfx.h>
+
+#ifndef SFX_BREAKABLE_HIT
+#define SFX_BREAKABLE_HIT SFX_CANDLE_HIT
+#endif
+
+extern EInit g_EInitBreakable;
+
+void CreateEntityFromCurrentEntity(u16 entityId, Entity* entity);
+void ReplaceBreakableWithItemDrop(Entity*);
+Entity* AllocEntity(Entity* start, Entity* end);
+
+void EntityBreakable(Entity* entity) {
+    u16 breakableType = entity->params >> 12;
+    if (entity->step) {
+        AnimateEntity(g_eBreakableAnimations[breakableType], entity);
+        if (entity->hitParams) { // If the candle is destroyed
+            Entity* entityDropItem;
+#ifdef STAGE_IS_TEK
+            if (breakableType == 1) {
+                g_api.PlaySfx(SFX_BREAKABLE_HIT_ALT);
+            } else {
+                g_api.PlaySfx(SFX_BREAKABLE_HIT);
+            }
+#else
+            g_api.PlaySfx(SFX_BREAKABLE_HIT);
+#endif
+            entityDropItem = AllocEntity(&g_Entities[224], &g_Entities[256]);
+            if (entityDropItem != NULL) {
+                CreateEntityFromCurrentEntity(E_EXPLOSION, entityDropItem);
+                entityDropItem->params =
+                    g_eBreakableExplosionTypes[breakableType];
+            }
+            ReplaceBreakableWithItemDrop(entity);
+        }
+    } else {
+        InitializeEntity(g_EInitBreakable);
+        entity->zPriority = g_unkGraphicsStruct.g_zEntityCenter - 20;
+        entity->blendMode = blend_modes[breakableType];
+        entity->hitboxHeight = g_eBreakableHitboxes[breakableType];
+        entity->animSet = g_eBreakableanimSets[breakableType];
+#ifdef STAGE_IS_BO5
+        entity->hitboxOffX = 8;
+        entity->hitboxOffY = 8;
+        if (!breakableType) {
+            entity->hitboxWidth = 4;
+            entity->hitboxOffX = 2;
+            entity->hitboxOffY = 2;
+        }
+#endif
+    }
+}

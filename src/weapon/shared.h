@@ -1,0 +1,111 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+#include "weapon_private.h"
+
+#include "../destroy_entity.h"
+
+static void LoadWeaponPalette(s32 clutIndex) {
+    RECT dstRect;
+    u16* src;
+    u16* dst;
+    s32 i;
+
+    dst = (u16*)g_Clut + (g_HandId * N_WEAPON_PAL + 0x110) * COLORS_PER_PAL;
+    src = g_WeaponCluts[clutIndex];
+    if (src == NULL) {
+        return;
+    }
+    for (i = 0; i < N_WEAPON_PAL * COLORS_PER_PAL; i++) {
+        *dst++ = *src++;
+    }
+
+#if defined(VERSION_PSP) || defined(W_029)
+    dstRect.x = 0;
+    dstRect.w = 0x100;
+    dstRect.h = 3;
+    dstRect.y = 0xF1;
+#else
+    dstRect.w = 0x100;
+    dstRect.h = 3;
+    dstRect.x = 0;
+    dstRect.y = 0xF1;
+#endif
+    dst = (u16*)g_Clut + 0x1100;
+    LoadImage(&dstRect, (u_long*)dst);
+}
+
+static void SetSpriteBank1(SpriteParts* animset) {
+    SpriteParts** spriteBankDst;
+
+    spriteBankDst = (SpriteParts**)g_api.o.spriteBanks;
+    spriteBankDst += 0x10;
+    if (g_HandId != 0) {
+        spriteBankDst += 2;
+    }
+    *spriteBankDst = animset;
+}
+
+static void SetSpriteBank2(SpriteParts* animset) {
+    SpriteParts** spriteBankDst;
+
+    spriteBankDst = (SpriteParts**)g_api.o.spriteBanks;
+    spriteBankDst += 0x11;
+    if (g_HandId != 0) {
+        spriteBankDst += 2;
+    }
+    *spriteBankDst = animset;
+}
+
+#if !defined(W_029) && !defined(W_030) && !defined(W_044) && !defined(W_051)
+static void SetWeaponAnimation(u8 anim) {
+    g_CurrentEntity->ext.weapon.anim = anim;
+    g_CurrentEntity->poseTimer = 0;
+    g_CurrentEntity->pose = 0;
+}
+#endif
+
+#if !defined(W_044)
+
+#include "../decelerate.h"
+
+#include "../set_speed_x.h"
+
+#endif
+
+#if !defined(W_030) && !defined(W_051)
+static void DestroyEntityWeapon(bool arg0) {
+    if (arg0 == false) {
+        DestroyEntity(&g_Entities[E_WEAPON]);
+    }
+    if (arg0 == true && g_Player.unk48 != 0) {
+        DestroyEntity(&g_Entities[E_WEAPON]);
+        g_Player.unk48 = 0;
+    }
+}
+#endif
+
+static void SetWeaponProperties(Entity* self, s32 kind) {
+    Equipment equip;
+    s32 equipId;
+
+    equipId = self->ext.weapon.equipId;
+    g_api.GetEquipProperties(g_HandId, &equip, equipId);
+    switch (kind) {
+    case 0:
+    case 1:
+        self->attack = equip.attack;
+        self->attackElement = equip.element;
+        self->hitboxState = equip.hitType;
+        self->nFramesInvincibility = equip.enemyInvincibilityFrames;
+        self->stunFrames = equip.stunFrames;
+        self->hitEffect = equip.hitEffect;
+        self->entityRoomIndex = equip.criticalRate;
+        g_api.func_80118894(self);
+        break;
+    case 2:
+        self->attack = equip.attack;
+        break;
+    }
+    if (self->hitboxState == 4) {
+        self->attack = 0xFF;
+    }
+}

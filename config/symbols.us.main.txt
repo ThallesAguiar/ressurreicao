@@ -1,0 +1,1 @@
+libcd_CDRegister0 = 0x80032E68;

@@ -1,0 +1,357 @@
+options:
+  target_path:  disks/saturn/0.BIN
+  asm_path:     asm/saturn/zero
+  src_path:     src/saturn
+  obj_path:     build/saturn
+  ld_scripts_path: config/saturn
+  syms_path: config/saturn
+  decomp_empty_funcs: false
+segments:
+  - name: zero
+    type: code
+    start: 0x00000000
+    vram:  0x06004080
+    subalign: 4
+    subsegments:
+      - start: 0x0
+        type: c
+        file: zero
+        end: 0x57
+        function_ranges:
+          - [0x0, 0x56]
+
+      - start: 0x58
+        type: c
+        file: zero
+        end: 0x2FDF
+        function_ranges:
+          - [0x0768, 0x07C2]
+          - [0x0806, 0x0874]
+          - [0x08A4, 0x08A4]
+          - [0x09C6, 0x09E2]
+
+      - start: 0x2FE0
+        type: text
+        file: zero
+        end: 0x3147
+
+      - start: 0x3148
+        type: c
+        file: zero
+        end: 0xA5C3
+        function_ranges:
+          - [0x40DC, 0x4110]
+          - [0x411C, 0x419C]
+          - [0x4BAC, 0x4C5E]
+          - [0x4C84, 0x4E3C]
+          - [0x4E68, 0x4F4C]
+          - [0x4F90, 0x4FCC]
+          # entry hints
+          - [0x8AA0, 0x8AA0]
+          - [0x9C24, 0x9C24]
+
+      - start: 0xA5C4
+        type: data
+        file: zero
+        end: 0xADE4
+
+      - start: 0xADE5
+        type: c
+        file: zero
+        end: 0xAE07
+
+      # ratan2
+      - start: 0xAE08
+        type: c
+        file: zero
+        end: 0xAF3B
+
+      - start: 0xAF3C
+        type: data
+        file: zero
+        end: 0xB73B
+
+      - start: 0xB73C
+        type: c
+        file: zero
+        end: 0xB893
+        function_ranges:
+          - [0xB73C, 0xB79A]
+          - [0xB79C, 0xB7FA]
+          - [0xB7FC, 0xB892]
+
+      # squareroot12
+      - start: 0xB894
+        type: c
+        file: zero
+        end: 0xB8EB
+
+      - start: 0xB8EC
+        type: c
+        file: zero
+        end: 0xBF37
+
+      # DestroyEntity
+      - start: 0xBF38
+        type: c
+        file: zero
+        end: 0xBF87
+
+      # before DGFS
+      - start: 0xBF88
+        type: c
+        file: zero
+        end: 0xD03F
+
+      - start: 0xD040
+        type: c
+        file: zero_1
+        end: 0x14647
+        function_ranges:
+          - [0xD1F8, 0xD9EA]
+          - [0xF4B8, 0xF942]
+          - [0xF944, 0x103A2]
+          - [0x1052C, 0x1052C]
+          - [0x105D8, 0x105D8]
+          - [0x1154C, 0x11746]
+          - [0x1174C, 0x11DE2]
+          - [0x11DE8, 0x12592]
+          - [0x12594, 0x125B4]
+          - [0x125C4, 0x12AC2]
+
+      - start: 0x14648
+        type: c
+        file: lib/snd
+        end: 0x14FD7
+
+      - start: 0x14FD8
+        type: c
+        file: zero_2
+        end: 0x16067
+        function_ranges:
+          - [0x15FA0, 0x16066]
+
+      - start: 0x16068
+        type: .text
+        file: zero/stgfiles
+        end: 0x16B7F
+
+      - start: 0x16B80
+        type: c
+        file: zero_3
+        end: 0x17213
+
+      - [0x17214, c, lib/gfs/gfs]
+      - [0x18D40, c, lib/gfs/gfs_cdf]
+      - [0x195F4, c, lib/gfs/gfs_mmf]
+      - [0x197A4, c, lib/gfs/gfs_sff]
+      - [0x199B4, c, lib/gfs/gfs_dir]
+      - [0x1A7EC, c, lib/gfs/gfs_trn]
+      - [0x1B220, c, lib/gfs/gfs_buf]
+      - [0x1B324, c, lib/gfs/gfs_cdb]
+      - [0x1B8F4, c, lib/gfs/gfs_cdc]
+      - [0x1D2BC, c, lib/gfs/gfs_mmb]
+      - [0x1D480, c, lib/gfs/gfs_mmc]
+      - [0x1D5B8, c, lib/gfs/gfs_sfb]
+
+      # SPR_1C
+      - start: 0x1D76C
+        type: c
+        file: lib/spr/spr_1c
+        end: 0x1E0E3
+      # SPR_2C
+      - start: 0x1E0E4
+        type: c
+        file: lib/spr/spr_2c
+        end: 0x1F087
+      # SPR_SLV
+      - start: 0x1F088
+        type: c
+        file: lib/spr/spr_slv
+        end: 0x1F0CF
+      # SPR_2A.SRC
+      - start: 0x1F0D0
+        type: .text
+        file: lib/spr/spr_2a
+        end: 0x1F313
+
+      # DMA_CPUM
+      - start: 0x1F314
+        type: c
+        file: lib/dma/dma_cpum
+        end: 0x1F473
+      # DMA_SCU1
+      - start: 0x1F474
+        type: c
+        file: lib/dma/dma_scu1
+        end: 0x1F813
+      # DMA_SCU0
+      - start: 0x1F814
+        type: c
+        file: lib/dma/dma_scu0
+        end: 0x1FCDB
+      # DMA_CPU0
+      - start: 0x1FCDC
+        type: c
+        file: lib/dma/dma_cpu0
+        end: 0x20007
+
+      # SEGA_SCL.A
+      - start: 0x20008
+        type: c
+        file: lib/scl
+        end: 0x26B1B
+
+      # after SCL
+      - start: 0x26B1C
+        type: c
+        file: lib/scl
+        end: 0x274AB
+
+      - start: 0x274AC
+        type: c
+        file: lib/scl
+        end: 0x27933
+
+      # SEGA_CSH.A
+      - start: 0x27934
+        type: c
+        file: lib/csh
+        end: 0x27B17
+
+      # SEGA_PER.A
+      - start: 0x27B18
+        type: c
+        file: lib/per
+        end: 0x29373
+
+      # after PER
+      - start: 0x29374
+        type: c
+        file: lib/per
+        end: 0x29423
+        function_ranges:
+          - [0x29374, 0x293AA]
+          - [0x293AC, 0x293F6]
+          - [0x293F8, 0x29406]
+          - [0x29408, 0x29422]
+
+      # CDC
+      - start: 0x29424
+        type: c
+        file: lib/cdc
+        end: 0x2B4CF
+
+      # MTH_FIXD.SRC
+      - start: 0x2B4D0
+        type: .text
+        file: lib/mth/mth_fixd
+        end: 0x2B573
+      # MTH_MTRX.SRC
+      - start: 0x2B574
+        type: .text
+        file: lib/mth/mth_mtrx
+        end: 0x2BA6B
+      # MTH_PS2D.SRC
+      - start: 0x2BA6C
+        type: .text
+        file: lib/mth/mth_ps2d
+        end: 0x2BB03
+      # MTH_TRI.SRC
+      - start: 0x2BB04
+        type: .text
+        file: lib/mth/mth_tri
+        end: 0x2C103
+      # MTH_CURV.C
+      - start: 0x2C104
+        type: c
+        file: lib/mth
+        end: 0x2C307
+
+      # INT_MAIN
+      - start: 0x2C308
+        type: c
+        file: lib/int
+        end: 0x2C363
+
+      # _bup_version
+      - start: 0x2C364
+        type: data
+        file: lib/bup
+        end: 0x2C383
+
+      # _BUP_Init to _get_sr
+      - start: 0x2C384
+        type: c
+        file: lib/bup
+        end: 0x2C9C9
+
+      # SYS MAC save helpers
+      - start: 0x2C9CA
+        type: .text
+        file: lib/sys/sys_mac1
+        end: 0x2C9DB
+
+      - start: 0x2C9DC
+        type: .text
+        file: lib/sys
+        end: 0x2CA5B
+
+      - start: 0x2CA5C
+        type: c
+        file: lib/sys
+        end: 0x2CB73
+
+      # rest of SEGA_SYS.A: SH-2 code, not data. ~128 functions with paired
+      # pr save/restore and literal pools referencing the sys_tail bss.
+      - start: 0x2CB74
+        type: c
+        file: lib/sys
+        end: 0x34949
+
+      - start: 0x3494A
+        type: .data
+        file: zero/zero_data
+        end: 0x369BF
+
+      # 68k sound driver
+      - start: 0x369C0
+        type: .data
+        file: lib/sound_driver
+        end: 0x3D1EF
+
+      # post-SYS
+      - [0x3D1F0, .data, zero/snddata]
+      - [0x3E548, .data, zero/adpcm]
+      - [0x3FBC8, .data, zero/sndlut]
+      - [0x40050, .data, zero/sndcmd]
+      - [0x402C8, .data, zero/stgspr0]
+      - [0x4177C, .data, zero/stgspr1]
+      - [0x41F2C, .data, zero/stgspr2]
+      - [0x41FD8, .data, zero/stgspr3]
+      - [0x421B8, .data, zero/stgspr4]
+      - [0x42450, .data, zero/stgspr5]
+      - [0x4266C, .data, zero/stgspr6]
+      - [0x426B8, .data, zero/stgspr7]
+      - [0x42B84, .data, zero/stgspr8]
+      - [0x42C94, .data, zero/stgspr9]
+      - [0x42DE8, .data, zero/stgspr10]
+      - [0x433A0, .data, zero/stgspr11]
+      - [0x434A4, .data, zero/stgspr12]
+      - [0x434FC, .data, zero/stgspr13]
+      - [0x435A0, .data, zero/stgspr14]
+      - [0x43620, .data, zero/fontmap]
+      - [0x43798, .data, zero/stgfiles]
+      - [0x44140, .data, zero/sysflag]
+      - [0x44144, .data, lib/spr/spr_data]
+
+      # SYS vars
+      - start: 0x44184
+        type: .text
+        file: lib/sys_tail
+        end: 0x4453F
+
+      - start: 0x44540
+        type: .data
+        file: lib/sys_bss
+        end: 0x4C560

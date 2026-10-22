@@ -1,0 +1,2284 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+#ifndef GAME_H
+#define GAME_H
+#include "common.h"
+#include "castle_flags.h"
+#include "items.h"
+#include "player_steps.h"
+#include <psxsdk/kernel.h>
+
+// lseek etc. conflicts
+#ifndef VERSION_PC
+#include <libapi.h>
+#include <libc.h>
+#else
+#include <psyz.h>
+#endif
+
+#include <libcd.h>
+#include <libetc.h>
+#include <libgpu.h>
+#include <libgs.h>
+#include <libgte.h>
+#include <libspu.h>
+#include <libsnd.h>
+#include <romio.h>
+
+// PSP does & 7FFF for many calls to rand(), PS1 does not.
+// This works around that.
+#if defined(VERSION_PSP) || defined(VERSION_PC)
+#define PSP_RANDMASK 0x7FFF
+#else
+#define PSP_RANDMASK 0xFFFFFFFF
+#endif
+
+typedef long Event;
+
+typedef struct Vertex {
+    /* 0x0 */ u8 r;
+    /* 0x1 */ u8 g;
+    /* 0x2 */ u8 b;
+    /* 0x3 */ u8 p;
+    /* 0x4 */ s16 x;
+    /* 0x6 */ s16 y;
+    /* 0x8 */ u8 u;
+    /* 0x9 */ u8 v;
+    /* 0xA */ u16 param;
+} Vertex; // size = 0xC
+
+typedef struct {
+    /* 0x00 */ SVECTOR* v0;
+    /* 0x04 */ SVECTOR* v1;
+    /* 0x08 */ SVECTOR* v2;
+    /* 0x0C */ SVECTOR* v3;
+} SVEC4; // size = 0x10
+
+// This structure is identical to Vertex but it is used for a FAKE! match.
+// The fields are shifted compared to Vertex but they are not supposed to.
+typedef struct {
+    s16 x;
+    s16 y;
+    u8 u;
+    u8 v;
+    u16 param;
+    u8 r;
+    u8 g;
+    u8 b;
+    u8 p;
+} VertexFake; // size = 0xC
+
+typedef struct Prim {
+    struct Prim* next;
+    struct Vertex v[4];
+} Prim;
+
+#include "primitive.h"
+
+typedef enum {
+    DRAW_DEFAULT = 0x00,
+    DRAW_TRANSP = 0x01, // make it semi transparent
+    DRAW_UNK02 = 0x02,  // unknown
+    DRAW_COLORS = 0x04, // use color blending
+    DRAW_HIDE = 0x08,   // do not render the primitive
+    DRAW_TPAGE = 0x10,  // use custom tpage
+    DRAW_TPAGE2 = 0x20, // use custom tpage
+    DRAW_UNK_40 = 0x40,
+    DRAW_MENU = 0x80,       // render only if D_800973EC is set
+    DRAW_UNK_100 = 0x100,   // unknown
+    DRAW_UNK_200 = 0x200,   // unknown
+    DRAW_DITHERING = 0x400, // enable PS1 dithering via DTD flag
+    DRAW_UNK_800 = 0x800,   // unknown
+    DRAW_UNK_1000 = 0x1000, // unknown
+    DRAW_ABSPOS = 0x2000,   // use absolute coordinates with DRAW_MENU
+} DrawMode;
+
+typedef enum {
+    BLEND_NO = 0x00,      // full opaque
+    BLEND_TRANSP = 0x10,  // 50% opaque, sets setSemiTrans flag to 1
+    BLEND_ADD = 0x20,     // additive blending - implies BLEND_TRANSP
+    BLEND_SUB = 0x40,     // subtractive blending - implies BLEND_TRANSP
+    BLEND_QUARTER = 0x60, // 25% opaque - implies BLEND_TRANSP
+} BlendModes;
+
+#include "entity.h"
+
+// These are used for RGB5551
+#define RED_MASK 0x1F
+#define GREEN_MASK 0x3E0
+#define BLUE_MASK 0x7C00
+#define ALPHA_MASK 0x8000
+#define UNRED_MASK (BLUE_MASK | GREEN_MASK | ALPHA_MASK)
+#define UNGREEN_MASK (BLUE_MASK | RED_MASK | ALPHA_MASK)
+#define UNBLUE_MASK (GREEN_MASK | RED_MASK | ALPHA_MASK)
+
+#define GET_RED(x) (((x) >> 0) & 0x1F)
+#define GET_GREEN(x) (((x) >> 5) & 0x1F)
+#define GET_BLUE(x) (((x) >> 10) & 0x1F)
+
+#define BITS_PER_BYTE (8)
+#define COLOR_BIT_DEPTH (4)
+#define PIXELS_PER_BYTE (BITS_PER_BYTE / COLOR_BIT_DEPTH)
+#define WIDTH_OF_MAP_TILE_IN_PIXELS (4)
+#define HEIGHT_OF_MAP_TILE_IN_PIXELS (4)
+#define WIDTH_OF_MAP_TILE_IN_BYTES                                             \
+    (WIDTH_OF_MAP_TILE_IN_PIXELS / PIXELS_PER_BYTE)
+#define WIDTH_OF_MAP_ROW_IN_PIXELS (256)
+#define WIDTH_OF_MAP_ROW_IN_BYTES (WIDTH_OF_MAP_ROW_IN_PIXELS / PIXELS_PER_BYTE)
+
+// Color macros
+#define COLORS_PER_PAL (16)
+#define COLOR_BPP (16)
+#define COLOR_LEN ((COLOR_BPP) / 8)
+#define COLOR16(r, g, b, a) (r) + ((g) << 5) + ((b) << 10) + ((a) << 15)
+
+#define OTSIZE 0x200
+#define MAX_ENV_COUNT 0x10
+#define MAX_DRAW_MODES 0x400
+#define MAX_POLY_GT4_COUNT 0x300
+#define MAX_POLY_G4_COUNT 0x100
+#define MAX_POLY_GT3_COUNT 0x30
+#define MAX_LINE_G2_COUNT 0x100
+#define MAXSPRT16 0x280
+#define MAX_TILE_COUNT 0x100
+#define MAX_SPRT_COUNT 0x200
+
+#define DISP_ALL_H 240
+#define DISP_STAGE_W 256
+#define DISP_STAGE_H DISP_ALL_H
+#define DISP_MENU_W 384
+#define DISP_MENU_H DISP_ALL_H
+#define DISP_TITLE_W 512
+#define DISP_TITLE_H DISP_ALL_H
+// Width in pixel of how wide is the horizontal camera during normal game play
+#define STAGE_WIDTH 256
+
+#ifdef VERSION_PSP // PSP does not need a double buffer
+#define DISP_STAGE_NEXT_X 0
+#else
+#define DISP_STAGE_NEXT_X DISP_STAGE_W
+#endif
+
+// PSP buttons use same order as PSX, rather than by
+// value for logical conistency between the two
+typedef enum {
+    PAD_COUNT = 2,
+    PAD_NONE = 0x0000,
+// R3 button on a DS3 controller attached to PSP
+// for debug mode may not be captured in these
+#ifdef VERSION_PSP
+    BUTTON_COUNT = 7,
+    PAD_L2 = 0x0002,
+    PAD_R2 = 0x0400,
+    PAD_L1 = 0x0100,
+    PAD_R1 = 0x0200,
+    PAD_TRIANGLE = 0x1000,
+    PAD_CIRCLE = 0x2000,
+    PAD_CROSS = 0x4000,
+    PAD_SQUARE = 0x8000,
+    PAD_SELECT = 0x0001,
+    PAD_L3 = 0x0000, // No L3 on PSP
+    PAD_R3 = 0x0000, // No R3 on PSP
+    PAD_START = 0x0008,
+    PAD_UP = 0x0010,
+    PAD_RIGHT = 0x0020,
+    PAD_DOWN = 0x0040,
+    PAD_LEFT = 0x0080,
+    PAD_BAT = PAD_R1,
+    PAD_MIST = PAD_L1 | PAD_R1,
+    PAD_WOLF = PAD_L1,
+#else
+    BUTTON_COUNT = 8,
+    PAD_L2 = 0x0001,
+    PAD_R2 = 0x0002,
+    PAD_L1 = 0x0004,
+    PAD_R1 = 0x0008,
+    PAD_TRIANGLE = 0x0010,
+    PAD_CIRCLE = 0x0020,
+    PAD_CROSS = 0x0040,
+    PAD_SQUARE = 0x0080,
+    PAD_SELECT = 0x0100,
+    PAD_L3 = 0x0200,
+    PAD_R3 = 0x0400,
+    PAD_START = 0x0800,
+    PAD_UP = 0x1000,
+    PAD_RIGHT = 0x2000,
+    PAD_DOWN = 0x4000,
+    PAD_LEFT = 0x8000,
+    PAD_BAT = PAD_R1,
+    PAD_MIST = PAD_L1,
+    PAD_WOLF = PAD_R2,
+#endif
+    PAD_SIM_UNK10000 = 0x10000,
+    PAD_SIM_UNK20000 = 0x20000,
+    PAD_DIRECTION_MASK = PAD_UP | PAD_RIGHT | PAD_DOWN | PAD_LEFT,
+} PlayerPad;
+
+// Convenience macros inheriting from PlayerPad
+
+// Game Buttons unofficially refers to buttons used in playing the game.
+// Any button except start or select.
+#define GAMEBUTTONS (~(PAD_START | PAD_SELECT))
+// Convenience macros
+#define PAD_SHAPES (PAD_SQUARE | PAD_CROSS | PAD_CIRCLE | PAD_TRIANGLE)
+
+// PSP's wolf controls are slightly different.
+#ifdef VERSION_PSP
+#define PAD_SHOULDERS (PAD_L1 | PAD_R1)
+// PSP only has one shoulder button, so it uses L1 for wolf transform.
+#define BTN_WOLF PAD_L1
+// PSP allows you to do the Wolf Charge spell with either square or circle.
+// This was changed from PS1, which only accepts square.
+#define WOLF_CHARGE_ATK_BTN (PAD_SQUARE | PAD_CIRCLE)
+#define BTN_MIST (PAD_L1 | PAD_R1)
+#else
+#define PAD_SHOULDERS (PAD_L1 | PAD_R1 | PAD_L2 | PAD_R2)
+#define BTN_WOLF PAD_R2
+#define WOLF_CHARGE_ATK_BTN (PAD_SQUARE)
+#define BTN_MIST PAD_L1
+#endif
+
+#define MAX_PRIM_COUNT 0x500
+#define MAX_PRIM_ALLOC_COUNT 0x400
+#define MAX_BG_LAYER_COUNT 16
+
+#define PLAYER_ALUCARD 0
+#define PLAYER_RICHTER 1
+#define PLAYER_MARIA 2
+#define MAX_GOLD 999999
+#define HEART_VESSEL_INCREASE 5
+#define HEART_VESSEL_RICHTER 30
+#define LIFE_VESSEL_INCREASE 5
+
+#define WEAPON_0_START 0xE0
+#define WEAPON_0_END (WEAPON_1_START - 1)
+#define WEAPON_1_START 0xF0
+
+#define DEMO_KEY_LEN 3
+#define DEMO_MAX_LEN 0x2000
+
+#if defined(VERSION_PSP) || defined(VERSION_PC)
+#define DRA_PRG_PTR 0x800A0000
+#define SAVE_DATA_PTR D_psp_08D97C40
+#define RIC_PRG_PTR &g_PlOvl
+#define SPRITESHEET_PTR g_PlOvlSpritesheet
+#define FAMILIAR_PTR 0x80170000
+#define WEAPON0_PTR 0x8017A000
+#define WEAPON1_PTR &D_8017D000
+#define STAGE_PRG_PTR D_psp_08D2DC40
+#define CASTLE_MAP_PTR g_BmpCastleMap
+#define DEMO_KEY_PTR g_DemoRecordingBuffer
+#define SIM_CHR0 D_psp_08C6BC40
+#define SIM_CHR1 D_psp_08C6FC40
+#define SIM_PTR D_psp_08C6BC40
+
+extern u8 g_BmpCastleMap[0x20000];
+extern u8 D_psp_08C6BC40[];
+extern u8 D_psp_08C6FC40[];
+extern u8 D_psp_08D2DC40[];
+extern u8 g_DemoRecordingBuffer[DEMO_MAX_LEN];
+extern u8 D_psp_08D97C40[];
+
+#else
+#define DRA_PRG_PTR 0x800A0000
+#define SAVE_DATA_PTR 0x801EA000
+#define RIC_PRG_PTR 0x8013C000
+#define SPRITESHEET_PTR 0x8013C020
+#define FAMILIAR_PTR 0x80170000
+#define WEAPON0_PTR 0x8017A000
+#define WEAPON1_PTR 0x8017D000
+#define STAGE_PRG_PTR 0x80180000
+#define CASTLE_MAP_PTR 0x801E0000
+#define DEMO_KEY_PTR 0x801E8000
+#define SIM_CHR0 0x80280000
+#define SIM_CHR1 0x80284000
+#define SIM_PTR 0x80280000
+#endif
+
+// used with various equipment, enemy resistances, etc
+typedef enum Elements {
+    ELEMENT_NONE = 0,
+    ELEMENT_UNK_1 = 0x1,
+    ELEMENT_UNK_2 = 0x2,
+    ELEMENT_UNK_4 = 0x4,
+    ELEMENT_UNK_8 = 0x8,
+    ELEMENT_UNK_10 = 0x10, // Possibly unresistable, used by e_spikes
+    ELEMENT_HIT = 0x20,
+    ELEMENT_CUT = 0x40,
+    ELEMENT_POISON = 0x80,
+    ELEMENT_CURSE = 0x100,
+    ELEMENT_STONE = 0x200,
+    ELEMENT_WATER = 0x400,
+    ELEMENT_DARK = 0x800,
+    ELEMENT_HOLY = 0x1000,
+    ELEMENT_ICE = 0x2000,
+    ELEMENT_THUNDER = 0x4000,
+    ELEMENT_FIRE = 0x8000,
+    ELEMENT_ALL = ELEMENT_FIRE | ELEMENT_THUNDER | ELEMENT_ICE | ELEMENT_HOLY |
+                  ELEMENT_DARK | ELEMENT_WATER | ELEMENT_STONE | ELEMENT_CURSE |
+                  ELEMENT_POISON | ELEMENT_CUT | ELEMENT_HIT,
+    ELEMENT_UNK_10000 = 0x10000,
+} Elements;
+
+// Indices of g_StatBuffTimers
+typedef enum {
+    SBT_DEF,
+    SBT_ATK,
+    SBT_LCK,
+    SBT_INT,
+    SBT_STR,
+    SBT_RESISTFIRE,
+    SBT_RESISTICE,
+    SBT_RESISTTHUNDER,
+    SBT_RESISTCURSE,
+    SBT_RESISTHOLY,
+    SBT_RESISTSTONE,
+    SBT_RESISTDARK,
+} StatBuffTimers;
+
+// Flags for entity->drawFlags
+typedef enum {
+    ENTITY_DEFAULT = 0x00, // use plain rendering, fastest drawing method
+    ENTITY_SCALEX = 0x01,  // use entity->scaleX
+    ENTITY_SCALEY = 0x02,  // use entity->scaleY
+    ENTITY_ROTATE = 0x04,  // use entity->rotate
+    ENTITY_OPACITY = 0x08, // use entity->opacity, enable texture shading
+    ENTITY_MASK_R = 0x10,  // set red to 128, must set ENTITY_OPACITY
+    ENTITY_MASK_G = 0x20,  // set green to 128, must set ENTITY_OPACITY
+    ENTITY_MASK_B = 0x40,  // set blue to 128, must set ENTITY_OPACITY
+    ENTITY_BLINK = 0x80,   // disable rendering on even/odd g_Timer
+} EntityDrawFlags;
+
+// Flags for entity->flags
+typedef enum {
+    FLAG_UNK_10 = 0x10,
+    FLAG_UNK_20 = 0x20,
+    FLAG_UNK_40 = 0x40,
+    FLAG_UNK_80 = 0x80,
+    FLAG_DEAD = 0x100, // entity must execute its death routine
+    FLAG_UNK_200 = 0x200,
+    FLAG_UNK_400 = 0x400,
+    FLAG_UNK_800 = 0x800,
+    FLAG_UNK_1000 = 0x1000,
+    FLAG_UNK_2000 = 0x2000,
+    FLAG_UNK_4000 = 0x4000,
+    FLAG_UNK_8000 = 0x8000,
+    FLAG_UNK_10000 = 0x10000,
+    FLAG_UNK_20000 = 0x20000,         // func_8011A9D8 will destroy if not set
+    FLAG_POS_PLAYER_LOCKED = 0x40000, // entity follows player position
+    FLAG_UNK_80000 = 0x80000,
+    FLAG_UNK_100000 = 0x100000,
+    FLAG_UNK_00200000 = 0x00200000,
+    FLAG_SUPPRESS_STUN = 0x400000, // disable invincibility frames
+    FLAG_HAS_PRIMS = 0x800000,     // call FreePrimitives on DestroyEntity
+    FLAG_NOT_AN_ENEMY = 0x01000000,
+    FLAG_UNK_02000000 = 0x02000000,
+    FLAG_KEEP_ALIVE_OFFCAMERA = 0x04000000, // don't destroy entity off-screen
+    FLAG_POS_CAMERA_LOCKED = 0x08000000,    // entity follows camera position
+    FLAG_UNK_10000000 = 0x10000000,         // CHI func_801A169C: "Is Airborne"?
+    FLAG_UNK_20000000 = 0x20000000,
+    FLAG_DESTROY_IF_BARELY_OUT_OF_CAMERA = 0x40000000,
+    FLAG_DESTROY_IF_OUT_OF_CAMERA = 0x80000000,
+} EntityFlag;
+
+// document g_Player.status
+typedef enum {
+    PLAYER_STATUS_BAT_FORM = 0x1,
+    PLAYER_STATUS_MIST_FORM = 0x2,
+    PLAYER_STATUS_WOLF_FORM = 0x4,
+    PLAYER_STATUS_TRANSFORM =
+        (PLAYER_STATUS_BAT_FORM | PLAYER_STATUS_MIST_FORM |
+         PLAYER_STATUS_WOLF_FORM),
+    PLAYER_STATUS_UNK8 = 0x8,
+    PLAYER_STATUS_UNK10 = 0x10,
+    PLAYER_STATUS_CROUCH = 0x20,
+    PLAYER_STATUS_UNK40 = 0x40,
+    PLAYER_STATUS_STONE = 0x80,
+    PLAYER_STATUS_INVINCIBLE = 0x100,
+    PLAYER_STATUS_UNK200 = 0x200,
+    PLAYER_STATUS_UNK400 = 0x400,
+    PLAYER_STATUS_SUBWPN = 0x800, // possibly thrown subweapon?
+    PLAYER_STATUS_SPELLCAST = 0x1000,
+    PLAYER_STATUS_UNK2000 = 0x2000,
+    PLAYER_STATUS_POISON = 0x4000,
+    PLAYER_STATUS_CURSE = 0x8000,
+    PLAYER_STATUS_UNK10000 = 0x10000, // possibly freezing?
+    PLAYER_STATUS_UNK20000 = 0x20000,
+    PLAYER_STATUS_DEAD = 0x40000, // possibly just "dead"
+    PLAYER_STATUS_UNK80000 = 0x80000,
+    PLAYER_STATUS_UNK100000 = 0x100000,
+    PLAYER_STATUS_UNK200000 = 0x200000,
+    PLAYER_STATUS_UNK400000 = 0x400000,
+    PLAYER_STATUS_UNK800000 = 0x800000,
+    PLAYER_STATUS_AXEARMOR = 0x1000000,
+    PLAYER_STATUS_ABSORB_BLOOD = 0x2000000,
+    PLAYER_STATUS_UNK4000000 = 0x4000000,
+    NO_AFTERIMAGE = 0x8000000,
+    PLAYER_STATUS_UNK10000000 = 0x10000000,
+    PLAYER_STATUS_UNK20000000 = 0x20000000,
+    PLAYER_STATUS_UNK40000000 = 0x40000000,
+    PLAYER_STATUS_UNK80000000 = 0x80000000, // exclusive to Maria
+} PlayerStateStatus;
+
+// Flags for g_Player.vram_flag
+// 0x01: touching the ground
+// 0x02: touching the ceiling
+// 0x04: touching the right wall
+// 0x08: touching the left wall
+// 0x20: in-air or near the edge
+// 0x0800: touching the ceiling slope
+// 0x1000: touching a slightly ascending or descending slope
+// 0x4000: touching a raising slope
+// 0x8000: touching any slope
+typedef enum {
+    TOUCHING_GROUND = 1 << 0,
+    TOUCHING_CEILING = 1 << 1,
+    TOUCHING_R_WALL = 1 << 2,
+    TOUCHING_L_WALL = 1 << 3,
+    VRAM_FLAG_UNK10 = 1 << 4,
+    IN_AIR_OR_EDGE = 1 << 5,
+    VRAM_FLAG_UNK40 = 1 << 6,
+    VRAM_FLAG_UNK80 = 1 << 7,
+    VRAM_FLAG_UNK100 = 1 << 8,
+    VRAM_FLAG_UNK200 = 1 << 9,
+    VRAM_FLAG_UNK400 = 1 << 10,
+    TOUCHING_CEILING_SLOPE = 1 << 11,
+    TOUCHING_SLIGHT_SLOPE = 1 << 12,
+    VRAM_FLAG_UNK2000 = 1 << 13,
+    TOUCHING_RAISING_SLOPE = 1 << 14,
+    TOUCHING_ANY_SLOPE = 1 << 15
+} PlayerVramFlag;
+
+#define ANIMSET_OVL_FLAG 0x8000
+#define ANIMSET_DRA(x) (x)
+#define ANIMSET_OVL(x) ((x) | ANIMSET_OVL_FLAG)
+
+#ifndef SOTN_STR
+// Decorator to re-encode strings with ./tools/sotn_str when building
+// the game. Certain strings in SOTN do not follow the ASCII encoding and each
+// character is offseted by 0x20. This is only for strings that use the 8x8
+// font. e.g. _S("I am a Symphony of the Night encoded string")
+#define _S(x) (x)
+
+// Decorator to re-encode strings with ./tools/sotn_str when building
+// the game. PSP uses a variant of Shift-JIS that replaces half-width katakana
+// characters with accent characters for european languages. e.g. _SE("Eliminé
+// par Richter ")
+#define _SE(x) (x)
+#endif
+// same as above, but it processes a single character from CPP
+#define CH(x) ((x) - 0x20)
+
+// print buttons on screen using the 8x8 font
+#define CIRCLE 0xE8
+#define CROSS 0xE9
+#define SQUARE 0xEA
+#define TRIANGLE 0xEB
+
+#define FONT_W 8        // small font size used for dialogues and menu
+#define FONT_H 8        // small font size used for dialogues and menu
+#define FONT_GAP FONT_W // gap between the beginning of two letters
+#define FONT_SPACE 4    // gap for the space character
+#define DIAG_EOL 0xFF   // end of line
+#define DIAG_EOS 0x00   // end of string
+
+#define SAVE_FLAG_NORMAL (0)
+#define SAVE_FLAG_CLEAR (1)
+#define SAVE_FLAG_REPLAY (2)
+
+#define PORT_COUNT (2)
+#define BLOCK_PER_CARD (15)
+#define CARD_BLOCK_SIZE (8192)
+
+typedef struct {
+#ifndef VERSION_PSP
+    /* 0x000 */ struct DIRENTRY entries[BLOCK_PER_CARD];
+#endif
+    /* 0x258 */ u32 unk258;
+    /* 0x25C */ u32 unk25C;
+    /* 0x260 */ u32 nBlockUsed;
+    /* 0x264 */ s32 nFreeBlock;
+    /* 0x268 */ u8 blocks[BLOCK_PER_CARD];
+} MemcardInfo; /* size=0x278 */
+
+#if defined(VERSION_US)
+#define MEMCARD_ID "BASLUS-00067DRAX00"
+#else
+#define MEMCARD_ID "BISLPM-86023DRAX00"
+#endif
+
+#define ICON_SLOT_NUM 32
+#define SPU_VOICE_NUM 24
+
+typedef enum {
+    Game_Init,
+    Game_Title,
+    Game_Play,
+    Game_GameOver,
+    Game_NowLoading,
+    Game_VideoPlayback,
+    Game_Unk6,
+    Game_PrologueEnd,
+    Game_MainMenu,
+    Game_Ending,
+    Game_Boot,
+    Game_99 = 99,
+} GameState;
+
+typedef enum {
+    Engine_Init,
+    Engine_Normal,
+    Engine_Menu,
+    Engine_3,
+    Engine_5 = 5,
+    Engine_10 = 10,
+    Engine_Map = 20,
+    Engine_0x70 = 0x70
+} GameEngineStep;
+
+typedef enum {
+    WALL_NONE,
+    WALL_TOP,
+    WALL_LEFT,
+    WALL_BOTTOM,
+    WALL_RIGHT,
+} WallSide;
+
+#define STAGE_INVERTEDCASTLE_MASK 0x1F
+#define STAGE_INVERTEDCASTLE_FLAG 0x20
+typedef enum {
+    STAGE_NO0 = 0x00,
+    STAGE_NO1 = 0x01,
+    STAGE_LIB = 0x02,
+    STAGE_CAT = 0x03,
+    STAGE_NO2 = 0x04,
+    STAGE_CHI = 0x05,
+    STAGE_DAI = 0x06,
+    STAGE_NP3 = 0x07,
+    STAGE_CEN = 0x08,
+    STAGE_NO4 = 0x09,
+    STAGE_ARE = 0x0A,
+    STAGE_TOP = 0x0B,
+    STAGE_NZ0 = 0x0C,
+    STAGE_NZ1 = 0x0D,
+    STAGE_WRP = 0x0E,
+    STAGE_NO1_ALT = 0x0F,
+    STAGE_NO0_ALT = 0x10,
+    STAGE_DRE = 0x12,
+    STAGE_NZ0_DEMO = 0x13,
+    STAGE_NZ1_DEMO = 0x14,
+    STAGE_LIB_DEMO = 0x15,
+    STAGE_BO7 = 0x16,
+    STAGE_MAR = 0x17,
+    STAGE_BO6 = 0x18,
+    STAGE_BO5 = 0x19,
+    STAGE_BO4 = 0x1A,
+    STAGE_BO3 = 0x1B,
+    STAGE_BO2 = 0x1C,
+    STAGE_BO1 = 0x1D,
+    STAGE_BO0 = 0x1E,
+    STAGE_ST0 = 0x1F,
+    STAGE_RNO0 = STAGE_NO0 | STAGE_INVERTEDCASTLE_FLAG,
+    STAGE_RNO1 = STAGE_NO1 | STAGE_INVERTEDCASTLE_FLAG,
+    STAGE_RLIB = STAGE_LIB | STAGE_INVERTEDCASTLE_FLAG,
+    STAGE_RCAT = STAGE_CAT | STAGE_INVERTEDCASTLE_FLAG,
+    STAGE_RNO2 = STAGE_NO2 | STAGE_INVERTEDCASTLE_FLAG,
+    STAGE_RCHI = STAGE_CHI | STAGE_INVERTEDCASTLE_FLAG,
+    STAGE_RDAI = STAGE_DAI | STAGE_INVERTEDCASTLE_FLAG,
+    STAGE_RNO3 = STAGE_NP3 | STAGE_INVERTEDCASTLE_FLAG,
+    STAGE_RCEN = STAGE_CEN | STAGE_INVERTEDCASTLE_FLAG,
+    STAGE_RNO4 = STAGE_NO4 | STAGE_INVERTEDCASTLE_FLAG,
+    STAGE_RARE = STAGE_ARE | STAGE_INVERTEDCASTLE_FLAG,
+    STAGE_RTOP = STAGE_TOP | STAGE_INVERTEDCASTLE_FLAG,
+    STAGE_RNZ0 = STAGE_NZ0 | STAGE_INVERTEDCASTLE_FLAG,
+    STAGE_RNZ1 = STAGE_NZ1 | STAGE_INVERTEDCASTLE_FLAG,
+    STAGE_RWRP = STAGE_WRP | STAGE_INVERTEDCASTLE_FLAG,
+    STAGE_RNZ1_DEMO = 0x35,
+    STAGE_RBO8 = 0x36,
+    STAGE_RBO7 = 0x37,
+    STAGE_RBO6 = 0x38,
+    STAGE_RBO5 = 0x39,
+    STAGE_RBO4 = 0x3A,
+    STAGE_RBO3 = 0x3B,
+    STAGE_RBO2 = 0x3C,
+    STAGE_RBO1 = 0x3D,
+    STAGE_RBO0 = 0x3E,
+    STAGE_MAD = 0x40,
+    STAGE_NO3 = 0x41,
+    STAGE_IWA_LOAD = 0x42,
+    STAGE_IGA_LOAD = 0x43,
+    STAGE_HAGI_LOAD = 0x44,
+    STAGE_SEL = 0x45,
+    STAGE_TE1 = 0x46,
+    STAGE_TE2 = 0x47,
+    STAGE_TE3 = 0x48,
+    STAGE_TE4 = 0x49,
+    STAGE_TE5 = 0x4A,
+    STAGE_TOP_ALT = 0x4B,
+    STAGE_EU_WARNING = 0x70, // EU piracy legal message screen,
+    STAGE_ENDING = 0xFE,
+    STAGE_MEMORYCARD = 0xFF,
+} Stages;
+
+typedef enum {
+    // Clean-up and reset all the gameplay related memory
+    Play_Reset = 0,
+    // Re-initialize stage-specific resources
+    Play_Init,
+    // Set random seed if playing a demo
+    Play_PrepareDemo,
+    // Normal gameplay
+    Play_Default,
+    // Releases all the resources from the unloading stage
+    Play_PrepareNextStage,
+    // Load graphics for those stages without a CD room transition
+    Play_LoadStageChr,
+    // Wait until the previous operation is complete
+    Play_WaitStageChr,
+    // Load the sound effects specific for the selected stage
+    Play_LoadStageSfx,
+    // Wait until the previous operation is complete
+    Play_WaitStageSfx,
+    // Load the overlay program from the disk
+    Play_LoadStagePrg,
+    // Wait until the previous operation is complete
+    Play_WaitStagePrg,
+    Play_Unk11,
+    Play_Unk12,
+    Play_Unk13,
+    Play_Unk14,
+    Play_Unk15,
+    // Used by the ST0 prologue scroll and now loading screen
+    Play_16,
+
+    // Deallocate stage resources
+    Gameover_Init = 0,
+    // Make screenshot and allocate 3D model for the melting foreground
+    Gameover_AllocResources,
+    // Wait for something...?
+    Gameover_2,
+    // Start loading game over graphics from the disk
+    Gameover_3,
+    // When the file is loaded, move it into the VRAM
+    Gameover_4,
+    // foreground melting
+    Gameover_5,
+    // Game over text starts brightening
+    Gameover_6,
+    // Start using Game Over textures that looks brighter
+    Gameover_7,
+    // Revert back to the slightly less bright Game Over text
+    Gameover_8,
+    // Game over screen fade out
+    Gameover_9,
+    // unknown
+    Gameover_10,
+    // Return to the title screen (if you are not in ST0)
+    Gameover_11,
+
+    Gameover_Alt = 99,
+    Gameover_Init_Alt,
+    Gameover_AllocResources_Alt,
+    Gameover_2_Alt,
+    Gameover_3_Alt,
+    Gameover_11_Alt = 111,
+
+    NowLoading_2 = 2,
+} GameSteps;
+
+typedef enum {
+    Demo_None,
+    Demo_PlaybackInit,
+    Demo_Recording,
+    Demo_End,
+    Demo_Playback,
+} DemoMode;
+
+typedef enum {
+    TIMEATTACK_INVALID = -1,
+    TIMEATTACK_GET_RECORD,
+    TIMEATTACK_SET_RECORD,
+    TIMEATTACK_SET_VISITED,
+} TimeAttackActions;
+
+typedef enum {
+    TIMEATTACK_EVENT_DRACULA_DEFEAT,
+    TIMEATTACK_EVENT_OLROX_DEFEAT,
+    TIMEATTACK_EVENT_DOPPLEGANGER_10_DEFEAT,
+    TIMEATTACK_EVENT_GRANFALOON_DEFEAT,
+    TIMEATTACK_EVENT_MINOTAUR_WEREWOLF_DEFEAT,
+    TIMEATTACK_EVENT_SCYLLA_DEFEAT,
+    TIMEATTACK_EVENT_SLOGRA_GAIBON_DEFEAT,
+    TIMEATTACK_EVENT_HYPPOGRYPH_DEFEAT,
+    TIMEATTACK_EVENT_BEELZEBUB_DEFEAT,
+    TIMEATTACK_EVENT_SUCCUBUS_DEFEAT,
+    TIMEATTACK_EVENT_KARASUMAN_DEFEAT,
+    TIMEATTACK_EVENT_RALPH_GRANT_SYPHA_DEFEAT,
+    TIMEATTACK_EVENT_DEATH_DEFEAT,
+    TIMEATTACK_EVENT_CERBERUS_DEFEAT,
+    TIMEATTACK_EVENT_SAVE_RICHTER,
+    TIMEATTACK_EVENT_MEDUSA_DEFEAT,
+    TIMEATTACK_EVENT_THE_CREATURE_DEFEAT,
+    TIMEATTACK_EVENT_LESSER_DEMON_DEFEAT,
+    TIMEATTACK_EVENT_DOPPLEGANGER_40_DEFEAT,
+    TIMEATTACK_EVENT_AKMODAN_II_DEFEAT,
+    TIMEATTACK_EVENT_DARKWING_BAT_DEFEAT,
+    TIMEATTACK_EVENT_GALAMOTH_DEFEAT,
+    TIMEATTACK_EVENT_FINAL_SAVEPOINT,
+    TIMEATTACK_EVENT_MEET_DEATH,
+    TIMEATTACK_EVENT_GET_HOLYGLASSES,
+    TIMEATTACK_EVENT_MEET_MASTER_LIBRARIAN,
+    TIMEATTACK_EVENT_FIRST_MARIA_MEET,
+    NUM_TIMEATTACK_EVENTS,
+    TIMEATTACK_EVENT_UNUSED_28,
+    TIMEATTACK_EVENT_UNUSED_29,
+    TIMEATTACK_EVENT_UNUSED_30,
+    TIMEATTACK_EVENT_UNUSED_31,
+    TIMEATTACK_EVENT_END,
+    TIMEATTACK_EVENT_INVALID = 0xFF,
+} TimeAttackEvents;
+
+struct Entity;
+
+typedef struct {
+    f32 posX;
+    f32 posY;
+} Camera;
+
+typedef struct {
+    unsigned char width;
+    unsigned char height;
+    unsigned short unk2;
+#ifdef _MSC_VER
+    unsigned char* data;
+#else
+    unsigned char data[0];
+#endif
+} ImgSrc;
+
+typedef struct {
+    /* 0x00 */ u32 gfxOff;
+    /* 0x04 */ u32 ovlOff;
+    /* 0x08 */ u32 ovlLen;
+    /* 0x0C */ u32 vhOff;
+    /* 0x10 */ u32 vhLen;
+    /* 0x14 */ u32 vbLen;
+    /* 0x18 */ u32 musicId;
+    /* 0x1C */ const char* gfxName;
+    /* 0x20 */ const char* ovlName;
+    /* 0x24 */ char* name;
+    /* 0x28 */ u8 unk28;
+    /* 0x29 */ s8 seqIdx; // index of D_800ACCF8
+} Lba;                    /* size=0x2A */
+
+typedef struct {
+    /* 0x00 */ s16 cursorX;
+    /* 0x02 */ s16 cursorY;
+    /* 0x04 */ s16 cursorW;
+    /* 0x06 */ s16 cursorH;
+    /* 0x08 */ RECT unk1;
+    /* 0x10 */ s16 w;
+    /* 0x12 */ s16 h;
+    /* 0x14 */ s16 unk14;
+    /* 0x16 */ s16 unk16;
+    /* 0x18 */ s16 otIdx;
+    /* 0x1A */ s16 unk1A;
+    /* 0x1C */ u8 unk1C;
+    /* 0x1D */ u8 unk1D;
+} MenuContext; // size = 0x1E
+#define SIZEOF_MENUCONTEXT (0x1E)
+
+typedef struct {
+    /* 0x0 */ u8 tileLayoutId;
+    /* 0x1 */ u8 tilesetId;
+    /* 0x2 */ u8 objGfxId;
+    /* 0x3 */ u8 objLayoutId;
+} RoomLoadDef; // size = 0x4
+
+typedef struct {
+    /* 0x0 */ u8 left;
+    /* 0x1 */ u8 top;
+    /* 0x2 */ u8 right;
+    /* 0x3 */ u8 bottom;
+    /* 0x4 */ RoomLoadDef load;
+} RoomHeader; // size = 0x8
+
+typedef struct {
+    /* 0x0 */ u16 x;
+    /* 0x2 */ u16 y;
+    /* 0x4 */ u16 roomId;
+    /* 0x6 */ u16 unk6; // Current Stage ID to reload Tile GFX if you move
+                        // through CD Room but change your mind and go back out.
+    /* 0x8 */ u16 stageId;
+} RoomTeleport; // size = 0xA
+
+typedef struct {
+    /* 0x00 */ s32 x;
+    /* 0x04 */ s32 y;
+    /* 0x08 */ Stages stageId;
+    /* 0x0C */ TimeAttackEvents eventId;
+    /* 0x10 */ s32 unk10;
+} RoomBossTeleport; /* size=0x14 */
+
+typedef struct {
+    /* 0x0 */ u16 pressed;
+    /* 0x2 */ u16 previous;
+    /* 0x4 */ u16 tapped;
+    /* 0x6 */ u16 repeat;
+} Pad; // size = 0x8
+
+#define POSE(duration, frameNo, hitboxNo)                                      \
+    {(duration), (((frameNo) & 0x1FF) | (((hitboxNo) & 0x7F) << 9))}
+#define POSE_LOOP(index) {0, index} // loop at pose index
+#define POSE_END {-1, 0}            // stop at last frame
+#define POSE_JUMP(anim) {-2, anim}  // set new animation
+#define POSE_UNKNOWN(anim) {-3, anim}
+typedef struct {
+    u16 duration;
+    u16 pose; // contains both frameNo and hitboxNo
+} AnimationFrame;
+
+// WPOSE* macros are exclusive to UpdateUnarmedAnim, they are duration-less
+#define WPOSE(frameNo, hitboxNo)                                               \
+    (((frameNo) & 0x1FF) | (((hitboxNo) & 0x7F) << 9))
+#define WPOSE_END 0xFFFF // stop at last frame
+
+typedef struct {
+    s8 unk0; // Entity::unk10
+    s8 unk2; // Entity::unk12
+    s8 hitboxWidth;
+    s8 hitboxHeight;
+} FrameProperty;
+
+#define ANIM_FRAME_LOAD 0x8000
+
+typedef struct Entity {
+    /* 0x00 */ f32 posX;
+    /* 0x04 */ f32 posY;
+    /* 0x08 */ s32 velocityX;
+    /* 0x0C */ s32 velocityY;
+    /* 0x10 */ s16 hitboxOffX;
+    /* 0x12 */ s16 hitboxOffY;
+    /* 0x14 */ u16 facingLeft;
+    /* 0x16 */ u16 palette;
+    /* 0x18 */ u8 blendMode; // refer to enum BlendModes
+    /* 0x19 */ u8 drawFlags; // refer to enum EntityDrawFlags
+    /* 0x1A */ s16 scaleX;   // 0x100: 1.0, enabled with ENTITY_SCALE_X
+    /* 0x1C */ s16 scaleY;   // 0x100: 1.0, enabled with ENTITY_SCALE_Y
+    /* 0x1E */ s16 rotate;   // 0x1000: 360 degrees, enabled with ENTITY_ROTATE
+    /* 0x20 */ s16 rotPivotX;
+    /* 0x22 */ s16 rotPivotY;
+    /* 0x24 */ u16 zPriority;
+    /* 0x26 */ u16 entityId;
+    /* 0x28 */ PfnEntityUpdate pfnUpdate;
+    /* 0x2C */ u16 step;
+    /* 0x2E */ u16 step_s;
+    /* 0x30 */ u16 params;
+    /* 0x32 */ u16 entityRoomIndex;
+    /* 0x34 */ s32 flags;
+    /* 0x38 */ s16 : 16;
+    /* 0x3A */ u16 enemyId; // also used as a Alucard weapon entity slot index
+    /* 0x3C */ u16 hitboxState;
+    /* 0x3E */ s16 hitPoints;
+    /* 0x40 */ s16 attack;
+    /* 0x42 */ u16 attackElement;
+    /* 0x44 */ u16 hitParams;
+    /* 0x46 */ u8 hitboxWidth;
+    /* 0x47 */ u8 hitboxHeight;
+    /* 0x48 */ u8 hitFlags; // 1 = took hit
+    /* 0x49 */ u8 nFramesInvincibility;
+    /* 0x4A */ s16 unk4A;
+    /* 0x4C */ AnimationFrame* anim;
+    /* 0x50 */ u16 pose;
+    /* 0x52 */ s16 poseTimer;
+    /* 0x54 */ s16 animSet;
+    /* 0x56 */ s16 animCurFrame;
+    /* 0x58 */ s16 stunFrames;
+    /* 0x5A */ u16 unk5A;
+    /* 0x5C */ struct Entity* parent;   // for multi-part entities only
+    /* 0x60 */ struct Entity* nextPart; // next linked-list entity part
+    /* 0x64 */ s32 primIndex;
+    /* 0x68 */ u16 unk68; // Appears to be set for entities with parallax
+    /* 0x6A */ u16 hitEffect;
+    /* 0x6C */ u8 opacity; // enabled with ENTITY_OPACITY
+    /* 0x6D */ u8 unk6D[11];
+    /* 0x78 */ s32 unk78;
+    /* 0x7C */ Ext ext;
+    /* 0xB8 */ struct Entity* unkB8;
+} Entity; // size = 0xBC
+
+typedef struct {
+    /* 0x00 */ u16 animSet;
+    /* 0x02 */ u16 zPriority;
+    /* 0x04 */ u16 unk5A; // not 5A in this struct, but goes to 5A in entity
+    /* 0x06 */ u16 palette;
+    /* 0x08 */ u16 drawFlags;
+    /* 0x0A */ u16 blendMode;
+    /* 0x0C */ u32 flags;
+    /* 0x10 */ u8* animFrames;
+} ObjInit; // size = 0x14
+
+typedef struct { // only difference from above is this one uses a facingLeft
+    /* 0x00 */ u16 animSet;
+    /* 0x02 */ u16 zPriority;
+    /* 0x04 */ u8 facingLeft;
+    /* 0x05 */ u8 unk5A;
+    /* 0x06 */ u16 palette;
+    /* 0x08 */ u16 drawFlags;
+    /* 0x0A */ u16 blendMode;
+    /* 0x0C */ u32 flags;
+    /* 0x10 */ u8* animFrames;
+} ObjInit2; // size = 0x14
+
+typedef struct GpuBuffer { // also called 'DB' in the PSY-Q samples
+    /* 0x00000 */ struct GpuBuffer* next;    // next chained buffer
+    /* 0x00004 */ DRAWENV draw;              // drawing environment
+    /* 0x0005C */ DISPENV disp;              // display environment
+    /* 0x00074 */ DR_ENV env[MAX_ENV_COUNT]; // packed drawing environment
+    /* 0x00474 */ OT_TYPE ot[OTSIZE];        // ordering table
+    /* 0x00474 */ DR_MODE drawModes[MAX_DRAW_MODES];    // draw modes
+    /* 0x03C74 */ POLY_GT4 polyGT4[MAX_POLY_GT4_COUNT]; // textured quads
+    /* 0x0D874 */ POLY_G4 polyG4[MAX_POLY_G4_COUNT];    // untextured quads
+    /* 0x0FC74 */ POLY_GT3 polyGT3[MAX_POLY_GT3_COUNT]; // textured triangles
+    /* 0x103F4 */ LINE_G2 lineG2[MAX_LINE_G2_COUNT];    // lines
+    /* 0x117F4 */ SPRT_16 sprite16[MAXSPRT16];          // tile map sprites
+    /* 0x13FF4 */ TILE tiles[MAX_TILE_COUNT];           // squared sprites
+    /* 0x14FF4 */ SPRT sprite[MAX_SPRT_COUNT];          // dynamic-size sprites
+#ifdef VERSION_SD
+    /* 0x177F4*/ s8 unk177F4[0x800];
+#endif
+} GpuBuffer; // size=0x177F4
+
+typedef struct {
+    /* 0x00 */ u32 drawModes;
+    /* 0x04 */ u32 gt4;
+    /* 0x08 */ u32 g4;
+    /* 0x0C */ u32 gt3;
+    /* 0x10 */ u32 line;
+    /* 0x14 */ u32 sp16;
+    /* 0x18 */ u32 tile;
+    /* 0x1C */ u32 sp;
+    /* 0x20 */ u32 env;
+} GpuUsage; // size=0x24
+
+typedef enum {
+    GFX_BANK_NONE,
+    GFX_BANK_4BPP,
+    GFX_BANK_8BPP,
+    GFX_BANK_16BPP,
+    GFX_BANK_COMPRESSED,
+} GfxBankKind;
+#define GFX_TERMINATE() ((u_long*)-1) // can't be in GfxBankKind
+#define GFX_ENTRY(x, y, w, h, data)                                            \
+    (u_long*)((x) | ((y) << 16)), (u_long*)((h) | ((w) << 16)), (u_long*)data
+typedef struct {
+    /* 0x00 */ u_long* xy;
+    /* 0x04 */ u_long* wh;
+    /* 0x08 */ u_long* data;
+} GfxEntry; // size=0xC
+
+typedef struct {
+    GfxBankKind kind;
+    GfxEntry entries[0];
+} GfxBank;
+
+typedef struct {
+    /* 0x0 */ GfxEntry* next;
+    /* 0x4 */ u16 kind;
+    /* 0x6 */ s16 unk6;
+    /* 0x8 */ s16 unk8;
+    /* 0xA */ s16 unkA;
+} GfxLoad; // size=0xC
+
+typedef enum EquipKind {
+    EQUIP_HAND,
+    EQUIP_HEAD,
+    EQUIP_ARMOR,
+    EQUIP_CAPE,
+    EQUIP_ACCESSORY,
+    NUM_EQUIP_KINDS,
+} EquipKind;
+
+// Note that these item IDs are not the same as the item IDs in the BodyItems
+// enum
+typedef enum {
+    DROP_ZIRCON = 360,     // 0x0168
+    DROP_AQUAMARINE = 361, // 0x0169
+    DROP_TURQUOISE = 362,  // 0x016A
+    DROP_ONYX = 363,       // 0x016B
+    DROP_GARNET = 364,     // 0x016C
+    DROP_OPAL = 365,       // 0x016D
+    DROP_DIAMOND = 366,    // 0x016E
+} DroppedItem;
+
+typedef enum ItemCategory {
+    ITEM_S_SWORD,
+    ITEM_SWORD,
+    ITEM_THROW_1,
+    ITEM_FIST,
+    ITEM_CLUB,
+    ITEM_TWOHAND,
+    ITEM_FOOD,
+    ITEM_BOMB,
+    ITEM_THROW_2,
+    ITEM_SHIELD,
+    ITEM_MEDICINE,
+    ITEM_END,
+} ItemCategory;
+
+typedef enum {
+    SUBWPN_NONE,
+    SUBWPN_DAGGER,
+    SUBWPN_AXE,
+    SUBWPN_HOLYWATER,
+    SUBWPN_CROSS,
+    SUBWPN_BIBLE,
+    SUBWPN_STOPWATCH,
+    SUBWPN_REBNDSTONE,
+    SUBWPN_VIBHUTI,
+    SUBWPN_AGUNEA
+} SubWpnID;
+
+typedef enum { STAT_STR, STAT_CON, STAT_INT, STAT_LCK } Stats;
+typedef struct {
+    s32 level;
+    s32 exp;
+    s32 unk8; // Possibly the number of times loaded
+} FamiliarStats;
+
+#define RELIC_FLAG_DISABLE 0
+#define RELIC_FLAG_FOUND 1
+#define RELIC_FLAG_ACTIVE 2
+#if defined(VERSION_US)
+#define NUM_AVAIL_RELICS (NUM_RELICS - 2)
+#else
+#define NUM_AVAIL_RELICS (NUM_RELICS)
+#endif
+typedef enum {
+    RELIC_SOUL_OF_BAT,
+    RELIC_FIRE_OF_BAT,
+    RELIC_ECHO_OF_BAT,
+    RELIC_FORCE_OF_ECHO,
+    RELIC_SOUL_OF_WOLF,
+    RELIC_POWER_OF_WOLF,
+    RELIC_SKILL_OF_WOLF,
+    RELIC_FORM_OF_MIST,
+    RELIC_POWER_OF_MIST,
+    RELIC_GAS_CLOUD,
+    RELIC_CUBE_OF_ZOE,
+    RELIC_SPIRIT_ORB,
+    RELIC_GRAVITY_BOOTS,
+    RELIC_LEAP_STONE,
+    RELIC_HOLY_SYMBOL,
+    RELIC_FAERIE_SCROLL,
+    RELIC_JEWEL_OF_OPEN,
+    RELIC_MERMAN_STATUE,
+    RELIC_BAT_CARD,
+    RELIC_GHOST_CARD,
+    RELIC_FAERIE_CARD,
+    RELIC_DEMON_CARD,    // 0x097979
+    RELIC_SWORD_CARD,    // 0x09797A
+    RELIC_JP_0,          // 0x09797B (nose demon or half fairy)
+    RELIC_JP_1,          // 0x09797C
+    RELIC_HEART_OF_VLAD, // 0x09797D
+    RELIC_TOOTH_OF_VLAD,
+    RELIC_RIB_OF_VLAD,
+    RELIC_RING_OF_VLAD,
+    RELIC_EYE_OF_VLAD,
+    NUM_RELICS,
+} RelicIds;
+
+#define SPELL_FLAG_KNOWN 0x80
+typedef enum {
+    SPELL_DARK_METAMORPHOSIS,
+    SPELL_SUMMON_SPIRIT,
+    SPELL_HELLFIRE,
+    SPELL_TETRA_SPIRIT,
+    SPELL_WOLF_CHARGE,
+    SPELL_SOUL_STEAL,
+    SPELL_WING_SMASH,
+    SPELL_SWORD_BROTHERS,
+    NUM_SPELLS,
+} SpellIds;
+
+// This enum has the ids for familiar abilities which use the g_SpellDef
+// table to fetch stats and modifiers for said abilities.
+typedef enum {
+    FAM_ABILITY_BAT_ATTACK = 15,
+    FAM_ABILITY_GHOST_ATTACK = 17,
+    FAM_ABILITY_GHOST_ATTACK_SOULSTEAL,
+    FAM_ABILITY_SWORD_UNK19,
+    FAM_ABILITY_SWORD_UNK20,
+    FAM_ABILITY_DEMON_UNK21,
+    FAM_ABILITY_DEMON_UNK22,
+    FAM_ABILITY_DEMON_UNK24 = 24,
+    FAM_ABILITY_DEMON_UNK25,
+    FAM_ABILITY_DEMON_UNK26,
+} FamiliarAbilityIds;
+
+// Need two familiar enums. One has a zero entry, one does not.
+// This one is used in places that need to access the familiar
+// stats array...
+typedef enum {
+    FAM_STATS_BAT,
+    FAM_STATS_GHOST,
+    FAM_STATS_FAERIE,
+    FAM_STATS_DEMON,
+    FAM_STATS_SWORD,
+    FAM_STATS_YOUSEI,     // JP only
+    FAM_STATS_NOSE_DEMON, // JP only
+    NUM_FAMILIARS
+} FamiliarStatsIds;
+
+// ...and this one is used to designate the active familiar, where
+// 0 means no familiar is active, and the rest are off-by-one from
+// the previous enum set. Hacky, but works.
+typedef enum {
+    FAM_ACTIVE_NONE,
+    FAM_ACTIVE_BAT = FAM_STATS_BAT + 1,
+    FAM_ACTIVE_GHOST = FAM_STATS_GHOST + 1,
+    FAM_ACTIVE_FAERIE = FAM_STATS_FAERIE + 1,
+    FAM_ACTIVE_DEMON = FAM_STATS_DEMON + 1,
+    FAM_ACTIVE_SWORD = FAM_STATS_SWORD + 1,
+    FAM_ACTIVE_YOUSEI = FAM_STATS_YOUSEI + 1,
+    FAM_ACTIVE_NOSE_DEMON = FAM_STATS_NOSE_DEMON + 1,
+} FamiliarActiveIds;
+
+typedef struct {
+    /* 80097964 */ u8 relics[NUM_RELICS];
+    /* 80097982 */ u8 spells[NUM_SPELLS];
+    /* 8009798A */ u8 equipHandCount[NUM_HAND_ITEMS];
+    /* 80097A33 */ u8 equipBodyCount[NUM_BODY_ITEMS];
+    /* 80097A8D */ u8 equipHandOrder[NUM_HAND_ITEMS];
+    /* 80097B36 */ u8 equipBodyOrder[NUM_BODY_ITEMS];
+    /* 80097B90 */ char saveName[12];
+    /* 80097B9C */ u32 spellsLearnt;
+    /* 80097BA0 */ s32 hp;
+    /* 80097BA4 */ s32 hpMax;
+    /* 80097BA8 */ s32 hearts;
+    /* 80097BAC */ s32 heartsMax;
+    /* 80097BB0 */ s32 mp;
+    /* 80097BB4 */ s32 mpMax;
+    /* 80097BB8 */ s32 statsBase[4];
+    /* 80097BC8 */ s32 statsEquip[4];
+#ifndef STAGE_IS_TEK
+    /* 80097BD8 */ s32 statsTotal[4];
+#endif
+    /* 80097BE8 */ s32 level;
+    /* 80097BEC */ u32 exp;
+    /* 80097BF0 */ s32 gold;
+    /* 80097BF4 */ s32 killCount;
+    /* 80097BF8 */ u32 D_80097BF8;
+    /* 80097BFC */ u32 subWeapon;
+    // Note: some parts of game act like these two are just equipment[7]
+    /* 80097C00 */ u32 equipment[2];
+    /* 80097C00 */ u32 wornEquipment[5];
+    /* 80097C1C */ u32 attackHands[2]; // right hand, left hand
+    /* 80097C24 */ s32 defenseEquip;
+    /* 80097C28 */ u16 elementsWeakTo;
+    /* 80097C2A */ u16 elementsResist;
+    /* 80097C2C */ u16 elementsImmune;
+    /* 80097C2E */ u16 elementsAbsorb;
+    /* 80097C30 */ s32 timerHours;
+    /* 80097C34 */ s32 timerMinutes;
+    /* 80097C38 */ s32 timerSeconds;
+    /* 80097C3C */ s32 timerFrames;
+
+    // ALUCARD: murasama kill count
+    // MARIA: secondary subweapon
+    /* 80097C40 */ u32 D_80097C40;
+
+    /* 80097C44 */ FamiliarStats statsFamiliars[NUM_FAMILIARS];
+} PlayerStatus; /* size=0x334 */
+
+typedef enum {
+    FADE_NONE,
+    FADE_TO_BLACK,
+    FADE_FROM_BLACK,
+    FADE_BLUE_TINT,
+    FADE_TO_BLACK_FAST,
+    FADE_TO_BLACK_SLOW,
+    FADE_SHOW_MAP,
+    FADE_HIDE_MAP,
+} FadeModes;
+
+typedef struct {
+    /* 0x00, 8003C9A8 */ s32 cursorMain;
+    /* 0x04, 8003C9AC */ s32 cursorRelic;
+    /* 0x08, 8003C9B0 */ s32 cursorEquip;
+    /* 0x0C, 8003C9B4 */ s32 cursorHandEquipType;
+    /* 0x10, 8003C9B8 */ s32 cursorEquipType[NUM_EQUIP_KINDS - 1];
+    /* 0x20, 8003C9C8 */ s32 scrollEquipType[NUM_EQUIP_KINDS];
+    /* 0x34, 8003C9DC */ s32 cursorSpells;
+    /* 0x38, 8003C9E0 */ s32 cursorSettings;
+    /* 0x3C, 8003C9E4 */ s32 cursorCloak;
+    /* 0x40, 8003C9E8 */ s32 cursorButtons;
+    /* 0x44, 8003C9EC */ s32 cursorWindowColors;
+    /* 0x48, 8003C9F0 */ s32 cursorTimeAttack;
+} MenuNavigation; /* size=0x4C */
+
+typedef struct {
+    /* 0x000, 0x8003C9F8 */ s32 buttonConfig[BUTTON_COUNT];
+    /* 0x020, 0x8003CA18 */ u16 buttonMask[BUTTON_COUNT];
+    /* 0x030, 0x8003CA28 */ s32 timeAttackRecords[TIMEATTACK_EVENT_END];
+    /* 0x0B0, 0x8003CAA8 */ s32 cloakColors[6];
+    /* 0x0C8, 0x8003CAC0 */ s32 windowColors[3];
+    /* 0x0D4, 0x8003CACC */ s32 equipOrderTypes[ITEM_END];
+    /* 0x100, 0x8003CAF8 */ s32 isCloakLiningReversed;
+    /* 0x104, 0x8003CAFC */ s32 isSoundMono;
+    /* 0x108, 0x8003CB00 */ s32 D_8003CB00;
+    /* 0x10C, 0x8003CB04 */ s32 D_8003CB04;
+} GameSettings; /* size=0x110 */
+
+typedef struct {
+    /* 0x00 */ u8 Magic[2];
+    /* 0x02 */ u8 Type;
+    /* 0x03 */ u8 BlockEntry;
+    /* 0x04 */ char Title[64];
+    /* 0x44 */ u8 reserve[28];
+    /* 0x60 */ u8 Clut[32];
+    /* 0x80 */ u8 Icon[3 * 128];
+} MemcardHeader; /* size=0x200 */
+
+typedef struct {
+    /* 0x00 */ char name[12];
+    /* 0x0C */ s32 level;
+    /* 0x10 */ s32 gold;
+    /* 0x14 */ s32 playHours;
+    /* 0x18 */ s32 playMinutes;
+    /* 0x1C */ s32 playSeconds;
+    /* 0x20 */ s32 cardIcon;
+    /* 0x24 */ u32 endGameFlags;
+    /* 0x28 */ s16 stage;
+    /* 0x2A */ u16 nRoomsExplored;
+    /* 0x2C */ u16 roomX;
+    /* 0x2E */ u16 roomY;
+    /* 0x30 */ s32 character;
+    /* 0x34 */ s32 saveSize;
+} SaveInfo; /* 0x38 */
+
+typedef struct {
+    /* 0x000 */ MemcardHeader header;
+    /* 0x200 */ SaveInfo info;
+    /* 0x238 */ PlayerStatus status;
+    /* 0x56C */ MenuNavigation menuNavigation;
+    /* 0x5B8 */ GameSettings settings;
+    /* 0x6C8 */ u8 castleFlags[0x300];
+    /* 0x6C8 */ u8 castleMap[0x800];
+    /* 0x11C8 */ s32 rng;
+} SaveData; /* size = 0x11CC */
+
+typedef struct {
+    /* 801BC8E0 */ s32 icon[BLOCK_PER_CARD];
+    /* 801BC91C */ u32 slot[BLOCK_PER_CARD];
+    /* 801BC958 */ u32 stage[BLOCK_PER_CARD];
+    /* 801BC994 */ u32 roomX[BLOCK_PER_CARD];
+    /* 801BC9D0 */ u32 roomY[BLOCK_PER_CARD];
+    /* 801BCA0C */ u32 level[BLOCK_PER_CARD];
+    /* 801BCA48 */ u32 gold[BLOCK_PER_CARD];
+    /* 801BCA84 */ u32 nRoomsExplored[BLOCK_PER_CARD];
+    /* 801BCAC0 */ u32 playHours[BLOCK_PER_CARD];
+    /* 801BCAFC */ u32 playSeconds[BLOCK_PER_CARD];
+    /* 801BCB38 */ u32 playMinutes[BLOCK_PER_CARD];
+    /* 801BCB74 */ u32 kind[BLOCK_PER_CARD]; // 0: play, 1: clear, 2: replay
+    /* 801BCBB0 */ u32 character[BLOCK_PER_CARD];
+    /* 801BCBEC */ char name[BLOCK_PER_CARD][10];
+    s32 padding; // not really padding, it's a memory card status
+} SaveSummary;   // size=0x3A8
+
+typedef struct {
+    u_long* vlcbuf[2];  // 0x00
+    int vlcid;          // 0x08
+    u_short* imgbuf[2]; // 0x0c
+    int imgid;          // 0x20
+    RECT rect[2];       // 0x24
+    int rectid;         // 0x32
+    RECT slice;
+    int isdone;
+} DECENV;
+
+typedef struct {
+    DECENV dec;   // 4c
+    DISPENV disp; // 84
+    DRAWENV draw; // 98
+    RECT rect;
+    s32 unkFC;
+} StreamEnv;
+
+typedef struct {
+    /* 0x00 */ u8* gfxPage;
+    /* 0x04 */ u8* gfxIndex;
+    /* 0x08 */ u8* clut;
+    /* 0x0C */ u8* collision;
+} TileDefinition; // size = 0x10
+
+#define LAYOUT_RECT_PARAMS_HIDEONMAP 0x10
+#define LAYOUT_RECT_PARAMS_UNKNOWN_20 0x20
+#define LAYOUT_RECT_PARAMS_UNKNOWN_40 0x40
+
+typedef struct {
+    /* 0x00 */ u32 left : 6;
+    /* 0x04 */ u32 top : 6;
+    /* 0x08 */ u32 right : 6;
+    /* 0x0C */ u32 bottom : 6;
+    /* 0x10 */ u8 params : 8;
+} LayoutRect; // size = 0x4
+
+typedef struct {
+    /* 0x00 */ u16* layout;
+    /* 0x04 */ TileDefinition* tileDef;
+    /* 0x08 */ LayoutRect rect;
+    /* 0x0C */ u16 zPriority;
+    /* 0x0E */ u16 flags;
+} LayerDef; // size = 0x10
+
+typedef struct {
+    LayerDef* fg;
+    LayerDef* bg;
+} RoomDef;
+
+typedef struct {
+    /* 0x00 */ s16 flags;
+    /* 0x02 */ s16 offsetx;
+    /* 0x04 */ s16 offsety;
+    /* 0x06 */ s16 width;
+    /* 0x08 */ s16 height;
+    /* 0x0A */ s16 clut;
+    /* 0x0C */ s16 tileset;
+    /* 0x0E */ s16 left;
+    /* 0x10 */ s16 top;
+    /* 0x12 */ s16 right;
+    /* 0x14 */ s16 bottom;
+} SpritePart; /* size=0x16 */
+
+typedef struct {
+    /* 0x00 */ u16 count;
+    /* 0x02 */ SpritePart parts[0];
+} SpriteParts; // size = 4 + count*sizeof(SpritePart)
+
+typedef struct {
+    /* 0x00 */ u16 frame;
+    /* 0x02 */ s16 pivotX;
+    /* 0x04 */ s16 pivotY;
+    /* 0x06 */ u16 clut;
+} AluFrame; /* size=0x8 */
+
+/*
+ * In the PSX version of the game, stage objects begin with this
+ * header (or `AbbreviatedOverlay`) at 0x0. This describes the
+ * primary interface for the game engine to interact with stages.
+ */
+typedef struct {
+    /* 8003C774 */ void (*Update)(void);
+    /* 8003C778 */ void (*HitDetection)(void);
+    /* 8003C77C */ void (*UpdateRoomPosition)(void);
+    /* 8003C780 */ void (*InitRoomEntities)(s32 layoutId);
+    /* 8003C784 */ RoomHeader* rooms;
+    /* 8003C788 */ SpriteParts** spriteBanks;
+    /* 8003C78C */ u_long** cluts;
+    /* 8003C790 */ void* objLayoutHorizontal;
+    /* 8003C794 */ RoomDef* tileLayers;
+    /* 8003C798 */ GfxBank** gfxBanks;
+    /* 8003C79C */ void (*UpdateStageEntities)(void);
+    /* 8003C7A0 */ u8** unk2C; // sprite bank 1
+    /* 8003C7A4 */ u8** unk30; // sprite bank 2
+    /* 8003C7A8 */ s32* unk34;
+    /* 8003C7AC */ s32* unk38;
+    /* 8003C7B0 */ void (*StageEndCutScene)(void);
+} Overlay;
+
+/*
+ * Several stages start their sprite bank array immeidately
+ * after `UpdateStageEntities` instead of including the
+ * trailing 5 pointers found in `Overlay`. `DRA` seems to
+ * know which stages have valid data in those fields and
+ * which don't.
+ */
+typedef struct {
+    /* 8003C774 */ void (*Update)(void);
+    /* 8003C778 */ void (*HitDetection)(void);
+    /* 8003C77C */ void (*UpdateRoomPosition)(void);
+    /* 8003C780 */ void (*InitRoomEntities)(s32 layoutId);
+    /* 8003C784 */ RoomHeader* rooms;
+    /* 8003C788 */ SpriteParts** spriteBanks;
+    /* 8003C78C */ u_long** cluts;
+    /* 8003C790 */ void* objLayoutHorizontal;
+    /* 8003C794 */ RoomDef* tileLayers;
+    /* 8003C798 */ GfxBank** gfxBanks;
+    /* 8003C79C */ void (*UpdateStageEntities)(void);
+} AbbreviatedOverlay;
+
+/*
+ * A second type of abbreviated overlay which allows
+ * two spritebanks and provides no cutscene handler.
+ */
+typedef struct {
+    /* 8003C774 */ void (*Update)(void);
+    /* 8003C778 */ void (*HitDetection)(void);
+    /* 8003C77C */ void (*UpdateRoomPosition)(void);
+    /* 8003C780 */ void (*InitRoomEntities)(s32 layoutId);
+    /* 8003C784 */ RoomHeader* rooms;
+    /* 8003C788 */ SpriteParts** spriteBanks;
+    /* 8003C78C */ u_long** cluts;
+    /* 8003C790 */ void* objLayoutHorizontal;
+    /* 8003C794 */ RoomDef* tileLayers;
+    /* 8003C798 */ GfxBank** gfxBanks;
+    /* 8003C79C */ void (*UpdateStageEntities)(void);
+    /* 8003C7A0 */ u8** unk2C; // sprite bank 1
+    /* 8003C7A4 */ u8** unk30; // sprite bank 2
+} AbbreviatedOverlay2;
+
+typedef enum {
+    EFFECT_NONE = 0,
+    EFFECT_SOLID = 1 << 0, // Test floor and ceiling sensors
+    EFFECT_SIDE = 1 << 1,  // Test wall sensors
+    EFFECT_SINK = 1 << 2,  // Lower y by 1px every 4 frames, unused
+    EFFECT_WATER = 1 << 3,
+    EFFECT_MIST_ONLY = 1 << 4,
+    EFFECT_HURT = 1 << 5, // Used by spikes in CAT, DAI, NO2, NZ1
+    // Used when you jump from below to a platform. You can drop below.
+    EFFECT_SOLID_FROM_ABOVE = 1 << 6,
+    // Doesn't collide when falling on it but you cannot go back up.
+    EFFECT_SOLID_FROM_BELOW = 1 << 7,
+    EFFECT_UNK_0100 = 1 << 8,  // unused
+    EFFECT_UNK_0200 = 1 << 9,  // unused
+    EFFECT_UNK_0400 = 1 << 10, // unused
+    EFFECT_UNK_0800 = 1 << 11, // slope related
+    EFFECT_UNK_1000 = 1 << 12, // slope related
+    EFFECT_UNK_2000 = 1 << 13, // slope related
+    EFFECT_UNK_4000 = 1 << 14, // slope related
+    EFFECT_UNK_8000 = 1 << 15, // slope related
+
+    // Aggregate helpers below:
+    EFFECT_BLOCK = EFFECT_SOLID | EFFECT_SIDE,
+    EFFECT_NOTHROUGH = EFFECT_SOLID | EFFECT_SINK,
+    EFFECT_NOTHROUGH_PLUS = EFFECT_BLOCK | EFFECT_SINK,
+    // Should be renamed once we know what 8000 and 4000 are
+    EFFECT_UNK_C000 = EFFECT_UNK_8000 | EFFECT_UNK_4000
+} ColliderEffectFlags;
+
+typedef struct Collider {
+    /* 0x00 */ u32 effects;
+    /* 0x04 */ s32 unk4; // possibly an x offset
+    /* 0x08 */ s32 unk8;
+    /* 0x0C */ s32 unkC;
+    /* 0x10 */ s32 unk10;
+    /* 0x14 */ s32 unk14; // Left edge of queried tile collision
+    /* 0x18 */ s32 unk18; // Top edge of queried tile collision
+    /* 0x1C */ s32 unk1C; // Right edge of queried tile collision
+    /* 0x20 */ s32 unk20; // Bottom edge of queried tile collision
+} Collider;               /* size=0x24 */
+
+// referenced in tools/sotn-assets/assets/xamusicconfig/handler.go
+typedef struct XaMusicConfig {
+    u32 cd_addr;
+    s32 unk228;
+    u8 filter_file;
+    u8 filter_channel_id;
+    u8 volume;
+    u8 unk22f;
+    u32 unk230;
+} XaMusicConfig;
+
+// referenced in tools/sotn-assets/assets/sfxconfig/handler.go
+typedef struct {
+    /* 0x00 */ u8 vabid;
+    /* 0x01 */ u8 prog;
+    /* 0x02 */ u8 note;
+    /* 0x03 */ s8 volume;
+    /* 0x04 */ u8 mode;
+    /* 0x05 */ u8 tone;
+    /* 0x06 */ u8 unk6;
+} Unkstruct_800BF554; // size = 0x7
+
+typedef struct {
+    /* 0x00 */ const char* name;
+    /* 0x04 */ s16 hitPoints;
+    /* 0x06 */ s16 attack;
+    /* 0x08 */ u16 attackElement;
+    /* 0x0A */ s16 defense;
+    /* 0x0C */ u16 hitboxState;
+    /* 0x0E */ u16 weaknesses;
+    /* 0x10 */ u16 strengths;
+    /* 0x12 */ u16 immunes;
+    /* 0x14 */ u16 absorbs;
+    /* 0x16 */ u16 level;
+    /* 0x18 */ u16 exp;
+    /* 0x1A */ u16 rareItemId;
+    /* 0x1C */ u16 uncommonItemId;
+    /* 0x1E */ u16 rareItemDropRate;
+    /* 0x20 */ u16 uncommonItemDropRate;
+    /* 0x22 */ u8 hitboxWidth;
+    /* 0x23 */ u8 hitboxHeight;
+    /* 0x24 */ s32 flags;
+} EnemyDef; /* size=0x28 */
+
+typedef struct {
+    /* 0x00 */ s16 attack;
+    /* 0x02 */ s16 heartCost;
+    /* 0x04 */ u16 attackElement;
+    /* 0x06 */ u8 chainLimit; // how many instances of subwpn can coexist
+    /* 0x07 */ u8 nFramesInvincibility;
+    /* 0x08 */ u16 stunFrames;
+    /* 0x0A */ u8 anim;
+    /* 0x0B */ u8 blueprintNum; // Blueprint for entity factory spawning subwpn
+    /* 0x0C */ u16 hitboxState;
+    /* 0x0E */ u16 hitEffect;
+    /* 0x10 */ u8 crashId; // the ID for the crash version of this subweapon
+    /* 0x11 */ u8 unk11;
+    /* 0x12 */ u16 entityRoomIndex;
+} SubweaponDef; /* size=0x14 */
+
+// Defines the equipment that can be set on left and right hand
+// This includes weapons, throw weapons, consumable and restoration items.
+// g_EquipDefs it is assumed the equip data starts from here
+// https://github.com/3snowp7im/SotN-Randomizer/blob/master/src/stats.js
+typedef struct {
+    /* 0x00 */ const char* name;
+    /* 0x04 */ const char* description;
+    /* 0x08 */ s16 attack;
+    /* 0x0A */ s16 defense;
+    /* 0x0C */ u16 element;
+    /* 0x0E */ u8 itemCategory;
+    /* 0x0F */ u8 weaponId;
+    /* 0x10 */ u8 palette;
+    /* 0x11 */ u8 unk11;
+    /* 0x12 */ u8 playerAnim;
+    /* 0x13 */ u8 unk13;
+    /* 0x14 */ u8 unk14;
+    /* 0x15 */ u8 lockDuration;
+    /* 0x16 */ u8 chainLimit;
+    /* 0x17 */ u8 unk17;
+    /* 0x18 */ u8 specialMove;
+    /* 0x19 */ u8 isConsumable;
+    /* 0x1A */ u8 enemyInvincibilityFrames;
+    /* 0x1B */ u8 unk1B;
+    /* 0x1C */ u32 comboSub;
+    /* 0x20 */ u32 comboMain;
+    /* 0x24 */ u16 mpUsage;
+    /* 0x26 */ u16 stunFrames;
+    /* 0x28 */ u16 hitType;
+    /* 0x2A */ u16 hitEffect;
+    /* 0x2C */ u16 icon;
+    /* 0x2E */ u16 iconPalette;
+    /* 0x30 */ u16 criticalRate;
+} Equipment; /* size=0x32 */
+
+// Defines armor, cloak and rings
+typedef struct {
+    /* 0x00 */ const char* name;
+    /* 0x04 */ const char* description;
+    /* 0x08 */ s16 attBonus;
+    /* 0x0A */ s16 defBonus;
+    /* 0x0C */ u8 statsBonus[4];
+    /* 0x10 */ u16 weakToElements;
+    /* 0x12 */ u16 resistElements;
+#ifndef STAGE_IS_TEK
+    /* 0x14 */ u16 immuneElements;
+    /* 0x16 */ u16 absorbElements;
+#endif
+    /* 0x18 */ u16 icon;
+    /* 0x1A */ u16 iconPalette;
+    /* 0x1C */ u16 equipType;
+} Accessory; /* size=0x1E */
+
+typedef struct {
+    /* 0x00 */ const char* name;
+    /* 0x04 */ const char* combo;
+    /* 0x08 */ char* description;
+    /* 0x0C */ u8 mpUsage;
+    /* 0x0D */ u8 nFramesInvincibility;
+    /* 0x0E */ u16 stunFrames;
+    /* 0x10 */ u16 hitboxState;
+    /* 0x12 */ u16 hitEffect;
+    /* 0x14 */ u16 entityRoomIndex;
+    /* 0x16 */ u16 attackElement;
+    /* 0x18 */ s16 attack;
+} SpellDef;
+
+typedef struct {
+    /* 0x00 */ const char* name;
+    /* 0x04 */ char* desc;
+#ifndef STAGE_IS_TEK
+    /* 0x08 */ u16 icon;
+    /* 0x0A */ u16 iconPalette;
+#ifndef VERSION_BETA
+    /* 0x0C */ s32 unk0C;
+#endif
+#endif
+} RelicDesc; /* size=0x10 */
+
+// Used for the damageKind of DamageParam
+typedef enum {
+    DAMAGEKIND_0,
+    DAMAGEKIND_1,
+    DAMAGEKIND_2,
+    DAMAGEKIND_3,
+    DAMAGEKIND_4,
+    DAMAGEKIND_5,
+    DAMAGEKIND_6,
+    DAMAGEKIND_7,
+    DAMAGEKIND_8,
+    DAMAGEKIND_9,
+    DAMAGEKIND_10,
+    DAMAGEKIND_11,
+    DAMAGEKIND_12,
+    DAMAGEKIND_13,
+    DAMAGEKIND_14,
+    DAMAGEKIND_15,
+    DAMAGEKIND_16,
+    DAMAGEKIND_17,
+    DAMAGEKIND_18,
+} DamageKind;
+
+typedef struct {
+    u32 effects;    // Curse, poison, fire, ice, etc.
+    u32 damageKind; // informed by "dam_kind:%04x\n"
+    s32 damageTaken;
+    u32 unkC;
+} DamageParam;
+
+typedef enum {
+    SHAKE_NONE,
+    SHAKE_Y_SMALL,
+    SHAKE_X_MEDIUM,
+    SHAKE_Y_SMALL2,
+    SHAKE_Y_MEDIUM,
+    SHAKE_5_NULL,
+    SHAKE_Y_HEAVY
+} cameraShakeTypes;
+
+typedef struct {
+    /* 8003C774 */ Overlay o;
+    /* 8003C7B4 */ void (*FreePrimitives)(s32);
+    /* 8003C7B8 */ s16 (*AllocPrimitives)(PrimitiveType type, s32 count);
+    /* 8003C7BC */ void (*CheckCollision)(s32 x, s32 y, Collider* res, s32 unk);
+    /* 8003C7C0 */ void (*ShakeCamera)(cameraShakeTypes arg0);
+    /* 8003C7C4 */ u32 (*UpdateAnim)(
+        FrameProperty* frameProps, AnimationFrame** anims);
+    /* 8003C7C8 */ void (*SetSpeedX)(s32 value);
+    /* 8003C7CC */ Entity* (*GetFreeEntity)(s16 start, s16 end);
+    /* 8003C7D0 */ void (*GetEquipProperties)(
+        s32 handId, Equipment* res, s32 equipId);
+    /* 8003C7D4 */ s32 (*func_800EA5E4)(u32);
+    /* 8003C7D8 */ void (*LoadGfxAsync)(s32 gfxId);
+    /* 8003C7DC */ void (*PlaySfx)(s32 sfxId);
+    /* 8003C7E0 */ s16 (*func_800EDB58)(u8, s32);
+    /* 8003C7E4 */ void (*func_800EA538)(s32 arg0);
+    /* 8003C7E8 */ void (*func_800EA5AC)(u32 a, u32 r, u32 g, u32 b);
+    /* 8003C7EC */ void (*SetFadeMode)(FadeModes fadeMode);
+    // this signature differs from `func_800EB758`. the last
+    // argument is 16-bits instead of 8.
+    /* 8003C7F0 */ void (*func_800EB758)(
+        s16 pivotX, s16 pivotY, Entity* e, u16 flags, POLY_GT4* p, u16 flipX);
+    /* 8003C7F4 */ Entity* (*CreateEntFactoryFromEntity)(
+        Entity* self, u32 flags, s32 arg2);
+    /* 8003C7F8 */ bool (*func_80131F68)(void);
+    /* 8003C7FC */ DR_ENV* (*func_800EDB08)(POLY_GT4* poly);
+    /* 8003C800 */ u16* (*func_80106A28)(u32 arg0, u16 kind);
+    /* 8003C804 */ void (*func_80118894)(Entity*);
+    /* 8003C808 */ EnemyDef* enemyDefs;
+    /* 8003C80C */ Entity* (*func_80118970)(void);
+    // Note type of facingLeft is different from in the C for this function.
+    // Needs s16 to match the code for this, but callers treat it as s32.
+    /* 8003C810 */ s16 (*func_80118B18)(
+        Entity* ent1, Entity* ent2, s32 facingLeft);
+    /* 8003C814 */ s32 (*UpdateUnarmedAnim)(s8* frameProps, u16** frames);
+    /* 8003C818 */ void (*PlayAnimation)(s8*, AnimationFrame** frames);
+    /* 8003C81C */ void (*func_80118C28)(s32 arg0);
+    /* 8003C820 */ void (*func_8010E168)(s32 arg0, s16 arg1);
+    /* 8003C824 */ void (*func_8010DFF0)(s32 arg0, s32 arg1);
+    /* 8003C828 */ u16 (*DealDamage)(
+        Entity* enemyEntity, Entity* attackerEntity);
+    /* 8003C82C */ void (*LoadEquipIcon)(s32 equipIcon, s32 palette, s32 index);
+    /* 8003C830 */ Equipment* equipDefs;
+    /* 8003C834 */ Accessory* accessoryDefs;
+    /* 8003C838 */ void (*AddHearts)(s32 value);
+    /* 8003C83C */ bool (*LoadMonsterLibrarianPreview)(s32 monsterId);
+    /* 8003C840 */ s32 (*TimeAttackController)(
+        TimeAttackEvents eventId, TimeAttackActions action);
+    /* 8003C844 */ void (*ForceAfterImageOn)(void);
+    /* 8003C848 */ s32 (*func_800FE044)(s32, s32);
+    /* 8003C84C */ void (*AddToInventory)(u32 id, EquipKind kind);
+    /* 8003C850 */ RelicDesc* relicDefs;
+    /* 8003C854 */ void (*InitStatsAndGear)(bool debugMode);
+    /* 8003C858 */ s32 (*PlaySfxVolPan)(s32 sfxId, s32 sfxVol, s32 sfxPan);
+    /* 8003C85C */ s32 (*SetVolumeCommand22_23)(s32 vol, s32 distance);
+    /* 8003C860 */ void (*MakeAll)(void);
+    /* 8003C864 */ u32 (*CheckEquipmentItemCount)(u32 itemId, u32 equipType);
+    /* 8003C868 */ void (*GetPlayerSensor)(Collider* col);
+    /* 8003C86C */ void (*RevealSecretPassageAtPlayerPositionOnMap)(s32 arg0);
+    /* 8003C870 */ void (*func_800F2288)(s32 arg0);
+    /* 8003C874 */ void (*GetServantStats)(
+        Entity* entity, s32 spellId, s32 arg2, FamiliarStats* out);
+    /* 8003C878 */ s32 (*func_800FF460)(s32 arg0);
+    /* 8003C87C */ s32 (*func_800FF494)(EnemyDef* arg0);
+    /* 8003C880 */ bool (*CdSoundCommandQueueEmpty)(void);
+    /* 8003C884 */ bool (*func_80133950)(void);
+    /* 8003C888 */ bool (*func_800F27F4)(s32 arg0);
+    /* 8003C88C */ s32 (*GetStatBuffTimer)(s32 arg0);
+    /* 8003C890 */ s32 (*func_800FD664)(s32 arg0);
+    /* 8003C894 */ bool (*CalcPlayerDamage)(DamageParam* damageParam);
+    /* 8003C898 */ void (*LearnSpell)(s32 spellId);
+    /* 8003C89C */ void (*DebugInputWait)(const char* str);
+
+    // exclusive to PSP
+    /* 8003C8A0 */ int (*CalcDealDamageMaria)(s32 baseAttack);
+    /* 8003C8A4 */ bool (*CalcPlayerDamageMaria)(DamageParam* damageParam);
+    /* 8003C8A8 */ u16* (*func_psp_0913FA28)(u32 ch, u16 kind);
+    /* 8003C8AC */ u16 (*func_psp_0913F960)(const char*, u8* ch);
+    /* 8003C8B4 */ void* unused13C;
+} GameApi; /* size=0x140 */
+
+// Used in dra/7879C, ric/pl_blueprints, maria/pl_blueprints, rbo5/unk_4648C,
+// bo4/unk_46E7C
+typedef struct {
+    u8 childId;
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+    u8 unk4;
+    u8 unk5;
+} FactoryBlueprint;
+
+// Used in dra/7E4BC, ric/pl_blueprints, maria/pl_blueprints, rbo5/unk_4648C,
+// bo4/unk_46E7C
+typedef struct {
+    /* 0x00 */ u8 count;
+    /* 0x01 */ u8 r;
+    /* 0x02 */ u8 g;
+    /* 0x03 */ u8 b;
+    /* 0x04 */ u8 w;
+    /* 0x05 */ u8 h;
+    /* 0x06 */ s16 priority;
+    /* 0x08 */ s16 drawMode;
+    /* 0x0A */ s16 unkA;
+    /* 0x0C */ u32 flags;
+} unkStr_8011E4BC; // size = 0x10
+
+typedef struct {
+    void (*D_8013C000)(void);
+    void (*D_8013C004)(u16 params);
+    void (*D_8013C008)(void);
+    void (*GetPlayerSensor)(Collider* col);
+    u8** sprites0;
+    u8** sprites1;
+    u8** sprites2;
+    u8** sprites3;
+} PlayerOvl;
+extern PlayerOvl g_PlOvl;
+extern u8** g_PlOvlAluBatSpritesheet[1];
+extern u8* g_PlOvlSpritesheet[];
+
+/**** Helper signatures - used for M2C, not in main repo ****/
+extern void (*g_api_FreePrimitives)(s32);
+extern s16 (*g_api_AllocPrimitives)(PrimitiveType type, s32 count);
+extern void (*g_api_CheckCollision)(s32 x, s32 y, Collider* res, s32 unk);
+extern void (*g_api_ShakeCamera)(s32 arg0);
+extern void (*g_api_UpdateAnim)(
+    FrameProperty* frameProps, AnimationFrame** anims);
+extern void (*g_api_SetSpeedX)(s32 value);
+extern Entity* (*g_api_GetFreeEntity)(s16 start, s16 end);
+extern void (*g_api_GetEquipProperties)(
+    s32 handId, Equipment* res, s32 equipId);
+extern s32 (*g_api_func_800EA5E4)(u32);
+extern void (*g_api_LoadGfxAsync)(s32 gfxId);
+extern void (*g_api_PlaySfx)(s32 sfxId);
+extern s16 (*g_api_func_800EDB58)(s32, s32);
+extern void (*g_api_func_800EA538)(s32 arg0);
+extern void (*g_api_func_800EA5AC)(u32 a, u32 r, u32 g, u32 b);
+extern Entity* (*g_api_CreateEntFactoryFromEntity)(
+    Entity* self, u32 flags, s32 arg2);
+extern bool (*g_api_func_80131F68)(void);
+extern DR_ENV* (*g_api_func_800EDB08)(POLY_GT4* poly);
+extern u16* (*g_api_func_80106A28)(u32 arg0, u16 kind);
+extern void (*g_api_func_80118894)(Entity*);
+extern EnemyDef* g_api_enemyDefs;
+extern s32 (*g_api_UpdateUnarmedAnim)(s8* frameProps, u16** frames);
+extern void (*g_api_PlayAnimation)(s8*, AnimationFrame** frames);
+extern void (*g_api_func_8010E168)(s32 arg0, s16 arg1);
+extern void (*g_api_func_8010DFF0)(s32 arg0, s32 arg1);
+extern u16 (*g_api_DealDamage)(Entity* enemyEntity, Entity* attackerEntity);
+extern void (*g_api_LoadEquipIcon)(s32 equipIcon, s32 palette, s32 index);
+extern Equipment* g_api_equipDefs;
+extern Accessory* g_api_accessoryDefs;
+extern void (*g_api_AddHearts)(s32 value);
+extern s32 (*g_api_TimeAttackController)(
+    TimeAttackEvents eventId, TimeAttackActions action);
+extern void (*g_api_ForceAfterImageOn)(void);
+extern s32 (*g_api_func_800FE044)(s32, s32);
+extern void (*g_api_AddToInventory)(u32 id, EquipKind kind);
+extern RelicDesc* g_api_relicDefs;
+extern s32 (*g_api_PlaySfxVolPan)(s32 sfxId, s32 sfxVol, s32 sfxPan);
+extern s32 (*g_api_SetVolumeCommand22_23)(s32 vol, s32 distance);
+extern void (*g_api_MakeAll)(void);
+extern u32 (*g_api_CheckEquipmentItemCount)(u32 itemId, u32 equipType);
+extern void (*g_api_GetPlayerSensor)(Collider* col);
+extern void (*g_api_RevealSecretPassageAtPlayerPositionOnMap)(s32 arg0);
+extern void (*g_api_func_800F2288)(s32 arg0);
+extern void (*g_api_GetServantStats)(
+    Entity* entity, s32 spellId, s32 arg2, FamiliarStats* out);
+extern s32 (*g_api_func_800FF460)(s32 arg0);
+extern s32 (*g_api_func_800FF494)(EnemyDef* arg0);
+extern bool (*g_api_CdSoundCommandQueueEmpty)(void);
+extern bool (*g_api_func_80133950)(void);
+extern bool (*g_api_func_800F27F4)(s32 arg0);
+extern s32 (*g_api_GetStatBuffTimer)(s32 arg0);
+extern s32 (*g_api_func_800FD664)(s32 arg0);
+extern bool (*g_api_CalcPlayerDamage)(DamageParam* damageParam);
+extern void (*g_api_LearnSpell)(s32 spellId);
+extern void (*g_api_DebugInputWait)(const char* str);
+/***************************/
+
+typedef struct {
+    /* 0x00 */ u16** frames;   // all the animation frames
+    /* 0x04 */ s8* frameProps; // hitboxes
+    /* 0x08 */ u16 palette;    // palette modifier
+    /* 0x0A */ u16 soundId;    // which sound effect to trigger
+    /* 0x0C */ u8 frameStart;  // when the animation starts
+    /* 0x0D */ u8 soundFrame;  // when the sound effect is triggered
+    /* 0x0E */ s16 unused;     // reserved, always 0
+} WeaponAnimation;             // size = 0x10
+
+#define TILE_SIZE 16
+#define TILE_MASK 0x0F
+#define N_HORIZ_TILES 17
+#define N_VERTI_TILES 16
+
+#define LAYER_SHOW 1
+#define LAYER_TPAGE_ID (0x20 | 0x40)
+#define LAYER_SEMI_TRANS 0x80
+#define LAYER_TPAGE_ALT 0x100
+#define LAYER_CLUT_ALT 0x200
+#define LAYER_WRAP_BG 0x1000
+
+typedef struct {
+    /* 800730D8 0x00 */ u16* layout;
+    /* 800730DC 0x04 */ TileDefinition* tileDef;
+    /* 800730E0 0x08 */ f32 scrollX;
+    /* 800730E4 0x0C */ f32 scrollY;
+    /* 800730E8 0x10 */ u32 unused10;
+    /* 800730EC 0x14 */ u32 unused14;
+    /* 800730F0 0x18 */ u32 order;
+    /* 800730F4 0x1C */ u32 flags;
+    /* 800730F8 0x20 */ u32 w;
+    /* 800730FC 0x24 */ u32 h;
+    /* 80073100 0x28 */ u32 hideTimer;
+    /* 80073104 0x2C */ u32 scrollKind;
+} BgLayer; /* size=0x30 */
+
+typedef struct {
+    /* 80073084 */ u16* fg;
+    /* 80073088 */ TileDefinition* tileDef;
+    /* 8007308C */ f32 scrollX;
+    /* 80073090 */ f32 scrollY;
+    /* 80073094 */ s32 unused10;
+    /* 80073098 */ s32 unused14;
+    /* 8007309C */ s32 order;
+    /* 800730A0 */ u32 flags;
+    /* 800730A4 */ u32 hSize;
+    /* 800730A8 */ u32 vSize;
+    /* 800730AC */ u32 hideTimer;
+    /* 800730B0 */ s32 left;
+    /* 800730B4 */ s32 top;
+    /* 800730B8 */ s32 right;
+    /* 800730BC */ s32 bottom;
+    /* 800730C0 */ s32 x;
+    /* 800730C4 */ s32 y;
+    /* 800730C8 */ s32 width;
+    /* 800730CC */ s32 height;
+    /* 800730D0 */ s32 unk30;
+    /* 800730D4 */ s32 D_800730D4;
+} Tilemap;
+
+typedef struct {
+    /* D_8003C708 */ u16 flags;
+    /* D_8003C70A */ u16 unk2;
+    /* D_8003C70C */ u16 unk4;
+    /* D_8003C70E */ s16 zPriority;
+} FgLayer; /* size=0x8 */
+
+typedef struct {
+    /* D_8003C708 */ u32 flags;
+    /* D_8003C70C */ u32 zPriority;
+} FgLayer32;
+
+enum AluTimers {
+    ALU_T_POISON,
+    ALU_T_CURSE,
+    ALU_T_HITEFFECT,
+    ALU_T_3,
+    ALU_T_4,
+    ALU_T_5,
+    ALU_T_6,
+    ALU_T_7,
+    ALU_T_8,
+    ALU_T_9,
+    ALU_T_USE_SUBWPN,
+    ALU_T_DARKMETAMORPH,
+    ALU_T_USE_SPELL,
+    ALU_T_INVINCIBLE,
+    ALU_T_INVINCIBLE_CONSUMABLES,
+    ALU_T_15,
+};
+
+// A tall player needs to have multiple sensors to detect collision at the
+// center of the body.
+#define NUM_HORIZONTAL_SENSORS 4
+#define NUM_VERTICAL_SENSORS 7
+
+typedef enum {
+    GRAB_REACTION_NORMAL,
+    GRAB_REACTION_STONE = 2,
+} GrabReactionEffect; // these depend to the playable character
+
+typedef enum {
+    GRAB_NONE,
+    GRAB_START,   // enemy requests to grab the player
+    GRAB_HELD,    // player is held by the enemy
+    GRAB_DAMAGE,  // set to deal damage while player is grabbed
+    GRAB_RELEASE, // enemy releases the player with optional damage
+} GrabState;
+
+typedef struct {
+    /* 0x0 80072BD0 */ Collider colFloor[NUM_HORIZONTAL_SENSORS];
+    /* 0x90 80072C60 */ Collider colCeiling[NUM_HORIZONTAL_SENSORS];
+    /* 0x120 80072CF0 */ Collider colWall[NUM_VERTICAL_SENSORS * 2];
+    /* 0x318 80072EE8 */ u32 padPressed;
+    /* 0x31C 80072EEC */ u32 padTapped;
+    /* 0x320 80072EF0 */ u32 padHeld;
+    /* 0x324 80072EF4 */ u32 padSim; // simulate input to force player actions
+    /* 0x328 80072EF8 */ u32 D_80072EF8;
+    /* 0x32C 80072EFC */ s32 demo_timer; // player frozen timer
+    /* 0x330 80072F00 */ s16 timers[16]; /// Indexed with AluTimers
+    /* 0x350 80072F20 */ s32 vram_flag;
+    /* 0x354 80072F24 */ s32 unk04; // copy of the previous field
+    /* 0x358 80072F28 */ s32 unk08;
+    /* 0x35C 80072F2C */ PlayerStateStatus status;
+    /* 0x360 80072F30 */ s32 unk10;
+    /* 0x364 80072F34 */ u32 unk14;
+    // unk18 & 0xFA00 give elemental status of damage received
+    /* 0x368 80072F38 */ s32 unk18;
+    /* 0x36C 80072F3C */ s32 warp_flag;
+#if defined(VERSION_PC)
+    /* 80072F40 */ signed long long unk20; // used as an Entity for maria
+#else
+    /* 0x370 80072F40 */ s32 unk20; // used as an Entity for maria
+#endif
+    /* 0x374 80072F44 */ u32 unk24; // exclusive to maria?
+    /* 0x378 80072F48 */ PfnEntityUpdate unk28;
+    /* 0x37C 80072F4C */ s32 unk2C;
+    /* 0x380 80072F50 */ s32 unk30;
+    /* 0x384 80072F54 */ s32 unk34;
+    /* 0x388 80072F58 */ s32 unk38;
+    /* 0x38C 80072F5C */ s32 unk3C;
+    /* 0x390 80072F60 */ u16 damagePalette;
+    /* 0x392 80072F62 */ u16 high_jump_timer;
+    /* 0x394 80072F64 */ u16 unk44;
+    /* 0x396 80072F66 */ u16 unk46;
+    /* 0x398 80072F68 */ u16 unk48;
+#ifdef VERSION_PSP
+    /* 0x39A 80072F6A */ u16 gravBootTimer;
+#else
+    /* 0x39A 80072F6A */ s16 gravBootTimer;
+#endif
+    /* 0x39C 80072F6C */ u16 unk4C;
+    /* 0x39E 80072F6E */ u16 unk4E;
+    /* 0x3A0 80072F70 */ u16 prev_step;
+    /* 0x3A2 80072F72 */ u16 prev_step_s;
+    /* 0x3A4 80072F74 */ u16 unk54;
+    /* 0x3A6 80072F76 */ u16 healKind;
+    /* 0x3A8 80072F78 */ u16 healAmount;
+    /* 0x3AA 80072F7A */ u16 damageTaken;
+    /* 0x3AC 80072F7C */ u16
+        unk5C; // ALU: hellfire spell state, RIC: isPrologue
+    /* 0x3AE 80072F7E */ u16 unk5E;              // status ailment timer
+    /* 0x3B0 80072F80 */ u16 grabState;          // see GrabState
+    /* 0x3B2 80072F82 */ u16 grabReactionEffect; // see GrabReactionEffect
+    /* 0x3B4 80072F84 */ u16 grabDamage;
+    /* 0x3B6 80072F86 */ u16 unk66;
+    /* 0x3B8 80072F88 */ u16 unk68;
+    /* 0x3BA 80072F8A */ u16 unk6A;
+    /* 0x3BC 80072F8C */ u16 unk6C;
+    /* 0x3BE 80072F8E */ u16 unk6E;
+    /* 0x3C0 80072F90 */ u16 unk70;
+    /* 0x3C2 80072F92 */ u16 unk72;
+    /* 0x3C4 80072F94 */ u32 unk74;
+    /* 0x3C8 80072F98 */ u16 unk78;
+    /* 0x3CA 80072F9A */ u16 unk7A;
+    /* 0x3CC 80072F9C */ u16 unk7C;
+    /* 0x3CE 80072F9E */ u16 unk7E;
+} PlayerState; /* size = 0x3D0 */
+
+// Primitive used ad-hoc for the Player entity and the after-image effect
+typedef struct {
+    /* 0x00 */ RECT rect0;
+    /* 0x08 */ RECT rect1;
+    /* 0x10 */ RECT rect2;
+    /* 0x18 */ u8 r0;
+    /* 0x19 */ u8 b0;
+    /* 0x1A */ u8 g0;
+    /* 0x1B */ u8 enableColorBlend;
+    /* 0x1C */ u8 r1;
+    /* 0x1D */ u8 b1;
+    /* 0x1E */ u8 g1;
+    /* 0x1F */ u8 tpage;
+    /* 0x20 */ u8 r2;
+    /* 0x21 */ u8 b2;
+    /* 0x22 */ u8 g2;
+    /* 0x23 */ u8 flipX;
+    /* 0x24 */ u8 r3;
+    /* 0x25 */ u8 b3;
+    /* 0x26 */ u8 g3;
+    /* 0x27 */ u8 unk27;
+} PlayerDraw; /* size = 0x28 */
+
+// Used to track the state of moves the player does with a sequence of buttons.
+// This includes spells, some of Richter's moves, etc.
+typedef struct {
+    s16 buttonsCorrect;
+    s16 timer;
+} ButtonComboState;
+
+// shared between DRA, RIC, MAR
+typedef struct {
+    s16 curFrame;
+    s16 drawFlags;
+    u16 palette;
+    s16 enabled;
+} DebugInfo;
+
+// Used in game.h
+typedef struct {
+#ifdef STAGE_IS_TEK
+    s32 unk0;
+    s32 primIndex;
+#else
+    /* 0x800973F8 */ s32 primIndex;
+    /* 0x800973FC */ s32 D_800973FC;
+#endif
+    /* 0x80097400 */ bool pauseEnemies; // True for Stopwatch and cutscenes
+    /* 0x80097404 */ s32 : 32;
+    /* 0x80097408 */ s32 g_zEntityCenter;
+    /* 0x8009740C */ s32 unk14;
+    /* 0x80097410 */ s32 BottomCornerTextTimer;
+    /* 0x80097414 */ s32 BottomCornerTextPrims;
+    /* 0x80097418 */ s32 unk20;
+    /* 0x8009741C */ s32 unk24;
+    /* 0x80097420 */ s32 unk28;
+    /* 0x80097424 */ s32 unk2C;
+
+    // size must be 8 for the loop in RunMainEngine, while
+    // PreventEntityFromRespawning suggests it has a size of 32
+    /* 0x80097428 */ s32 D_80097428[8];
+    /* 0x80097448 */ s32 D_80097448;
+    /* 0x8009744C */ s32 D_8009744C;
+    /* 0x80097450 */ s32 D_80097450;
+    /* 0x80097454 */ s32 : 32;
+    /* 0x80097458 */ s32 : 32;
+    /* 0x8009745C */ s32 : 32;
+    /* 0x80097460 */ s32 : 32;
+    /* 0x80097464 */ s32 : 32;
+    /* 0x80097468 */ s32 : 32;
+    /* 0x8009746C */ s32 : 32;
+    /* 0x80097470 */ s32 : 32;
+    /* 0x80097474 */ s32 : 32;
+    /* 0x80097478 */ s32 : 32;
+    /* 0x8009747C */ s32 : 32;
+    /* 0x80097480 */ s32 : 32;
+    /* 0x80097484 */ s32 : 32;
+    /* 0x80097488 */ f32 shoveX;
+    /* 0x8009748C */ f32 shoveY;
+} unkGraphicsStruct;
+
+typedef struct {
+    RECT D_800ACD80;
+    RECT D_800ACD88;
+    RECT D_800ACD90;
+    RECT D_800ACD98;
+    RECT D_800ACDA0;
+    RECT D_800ACDA8;
+    RECT D_800ACDB0;
+    RECT D_800ACDB8;
+    RECT D_800ACDC0;
+    RECT D_800ACDC8;
+    RECT D_800ACDD0;
+    RECT D_800ACDD8;
+    RECT D_800ACDE0;
+    RECT D_800ACDE8;
+#ifdef VERSION_US
+    RECT D_800ACDF0;
+#endif
+} Vram;
+
+// Used in dra/4A538, dra_psp/3250, game.h
+typedef struct {
+    /* 0x00 */ u_long* desc;
+    /* 0x04 */ u_long* data;
+    /* 0x08 */ u16 unk8; // anim mode?
+    /* 0x0A */ u16 index;
+    /* 0x0C */ u16 unkC;
+    /* 0x0E */ u16 unkE;
+    /* 0x10 */ u8 unkArray[0x30]; // color buffer
+} Unkstruct_8006C3C4;             // size = 0x40
+
+extern s32 D_8003925C;
+extern s32 g_GameClearFlag;
+
+extern s32 D_8003C0EC[4];
+extern s32 D_8003C100;
+extern u16 g_ClutIds[]; // array of palette VRAM offsets
+extern s32 g_CutsceneHasControl;
+extern FgLayer D_8003C708;
+extern s16 D_8003C710;
+extern s16 D_8003C712;
+extern s32 D_8003C728;
+extern s32 D_8003C730;
+extern GameState g_GameState;
+extern s32 D_8003C738;
+extern s32 D_8003C73C;
+extern u32 D_8003C744;
+extern u32 g_RoomCount;
+extern Vram g_Vram;
+extern GameApi g_api;
+extern bool g_PauseAllowed;
+extern u32 g_GameTimer; // Increases when unpaused
+extern bool D_8003C908;
+extern s32 g_EquippedWeaponIds[2];
+extern u32 g_Timer; // Increases continuously
+extern s16* D_92641C8[];
+extern s32 g_MapCursorTimer;
+/* 0x8003C9A0 */ extern s32 g_PlayableCharacter;
+/* 0x8003C9A4 */ extern u32 g_GameEngineStep;
+/* 0x8003C9A8 */ extern MenuNavigation g_MenuNavigation;
+/* 0x8003C9F8 */ extern GameSettings g_Settings;
+extern GpuBuffer g_GpuBuffers[2];
+// member of D_800542FC, TODO: overlap, hard to remove
+extern s16 g_GpuBuffers_1_buf_draw_clip_y;
+extern const char g_MemcardSavePath[];
+extern const char aBaslus00067dra[19];
+extern const char g_strMemcardRootPath[];
+extern s32 g_LoadFile;
+extern s32 D_8006BB00;
+extern u8 g_CastleMap[0x800];
+extern s32 D_8006C374;
+extern s32 D_8006C378;
+extern GpuBuffer* g_CurrentBuffer; // g_CurrentBuffer;
+extern Point32 D_8006C384;
+extern Point32 D_8006C38C;
+extern u32 g_CdStep; // CdStep
+extern s32 D_8006C3AC;
+extern s32 g_cameraOffsetX;
+extern s32 g_cameraOffsetY;
+extern s32 g_IsUsingCd;
+extern Entity* g_CurrentEntity;
+extern Unkstruct_8006C3C4 D_8006C3C4[32];
+extern s32 g_Servant; // Currently selected familiar in the menu
+
+#define CLUT_INDEX_SERVANT 0x400
+#define CLUT_INDEX_SERVANT_OVERWRITE 0x430
+extern u16 g_Clut[3][0x1000];
+
+extern PlayerState g_Player;
+
+extern GfxLoad g_GfxLoad[0x10];
+extern u32 g_GameStep;
+extern s32 g_ServantLoaded; // Currently loaded servant in-memory
+extern Event g_EvSwCardEnd; // 80073068
+extern Event g_EvSwCardErr; // 8007306C
+extern Event g_EvSwCardTmo; // 80073070
+extern s32 g_PrevScrollX;
+extern Event g_EvSwCardNew; // 80073078
+extern s32 g_PrevScrollY;
+extern s32 D_80073080;
+extern Tilemap g_Tilemap;
+extern BgLayer g_BgLayers[MAX_BG_LAYER_COUNT];
+
+#define PLAYER_CHARACTER 0
+#define TOTAL_ENTITY_COUNT 256
+#define STAGE_ENTITY_START 64
+#define MaxEntityCount 32
+#define PLAYER g_Entities[PLAYER_CHARACTER]
+// The max number of afterimage sprites is 6 (two per entity)
+// Going over this number will crash the game.
+#define MaxAfterImages 6
+// The afterimage effect is animated by using an index to step through each
+// animation table.
+#define MaxAfterImageIndex 10
+typedef enum {
+    E_AFTERIMAGE_1 = 1,
+    E_AFTERIMAGE_2,
+    E_AFTERIMAGE_3,
+    UNK_ENTITY_4,
+    UNK_ENTITY_5,
+    UNK_ENTITY_6,
+    UNK_ENTITY_7,
+    UNK_ENTITY_8,
+    E_WEAPON = 0x10,
+    UNK_ENTITY_11 = 0x11, // related to wolf
+    UNK_ENTITY_12 = 0x12, // related to wolf?
+    UNK_ENTITY_13 = 0x13,
+    UNK_ENTITY_20 = 0x20,
+    E_BOSS_WEAPON = 0x50,
+    UNK_ENTITY_51 = 0x51, // SubWeapons container falling liquid
+    UNK_ENTITY_100 = 0x100
+} EntityTypes;
+
+// 0x00:      player entity
+// 0x01-0x03: player after-image
+// 0x04-0x07: servant entities
+// 0x08-0x0F: factory entities
+// 0x10-0x1E: alucard weapons and richter's whip
+// 0x1F:      ???
+// 0x20-0x2F: subweapon entities
+// 0x30-0x3F: mostly used for decoration and graphics effects
+// 0x40-0x7F: stage entities, other entities can interact with
+// 0x80-0xFF: stage entities, only player can interact with
+extern Entity g_Entities[TOTAL_ENTITY_COUNT];
+
+extern Event g_EvHwCardEnd;
+extern Event g_EvHwCardErr;
+extern Event g_EvHwCardTmo;
+extern Event g_EvHwCardNew;
+extern u8 g_Pix[4][128 * 128 / 2];
+extern Primitive g_PrimBuf[MAX_PRIM_COUNT];
+extern s32 g_PlayerX;
+extern s32 g_PlayerY;
+extern u32 g_randomNext;
+extern s32 D_80096ED8[];
+extern s32 D_800973EC; // flag to check if the menu is shown
+extern unkGraphicsStruct g_unkGraphicsStruct;
+extern Pad g_pads[PAD_COUNT];
+extern Stages g_StageId;
+extern s32 D_800974A4; // map open
+extern DR_ENV D_800974AC[16];
+extern s32 g_UseDisk;
+extern s32 D_800978B4;
+extern s32 D_800978C4;
+extern u32 g_MenuStep;
+extern s32 D_80097904;
+extern s32 g_ScrollDeltaX;
+extern s32 g_ScrollDeltaY;
+extern s32 currentMusicId;
+extern DemoMode g_DemoMode;
+extern s32 g_LoadOvlIdx; // 0x80097918
+extern Point32 D_8009791C;
+extern s32 D_80097924;
+extern s32 stopMusicFlag;
+extern GpuUsage g_GpuUsage;
+extern PlayerStatus g_Status;
+extern u32 D_80097C98;
+extern s32 subWeapon; // g_SubweaponId
+extern s32 D_80097C40[];
+extern PlayerDraw g_PlayerDraw[0x10];
+extern bool g_InvincibleFlag;
+extern s32 D_800987B4;
+extern StHEADER* D_800987C8;
+extern s32 g_DebugPlayer;
+extern s32 D_80098894;
+
+#include <game_psp.h>
+
+#include "palettes.h"
+#include "enemies.h"
+
+#endif

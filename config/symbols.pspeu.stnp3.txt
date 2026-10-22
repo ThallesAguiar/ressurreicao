@@ -1,0 +1,149 @@
+EntityMermanRockLeftSide = 0x09237B08;
+EntityMermanRockRightSide = 0x09237F70;
+EntityJewelSwordDoor = 0x092383A0;
+EntityFallingRock2 = 0x09238598;
+EntityStairwayPiece = 0x092387B8;
+EntityFallingRock = 0x09238E30;
+EntityBackgroundBushes = 0x09239058;
+EntityBackgroundTrees = 0x09239600;
+EntitySlogra = 0x09239960;
+EntitySlograSpear = 0x0923AA30;
+EntitySlograSpearProjectile = 0x0923AC78;
+EntityBreakable = 0x0923ADC8; // source=match
+EntityBackgroundLightning = 0x0923AF48;
+EntityCastleDoor = 0x0923B360;
+EntityTrapDoor = 0x0923B788;
+EntityGaibon = 0x0923B938;
+EntityGaibonLeg = 0x0923D6E0;
+EntitySmallGaibonProjectile = 0x0923D810;
+EntityLargeGaibonProjectile = 0x0923D978;
+EntityTilemapShufflerUnused = 0x0923DC40;
+EntityShuttingWindow = 0x0923DD78;
+EntityUnkId16 = 0x0923E118;
+EntityBackgroundBlock = 0x0923E1F0;
+EntityLockCamera = 0x0923E2E8; // source=match
+EntityCavernDoorLever = 0x0923E768;
+EntityCavernDoorPlatform = 0x0923E948;
+EntityCavernDoor = 0x0923EAA0;
+EntityWeightsSwitch = 0x0923F020;
+EntityPathBlockSmallWeight = 0x0923F1A0;
+EntityPathBlockTallWeight = 0x0923F538;
+EntityHeartRoomSwitch = 0x0923F890;
+EntityHeartRoomGoldDoor = 0x0923FA08;
+EntityExplosionPuffOpaque = 0x0923FF70;
+EntityLightningThunder = 0x092404E0;
+EntityLightningCloud = 0x092405B8;
+EntityTransparentWater = 0x092406B8;
+InitRoomEntities = 0x09241630; // source=match
+UpdateRoomPosition = 0x09241860; // source=match
+EntityBloodSplatter = 0x09241A50;
+EntityBloodyZombie = 0x09242228;
+EntityBloodDrips = 0x09242C40;
+EntityBat = 0x09242ED0;
+EntityStageNamePopup = 0x09243208; // source=match
+EntityRedDoor = 0x09244170; // source=match
+Update = 0x092453D0; // source=match
+UpdateStageEntities = 0x092457B0; // source=match
+EntityMerman2 = 0x09245A18;
+EntityMermanFireSpit = 0x09247270;
+EntityMediumWaterSplash = 0x09247508;
+EntityMermanWaterSplash = 0x09247608;
+EntityMerman2JumpAir = 0x09247AB8;
+EntityHighWaterSplash = 0x09247B68;
+EntityDeadMerman = 0x09247DF0;
+EntityMermanSpawner = 0x09247EF8;
+EntityMerman = 0x092480C8;
+EntityMermanFireball = 0x092491E8;
+EntityMermanJumpAir = 0x092493D0;
+EntityMermanExplosion = 0x09249480;
+EntitySoulStealOrb = 0x0924A008; // source=match
+EntityEnemyBlood = 0x0924A568; // source=match
+EntityPrizeDrop = 0x0924B9E0; // source=match
+EntityExplosion = 0x0924C7F8; // source=match
+EntityEquipItemDrop = 0x0924CAF8; // source=match
+EntityRelicOrb = 0x0924D350; // source=match
+EntityPersistentItemDrop = 0x0924E488; // source=match
+EntityMessageBox = 0x0924E658; // source=match
+EntityUnkId13 = 0x0924EF18;
+EntityExplosionVariants = 0x0924F190;
+EntityGreyPuff = 0x0924F308;
+EntityIntenseExplosion = 0x0924F618;
+HitDetection = 0x0924F8E0; // source=match
+EntityDamageDisplay = 0x092510B0; // source=match
+EntityBoneScimitar = 0x09251BB8;
+EntityBoneScimitarParts = 0x09252588;
+EntityAlucardWaterEffect = 0x092528C0; // source=match
+EntitySplashWater = 0x092538C0; // source=match
+EntitySurfacingWater = 0x09254450; // source=match
+EntitySideWaterSplash = 0x09254BA8; // source=match
+EntitySmallWaterDrop = 0x092550D0; // source=match
+EntityWaterDrop = 0x09255400; // source=match
+EntityRoomForeground = 0x09255D58; // source=match
+EntityOwl = 0x09255E70;
+EntityOwlKnight = 0x09257AD8;
+EntityOwlKnightSword = 0x092598E0;
+EntityOwlTarget = 0x09259A18;
+EntityDummy = 0x0925ABA0;
+EntityBlade = 0x0925C350;
+EntityBladeWeapon = 0x0925D890;
+EntityGurkha = 0x0925DF90;
+EntityGurkhaWeapon = 0x0925F370;
+EntityHammer = 0x0925F9D0;
+EntityGurkhaBodyParts = 0x09260A58;
+EntityHammerWeapon = 0x09260EE0;
+EntityZombie = 0x09261738;
+EntityZombieSpawner = 0x09261A58;
+sprites_np3_0 = 0x09262780;
+sprites_np3_1 = 0x09263520;
+sprites_np3_2 = 0x09263968;
+sprites_np3_3 = 0x09263F30;
+sprites_np3_4 = 0x09264658;
+sprites_np3_5 = 0x09264AE0;
+sprites_np3_6 = 0x09264C50;
+sprites_np3_7 = 0x09265B98;
+sprites_np3_8 = 0x09267710;
+sprites_np3_9 = 0x09267910;
+sprites_np3_10 = 0x092692F8;
+sprites_np3_11 = 0x0926A5C8;
+spriteBanks = 0x0926A988;
+rooms_layers = 0x0926AC98;
+cluts = 0x0926AEA0;
+gfxBanks = 0x0926B038;
+EntityUpdates = 0x0926B088;
+g_EInitBreakable = 0x0926B1F8;
+g_EInitObtainable = 0x0926B208;
+g_EInitParticle = 0x0926B218;
+g_EInitSpawner = 0x0926B228;
+g_EInitInteractable = 0x0926B238;
+g_EInitUnkId13 = 0x0926B248;
+g_EInitLockCamera = 0x0926B258;
+g_EInitCommon = 0x0926B268;
+g_EInitDamageNum = 0x0926B278;
+g_EInitStInteractable = 0x0926B288;
+g_EInitWaterObject = 0x0926B298;
+g_EInitWaterSplash = 0x0926B2A8;
+g_EInitMerman = 0x0926B2B8;
+g_EInitMermanFireball = 0x0926B2C8;
+g_EInitBoneScimitar = 0x0926B2D8;
+g_EInitScimitarParts = 0x0926B2E8;
+g_EInitBat = 0x0926B2F8;
+g_EInitZombie = 0x0926B308;
+g_EInitOwlKnight = 0x0926B318;
+g_EInitOwlKnightSword = 0x0926B328;
+g_EInitOwl = 0x0926B338;
+g_EInitBloodyZombie = 0x0926B348;
+g_EInitSlograNP3 = 0x0926B358;
+g_EInitSlograSpearNP3 = 0x0926B368;
+g_EInitSlograProjectileNP3 = 0x0926B378;
+g_EInitGaibonNP3 = 0x0926B388;
+g_EInitGaibonProjectileNP3 = 0x0926B398;
+g_EInitGaibonLargeProjectile = 0x0926B3A8;
+g_EInitHammer = 0x0926B3B8;
+g_EInitHammerWeapon = 0x0926B3C8;
+g_EInitGurkha = 0x0926B3D8;
+g_EInitGurkhaWeapon = 0x0926B3E8;
+g_EInitBlade = 0x0926B3F8;
+g_EInitBladeWeapon = 0x0926B408;
+g_RedDoorTiles = 0x0926B418;
+rooms = 0x0926B438;
+g_Overlay = 0x0928E820;

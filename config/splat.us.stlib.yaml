@@ -1,0 +1,152 @@
+options:
+  platform: psx
+  basename: stlib
+  base_path: ..
+  build_path: build/us
+  target_path: disks/us/ST/LIB/LIB.BIN
+  asm_path: asm/us/st/lib
+  asset_path: assets/st/lib
+  src_path: src/st/lib
+  ld_script_path: build/us/stlib.ld
+  compiler: GCC
+  symbol_addrs_path:
+    - config/symbols.us.txt
+    - config/symbols.us.stlib.txt
+  undefined_funcs_auto_path: build/us/config/undefined_funcs_auto.us.stlib.txt
+  undefined_syms_auto_path: build/us/config/undefined_syms_auto.us.stlib.txt
+  find_file_boundaries: true
+  use_legacy_include_asm: false
+  migrate_rodata_to_functions: true
+  asm_jtbl_label_macro: jlabel
+  symbol_name_format: us_$VRAM
+  disassemble_all: true
+  global_vram_start: 0x80010000
+  section_order:
+    - .data
+    - .rodata
+    - .text
+    - .bss
+    - .sbss
+  ld_bss_is_noload: false
+  disasm_unknown: true
+  ld_generate_symbol_per_data_segment: true
+sha1: ddd108c3a9ec564d34063e5008685a9a41f8eabd
+segments:
+  - name: stlib
+    type: code
+    start: 0
+    vram:  0x80180000
+    align: 4
+    subalign: 4
+    subsegments:
+      - [0x0, .data, header]
+      - [0x8C, .data, palette_def]
+      - [0x19C, .data, layers]
+      - [0x314, .data, graphics_banks]
+      - [0x520, .data, gen/e_laydef] # layout entries header
+      - [0x6C8, .data, e_init]
+      - [0x9F8, .data, background_block_init]
+      - [0xAC8, .data, e_red_door_tiles]
+      - [0xAD8, .data, e_lock_camera]
+      - [0xB58, .data, e_breakable]
+      - [0xC48, .data, first_c_file]
+      - [0xDC0, .data, e_library_bg]
+      - [0xE90, .data, e_shop]
+      - [0x19BC, .data, cutscene]
+      - [0x1A68, .data, e_candle_table]
+      - [0x1A90, .data, d_prize_drops]
+      - [0x1AA8, .data, unk_3B200]
+      - [0x1ACC, .data, unk_3B53C]
+      - [0x1AD4, .data, e_lesser_demon]
+      - [0x1C48, .data, e_chair]
+      - [0x1C5C, .data, st_update]
+      - [0x1CA8, .data, collision]
+      - [0x2068, .data, e_red_door]
+      - [0x2080, .data, e_room_fg]
+      - [0x210C, .data, st_common]
+      - [0x230C, .data, e_misc]
+      - [0x23C0, .data, e_collect]
+      - [0x2714, .data, e_bloody_zombie]
+      - [0x280C, .data, e_flying_zombie]
+      - [0x28D0, data]
+      - [0x28D4, .data, e_particles]
+      - [0x2954, .data, e_dhuron]
+      - [0x2AE0, .data, e_ectoplasm]
+      - [0x2B80, .data, e_thornweed_corpseweed]
+      - [0x2C38, .data, e_skeleton]
+      - [0x2D38, .data, e_mist_door]
+      - [0x2D78, .data, e_flea_armor]
+      - [0x2DE4, .data, e_flea_man]
+      - [0x2E3C, .data, e_mudman]
+      - [0x2EC0, .data, gen/rooms]
+      - [0x2F44, .data, e_spellbook_magic_tome]
+      - [0x319C, .data, e_life_up]
+      - [0x31F0, .data, gen/e_layout] # layout entries data
+      - [0x3F60, .data, cutscene_data]
+      - [0x4124, .data, stage_data]
+      - [0x16470, .data, tilemaps]
+      - [0x266A0, .data, gen/sprites]
+      - [0x2B938, .rodata, e_breakable]
+      - [0x2B960, .rodata, e_shop]
+      - [0x2D760, .rodata, cutscene]
+      - [0x2D804, .rodata, e_candle_table]
+      - [0x2D810, .rodata, unk_3B200]
+      - [0x2D828, .rodata, unk_3B53C]
+      - [0x2D848, .rodata, e_lesser_demon]
+      - [0x2D980, .rodata, e_chair]
+      - [0x2D9C4, .rodata, e_red_door]
+      - [0x2D9DC, .rodata, e_collect]
+      - [0x2DAB0, .rodata, e_bloody_zombie]
+      - [0x2DAD8, .rodata, e_flying_zombie]
+      - [0x2DB54, .rodata, e_stage_name]
+      - [0x2DB88, .rodata, e_dhuron]
+      - [0x2DBC4, .rodata, e_ectoplasm]
+      - [0x2DC48, .rodata, e_thornweed_corpseweed]
+      - [0x2DC84, .rodata, e_skeleton]
+      - [0x2DD08, .rodata, e_flea_armor]
+      - [0x2DD4C, .rodata, e_flea_man]
+      - [0x2DD60, .rodata, e_mudman]
+      - [0x2DDA4, .rodata, prim_helpers]
+      - [0x2DDAC, .rodata, e_spellbook_magic_tome]
+      - [0x2DEB4, .rodata, e_life_up]
+      - [0x2DED0, c, e_room_bg]
+      - [0x2DF98, c, e_lock_camera]
+      - [0x2E4BC, c, e_breakable]
+      - [0x2E8E8, c, first_c_file]
+      - [0x2F280, c, e_library_bg]
+      - [0x2FE0C, c, e_shop]
+      - [0x395EC, c, cutscene]
+      - [0x3AF60, c, e_candle_table]
+      - [0x3B200, c, unk_3B200]
+      - [0x3B53C, c, unk_3B53C]
+      - [0x3B8DC, c, e_lesser_demon]
+      - [0x3EDD8, c, e_chair]
+      - [0x3F130, c, st_update]
+      - [0x3F564, c, collision]
+      - [0x40D20, c, create_entity]
+      - [0x41898, c, e_red_door]
+      - [0x42548, c, e_room_fg]
+      - [0x42634, c, st_common]
+      - [0x43AE4, c, e_misc]
+      - [0x45E80, c, e_collect]
+      - [0x487F0, c, e_bloody_zombie]
+      - [0x49870, c, e_flying_zombie]
+      - [0x4A68C, c, e_stage_name]
+      - [0x4B4E0, c, e_particles]
+      - [0x4BD24, c, popup]
+      - [0x4C054, c, e_dhuron]
+      - [0x4CED0, c, e_ectoplasm]
+      - [0x4DB6C, c, e_thornweed_corpseweed]
+      - [0x4F094, c, e_skeleton]
+      - [0x4F918, c, e_mist_door]
+      - [0x4FA00, c, e_flea_armor]
+      - [0x501C8, c, e_flea_man]
+      - [0x5064C, c, e_mudman]
+      - [0x5139C, c, prim_helpers]
+      - [0x51BCC, c, e_spellbook_magic_tome]
+      - [0x538A8, c, e_life_up]
+      - [0x5415C, .bss, e_shop]
+      - [0x545C4, .bss, create_entity]
+      - [0x545D4, .bss, cutscene]
+      - [0x5528C, .bss, e_collect]
+  - [0x552CC]

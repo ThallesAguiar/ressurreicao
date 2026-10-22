@@ -1,0 +1,9 @@
+InitRoomEntities = 0x09238288;
+UpdateRoomPosition = 0x092384B8;
+Update = 0x0923E5F0;
+UpdateStageEntities = 0x0923E9D0;
+HitDetection = 0x092449D0;
+sprites_chi_4 = 0x092527D8;
+sprites_chi_7 = 0x09252F70;
+g_Overlay = 0x0926B6A0;
+PrizeDrops = 0x0926B6E0;

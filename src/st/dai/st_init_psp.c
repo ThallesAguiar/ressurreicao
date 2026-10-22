@@ -1,0 +1,152 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+#include "dai.h"
+#include "../pfn_entity_update.h"
+
+extern LayoutEntity* D_8D2E2B0;
+extern LayoutEntity* D_8D2E384;
+extern Overlay g_Overlay;
+
+extern char cutscene_script_en[];
+extern char cutscene_script_fr[];
+extern char cutscene_script_sp[];
+extern char cutscene_script_ge[];
+extern char cutscene_script_it[];
+
+s32 E_ID(BACKGROUND_BLOCK);
+s32 E_ID(LOCK_CAMERA);
+s32 E_ID(UNK_13);
+s32 E_ID(EXPLOSION_VARIANTS);
+s32 E_ID(GREY_PUFF);
+s32 E_ID(TOWER_EXIT);
+s32 E_ID(STAINED_GLASS);
+s32 E_ID(STAINED_GLASS_BACKGROUND);
+s32 E_ID(BLOCK);
+s32 E_ID(STATUE);
+s32 E_ID(BELL);
+s32 E_ID(CASTLE_WALL_1);
+s32 E_ID(CASTLE_WALL_2);
+s32 E_ID(STAIRCASE);
+s32 E_ID(CLOUDS);
+s32 E_ID(BACKGROUND_SKY_LAND);
+s32 E_ID(GARGOYLE_TONGUE);
+s32 E_ID(CHAIR);
+s32 E_ID(CONFESSIONAL_GHOST);
+s32 E_ID(CONFESSIONAL_BLADES);
+s32 E_ID(CONFESSIONAL_BLADE_DEBRIS);
+s32 E_ID(BELL_SPAWNER);
+s32 E_ID(CORNER_GUARD);
+s32 E_ID(CORNER_GUARD_ATTACK);
+s32 E_ID(BONE_PILLAR_SKULL);
+s32 E_ID(BONE_PILLAR_FIRE);
+s32 E_ID(BONE_PILLAR_PARTS);
+s32 E_ID(BONE_PILLAR_SPIKE_BALL);
+s32 E_ID(END_CONFESSIONAL_CHIME);
+s32 E_ID(SPIKES);
+s32 E_ID(SPIKES_PARTS);
+s32 E_ID(SPIKES_DUST);
+s32 E_ID(SPIKES_DAMAGE);
+s32 E_ID(BONE_HALBERD);
+s32 E_ID(BONE_HALBERD_ATTACK);
+s32 E_ID(BONE_HALBERD_PARTS);
+s32 E_ID(WINGED_GUARD);
+s32 E_ID(WINGED_GUARD_PARTS);
+s32 E_ID(BAT);
+s32 E_ID(BLACK_CROW);
+s32 E_ID(BLUE_CROW);
+s32 E_ID(SKELERANG);
+s32 E_ID(SKELERANG_BOOMERANG);
+s32 E_ID(SKELERANG_UNKNOWN);
+s32 E_ID(HUNTING_GIRL);
+s32 E_ID(HUNTING_GIRL_ATTACK);
+s32 E_ID(SPECTRAL_SWORD);
+s32 E_ID(SPECTRAL_SWORD_AURA);
+s32 E_ID(SPECTRAL_SWORD_WEAPON);
+s32 E_ID(WINGED_GUARD_SPAWNER);
+s32 E_ID(SEALED_DOOR);
+s32 E_ID(BREAKABLE_DEBRIS);
+s32 E_ID(CUTSCENE_DIALOGUE);
+s32 E_ID(CUTSCENE_STAGE);
+s32 E_ID(CUTSCENE_MARIA);
+s32 E_ID(MIST_DOOR);
+
+// Used by dai/e_cutscene_dialogue/EntityCutsceneDialogue
+u8* cutscene_script;     // bss
+u8* cutscene_script_ptr; // bss
+
+#include "../get_lang_at.h"
+
+static void InitEntityIds(void) {
+    SET_E_ID(BACKGROUND_BLOCK);
+    SET_E_ID(LOCK_CAMERA);
+    SET_E_ID(UNK_13);
+    SET_E_ID(EXPLOSION_VARIANTS);
+    SET_E_ID(GREY_PUFF);
+    SET_E_ID(TOWER_EXIT);
+    SET_E_ID(STAINED_GLASS);
+    SET_E_ID(STAINED_GLASS_BACKGROUND);
+    SET_E_ID(BLOCK);
+    SET_E_ID(STATUE);
+    SET_E_ID(BELL);
+    SET_E_ID(CASTLE_WALL_1);
+    SET_E_ID(CASTLE_WALL_2);
+    SET_E_ID(STAIRCASE);
+    SET_E_ID(CLOUDS);
+    SET_E_ID(BACKGROUND_SKY_LAND);
+    SET_E_ID(GARGOYLE_TONGUE);
+    SET_E_ID(CHAIR);
+    SET_E_ID(CONFESSIONAL_GHOST);
+    SET_E_ID(CONFESSIONAL_BLADES);
+    SET_E_ID(CONFESSIONAL_BLADE_DEBRIS);
+    SET_E_ID(BELL_SPAWNER);
+    SET_E_ID(CORNER_GUARD);
+    SET_E_ID(CORNER_GUARD_ATTACK);
+    SET_E_ID(BONE_PILLAR_SKULL);
+    SET_E_ID(BONE_PILLAR_FIRE);
+    SET_E_ID(BONE_PILLAR_PARTS);
+    SET_E_ID(BONE_PILLAR_SPIKE_BALL);
+    SET_E_ID(END_CONFESSIONAL_CHIME);
+    SET_E_ID(SPIKES);
+    SET_E_ID(SPIKES_PARTS);
+    SET_E_ID(SPIKES_DUST);
+    SET_E_ID(SPIKES_DAMAGE);
+    SET_E_ID(BONE_HALBERD);
+    SET_E_ID(BONE_HALBERD_ATTACK);
+    SET_E_ID(BONE_HALBERD_PARTS);
+    SET_E_ID(WINGED_GUARD);
+    SET_E_ID(WINGED_GUARD_PARTS);
+    SET_E_ID(BAT);
+    SET_E_ID(BLACK_CROW);
+    SET_E_ID(BLUE_CROW);
+    SET_E_ID(SKELERANG);
+    SET_E_ID(SKELERANG_BOOMERANG);
+    SET_E_ID(SKELERANG_UNKNOWN);
+    SET_E_ID(HUNTING_GIRL);
+    SET_E_ID(HUNTING_GIRL_ATTACK);
+    SET_E_ID(SPECTRAL_SWORD);
+    SET_E_ID(SPECTRAL_SWORD_AURA);
+    SET_E_ID(SPECTRAL_SWORD_WEAPON);
+    SET_E_ID(WINGED_GUARD_SPAWNER);
+    SET_E_ID(SEALED_DOOR);
+    SET_E_ID(BREAKABLE_DEBRIS);
+    SET_E_ID(CUTSCENE_DIALOGUE);
+    SET_E_ID(CUTSCENE_STAGE);
+    SET_E_ID(CUTSCENE_MARIA);
+    SET_E_ID(MIST_DOOR);
+}
+
+void OvlLoad(void) {
+    cutscene_script = GetLangAt(
+        0, (u8*)cutscene_script_en, (u8*)cutscene_script_fr,
+        (u8*)cutscene_script_sp, (u8*)cutscene_script_ge,
+        (u8*)cutscene_script_it);
+    cutscene_script_ptr = GetLangAt(
+        0, (u8*)cutscene_script_en, (u8*)cutscene_script_fr,
+        (u8*)cutscene_script_sp, (u8*)cutscene_script_ge,
+        (u8*)cutscene_script_it);
+    InitEntityIds();
+    PfnEntityUpdates = EntityUpdates;
+    g_pStObjLayoutHorizontal = &D_8D2E2B0;
+    g_pStObjLayoutVertical = &D_8D2E384;
+    func_psp_0892A018();
+    memcpy(&g_api.o, &g_Overlay, sizeof(Overlay));
+}

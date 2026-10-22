@@ -1,0 +1,158 @@
+options:
+  platform: psx
+  basename: stnz0
+  base_path: ..
+  build_path: build/us
+  target_path: disks/us/ST/NZ0/NZ0.BIN
+  asm_path: asm/us/st/nz0
+  asset_path: assets/st/nz0
+  src_path: src/st/nz0
+  ld_script_path: build/us/stnz0.ld
+  compiler: GCC
+  symbol_addrs_path:
+    - config/symbols.us.txt
+    - config/symbols.us.stnz0.txt
+  undefined_funcs_auto_path: build/us/config/undefined_funcs_auto.us.stnz0.txt
+  undefined_syms_auto_path: build/us/config/undefined_syms_auto.us.stnz0.txt
+  find_file_boundaries: yes
+  use_legacy_include_asm: no
+  migrate_rodata_to_functions: no
+  asm_jtbl_label_macro: jlabel
+  extensions_path: tools/splat_ext
+  disassemble_all: true
+  global_vram_start: 0x80010000
+  section_order:
+    - ".data"
+    - ".rodata"
+    - ".text"
+    - ".bss"
+    - ".sbss"
+  ld_generate_symbol_per_data_segment: true
+sha1: b10b9c2be721cf9cbed3aa94be468ba9e23bc68b
+segments:
+  - name: stnz0
+    type: code
+    start: 0x00000000
+    vram: 0x80180000
+    align: 4
+    subalign: 4
+    subsegments:
+      - [0x0, .data, header]
+      - [0x8C, .data, header] # palette definitions
+      - [0x164, .data, header] # layers
+      - [0x47C, .data, header] # graphics banks
+      - [0x8EC, .data, gen/e_laydef] # layout entries header
+      - [0xA94, .data, e_init]
+      - [0xD54, .data, background_block_init]
+      - [0xD8C, .data, e_red_door_tiles]
+      - [0xDBC, .data, e_lock_camera]
+      - [0xDE4, .data, e_breakable]
+      - [0xE54, .data, e_left_secret_room_wall]
+      - [0xEB4, .data, e_puzzle]
+      - [0xED0, .data, e_cannon]
+      - [0xEEC, .data, e_elevator2]
+      - [0xEF0, .data, e_nz0_room2]
+      - [0xF1C, .data, e_life_max_tank]
+      - [0xF50, .data, e_blue_flame_table]
+      - [0xFA4, .data, e_explosion_puff_opaque]
+      - [0x1014, .data, bossfight]
+      - [0x105C, .data, slogra]
+      - [0x1240, .data, gaibon]
+      - [0x13A4, .data, e_elevator]
+      - [0x13BC, .data, d_prize_drops]
+      - [0x13C8, .data, cutscene]
+      - [0x1474, .data, maria]
+      - [0x1554, .data, st_update]
+      - [0x15A0, .data, collision]
+      - [0x1960, .data, e_red_door]
+      - [0x1978, .data, st_common]
+      - [0x1B78, .data, e_collect]
+      - [0x1E68, .data, e_misc]
+      - [0x1F80, .data, e_particles]
+      - [0x2000, .data, e_room_fg]
+      - [0x208C, .data, e_bone_scimitar]
+      - [0x2180, .data, e_axe_knight]
+      - [0x22D4, .data, e_bloody_zombie]
+      - [0x23DC, .data, e_skeleton]
+      - [0x24CC, .data, e_spittle_bone]
+      - [0x2584, .data, e_subweapon_container]
+      - [0x2610, .data, e_blood_skeleton]
+      - [0x26B8, .data, e_sealed_door]
+      - [0x272C, .data, gen/rooms]
+      - [0x2830, .data, e_life_up]
+      - [0x2884, .data, gen/e_layout] # layout entries data
+      - [0x3B0C, .data, cutscene_data]
+      - [0x3CCC, .data, stage_data]
+      - [0x26E8C, .data, gen/sprites]
+      - [0x3058C, .rodata, e_red_eye_bust] # EntityRedEyeBust
+      - [0x30598, .rodata, e_blue_flame_table] # EntityRelicContainer
+      - [0x305A4, .rodata, e_explosion_puff_opaque] # EntityExplosionPuffOpaque
+      - [0x305B8, .rodata, bossfight] # EntityBossFightManager
+      - [0x305E8, .rodata, bossfight] # EntityBossRoomBlock
+      - [0x305FC, .rodata, slogra] # EntitySlogra
+      - [0x30618, .rodata, gaibon] # EntityGaibon .rodata, 33FCC
+      - [0x3063C, .rodata, e_elevator] # func_801B7034
+      - [0x3064C, .rodata, cutscene] # actor names
+      - [0x30664, .rodata, cutscene]
+      - [0x306E8, .rodata, maria]
+      - [0x30728, .rodata, e_red_door]
+      - [0x30740, .rodata, e_collect] # CollectGold text
+      - [0x30790, .rodata, e_collect] # EntityPrizeDrop
+      - [0x307B0, .rodata, e_collect] # EntityEquipItemDrop
+      - [0x307C8, .rodata, e_misc]
+      - [0x30800, .rodata, e_misc]
+      - [0x30814, .rodata, e_bone_scimitar]
+      - [0x30834, .rodata, e_axe_knight]
+      - [0x30858, .rodata, e_bloody_zombie]
+      - [0x30880, .rodata, e_skeleton]
+      - [0x3089C, .rodata, e_spittle_bone]
+      - [0x308C8, .rodata, e_subweapon_container]
+      - [0x308D4, .rodata, e_blood_skeleton]
+      - [0x308E8, .rodata, e_sealed_door]
+      - [0x30900, .rodata, e_stage_name]
+      - [0x30934, .rodata, prim_helpers]
+      - [0x3093C, .rodata, e_life_up]
+      - [0x30958, c, e_room_bg]
+      - [0x30A20, c, e_lock_camera]
+      - [0x30EEC, c, e_breakable]
+      - [0x311C0, c, e_red_eye_bust]
+      - [0x312E8, c, e_purple_brick]
+      - [0x314C4, c, e_left_secret_room_wall]
+      - [0x31C18, c, e_puzzle]
+      - [0x323B4, c, e_cannon]
+      - [0x32AD8, c, e_elevator2]
+      - [0x32FD8, c, e_nz0_room2]
+      - [0x33648, c, e_life_max_tank]
+      - [0x337B4, c, e_blue_flame_table]
+      - [0x33B78, c, e_explosion_puff_opaque]
+      - [0x33FCC, c, bossfight] # Slogra & Gaibon Boss
+      - [0x34690, c, slogra]
+      - [0x35778, c, gaibon]
+      - [0x36DE4, c, e_elevator]
+      - [0x374CC, c, cutscene]
+      - [0x38E0C, c, maria]
+      - [0x394D4, c, st_update]
+      - [0x39908, c, collision]
+      - [0x3B0C4, c, create_entity]
+      - [0x3BC3C, c, e_red_door]
+      - [0x3C8EC, c, st_common]
+      - [0x3DD9C, c, e_collect]
+      - [0x3F5B8, c, e_misc]
+      - [0x42AA8, c, e_particles]
+      - [0x432EC, c, e_room_fg]
+      - [0x433d8, c, popup]
+      - [0x43708, c, e_bone_scimitar]
+      - [0x43F9C, c, e_axe_knight]
+      - [0x44EAC, c, e_bloody_zombie]
+      - [0x45F2C, c, e_skeleton]
+      - [0x4672C, c, e_spittle_bone]
+      - [0x47048, c, e_subweapon_container]
+      - [0x47958, c, e_blood_skeleton]
+      - [0x47CF0, c, e_sealed_door]
+      - [0x48ADC, c, e_stage_name]
+      - [0x49930, c, prim_helpers]
+      - [0x4A160, c, e_life_up]
+      - [0x4AA14, .bss, create_entity]
+      - [0x4AA24, .bss, bss]
+      - [0x4B740, .bss, e_collect]
+  - [0x4B780]

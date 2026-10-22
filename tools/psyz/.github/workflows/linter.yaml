@@ -1,0 +1,19 @@
+name: Linter
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  linter:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone main repo
+        uses: actions/checkout@v4
+        with:
+          submodules: false
+      - name: Format code
+        run: make format
+      - name: Check for pending changes
+        run: git diff --exit-code

@@ -1,0 +1,5 @@
+spriteBanks = 0x0924E960;
+rooms_layers = 0x0924EA90;
+cluts = 0x0924EB40;
+gfxBanks = 0x0924EBB0;
+rooms = 0x0924EDC0;

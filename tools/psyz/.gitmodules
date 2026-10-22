@@ -1,0 +1,15 @@
+[submodule "nugget"]
+	path = nugget
+	url = https://github.com/pcsx-redux/nugget.git
+[submodule "decomp/tools/maspsx"]
+	path = decomp/tools/maspsx
+	url = https://github.com/mkst/maspsx.git
+[submodule "decomp/tools/asm-differ"]
+	path = decomp/tools/asm-differ
+	url = https://github.com/simonlindholm/asm-differ.git
+[submodule "external/SDL"]
+	path = external/SDL
+	url = https://github.com/libsdl-org/SDL.git
+[submodule "external/cimgui"]
+	path = external/cimgui
+	url = https://github.com/cimgui/cimgui.git

@@ -1,0 +1,102 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+#ifndef RNO3_H
+#define RNO3_H
+
+#include <stage.h>
+
+#define STAGE_IS_RNO3
+#define INVERTED_STAGE
+
+enum Palettes {
+    PAL_NONE,
+    PAL_FIRE_WARG = 0x200,
+    PAL_JACK_O_BONES = 0x20C,
+    PAL_NOVA_SKELETON = 0x214,
+    PAL_OROBOUROUS_DRAGON_RIDER = 0x231,
+    PAL_VENUS_WEED = 0x240,
+    PAL_DODO_BIRD = 0x26A,
+};
+
+typedef enum EntityID {
+    /* 0x00 */ E_NONE,
+    /* 0x01 */ E_BREAKABLE,              // EntityBreakable
+    /* 0x02 */ E_EXPLOSION,              // EntityExplosion
+    /* 0x03 */ E_PRIZE_DROP,             // EntityPrizeDrop
+    /* 0x04 */ E_DAMAGE_DISPLAY,         // EntityDamageDisplay
+    /* 0x05 */ E_RED_DOOR,               // EntityRedDoor
+    /* 0x06 */ E_INTENSE_EXPLOSION,      // EntityIntenseExplosion
+    /* 0x07 */ E_SOUL_STEAL_ORB,         // EntitySoulStealOrb
+    /* 0x08 */ E_ROOM_FOREGROUND,        // EntityRoomForeground
+    /* 0x09 */ E_STAGE_NAME_POPUP,       // EntityStageNamePopup
+    /* 0x0A */ E_EQUIP_ITEM_DROP,        // EntityEquipItemDrop
+    /* 0x0B */ E_RELIC_ORB,              // EntityRelicOrb
+    /* 0x0C */ E_PERSISTENT_ITEM_DROP,   // EntityPersistentItemDrop
+    /* 0x0D */ E_ENEMY_BLOOD,            // EntityEnemyBlood
+    /* 0x0E */ E_MESSAGE_BOX,            // EntityMessageBox
+    /* 0x0F */ E_DUMMY_F,                // EntityDummy
+    /* 0x10 */ E_DUMMY_10,               // EntityDummy
+    /* 0x11 */ E_BACKGROUND_BLOCK,       // EntityBackgroundBlock
+    /* 0x12 */ E_LOCK_CAMERA,            // EntityLockCamera
+    /* 0x13 */ E_UNK_ID13,               // EntityUnkId13
+    /* 0x14 */ E_EXPLOSION_VARIANTS,     // EntityExplosionVariants
+    /* 0x15 */ E_GREY_PUFF,              // EntityGreyPuff
+    /* 0x16 */ E_CASTLE_DOOR,            // EntityCastleDoor
+    /* 0x17 */ E_SHUTTING_WINDOW,        // EntityShuttingWindow
+    /* 0x18 */ E_BACKGROUND_BUSHES,      // EntityBackgroundBushes
+    /* 0x19 */ E_BACKGROUND_TREES,       // EntityBackgroundTrees
+    /* 0x1A */ E_UNK_1A,                 // EntityBackgroundLightning
+    /* 0x1B */ E_LIGHTNING_THUNDER,      // EntityLightningThunder
+    /* 0x1C */ E_LIGHTNING_CLOUD,        // EntityLightningCloud
+    /* 0x1D */ E_FIRE_WARG,              // EntityFireWarg
+    /* 0x1E */ E_FIRE_WARG_ATTACK,       // EntityFireWargWaveAttack
+    /* 0x1F */ E_ID_2F,                  // EntityUnkId2F
+    /* 0x20 */ E_ID_30,                  // EntityUnkId30
+    /* 0x21 */ E_ID_31,                  // EntityUnkId31
+    /* 0x22 */ E_EXPLOSION_3,            // EntityExplosion3
+    /* 0x23 */ E_FIRE_WARG_DEATH,        // EntityFireWargDeathBeams
+    /* 0x24 */ E_JACK_O_BONES,           // EntityJackOBones
+    /* 0x25 */ E_JACKO_DEATH_PARTS,      // EntityJackOBonesDeathParts
+    /* 0x26 */ E_JACKO_JACK,             // EntityJackOBonesJack
+    /* 0x27 */ E_NOVA_SKELETON,          // EntityNovaSkeleton
+    /* 0x28 */ E_NOVA_LASER,             // EntityNovaLaser
+    /* 0x29 */ E_NOVA_PULSE,             // EntityNovaLaserPulse
+    /* 0x2A */ E_NOVA_DEATH_PARTS,       // EntityNovaSkeletonDeathParts
+    /* 0x2B */ E_OROBOUROUS,             // EntityOrobourous
+    /* 0x2C */ E_OROB_SEGMENT,           // EntityOrobSegment
+    /* 0x2D */ E_OROB_HEAD_PARTS,        // EntityOrobHeadParts
+    /* 0x2E */ E_OROB_RIDER,             // EntityOrobRider
+    /* 0x2F */ E_OROB_HOLYATTACK,        // EntityOrobHolyAttacker
+    /* 0x30 */ E_DRAGON_RIDER,           // EntityDragonRider
+    /* 0x31 */ E_DRAGON_SEGMENT,         // EntityDragonSegment
+    /* 0x32 */ E_DRAGON_HEAD_PARTS,      // EntityDragonHeadParts
+    /* 0x33 */ E_DRAGON_RIDER_HITBOX,    // EntityDragonRiderHitbox
+    /* 0x34 */ E_VENUS_WEED,             // EntityVenusWeed
+    /* 0x35 */ E_VENUS_WEED_FLOWER,      // EntityVenusWeedFlower
+    /* 0x36 */ E_VENUS_WEED_TENDRIL,     // EntityVenusWeedTendril
+    /* 0x37 */ E_VENUS_WEED_DART,        // EntityVenusWeedDart
+    /* 0x38 */ E_VENUS_WEED_SPIKE,       // EntityVenusWeedSpike
+    /* 0x39 */ E_CAVERN_DOOR_LEVER,      // EntityCavernDoorLever
+    /* 0x3A */ E_CAVERN_DOOR_PLATFORM,   // EntityCavernDoorPlatform
+    /* 0x3B */ E_CAVERN_DOOR,            // EntityCavernDoor
+    /* 0x3C */ E_WEIGHTS_SWITCH,         // EntityWeightsSwitch
+    /* 0x3D */ E_WEIGHT_SMALL,           // EntityPathBlockSmallWeight
+    /* 0x3E */ E_WEIGHT_TALL,            // EntityPathBlockTallWeight
+    /* 0x3F */ E_HEART_ROOM_SWITCH,      // EntityHeartRoomSwitch
+    /* 0x40 */ E_HEART_ROOM_GOLD_DOOR,   // EntityHeartRoomGoldDoor
+    /* 0x41 */ E_MERMAN_ROCK_LEFT_SIDE,  // EntityMermanRockLeftSide
+    /* 0x42 */ E_MERMAN_ROCK_RIGHT_SIDE, // EntityMermanRockRightSide
+    /* 0x43 */ E_JEWEL_SWORD_DOOR,       // EntityJewelSwordDoor
+    /* 0x44 */ E_FALLING_ROCK_2,         // EntityFallingRock2
+    /* 0x45 */ E_STAIRWAY_PIECE,         // EntityStairwayPiece
+    /* 0x46 */ E_FALLING_ROCK,           // EntityFallingRock
+    /* 0x47 */ E_TRANSP_WATER,           // EntityTransparentWater
+    /* 0x48 */ E_ALUCARD_WATER_EFFECT,   // EntityAlucardWaterEffect
+    /* 0x49 */ E_SPLASH_WATER,           // EntitySplashWater
+    /* 0x4A */ E_SURFACING_WATER,        // EntitySurfacingWater
+    /* 0x4B */ E_SIDE_WATER_SPLASH,      // EntitySideWaterSplash
+    /* 0x4C */ E_SMALL_WATER_DROP,       // EntitySmallWaterDrop
+    /* 0x4D */ E_WATER_DROP,             // EntityWaterDrop
+    /* 0x4E */ E_DODO_BIRD,              // EntityDodoBird
+} EntityID;
+
+#endif // RNO3_H

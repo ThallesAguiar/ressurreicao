@@ -1,0 +1,135 @@
+options:
+  platform: psx
+  basename: strno3
+  base_path: ..
+  build_path: build/us
+  target_path: disks/us/ST/RNO3/RNO3.BIN
+  asm_path: asm/us/st/rno3
+  asset_path: assets/st/rno3
+  src_path: src/st/rno3
+  ld_script_path: build/us/strno3.ld
+  compiler: GCC
+  symbol_addrs_path:
+    - config/symbols.us.txt
+    - config/symbols.us.strno3.txt
+  undefined_funcs_auto_path: build/us/config/undefined_funcs_auto.us.strno3.txt
+  undefined_syms_auto_path: build/us/config/undefined_syms_auto.us.strno3.txt
+  find_file_boundaries: true
+  use_legacy_include_asm: false
+  migrate_rodata_to_functions: true
+  asm_jtbl_label_macro: jlabel
+  symbol_name_format: us_$VRAM
+  disassemble_all: true
+  section_order:
+    - .data
+    - .rodata
+    - .text
+    - .bss
+    - .sbss
+  ld_bss_is_noload: false
+  disasm_unknown: true
+  global_vram_start: 0x80010000
+  ld_generate_symbol_per_data_segment: true
+sha1: 85c4637f3f9b85b918583fae45ca094c7d52b914
+segments:
+  - name: strno3
+    type: code
+    start: 0x0
+    vram: 0x80180000
+    align: 4
+    subalign: 4
+    subsegments:
+      - [0x0, .data, header]
+      - [0x2C, .data, sprite_banks]
+      - [0x8C, .data, palette_def]
+      - [0xEC, .data, layers]
+      - [0x4CC, .data, graphics_banks] # GfxBanks
+      - [0x5EC, .data, gen/e_laydef] # layout entries header
+      - [0x794, .data, e_init]
+      - [0xA58, .data, e_room_bg]
+      - [0xBFC, .data, e_red_door_tiles]
+      - [0xC1C, .data, e_lock_camera]
+      - [0xC9C, .data, e_breakable]
+      - [0xCFC, .data, e_castle_door]
+      - [0xDF8, .data, e_shutting_window]
+      - [0xE58, .data, e_background_bushes_trees]
+      - [0xF10, .data, d_prize_drops]
+      - [0xF38, .data, e_background_lightning]
+      - [0xF9C, .data, e_sky_entities]
+      - [0xFB4, .data, e_cavern_door]
+      - [0xFC0, .data, e_jewel_sword_puzzle]
+      - [0x10C0, .data, e_transparent_water]
+      - [0x10F8, .data, d_water_data]
+      - [0x112C, .data, st_update]
+      - [0x1178, .data, collision]
+      - [0x1538, .data, e_red_door]
+      - [0x1550, .data, st_common]
+      - [0x1750, .data, e_collect]
+      - [0x1AA4, .data, e_misc]
+      - [0x1B5C, .data, e_particles]
+      - [0x1BDC, .data, e_room_fg]
+      - [0x1C68, .data, e_fire_warg]
+      - [0x2548, .data, e_jack_o_bones]
+      - [0x2634, .data, e_nova_skeleton]
+      - [0x27BC, .data, e_orobourous]
+      - [0x282C, .data, e_dragon_rider]
+      - [0x28B4, .data, e_blue_venus_weed]
+      - [0x2A34, .data, water_effects]
+      - [0x2AF0, .data, e_dodo]
+      - [0x2B20, .data, gen/us/rooms]
+      - [0x2C24, .data, gen/e_layout] # layout entries data
+      - [0x39BC, .data, stage_data]
+      - [0x10E88, .data, tilemaps]
+      - [0x270B8, .data, gen/us/sprites]
+      - [0x2FF60, .rodata, e_castle_door]
+      - [0x2FF80, .rodata, e_shutting_window]
+      - [0x2FF88, .rodata, e_stairway]
+      - [0x2FF9C, .rodata, e_red_door]
+      - [0x2FFB4, .rodata, e_collect]
+      - [0x30088, .rodata, e_stage_name]
+      - [0x300BC, .rodata, e_fire_warg]
+      - [0x30120, .rodata, e_jack_o_bones]
+      - [0x3013C, .rodata, e_nova_skeleton]
+      - [0x30180, .rodata, e_orobourous]
+      - [0x301B4, .rodata, e_blue_venus_weed]
+      - [0x302A4, .rodata, water_effects]
+      - [0x302D0, .rodata, e_dodo]
+      - [0x302E8, .rodata, prim_helpers]
+      - [0x302F0, c, e_room_bg]
+      - [0x303C4, c, e_lock_camera]
+      - [0x30580, c, e_breakable]
+      - [0x306C8, c, e_castle_door]
+      - [0x30BF0, c, e_shutting_window]
+      - [0x30F50, c, e_background_bushes_trees]
+      - [0x31674, c, e_background_lightning]
+      - [0x318E0, c, e_sky_entities]
+      - [0x31A64, c, e_cavern_door]
+      - [0x32100, c, entrance_weights]
+      - [0x3272C, c, e_heartroom]
+      - [0x32BF0, c, e_jewel_sword_puzzle]
+      - [0x3362C, c, e_stairway]
+      - [0x33C88, c, e_transparent_water]
+      - [0x33EB0, c, st_update]
+      - [0x342E4, c, collision]
+      - [0x35AA0, c, create_entity]
+      - [0x36618, c, e_red_door]
+      - [0x372C8, c, st_common]
+      - [0x38778, c, e_collect]
+      - [0x3B0E8, c, e_misc]
+      - [0x3D484, c, e_stage_name]
+      - [0x3E2D8, c, e_particles]
+      - [0x3EB1C, c, e_room_fg]
+      - [0x3EC08, c, popup]
+      - [0x3EF38, c, e_fire_warg]
+      - [0x41DCC, c, e_jack_o_bones]
+      - [0x42740, c, e_nova_skeleton]
+      - [0x435F8, c, e_orobourous]
+      - [0x44468, c, e_dragon_rider]
+      - [0x44D18, c, e_blue_venus_weed]
+      - [0x46940, c, water_effects]
+      - [0x48B8C, c, e_dodo]
+      - [0x49044, c, prim_helpers]
+      - [0x49874, .bss, create_entity]
+      - [0x49884, bss]
+      - [0x4A4EC, .bss, e_collect]
+  - [0x4A52C]

@@ -1,0 +1,37 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+extern EInit g_EInitCommon;
+
+extern ObjInit2 BackgroundBlockInit[];
+
+void EntityBackgroundBlock(Entity* self) {
+    ObjInit2* objInit = &BackgroundBlockInit[self->params];
+    if (!self->step) {
+        InitializeEntity(g_EInitCommon);
+        self->animSet = objInit->animSet;
+        self->zPriority = objInit->zPriority;
+#if defined(BG_FACING_LEFT_FIX)
+        self->facingLeft = objInit->facingLeft;
+        self->unk5A = objInit->unk5A;
+#elif defined(VERSION_PSP)
+        self->unk5A = LOHU(objInit->facingLeft);
+#else
+        self->unk5A = LOH(objInit->facingLeft);
+#endif
+        self->palette = objInit->palette;
+        self->drawFlags = objInit->drawFlags;
+#ifdef BG_BLOCK_ROTATE_180
+        self->rotate = ROT(180);
+#endif
+        self->blendMode = objInit->blendMode;
+        if (objInit->flags) {
+            self->flags = objInit->flags;
+        }
+#ifdef BG_BLOCK_NEEDS_SCALE
+        if (self->params == 1) {
+            self->scaleX = self->scaleY = 0x200;
+        }
+#endif
+    }
+    AnimateEntity(objInit->animFrames, self);
+}

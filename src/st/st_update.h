@@ -1,0 +1,178 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+#include <game.h>
+
+// NOTE: take care here, this may appear merged with the end of the previous
+// data split but should reside here!
+static u16 unused[] UNUSED = {
+    0x0000, 0x0000, 0x0000, 0x0000, 0x0001, 0x0000, 0x0001, 0x0000,
+    0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0001, 0x0101};
+
+// palette
+u16 UNK_Invincibility0[] = {
+    PAL_FLAG(PAL_CC_CRITICAL_EFFECT),  PAL_FLAG(PAL_CC_DARK_EFFECT),
+    PAL_FLAG(PAL_CC_RED_EFFECT_A),     PAL_FLAG(PAL_CC_DARK_EFFECT),
+    PAL_FLAG(PAL_CC_FIRE_EFFECT),      PAL_FLAG(PAL_CC_RED_EFFECT_A),
+    PAL_FLAG(PAL_CC_MAGIC_HUD_EFFECT), PAL_FLAG(PAL_CC_DARK_EFFECT),
+    PAL_FLAG(PAL_CC_YELLOW_EFFECT),    PAL_FLAG(PAL_CC_DARK_EFFECT),
+    PAL_FLAG(PAL_CC_YELLOW_EFFECT),    PAL_FLAG(PAL_CC_GREEN_EFFECT_A),
+    PAL_FLAG(PAL_CC_GREEN_EFFECT_A),   PAL_FLAG(PAL_CC_DARK_EFFECT),
+    PAL_FLAG(PAL_CC_STONE_EFFECT),     PAL_FLAG(PAL_CC_DARK_EFFECT),
+    PAL_FLAG(PAL_CC_CURSE_EFFECT),     PAL_FLAG(PAL_CC_CURSE_EFFECT),
+    PAL_FLAG(PAL_CC_CRITICAL_EFFECT),  PAL_FLAG(PAL_CC_CRITICAL_EFFECT),
+#if !(defined VERSION_BETA) && !defined(STAGE_IS_TEK)
+    PAL_FLAG(PAL_CC_CURSE_EFFECT),     PAL_FLAG(PAL_CC_CURSE_EFFECT),
+#endif
+};
+
+u16 g_ItemIconSlots[ICON_SLOT_NUM];
+
+s32 Random(void) {
+    g_randomNext = (g_randomNext * 0x01010101) + 1;
+    return (g_randomNext >> 0x18) & 0xFF;
+}
+
+// TEK does not cache the entity flags in a local
+#ifdef STAGE_IS_TEK
+#define UPDATE_FLAGS e->flags
+#else
+#define UPDATE_FLAGS flags
+#endif
+
+void Update(void) {
+    s16 x, y;
+    Entity* e;
+    s32 flags;
+    s16 iFramePalette;
+
+    for (x = 0; x < LEN(g_ItemIconSlots); x++) {
+        if (g_ItemIconSlots[x]) {
+            g_ItemIconSlots[x]--;
+        }
+    }
+
+    if (g_unkGraphicsStruct.BottomCornerTextTimer) {
+        if (!--g_unkGraphicsStruct.BottomCornerTextTimer) {
+            g_api.FreePrimitives(g_unkGraphicsStruct.BottomCornerTextPrims);
+        }
+    }
+
+    for (e = &g_Entities[STAGE_ENTITY_START];
+         e < &g_Entities[TOTAL_ENTITY_COUNT]; e++) {
+        if (!e->pfnUpdate)
+            continue;
+
+        if (e->step) {
+#ifndef STAGE_IS_TEK
+            // TEK uses `e->flags`, recent build cache result in `flags`
+            flags = e->flags;
+#endif
+            if (UPDATE_FLAGS & FLAG_DESTROY_IF_OUT_OF_CAMERA) {
+                x = e->posX.i.hi;
+                y = e->posY.i.hi;
+                if (UPDATE_FLAGS & FLAG_DESTROY_IF_BARELY_OUT_OF_CAMERA) {
+                    if (x < -64 || x > 320 || y < -64 || y > 288) {
+                        DestroyEntity(e);
+                        continue;
+                    }
+                } else {
+                    if (x < -128 || x > 384 || y < -128 || y > 352) {
+                        DestroyEntity(e);
+                        continue;
+                    }
+                }
+            }
+
+            if (UPDATE_FLAGS & FLAG_UNK_02000000) {
+                x = e->posY.i.hi + g_Tilemap.scrollY.i.hi;
+                y = ((s16)g_Tilemap.vSize << 8) + 128;
+
+                if (x > y) {
+                    DestroyEntity(e);
+                    continue;
+                }
+            }
+
+            if (UPDATE_FLAGS & 0xF) {
+                iFramePalette = e->nFramesInvincibility << 1;
+                iFramePalette += (UPDATE_FLAGS & 1);
+                e->palette = UNK_Invincibility0[iFramePalette];
+                if (!(--e->flags & 0xF)) {
+                    e->palette = e->hitEffect;
+                    e->hitEffect = 0;
+                }
+            }
+
+#ifdef STAGE_IS_TEK
+            if (e->flags & FLAG_UNK_20000000) {
+                if (!(e->flags & FLAG_UNK_10000000)) {
+                    if (e->posX.i.hi < -64 || e->posX.i.hi > 320 ||
+                        e->posY.i.hi < -64 || e->posY.i.hi > 288) {
+                        continue;
+                    }
+                }
+            }
+#else
+            if ((flags & FLAG_UNK_20000000) && !(flags & FLAG_UNK_10000000)) {
+                if (e->posX.i.hi < -64 || e->posX.i.hi > 320 ||
+                    e->posY.i.hi < -64 || e->posY.i.hi > 288) {
+                    continue;
+                }
+            }
+#endif
+            if (e->stunFrames) {
+                e->stunFrames--;
+                if (!(UPDATE_FLAGS & FLAG_UNK_100000)) {
+                    continue;
+                }
+            }
+#ifndef STAGE_IS_TEK
+            if (g_unkGraphicsStruct.D_800973FC) {
+                if (!(UPDATE_FLAGS & (FLAG_UNK_2000 | FLAG_DEAD)) &&
+                    !(UPDATE_FLAGS & FLAG_UNK_200 && !(g_GameTimer & 3))) {
+                    continue;
+                }
+            }
+#endif
+        }
+        g_CurrentEntity = e;
+        e->pfnUpdate(e);
+        e->hitParams = 0;
+        e->hitFlags = 0;
+    }
+}
+
+#undef UPDATE_FLAGS
+
+void UpdateStageEntities(void) {
+    Entity* entity;
+    s16 iFramePalette;
+
+    for (entity = &g_Entities[STAGE_ENTITY_START];
+         entity < &g_Entities[TOTAL_ENTITY_COUNT]; entity++) {
+        if (!entity->pfnUpdate)
+            continue;
+
+        if (entity->step) {
+#if defined(VERSION_BETA) || defined(STAGE_IS_TEK)
+            if (D_80096ED0_mad && !(entity->flags & FLAG_UNK_10000))
+#else
+            if (!(entity->flags & FLAG_UNK_10000))
+#endif
+                continue;
+            if (entity->flags & 0xF) {
+                iFramePalette = entity->nFramesInvincibility << 1;
+                iFramePalette += entity->flags & 1;
+                entity->palette = UNK_Invincibility0[iFramePalette];
+                if ((--entity->flags & 0xF) == 0) {
+                    entity->palette = entity->hitEffect;
+                    entity->hitEffect = 0;
+                }
+            }
+        }
+
+        g_CurrentEntity = entity;
+        entity->pfnUpdate(entity);
+        entity->hitParams = 0;
+        entity->hitFlags = 0;
+    }
+}

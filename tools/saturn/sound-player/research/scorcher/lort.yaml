@@ -1,0 +1,85 @@
+options:
+  target_path: /tmp/scorcher-all/LORT.BIN
+  asm_path: /tmp/scorcher-dis/asm
+  ld_scripts_path: /tmp/scorcher-dis/ld
+  syms_path: /tmp/scorcher-dis/syms
+  src_path: /tmp/scorcher-dis/src
+  decomp_empty_funcs: false
+segments:
+  - name: lort_sound
+    type: code
+    start: 0
+    vram: 0x06004000
+    subsegments:
+      - start: 0x6000
+        end: 0x67F8
+        type: c
+        file: sound_loader_core
+      - start: 0x67F8
+        end: 0x6D74
+        type: c
+        file: sound_task
+        function_ranges:
+          - [0x67F8, 0x69EE]
+          - [0x69EE, 0x6AA0]
+          - [0x6AA0, 0x6ABC]
+          - [0x6ABC, 0x6B4C]
+          - [0x6B4C, 0x6C94]
+          - [0x6C94, 0x6D14]
+      - start: 0x6D74
+        end: 0x8000
+        type: c
+        file: sound_loader
+        function_ranges:
+          - [0x6D98, 0x6DF2]
+          - [0x6DF8, 0x6E46]
+          - [0x6E78, 0x6F56]
+          - [0x6F58, 0x6F96]
+          - [0x6F98, 0x6FDC]
+          - [0x7084, 0x70A0]
+          - [0x70A2, 0x70BA]
+      - start: 0xCF800
+        end: 0xCFA00
+        type: c
+        file: call_cf8
+      - start: 0xCFD00
+        end: 0xCFF00
+        type: c
+        file: call_cfd
+      - start: 0xD9300
+        end: 0xD9500
+        type: c
+        file: call_d94
+      - start: 0xDE600
+        end: 0xDE800
+        type: c
+        file: call_de6
+      - start: 0xDEB00
+        end: 0xDED00
+        type: c
+        file: call_deb
+      - start: 0xE1900
+        end: 0xE1B00
+        type: c
+        file: call_e1a
+      - start: 0xE4000
+        end: 0xE4300
+        type: c
+        file: call_e41
+      - start: 0xE7200
+        end: 0xE7500
+        type: c
+        file: call_e73
+      - start: 0xE77F0
+        end: 0xE7850
+        type: c
+        file: sound_init
+        function_ranges:
+          - [0xE77F0, 0xE77F8]
+          - [0xE77FA, 0xE7806]
+          - [0xE7808, 0xE7826]
+          - [0xE7828, 0xE784C]
+      - start: 0xE7934
+        end: 0xE8000
+        type: c
+        file: music_select

@@ -1,0 +1,24 @@
+.idea/
+.vs/
+.vscode/
+build/
+cmake-build-*/
+*.i64
+*.dep
+*.elf
+*.map
+*.o
+*.ps-exe
+*.pyc
+
+psyq2elf/psyq2elf
+psyq2elf/psyqdump
+
+# auto-generated Visual Studio CMake projects
+out/
+
+# auto-generated from tests
+bu00/
+bu10/
+comport.txt
+psyz_*_test_*/

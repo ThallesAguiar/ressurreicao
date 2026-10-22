@@ -1,0 +1,158 @@
+options:
+  target_path:  disks/saturn/RICHTER.PRG
+  asm_path:     asm/saturn/richter
+  src_path:     src/saturn
+  obj_path:     build/saturn
+  ld_scripts_path: config/saturn
+  syms_path: config/saturn
+  check_layout: true
+  decomp_empty_funcs: false
+  symbol_files:
+    - game_user_syms.txt
+    - zero_user_syms.txt
+    - game_syms.gen.txt
+    - zero_syms.gen.txt
+segments:
+  - name: richter
+    type: code
+    start: 0x00000000
+    vram:  0x060A5000
+    subalign: 2
+    subsegments:
+      - [0x0, .data, ric/header]
+      - start: 0x44
+        type: .text
+        file: ric/hdrstub
+      - start: 0x60
+        type: c
+        file: richter
+        end: 0x2CEF
+        function_ranges:
+          - [0xAA0, 0x13F4]
+      - start: 0x2CF0
+        type: c
+        file: richter
+        end: 0x2FD3
+        function_ranges:
+          - [0x2CF0, 0x2FD2]
+      - start: 0x2FD4
+        type: c
+        file: richter
+        end: 0xD40B
+        function_ranges:
+          - [0xB0C4, 0xB5D8]
+      - start: 0xD40C
+        type: c
+        file: richter
+        end: 0x19D6F
+        function_ranges:
+          - [0xE8FC, 0xEA1C]
+          - [0x13664, 0x13B12]
+          - [0x14978, 0x14A4E]
+      - [0x19D70, .data, ric/d54568]
+      - start: 0x19D7C
+        type: .text
+        file: ric/rictail
+      - [0x19D9C, .data, ric/gprolog]
+      - start: 0x19DA0
+        type: .data
+        file: ric/rictl2
+      - [0x19DD0, .data, ric/timers]
+      - [0x19E08, .data, ric/sensors]
+      - start: 0x19F20
+        type: .data
+        file: ric/subwdata
+      - start: 0x1A1E4
+        type: .data
+        file: ric/bpdefs
+      - [0x1AC20, .data, ric/anims]
+      - start: 0x1B1F8
+        type: .data
+        file: ric/hitboxes
+      - start: 0x1B240
+        type: .data
+        file: ric/sprpal1
+      - start: 0x1B5A4
+        type: .data
+        file: ric/sprfrm1
+      - start: 0x1C2EC
+        type: .data
+        file: ric/sprimg1
+      - start: 0x1C5EC
+        type: .data
+        file: ric/sprpkg2
+      - start: 0x1CB04
+        type: .data
+        file: ric/sprpkg3
+        end: 0x1D120
+      - start: 0x1D120
+        type: .data
+        file: ric/sprpkg4
+        end: 0x1D278
+      - start: 0x1D278
+        type: .data
+        file: ric/sprpkg5
+        end: 0x1D334
+      - start: 0x1D334
+        type: .data
+        file: ric/sprpkg6
+        end: 0x1D4DC
+      - start: 0x1D4DC
+        type: .data
+        file: ric/sprpkg7
+        end: 0x1D608
+      - start: 0x1D608
+        type: .data
+        file: ric/sprpkg8
+        end: 0x1DAD4
+      - start: 0x1DAD4
+        type: .data
+        file: ric/sprpkg9
+        end: 0x1DE4C
+      - start: 0x1DE4C
+        type: .data
+        file: ric/sprpkg10
+        end: 0x1DF2C
+      - start: 0x1DF2C
+        type: .data
+        file: ric/sprres
+        end: 0x1DFE8
+      - start: 0x1DFE8
+        type: .data
+        file: ric/gfxloads
+        end: 0x1E5E0
+      - start: 0x1E5E0
+        type: .data
+        file: ric/whipdata
+      - [0x1E952, .data, ric/whipdat]
+      - start: 0x1E982
+        type: .data
+        file: ric/vibanim
+      - start: 0x1E9BC
+        type: .data
+        file: ric/subwpfx
+        end: 0x1EA34
+      - start: 0x1EA34
+        type: .data
+        file: ric/hwdata
+        end: 0x1EAB4
+      - start: 0x1EAB4
+        type: .data
+        file: ric/crossdat
+      - start: 0x1F118
+        type: .data
+        file: ric/castmap
+        end: 0x2871C
+      - [0x2871C, .data, ric/mapcmd]
+      - start: 0x2873C
+        type: .data
+        file: ric/mapui
+        end: 0x288BC
+      - start: 0x288BC
+        type: .data
+        file: ric/deathgfx
+        end: 0x29CCC
+      - start: 0x29CCC
+        type: .data
+        file: ric/coffres
+        end: 0x2F04B

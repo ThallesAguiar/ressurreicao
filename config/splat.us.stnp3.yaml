@@ -1,0 +1,156 @@
+options:
+  platform: psx
+  basename: stnp3
+  base_path: ..
+  build_path: build/us
+  target_path: disks/us/ST/NP3/NP3.BIN
+  asm_path: asm/us/st/np3
+  asset_path: assets/st/np3
+  src_path: src/st/np3
+  ld_script_path: build/us/stnp3.ld
+  compiler: GCC
+  symbol_addrs_path:
+    - config/symbols.us.txt
+  undefined_funcs_auto_path: build/us/config/undefined_funcs_auto.us.stnp3.txt
+  undefined_syms_auto_path: build/us/config/undefined_syms_auto.us.stnp3.txt
+  find_file_boundaries: yes
+  use_legacy_include_asm: no
+  migrate_rodata_to_functions: no
+  asm_jtbl_label_macro: jlabel
+  extensions_path: tools/splat_ext
+  disassemble_all: true
+  global_vram_start: 0x80010000
+  section_order:
+    - ".data"
+    - ".rodata"
+    - ".text"
+    - ".bss"
+    - ".sbss"
+  ld_generate_symbol_per_data_segment: true
+sha1: 7c78a2bec6a26acfb62456e7f517915fe0c0e3f5
+segments:
+  - name: stnp3
+    type: code
+    start: 0x00000000
+    vram: 0x80180000
+    align: 4
+    subalign: 4
+    subsegments:
+      - [0x0, .data, header]
+      - [0x8C, .data, header] # palette definitions
+      - [0x1D0, .data, header] # layers
+      - [0x558, .data, header] # graphics banks
+      - [0x728, .data, gen/us/e_laydef] # layout entries header
+      - [0x8D0, .data, e_init]
+      - [0xBD4, .data, background_block_init]
+      - [0xD78, .data, e_red_door_tiles]
+      - [0xD98, .data, e_lock_camera]
+      - [0xE18, .data, e_breakable]
+      - [0xE78, .data, e_background_lightning]
+      - [0xF0C, .data, e_castle_door]
+      - [0x1008, .data, e_background_bushes_trees]
+      - [0x1104, .data, e_trapdoor]
+      - [0x1114, .data, e_jewel_sword_puzzle]
+      - [0x11CC, .data, e_sky_entities]
+      - [0x122C, .data, d_water_data]
+      - [0x1260, .data, e_explosion_puff_opaque]
+      - [0x12CC, .data, slogra]
+      - [0x14B4, .data, gaibon]
+      - [0x1618, .data, d_prize_drops]
+      - [0x162C, .data, st_update]
+      - [0x1678, .data, collision]
+      - [0x1A38, .data, e_red_door]
+      - [0x1A50, .data, st_common]
+      - [0x1C50, .data, e_collect]
+      - [0x1F40, .data, e_misc] # EntityRelicOrb
+      - [0x205C, .data, e_particles]
+      - [0x20DC, .data, e_room_fg]
+      - [0x2168, .data, water_effects]
+      - [0x2224, .data, e_merman2]
+      - [0x2338, .data, e_merman]
+      - [0x2460, .data, e_bone_scimitar]
+      - [0x2554, .data, e_bat]
+      - [0x258C, .data, e_zombie]
+      - [0x25D4, .data, e_bloody_zombie]
+      - [0x26CC, .data, e_owl_knight]
+      - [0x2978, .data, hammer]
+      - [0x2EF4, .data, gurkha]
+      - [0x33E4, .data, blade]
+      - [0x3A7C, .data, gen/rooms]
+      - [0x3B68, .data, gen/us/e_layout] # layout entries data
+      - [0x49E0, .data, stage_data]
+      - [0x2A124, .data, gen/sprites]
+      - [0x31EA0, .rodata, e_castle_door]
+      - [0x31EB0, .rodata, e_stairway]
+      - [0x31EBC, .rodata, e_explosion_puff_opaque] # EntityExplosionPuffOpaque
+      - [0x31ED0, .rodata, slogra] # EntitySlogra .rodata, 36990
+      - [0x31EDC, .rodata, gaibon] # EntityGaibon .rodata, 36990
+      - [0x31F00, .rodata, e_red_door] # EntityRedDoor
+      - [0x31F68, .rodata, e_collect]
+      - [0x31FA0, .rodata, e_misc] # EntityRelicOrb
+      - [0x31FD8, .rodata, e_misc] # EntityMessageBox
+      - [0x31FEC, .rodata, e_stage_name] # EntityStageNamePopup
+      - [0x32020, .rodata, e_merman2] # EntityMerman2
+      - [0x32044, .rodata, e_merman] # EntityMerman
+      - [0x3206C, .rodata, e_bone_scimitar] # EntityBoneScimitar data
+      - [0x3208C, .rodata, e_bat] # EntityBat
+      - [0x320A0, .rodata, e_zombie] # EntityZombie
+      - [0x320B4, .rodata, e_bloody_zombie] # EntityBloodyZombie data
+      - [0x320DC, .rodata, e_owl_knight]
+      - [0x321EC, .rodata, giantbro_helpers] # Strings
+      - [0x3224C, .rodata, hammer] # EntityHammer
+      - [0x322CC, .rodata, hammer] # EntityGurkhaBodyParts
+      - [0x322F8, .rodata, gurkha] # EntityGurkha
+      - [0x32380, .rodata, gurkha] # EntityGurkhaWeapon
+      - [0x323E4, .rodata, blade] # EntityBlade
+      - [0x32464, .rodata, prim_helpers]
+      - [0x3246C, c, e_room_bg]
+      - [0x32540, c, e_lock_camera]
+      - [0x326FC, c, e_breakable]
+      - [0x32830, c, e_unkId16]
+      - [0x328E4, c, e_background_lightning]
+      - [0x32C20, c, e_shutting_window]
+      - [0x32F30, c, e_castle_door]
+      - [0x332A8, c, e_background_bushes_trees]
+      - [0x339CC, c, e_transparent_water]
+      - [0x33D24, c, e_cavern_door]
+      - [0x344B4, c, entrance_weights]
+      - [0x34BE8, c, e_trapdoor]
+      - [0x34D60, c, e_jewel_sword_puzzle]
+      - [0x35790, c, e_stairway]
+      - [0x35DE8, c, e_sky_entities]
+      - [0x35F60, c, e_heartroom]
+      - [0x3644C, c, e_tilemap_shuffler]
+      - [0x3653C, c, e_explosion_puff_opaque]
+      - [0x36990, c, slogra]
+      - [0x378BC, c, gaibon]
+      - [0x390BC, c, st_update]
+      - [0x394F0, c, collision]
+      - [0x3ACAC, c, create_entity]
+      - [0x3B824, c, e_red_door]
+      - [0x3C4D4, c, st_common]
+      - [0x3D984, c, e_collect]
+      - [0x3F1A0, c, e_misc]
+      - [0x42690, c, e_stage_name]
+      - [0x434E4, c, e_particles]
+      - [0x43D28, c, e_room_fg]
+      - [0x43E14, c, popup]
+      - [0x44144, c, water_effects]
+      - [0x46458, c, e_merman2] # Merman Entities
+      - [0x48238, c, e_merman]
+      - [0x490E8, c, e_bone_scimitar] # EntityBoneScimitar
+      - [0x4997C, c, e_bat]
+      - [0x49BC8, c, e_zombie]
+      - [0x49F98, c, e_bloody_zombie] # EntityBloodyZombie
+      - [0x4B018, c, e_owl_knight]
+      - [0x4D658, c, giantbro_helpers]
+      - [0x4E04C, c, giantbro_helpers_2]
+      - [0x4E4CC, c, hammer]
+      - [0x4F778, c, gurkha]
+      - [0x50A00, c, blade]
+      - [0x51F38, c, prim_helpers]
+      - [0x52768, .bss, create_entity]
+      - [0x5277D, .bss, bss]
+      - [0x53378, .bss, giantbro_helpers]
+      - [0x533F4, .bss, st_update]
+  - [0x53434]

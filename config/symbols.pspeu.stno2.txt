@@ -1,0 +1,3 @@
+spriteBanks = 0x09265FC0;
+cluts = 0x09266368;
+gfxBanks = 0x092664C8;

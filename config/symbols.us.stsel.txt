@@ -1,0 +1,13 @@
+g_Streams = 0x8018B2EC;
+StreamDiskIsReady = 0x801B9744;
+StreamNextVlc = 0x801B988C;
+DecDCTin = 0x801BA5CC;
+DecDCTout = 0x801BA648;
+DecDCToutCallback = 0x801BA6CC;
+func_801BAB70 = 0x801BAB70;
+DecDCTvlc = 0x801BABA4;
+g_StreamEndFrame = 0x801BD034;
+g_StreamIsRGB24 = 0x801BD038;
+g_StreamRewindSwitch = 0x801BD044;
+g_StreamImageBuffer = 0x801BD048;
+g_StreamEnv = 0x801D6A4C; // size:0xDC

@@ -1,0 +1,84 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+#include "mar.h"
+
+void EntityBreakable(Entity* self);
+void EntityExplosion(Entity* self);
+void EntityPrizeDrop(Entity* self);
+void EntityDamageDisplay(Entity* self);
+void EntityRedDoor(Entity* self);
+void EntityIntenseExplosion(Entity* self);
+void EntitySoulStealOrb(Entity* self);
+void EntityRoomForeground(Entity* self);
+void EntityStageNamePopup(Entity* self);
+void EntityEquipItemDrop(Entity* self);
+void EntityRelicOrb(Entity* self);
+void EntityPersistentItemDrop(Entity* self);
+void EntityEnemyBlood(Entity* self);
+void EntityMessageBox(Entity* self);
+void EntityDummy(Entity* self);
+void EntityDummy(Entity* self);
+void EntityBackgroundBlock(Entity* self);
+void EntityLockCamera(Entity* self);
+void EntityUnkId13(Entity* self);
+void EntityExplosionVariants(Entity* self);
+void EntityGreyPuff(Entity* self);
+void EntityClockRoomController(Entity* self);
+void EntityClockHands(Entity* self);
+void EntityBirdcageDoor(Entity* self);
+void EntityStatue(Entity* self);
+void EntityStatueGear(Entity* self);
+void EntityStoneDoor(Entity* self);
+void EntityClockRoomUnused(Entity* self);
+void EntityDummy(Entity* self);
+void EntityCutscene(Entity* self);
+void func_us_8018C90C(Entity* self);
+void func_us_8018CA94(Entity* self);
+
+PfnEntityUpdate EntityUpdates[] = {
+    EntityBreakable,       EntityExplosion,
+    EntityPrizeDrop,       EntityDamageDisplay,
+    EntityRedDoor,         EntityIntenseExplosion,
+    EntitySoulStealOrb,    EntityRoomForeground,
+    EntityStageNamePopup,  EntityEquipItemDrop,
+    EntityRelicOrb,        EntityPersistentItemDrop,
+    EntityEnemyBlood,      EntityMessageBox,
+    EntityDummy,           EntityDummy,
+    EntityBackgroundBlock, EntityLockCamera,
+    EntityUnkId13,         EntityExplosionVariants,
+    EntityGreyPuff,        EntityClockRoomController,
+    EntityClockHands,      EntityBirdcageDoor,
+    EntityStatue,          EntityStatueGear,
+    EntityStoneDoor,       EntityClockRoomUnused,
+    EntityDummy,           EntityCutscene,
+    func_us_8018C90C,      func_us_8018CA94,
+};
+
+// clang-format off
+EInit g_EInitBreakable = {ANIMSET_DRA(3), 0x00, 0x00, PAL_NONE, ENEMY_BREAKABLE};
+EInit g_EInitObtainable = {ANIMSET_DRA(3), 0x00, 0x00, PAL_NONE, ENEMY_OBTAINABLE};
+EInit g_EInitParticle = {ANIMSET_DRA(3), 0x00, 0x00, PAL_NONE, ENEMY_PARTICLE};
+EInit g_EInitSpawner = {ANIMSET_DRA(0), 0x00, 0x00, PAL_NONE, ENEMY_SPAWNER};
+EInit g_EInitInteractable = {ANIMSET_DRA(0), 0x00, 0x00, PAL_NONE, ENEMY_INTERACTABLE};
+EInit g_EInitUnkId13 = {ANIMSET_DRA(0), 0x00, 0x00, PAL_NONE, ENEMY_PARTICLE};
+EInit g_EInitLockCamera = {ANIMSET_DRA(0), 0x00, 0x00, PAL_NONE, ENEMY_OBTAINABLE};
+EInit g_EInitCommon = {ANIMSET_DRA(0), 0x00, 0x00, PAL_NONE, ENEMY_COMMON};
+EInit g_EInitDamageNum = {ANIMSET_DRA(0), 0x00, 0x00, PAL_NONE, ENEMY_COMMON};
+// clang-format on
+
+static u16 unused[][6] = {
+    {0x0000, 0x0000, 0x0000, 0x0000, 0x0133, 0x0000},
+    {0x0000, 0x0000, 0x0000, 0x0000, 0x0134, 0x0000},
+    {0x0000, 0x0000, 0x0000, 0x0000, 0x0135, 0x0000},
+    {0x0000, 0x0000, 0x0000, 0x0000, 0x0136, 0x0000},
+    {0x0000, 0x0000, 0x0000, 0x0000, 0x0137, 0x0000},
+    {0x0000, 0x0000, 0x0000, 0x0000, 0x0138, 0x0000},
+    {0x0000, 0x0000, 0x0000, 0x0000, 0x0139, 0x0000},
+    {0x0000, 0x0000, 0x0000, 0x0000, 0x013A, 0x0000},
+    {0x0000, 0x0000, 0x0000, 0x0000, 0x013B, 0x0000},
+    {0x0000, 0x0000, 0x0000, 0x0000, 0x013C, 0x0000},
+    {0x0000, 0x0000, 0x0000, 0x0000, 0x013D, 0x0000},
+    {0x0000, 0x0000, 0x0000, 0x0000, 0x013E, 0x0000},
+    {0x0000, 0x0000, 0x0000, 0x0000, 0x013F, 0x0000},
+    {0x0000, 0x0000, 0x0000, 0x0000, 0x0140, 0x0000},
+    {0x0000, 0x0000, 0x0000, 0x0000, 0x0141, 0x0000},
+};

@@ -1,0 +1,154 @@
+options:
+  platform: psx
+  basename: stdai
+  base_path: ..
+  build_path: build/us
+  target_path: disks/us/ST/DAI/DAI.BIN
+  asm_path: asm/us/st/dai
+  asset_path: assets/st/dai
+  src_path: src/st/dai
+  ld_script_path: build/us/stdai.ld
+  compiler: GCC
+  symbol_addrs_path:
+    - config/symbols.us.txt
+    - config/symbols.us.stdai.txt
+  undefined_funcs_auto_path: build/us/config/undefined_funcs_auto.us.stdai.txt
+  undefined_syms_auto_path: build/us/config/undefined_syms_auto.us.stdai.txt
+  find_file_boundaries: true
+  use_legacy_include_asm: false
+  migrate_rodata_to_functions: true
+  asm_jtbl_label_macro: jlabel
+  symbol_name_format: us_$VRAM
+  disassemble_all: true
+  section_order:
+    - .data
+    - .rodata
+    - .text
+    - .bss
+    - .sbss
+  ld_bss_is_noload: false
+  disasm_unknown: true
+  global_vram_start: 0x80010000
+  ld_generate_symbol_per_data_segment: true
+sha1: 4189c2f709ce229e48f5cd93a20af40579bda26b
+segments:
+  - name: stdai
+    type: code
+    start: 0x0
+    vram: 0x80180000
+    align: 4
+    subalign: 4
+    subsegments:
+      - [0x0, .data, header]
+      - [0x2C, .data, sprite_banks]
+      - [0x8C, .data, pal_stained_glass]
+      - [0xAC, .data, palette_def]
+      - [0x178, .data, layers]
+      - [0x468, .data, graphics_banks]
+      - [0x670, .data, gen/e_laydef]
+      - [0x818, .data, e_init]
+      - [0xAC4, .data, background_block_init]
+      - [0xADC, .data, e_red_door_tiles]
+      - [0xB0C, .data, e_lock_camera]
+      - [0xB8C, .data, e_breakable]
+      - [0xCA4, .data, e_dai_no2_shortcut]
+      - [0xCAC, .data, e_bell]
+      - [0xD54, .data, e_confessional]
+      - [0xE8C, .data, e_chair]
+      - [0xEA0, .data, e_end_chime]
+      - [0xEA4, .data, e_spikes]
+      - [0xEC0, .data, d_prize_drops]
+      - [0xEE0, .data, e_cutscene_dialogue]
+      - [0x1050, .data, st_update]
+      - [0x109C, .data, st_collision]
+      - [0x145C, .data, e_red_door]
+      - [0x1474, .data, st_common]
+      - [0x1674, .data, e_collect]
+      - [0x19C8, .data, e_misc]
+      - [0x1A80, .data, e_particles]
+      - [0x1B00, .data, e_room_fg]
+      - [0x1B8C, .data, e_corner_guard]
+      - [0x1C54, .data, e_bone_pillar]
+      - [0x1D40, .data, e_bone_halberd]
+      - [0x1EC0, .data, e_winged_guard]
+      - [0x1F20, .data, e_bat]
+      - [0x1F58, .data, e_crow]
+      - [0x2030, .data, e_skelerang]
+      - [0x211C, .data, e_hunting_girl]
+      - [0x2294, .data, e_spectral_sword]
+      - [0x22A8, .data, e_sealed_door]
+      - [0x2318, .data, e_mist_door]
+      - [0x2358, .data, gen/rooms]
+      - [0x242C, .data, e_clouds]
+      - [0x2564, .data, e_stained_glass]
+      - [0x2784, .data, gen/e_layout]
+      - [0x3A94, .data, cutscene_data]
+      - [0x3C2C, .data, gfx_data]
+      - [0x1782C, .data, tilemaps]
+      - [0x3AA5C, .data, gen/us/sprites]
+      - [0x3FE3C, .rodata, e_breakable]
+      - [0x3FE5C, .rodata, e_tower_exit]
+      - [0x3FE98, .rodata, e_confessional]
+      - [0x3FF00, .rodata, e_chair]
+      - [0x3FF24, .rodata, e_cutscene_dialogue]
+      - [0x3FFC0, .rodata, e_cutscene_actors]
+      - [0x3FFE0, .rodata, e_red_door]
+      - [0x3FFF8, .rodata, e_collect]
+      - [0x400CC, .rodata, e_stage_name]
+      - [0x40100, .rodata, e_corner_guard]
+      - [0x4013C, .rodata, e_bone_pillar]
+      - [0x40160, .rodata, e_bone_halberd]
+      - [0x40180, .rodata, e_winged_guard]
+      - [0x4018C, .rodata, e_bat]
+      - [0x401A0, .rodata, e_crow]
+      - [0x401D0, .rodata, e_skelerang]
+      - [0x4023C, .rodata, e_hunting_girl]
+      - [0x40264, .rodata, e_spectral_sword]
+      - [0x402D0, .rodata, e_sealed_door]
+      - [0x402E8, .rodata, prim_helpers]
+      - [0x402F0, c, e_room_bg]
+      - [0x403B8, c, e_lock_camera]
+      - [0x40574, c, e_breakable]
+      - [0x40BA4, c, e_tower_exit]
+      - [0x40F8C, c, e_dai_no2_shortcut]
+      - [0x41298, c, e_bell]
+      - [0x41EE4, c, e_room_fg_2]
+      - [0x423A4, c, e_gargoyle]
+      - [0x42534, c, e_confessional]
+      - [0x43104, c, e_chair]
+      - [0x434FC, c, e_room_bg_2]
+      - [0x43644, c, e_end_chime]
+      - [0x4379C, c, e_spikes]
+      - [0x43F48, c, e_cutscene_dialogue]
+      - [0x458C4, c, e_cutscene_actors]
+      - [0x45F88, c, st_update]
+      - [0x463BC, c, st_collision]
+      - [0x47B78, c, create_entity]
+      - [0x486F0, c, e_red_door]
+      - [0x493A0, c, st_common]
+      - [0x4A850, c, e_collect]
+      - [0x4D1C0, c, e_misc]
+      - [0x4F55C, c, e_stage_name]
+      - [0x503B0, c, e_particles]
+      - [0x50BF4, c, e_room_fg]
+      - [0x50CE0, c, popup]
+      - [0x51010, c, e_corner_guard]
+      - [0x51D00, c, e_bone_pillar]
+      - [0x52EA4, c, e_bone_halberd]
+      - [0x537C4, c, e_winged_guard]
+      - [0x53D8C, c, e_bat]
+      - [0x53FD8, c, e_crow]
+      - [0x5468C, c, e_skelerang]
+      - [0x550E4, c, e_hunting_girl]
+      - [0x56434, c, e_spectral_sword]
+      - [0x573E4, c, e_sealed_door]
+      - [0x581D0, c, e_mist_door]
+      - [0x582B8, c, prim_helpers]
+      - [0x58AE8, c, e_clouds]
+      - [0x59168, c, e_stained_glass]
+      - [0x5A69C, bss, unused_5A69C]
+      - [0x5A6FC, .bss, create_entity]
+      - [0x5A70C, bss, unused_5A70C]
+      - [0x5B30C, .bss, e_cutscene_dialogue]
+      - [0x5B3C4, .bss, e_collect]
+  - [0x5B404]

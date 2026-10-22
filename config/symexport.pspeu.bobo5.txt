@@ -1,0 +1,2 @@
+EXTERN(_binary_assets_boss_bo5_mwo_header_bin_start);
+EXTERN(BO5_Load);

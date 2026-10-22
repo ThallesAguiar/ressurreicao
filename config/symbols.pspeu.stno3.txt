@@ -1,0 +1,7 @@
+spriteBanks = 0x0926A980;
+rooms_layers = 0x0926ACD0;
+cluts = 0x0926AEE8;
+gfxBanks = 0x0926B088;
+rooms = 0x0926B528;
+cutscene_alucard = 0x09278B98;
+cutscene_death = 0x09279918;

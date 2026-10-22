@@ -1,0 +1,206 @@
+name: Build and test
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '*.md'
+      - '**/*.md'
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    env:
+      CI: 1
+      OS: linux
+    steps:
+      - name: Install requirements
+        run: |
+          sudo apt-get update
+          sudo apt-get install build-essential cmake ninja-build libsdl2-dev libxtst-dev mesa-vulkan-drivers
+      - name: Clone repo
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: ztest self-test
+        run: make -C ztest test-native
+      - name: Test PsyZ
+        working-directory: psyz/
+        run: make test
+      - name: Build and run overlays sample
+        run: |
+          cmake -GNinja -DSDL_STATIC=ON -S samples/overlays -B samples/overlays/build
+          cmake --build samples/overlays/build
+          ./samples/overlays/build/host
+      - name: Upload test failure artifacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-failures-linux
+          path: psyz/tests/expected/*.actual.png
+          if-no-files-found: ignore
+
+  build-and-test-windows:
+    runs-on: windows-latest
+    env:
+      CI: 1
+      OS: windows
+      SDL_VIDEODRIVER: offscreen
+    strategy:
+      matrix:
+        compiler:
+          - name: MSVC
+            script: test.bat
+            toolset: ''
+          - name: ClangCl
+            script: test-clang.bat
+            toolset: '-T ClangCl'
+    steps:
+      - name: Clone repo
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: ztest self-test (${{ matrix.compiler.name }})
+        run: |
+          cmake -S ztest -B ztest/build/win ${{ matrix.compiler.toolset }}
+          cmake --build ztest/build/win --config Release
+          python ztest/zrunner.py native --exe ztest/build/win/Release/ztest_selftest.exe --workdir ztest/selftest --selftest ztest/selftest/selftest.expected.txt
+      - name: Test PsyZ on Windows (${{ matrix.compiler.name }})
+        working-directory: psyz/
+        run: ./${{ matrix.compiler.script }}
+      - name: Build and run overlays sample (${{ matrix.compiler.name }})
+        run: |
+          cmake -S samples/overlays -B samples/overlays/build ${{ matrix.compiler.toolset }}
+          cmake --build samples/overlays/build --config Debug
+          ./samples/overlays/build/Debug/host.exe
+      - name: Upload test failure artifacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-failures-windows-${{ matrix.compiler.name }}
+          path: psyz/tests/expected/*.actual.png
+          if-no-files-found: ignore
+
+  build-and-test-macos:
+    runs-on: macos-latest
+    env:
+      CI: 1
+      OS: darwin
+    steps:
+      - name: Install requirements
+        run: brew install cmake ninja sdl2
+      - name: Clone repo
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: ztest self-test
+        run: make -C ztest test-native
+      - name: Test PsyZ
+        working-directory: psyz/
+        run: make test
+      - name: Build and run overlays sample
+        run: |
+          cmake -GNinja -DSDL_STATIC=ON -S samples/overlays -B samples/overlays/build
+          cmake --build samples/overlays/build
+          ./samples/overlays/build/host
+      - name: Upload test failure artifacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-failures-macos
+          path: psyz/tests/expected/*.actual.png
+          if-no-files-found: ignore
+
+  build-and-test-psp:
+    runs-on: ubuntu-26.04
+    env:
+      PPSSPP_PKG: ppsspp-1.20.4-4-x86_64.pkg.tar.zst
+    steps:
+      - name: Install requirements
+        run: |
+          sudo apt-get update
+          sudo apt-get install cmake ninja-build zstd \
+            libsnappy1v5 libglew2.2 libzip5 libpng16-16 \
+            libsdl2-ttf-2.0-0 libsdl2-2.0-0 libopengl0 libminiupnpc21 libzstd1
+      - name: Clone repo
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Install PSP toolchain
+        run: |
+          curl -sSfL -o pspdev.tar.gz \
+            https://github.com/pspdev/pspdev/releases/latest/download/pspdev-ubuntu-latest-x86_64.tar.gz
+          tar xf pspdev.tar.gz -C "$HOME"
+          echo "PSPDEV=$HOME/pspdev" >> "$GITHUB_ENV"
+          echo "$HOME/pspdev/bin" >> "$GITHUB_PATH"
+      - name: Install PPSSPPHeadless
+        run: |
+          curl -sSfL -O "https://archive.archlinux.org/packages/p/ppsspp/$PPSSPP_PKG"
+          mkdir -p "$HOME/ppsspp-bin"
+          tar xf "$PPSSPP_PKG" -C "$HOME/ppsspp-bin" --strip-components=2 usr/bin/PPSSPPHeadless
+          sudo ln -sf /usr/lib/x86_64-linux-gnu/libGLEW.so.2.2 \
+                      /usr/lib/x86_64-linux-gnu/libGLEW.so.2.3
+          echo "$HOME/ppsspp-bin" >> "$GITHUB_PATH"
+          if ldd "$HOME/ppsspp-bin/PPSSPPHeadless" | grep -qi "not found"; then
+            ldd "$HOME/ppsspp-bin/PPSSPPHeadless"
+            exit 1
+          fi
+          status=0
+          "$HOME/ppsspp-bin/PPSSPPHeadless" --help > /dev/null || status=$?
+          if [ "$status" -gt 1 ]; then
+            echo "PPSSPPHeadless failed to start (exit $status)"
+            exit 1
+          fi
+      - name: ztest self-test on PSP
+        run: make -C ztest test-psp-emu
+      - name: Test PsyZ on PSP
+        working-directory: psyz/
+        run: make test-psp-emu
+      - name: Build and run overlays sample
+        run: |
+          cmake -GNinja -DCMAKE_TOOLCHAIN_FILE="$PWD/psyz/src/psp/psp.cmake" \
+            -S samples/overlays -B samples/overlays/build
+          cmake --build samples/overlays/build
+          timeout 10 PPSSPPHeadless -r "$PWD/samples/overlays/build" \
+            "$PWD/samples/overlays/build/EBOOT.PBP" --timeout=5 -l -v \
+            > overlays-psp.log 2>&1 || true
+          grep "stdout:" overlays-psp.log > overlays-psp.out || true
+          cat overlays-psp.out
+          grep -q "sceKernelExitGame" overlays-psp.log
+          ! grep -q "FAIL" overlays-psp.out
+          grep -q "PASS" overlays-psp.out
+      - name: Upload test failure artifacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-failures-psp
+          path: |
+            psyz/tests/expected/*.actual.png
+            ztest/selftest/expected/*.actual.png
+          if-no-files-found: ignore
+
+  build-ios:
+    runs-on: macos-latest
+    env:
+      CI: 1
+      OS: ios
+    steps:
+      - name: Clone repo
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Configure iOS GPU sample
+        run: |
+          cmake -S samples/gpu_hello -B build-ios -G Xcode \
+            -DCMAKE_SYSTEM_NAME=iOS \
+            -DCMAKE_OSX_SYSROOT=iphoneos \
+            -DCMAKE_OSX_ARCHITECTURES=arm64 \
+            -DCMAKE_OSX_DEPLOYMENT_TARGET=13.0 \
+            -DCMAKE_XCODE_ATTRIBUTE_CODE_SIGNING_ALLOWED=NO
+      - name: Build iOS GPU sample
+        run: |
+          cmake --build build-ios --config Release -- \
+            -sdk iphoneos CODE_SIGNING_ALLOWED=NO

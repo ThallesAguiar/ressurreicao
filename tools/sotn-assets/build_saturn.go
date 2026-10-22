@@ -1,0 +1,124 @@
+package main
+
+import (
+	"fmt"
+	"os"
+	"path/filepath"
+
+	"github.com/xeeynamo/sotn-decomp/tools/sotn-assets/deps"
+)
+
+// zero must be split first, then game
+var saturnSplitterYAMLs = []string{
+	"config/saturn/zero.bin.yaml",
+	"config/saturn/game.prg.yaml",
+	"config/saturn/t_bat.prg.yaml",
+	"config/saturn/stage_02.prg.yaml",
+	"config/saturn/warp.prg.yaml",
+	"config/saturn/alucard.prg.yaml",
+	"config/saturn/richter.prg.yaml",
+	"config/saturn/maria.prg.yaml",
+	"config/saturn/rstage15.prg.yaml",
+	"config/saturn/stage_15.prg.yaml",
+	"config/saturn/rstage16.prg.yaml",
+	"config/saturn/stage_16.prg.yaml",
+}
+
+func buildSaturn() error {
+	if err := buildSaturnObjects(); err != nil {
+		return err
+	}
+	if err := checkVersions(os.Stderr, []string{"saturn"}); err != nil {
+		return err
+	}
+	if err := copyBuildToExpectedFolder("saturn"); err != nil {
+		return fmt.Errorf("copy build to expected folder: %w", err)
+	}
+	return nil
+}
+
+func buildSaturnObjects() error {
+	if err := extractSaturn(); err != nil {
+		return fmt.Errorf("extract: %w", err)
+	}
+	if err := genSaturnNinjaIfNeeded(); err != nil {
+		return err
+	}
+	if err := deps.Ninja(); err != nil {
+		return fmt.Errorf("ninja: %w", err)
+	}
+	return nil
+}
+
+var saturnExtractSentinels = []string{
+	"asm/saturn/game",
+	"config/saturn/game_syms.txt",
+	"config/saturn/alucard.ld",
+	"config/saturn/game.ld",
+	"config/saturn/maria.ld",
+	"config/saturn/richter.ld",
+	"config/saturn/rstage15.ld",
+	"config/saturn/rstage16.ld",
+	"config/saturn/stage_02.ld",
+	"config/saturn/stage_15.ld",
+	"config/saturn/stage_16.ld",
+	"config/saturn/t_bat.ld",
+	"config/saturn/warp.ld",
+	"config/saturn/zero.ld",
+	"config/saturn/zero_syms.txt",
+}
+
+func extractSaturn() error {
+	for _, sentinel := range saturnExtractSentinels {
+		if _, err := os.Stat(sentinel); err != nil {
+			return runSaturnSplitter()
+		}
+	}
+	return nil
+}
+
+func runSaturnSplitter() error {
+	const splitter = "tools/saturn-splitter/rust-dis/target/release/rust-dis"
+	for _, yaml := range saturnSplitterYAMLs {
+		if err := deps.RunApp(splitter, yaml); err != nil {
+			return fmt.Errorf("split %s: %w", filepath.Base(yaml), err)
+		}
+	}
+	return nil
+}
+
+const saturnNinjaStampFile = "build.ninja.version"
+
+func genSaturnNinjaIfNeeded() error {
+	const ninjaFile = "build.ninja"
+	const stampFile = saturnNinjaStampFile
+	compiler := os.Getenv("SOTN_SATURN_COMPILER")
+	if compiler == "" {
+		compiler = "native64"
+	}
+	stamp := "saturn,compiler=" + compiler
+	if compilerPath, ok := os.LookupEnv("SOTN_SATURN_CC1"); ok {
+		stamp += ",cc1=" + compilerPath
+	}
+
+	needsRegen := false
+	if stampData, err := os.ReadFile(stampFile); err != nil || string(stampData) != stamp {
+		needsRegen = true
+	}
+	if !needsRegen {
+		ninjaInfo, err := os.Stat(ninjaFile)
+		if err != nil {
+			needsRegen = true
+		} else if info, err := os.Stat("tools/builds/saturn.py"); err == nil && info.ModTime().After(ninjaInfo.ModTime()) {
+			needsRegen = true
+		}
+	}
+
+	if needsRegen {
+		if err := deps.GenSaturnNinja(); err != nil {
+			return err
+		}
+		return os.WriteFile(stampFile, []byte(stamp), 0o644)
+	}
+	return nil
+}

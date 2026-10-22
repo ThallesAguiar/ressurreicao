@@ -1,0 +1,319 @@
+package layout
+
+import (
+	"encoding/binary"
+	"encoding/json"
+	"fmt"
+	"github.com/xeeynamo/sotn-decomp/tools/sotn-assets/datarange"
+	"github.com/xeeynamo/sotn-decomp/tools/sotn-assets/psx"
+	"github.com/xeeynamo/sotn-decomp/tools/sotn-assets/sotn"
+	"github.com/xeeynamo/sotn-decomp/tools/sotn-assets/util"
+	"hash/fnv"
+	"io"
+	"os"
+	"path/filepath"
+	"sort"
+	"strconv"
+	"strings"
+)
+
+type layoutEntry struct {
+	X       int16  `json:"x"`
+	Y       int16  `json:"y"`
+	ID      string `json:"id"`
+	Flags   uint8  `json:"flags"` // TODO properly de-serialize this
+	Slot    uint8  `json:"slot"`
+	SpawnID uint8  `json:"spawnId"`
+	Params  uint16 `json:"params"`
+	YOrder  *int   `json:"yOrder,omitempty"`
+}
+
+type layouts struct {
+	Entities [][]layoutEntry `json:"entities"`
+	Indices  []int           `json:"indices"`
+}
+
+// Utility function that finds the index of the given value in the given list.
+// Returns -1 (invalid index) if value is not in list.
+func indexOf(searchList []int, searchVal int) int {
+
+	for i, value := range searchList {
+		if value == searchVal {
+			return i
+		}
+	}
+	return -1
+}
+
+func fetchEntityIDsFromHeaderFile(overlay string) (map[int]string, error) {
+	var path = "src/st"
+	if strings.HasPrefix(overlay, "bo") || strings.HasPrefix(overlay, "rbo") ||
+		overlay == "mar" {
+		path = "src/boss"
+	}
+	path += "/" + overlay
+	return sotn.FetchEnumWithMin(path, overlay, "EntityID", 0x100)
+}
+
+func readEntityLayoutEntry(file io.ReadSeeker, ovlName string) (layoutEntry, error) {
+	entityIDs, _ := fetchEntityIDsFromHeaderFile(ovlName)
+
+	bs := make([]byte, 10)
+	if _, err := io.ReadFull(file, bs); err != nil {
+		return layoutEntry{}, err
+	}
+
+	var entityIDStr string
+	id := int(bs[4])
+	entityIDStr = entityIDs[id]
+	if entityIDStr == "" {
+		entityIDStr = fmt.Sprintf("0x%02X", id)
+	}
+
+	return layoutEntry{
+		X:       int16(binary.LittleEndian.Uint16(bs[0:2])),
+		Y:       int16(binary.LittleEndian.Uint16(bs[2:4])),
+		ID:      entityIDStr,
+		Flags:   bs[5],
+		Slot:    bs[6],
+		SpawnID: bs[7],
+		Params:  binary.LittleEndian.Uint16(bs[8:10]),
+	}, nil
+}
+
+// the Y-ordered entries list has a different order than the X-ordered one. The order cannot consistently get
+// restored by just sorting entries by Y as usually entries with the same Y results swapped.
+// This algorithm will fill the optional field YOrder, only useful to restore the original order.
+func hydrateYOrderFields(x layouts, y layouts) error {
+	if len(x.Indices) != len(y.Indices) {
+		return fmt.Errorf("number of X and Y layout indices do not match")
+	}
+	if len(x.Entities) != len(y.Entities) {
+		return fmt.Errorf("number of X and Y layout entries do not match")
+	}
+
+	populateYOrderField := func(xEntries []layoutEntry, yEntries []layoutEntry) {
+		yIndexMap := make(map[layoutEntry]int, len(yEntries))
+		for i, e := range yEntries {
+			yIndexMap[e] = i
+		}
+		for i := 0; i < len(xEntries); i++ {
+			if yOrder, found := yIndexMap[xEntries[i]]; found {
+				xEntries[i].YOrder = &yOrder
+			}
+		}
+	}
+
+	for i := 0; i < len(x.Entities); i++ {
+		xList := x.Entities[i]
+		yList := y.Entities[i]
+		if len(xList) != len(yList) {
+			return fmt.Errorf("number of X and Y entries do not match")
+		}
+		populateYOrderField(xList, yList)
+	}
+	return nil
+}
+
+func readEntityLayout(r io.ReadSeeker, ovlName string, off, baseAddr psx.Addr, count int, isX bool) (layouts, []datarange.DataRange, error) {
+	if err := off.MoveFile(r, baseAddr); err != nil {
+		return layouts{}, nil, err
+	}
+
+	// there are two copies of the layout, one ordered by X and the other one ordered by Y
+	// we will only read the first one, which is ordered by Y
+	blockOffsets := make([]psx.Addr, count)
+	if err := binary.Read(r, binary.LittleEndian, blockOffsets); err != nil {
+		return layouts{}, nil, err
+	}
+
+	// the order of each layout entry must be preserved
+	pool := map[psx.Addr]int{}
+	var blocks [][]layoutEntry
+	var xRanges []datarange.DataRange
+	for _, blockOffset := range util.SortUniqueOffsets(blockOffsets) {
+		if err := blockOffset.MoveFile(r, baseAddr); err != nil {
+			return layouts{}, nil, err
+		}
+		var entries []layoutEntry
+		for {
+			entry, err := readEntityLayoutEntry(r, ovlName)
+			if err != nil {
+				return layouts{}, nil, err
+			}
+			if entry.X == -1 && entry.Y == -1 {
+				entries = append(entries, entry)
+				break
+			}
+			entries = append(entries, entry)
+		}
+
+		// sanity check on the first entry
+		if entries[0].X != -2 || entries[0].Y != -2 {
+			err := fmt.Errorf("first layout entry does not mark the beginning of the array: %v", entries[0])
+			return layouts{}, nil, err
+		}
+
+		pool[blockOffset] = len(blocks)
+		blocks = append(blocks, entries)
+		xRanges = append(xRanges, datarange.FromAddr(blockOffset, len(entries)*10))
+	}
+	// the very last entry needs to be aligned by 4
+	xRanges[len(xRanges)-1] = xRanges[len(xRanges)-1].Align4()
+
+	l := layouts{Entities: blocks}
+	for _, blockOffset := range blockOffsets {
+		l.Indices = append(l.Indices, pool[blockOffset])
+	}
+
+	endOfArray := off.Sum(count * 4)
+	if isX { // we want to do the same thing with the vertically aligned layout
+		yLayouts, yRanges, err := readEntityLayout(r, ovlName, endOfArray, baseAddr, count, false)
+		if err != nil {
+			return layouts{}, nil, fmt.Errorf("readEntityLayout failed on Y: %w", err)
+		}
+		if err := hydrateYOrderFields(l, yLayouts); err != nil {
+			return layouts{}, nil, fmt.Errorf("unable to populate YOrder field: %w", err)
+		}
+		// Keep block ranges separate here. Info consolidates adjacent runs while
+		// leaving gaps unclaimed; Extract does not consume the ranges.
+		laydefRange, err := datarange.Merge([]datarange.DataRange{
+			datarange.New(off, endOfArray), yRanges[0]})
+		if err != nil {
+			return layouts{}, nil, err
+		}
+		layoutRanges := append(
+			[]datarange.DataRange{laydefRange}, xRanges...)
+		return l, append(layoutRanges, yRanges[1:]...), nil
+	} else {
+		return l, append(
+			[]datarange.DataRange{datarange.New(off, endOfArray)},
+			xRanges...), nil
+	}
+}
+
+func makeSortedBanks(banks [][]layoutEntry, sortByX bool) [][]layoutEntry {
+	var toSort []layoutEntry
+	var less func(i, j int) bool
+	if sortByX {
+		less = func(i, j int) bool { return toSort[i].X < toSort[j].X }
+	} else {
+		less = func(i, j int) bool {
+			if toSort[i].Y != toSort[j].Y {
+				return toSort[i].Y < toSort[j].Y
+			}
+			if toSort[i].YOrder != nil && toSort[j].YOrder != nil {
+				return *toSort[i].YOrder < *toSort[j].YOrder
+			}
+			return i < j
+		}
+	}
+	sorting := make([][]layoutEntry, len(banks))
+	for i, entries := range banks {
+		sorting[i] = make([]layoutEntry, len(entries)-2)
+		if len(sorting[i]) > 0 {
+			copy(sorting[i], entries[1:len(entries)-1])
+			toSort = sorting[i]
+			sort.SliceStable(toSort, less)
+		}
+		sorting[i] = append([]layoutEntry{entries[0]}, sorting[i]...)
+		sorting[i] = append(sorting[i], entries[len(entries)-1])
+	}
+	return sorting
+}
+
+func writeBankEntries(sb *strings.Builder, entries []layoutEntry) error {
+	if len(entries) < 2 || entries[0].X != -2 || entries[0].Y != -2 {
+		return fmt.Errorf("layout entity bank needs an X:-2 and Y:-2 entry at the beginning")
+	}
+	lastEntry := entries[len(entries)-1]
+	if lastEntry.X != -1 || lastEntry.Y != -1 {
+		return fmt.Errorf("layout entity bank needs an X:-1 and Y:-1 entry at the end")
+	}
+	for _, e := range entries {
+		sb.WriteString(fmt.Sprintf("    0x%04X, 0x%04X, %s | 0x%04X, 0x%04X, 0x%04X,\n",
+			uint16(e.X), uint16(e.Y), e.ID, int(e.Flags)<<8, int(e.Slot)|(int(e.SpawnID)<<8), e.Params))
+	}
+	return nil
+}
+
+func writeLayoutEntries(sb *strings.Builder, el layouts, sortByX bool) error {
+	banks := makeSortedBanks(el.Entities, sortByX)
+	nWritten := 0
+	for i, entries := range banks {
+		roomNum := indexOf(el.Indices, i)
+		if roomNum < 0 {
+			sb.WriteString(fmt.Sprintf("// Offset %d, No Room Found\n", nWritten))
+		} else {
+			sb.WriteString(fmt.Sprintf("// Offset %d, Room 0x%02X\n", nWritten, roomNum))
+		}
+		if err := writeBankEntries(sb, entries); err != nil {
+			return fmt.Errorf("layout entity bank %d: %w", i, err)
+		}
+		nWritten += len(entries)
+	}
+	if !sortByX && nWritten%2 != 0 {
+		sb.WriteString("    0, // padding\n")
+	}
+	return nil
+}
+
+func buildEntityLayouts(fileName, outputDir, subDir, ovlHeader string) error {
+
+	data, err := os.ReadFile(fileName)
+	if err != nil {
+		return err
+	}
+
+	var el layouts
+	if err := json.Unmarshal(data, &el); err != nil {
+		return err
+	}
+
+	h := fnv.New32()
+	_, _ = h.Write([]byte(outputDir))
+	symbolVariant := strconv.FormatUint(uint64(h.Sum32()), 16)
+	symbolName := fmt.Sprintf("entity_layout_%s", symbolVariant)
+	offsets := make([]int, len(el.Entities))
+	offsetCur := 0
+	for i := 0; i < len(el.Entities); i++ {
+		offsets[i] = offsetCur
+		offsetCur += len(el.Entities[i]) * 5
+	}
+
+	laydefFile := strings.Builder{}
+	laydefFile.WriteString("#include <stage.h>\n\n")
+	laydefFile.WriteString("#include \"common.h\"\n\n")
+	laydefFile.WriteString("// clang-format off\n")
+	laydefFile.WriteString(fmt.Sprintf("extern LayoutEntity %s_x[];\n", symbolName))
+	laydefFile.WriteString("LayoutEntity* entityLayoutHorizontal[] = {\n")
+	for _, i := range el.Indices {
+		laydefFile.WriteString(fmt.Sprintf("    &%s_x[%d],\n", symbolName, offsets[i]/5))
+	}
+	laydefFile.WriteString(fmt.Sprintf("};\n"))
+	laydefFile.WriteString(fmt.Sprintf("extern LayoutEntity %s_y[];\n", symbolName))
+	laydefFile.WriteString("LayoutEntity* entityLayoutVertical[] = {\n")
+	for _, i := range el.Indices {
+		laydefFile.WriteString(fmt.Sprintf("    &%s_y[%d],\n", symbolName, offsets[i]/5))
+	}
+	laydefFile.WriteString(fmt.Sprintf("};\n"))
+
+	layoutFile := strings.Builder{}
+	layoutFile.WriteString(fmt.Sprintf("#include %s\n\n", ovlHeader))
+	layoutFile.WriteString("// clang-format off\n")
+	layoutFile.WriteString(fmt.Sprintf("u16 %s_x[] = {\n", symbolName))
+	if err := writeLayoutEntries(&layoutFile, el, true); err != nil {
+		return fmt.Errorf("unable to build X entity layout: %w", err)
+	}
+	layoutFile.WriteString(fmt.Sprintf("};\n"))
+	layoutFile.WriteString(fmt.Sprintf("u16 %s_y[] = {\n", symbolName))
+	if err := writeLayoutEntries(&layoutFile, el, false); err != nil {
+		return fmt.Errorf("unable to build Y entity layout: %w", err)
+	}
+	layoutFile.WriteString(fmt.Sprintf("};\n"))
+
+	if err := util.WriteFile(filepath.Join(outputDir, "gen", subDir, "e_layout.c"), []byte(layoutFile.String())); err != nil {
+		return err
+	}
+	return util.WriteFile(filepath.Join(outputDir, "gen", subDir, "e_laydef.c"), []byte(laydefFile.String()))
+}

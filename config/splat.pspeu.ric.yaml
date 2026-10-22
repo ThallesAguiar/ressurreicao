@@ -1,0 +1,94 @@
+options:
+  platform: psp
+  basename: ric
+  base_path: ..
+  build_path: build/pspeu
+  target_path: disks/pspeu/PSP_GAME/USRDIR/res/ps/PSPBIN/ric.bin
+  asm_path: asm/pspeu/ric_psp
+  asset_path: assets/ric
+  src_path: src/ric
+  ld_script_path: build/pspeu/ric.ld
+  compiler: GCC
+  symbol_addrs_path:
+    - config/symbols.pspeu.txt
+    - config/symbols.pspeu.ric.txt
+  undefined_funcs_auto_path: build/pspeu/config/undefined_funcs_auto.pspeu.ric.txt
+  undefined_syms_auto_path: build/pspeu/config/undefined_syms_auto.pspeu.ric.txt
+  find_file_boundaries: true
+  use_legacy_include_asm: false
+  migrate_rodata_to_functions: true
+  asm_jtbl_label_macro: jlabel
+  symbol_name_format: pspeu_$VRAM
+  section_order:
+    - .text
+    - .data
+    - .rodata
+    - .bss
+  ld_bss_is_noload: true
+  disasm_unknown: true
+  disassemble_all: true
+  global_vram_start: 0x8000000
+  asm_inc_header: |
+    .set noat      /* allow manual use of $at */
+    .set noreorder /* don't insert nops after branches */
+  ld_generate_symbol_per_data_segment: true
+sha1: 9fd233b8334468c1c750547d0b772a8d58357f8c
+segments:
+  - [0x0, bin, mwo_header]
+  - name: ric
+    type: code
+    start: 0x80
+    vram:  0x092A6280
+    bss_size: 0x1F80
+    align: 128
+    subalign: 8
+    subsegments:
+      - [0x80, c, pl_debug]
+      - [0x410, c, pl_steps]
+      - [0x4B60, c, pl_subweapons]
+      - [0x6C78, c, pl_main]
+      - [0x9250, c, pl_setstep]
+      - [0xA5A8, c, pl_utils]
+      - [0xB070, c, pl_collision]
+      - [0xD268, c, 2F8E8]
+      - [0xFD48, c, 319C4]
+      - [0x182C8, c, pl_blueprints]
+      - [0x22028, c, pl_crash_cross]
+      - [0x22B48, c, ovl_load]
+      - [0x22B90, c, pl_subweapon_holywater]
+      - [0x24B68, c, pl_whip]
+      - [0x26878, c, pl_subweapon_dummy]
+      - [0x26898, c, pl_subweapon_cross]
+      - [0x28400, .data, pl_debug]
+      - [0x28410, .data, pl_steps]
+      - [0x28438, .data, pl_header]
+      - [0x28458, .data, pl_anims]
+      - [0x28AB0, .data, pl_subweapons]
+      - [0x28AE8, .data, d_18568]
+      - [0x2D1F0, .data, d_1859C]
+      - [0x2D2B0, .data, 2F8E8]
+      - [0x2D2D0, .data, 319C4]
+      - [0x2D308, .data, pl_blueprints]
+      - [0x2D320, .data, pl_blueprints] # subweapons
+      - [0x2D590, .data, pl_blueprints]
+      - [0x2E0A8, .data, spritebanks]
+      - [0x2F6B8, .data, pl_crash_cross]
+      - [0x2FBE8, .data, pl_subweapon_holywater]
+      - [0x2FC58, .data, pl_whip]
+      - [0x30010, .data, pl_subweapon_cross]
+      - [0x30100, .rodata, pl_steps]
+      - [0x30158, .rodata, pl_main]
+      - [0x301D8, .rodata, pl_setstep]
+      - [0x30200, .rodata, 319C4] # RicEntityCrashReboundStone
+      # - [0x30220, .rodata, 319C4] # RicEntityCrashReboundStone
+      # - [0x30248, .rodata, 319C4] # RicEntityCrashStopwatch
+      # - [0x30270, .rodata, 319C4] # RicEntityAguneaLightning
+      # - [0x30290, .rodata, 319C4] # RicEntityAguneaCircle
+      # - [0x302B0, .rodata, 319C4] # RicEntitySubwpnStopwatch
+      - [0x302D0, .rodata, pl_blueprints] # RicEntityFactory
+      # - [0x30320, .rodata, pl_blueprints] # RicEntityHitByCutBlood
+      # - [0x30370, .rodata, pl_blueprints] # RicEntityPlayerBlinkWhite
+      - [0x303B0, .rodata, pl_subweapon_holywater] # RicEntitySubwpnHolyWater
+      - [0x303C8, .rodata, pl_subweapon_cross]
+      - {start: 0x30400, type: bss, vram: 0x92D6600}
+  - [0x30400]

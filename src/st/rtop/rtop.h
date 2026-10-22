@@ -1,0 +1,81 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+#ifndef RTOP_H
+#define RTOP_H
+
+#define STAGE_IS_RTOP
+
+#include <stage.h>
+
+#define INVERTED_STAGE
+
+enum Palettes {
+    PAL_NONE = 0,
+    PAL_BREAKABLE = 0x200,
+    PAL_BREAKABLE_DEBRIS = 0x204,
+    PAL_TOMBSTONE = 0x208,
+    PAL_YORICK = 0x20A,
+    PAL_SKULL_LORD = 0x20B,
+    PAL_UNK_220 = 0x220,
+};
+
+typedef enum EntityID {
+    /* 0x00 */ E_NONE,
+    /* 0x01 */ E_BREAKABLE,
+    /* 0x02 */ E_EXPLOSION,
+    /* 0x03 */ E_PRIZE_DROP,
+    /* 0x04 */ E_NUMERIC_DAMAGE,
+    /* 0x05 */ E_RED_DOOR,
+    /* 0x06 */ E_INTENSE_EXPLOSION,
+    /* 0x07 */ E_SOUL_STEAL_ORB,
+    /* 0x08 */ E_ROOM_FOREGROUND,
+    /* 0x09 */ E_STAGE_NAME_POPUP,
+    /* 0x0A */ E_EQUIP_ITEM_DROP,
+    /* 0x0B */ E_RELIC_ORB,
+    /* 0x0C */ E_PERSISTENT_ITEM_DROP,
+    /* 0x0D */ E_ENEMY_BLOOD,
+    /* 0x0E */ E_MESSAGE_BOX,
+    /* 0x0F */ E_DUMMY_0F,
+    /* 0x10 */ E_DUMMY_10,
+    /* 0x11 */ E_ID_11,
+    /* 0x12 */ E_ID_12,
+    /* 0x13 */ E_UNK_ID_13,
+    /* 0x14 */ E_EXPLOSION_VARIANTS,
+    /* 0x15 */ E_GREY_PUFF,
+    /* 0x16 */ E_ID_16,
+    /* 0x17 */ E_ID_17,
+    /* 0x18 */ E_STAIR_SEGMENT,
+    /* 0x19 */ E_ID_19,
+    /* 0x1A */ E_ID_1A,
+    /* 0x1B */ E_ID_1B,
+    /* 0x1C */ E_BREAKABLE_DEBRIS,
+    /* 0x1D */ E_ID_1D,
+    /* 0x1E */ E_ID_1E,
+    /* 0x1F */ E_ID_1F,
+    /* 0x20 */ E_ID_20,
+    /* 0x21 */ E_ID_21,
+    /* 0x22 */ E_YORICK,
+    /* 0x23 */ E_YORICK_SKULL,
+    /* 0x24 */ E_SKELETON_PARTS,
+    /* 0x25 */ E_TOMBSTONE,
+    /* 0x26 */ E_SKULL_LORD,
+    /* 0x27 */ E_SKULL_LORD_OUTLINE,
+    /* 0x28 */ E_SKULL_LORD_EYE,
+    /* 0x29 */ E_SKULL_LORD_PIECES,
+} EntityID;
+
+extern EInit g_EInitBreakable;
+extern EInit g_EInitObtainable;
+extern EInit g_EInitParticle;
+extern EInit g_EInitSpawner;
+extern EInit g_EInitInteractable;
+extern EInit g_EInitUnkId13;
+extern EInit g_EInitLockCamera;
+extern EInit g_EInitCommon;
+extern EInit g_EInitDamageNum;
+extern EInit __unused__;
+extern EInit g_EInitRTOPCommon;
+extern EInit g_EInitTombstone;
+extern EInit g_EInitSkullLord;
+extern EInit g_EInitSkullLordEffects;
+
+#endif // RTOP_H

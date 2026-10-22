@@ -1,0 +1,140 @@
+options:
+  platform:     psx
+  basename:     stst0
+  base_path:    ..
+  build_path:   build/us
+  target_path:  disks/us/ST/ST0/ST0.BIN
+  asm_path:     asm/us/st/st0
+  asset_path:   assets/st/st0
+  src_path:     src/st/st0
+  ld_script_path: build/us/stst0.ld
+  compiler:     GCC
+  symbol_addrs_path:
+    - config/symbols.us.txt
+    - config/symbols.us.stst0.txt
+  undefined_funcs_auto_path: build/us/config/undefined_funcs_auto.us.stst0.txt
+  undefined_syms_auto_path:  build/us/config/undefined_syms_auto.us.stst0.txt
+  find_file_boundaries: yes
+  use_legacy_include_asm: no
+  migrate_rodata_to_functions: no
+  asm_jtbl_label_macro: jlabel
+  extensions_path: tools/splat_ext
+  disassemble_all: true
+  global_vram_start: 0x80010000
+  section_order:
+    - ".data"
+    - ".rodata"
+    - ".text"
+    - ".bss"
+    - ".sbss"
+  ld_generate_symbol_per_data_segment: true
+sha1: bc2fabbe5ef0d1288490b6f1ddbf11092a2c0c57
+segments:
+  - name: stst0
+    type: code
+    start: 0x00000000
+    vram:  0x80180000
+    align: 4
+    subalign: 4
+    subsegments:
+      - [0x0, .data, header]
+      - [0xA0, .data, header] # palette definitions
+      - [0x124, .data, header] # layers
+      - [0x1A4, .data, header] # graphics banks
+      - [0x314, .data, gen/e_laydef] # layout entries header
+      - [0x4BC, .data, e_init]
+      - [0x634, .data, background_block_init]
+      - [0x64C, .data, e_red_door_tiles]
+      - [0x65C, .data, e_lock_camera]
+      - [0x674, .data, 2805C] # func_801A805C
+      - [0x784, .data, cutscene]
+      - [0x830, .data, 2A218]
+      - [0x89C, .data, 2A8DC]
+      - [0x908, .data, title_card]
+      - [0x90C, .data, 2C564]
+      - [0xAA4, .data, 2DAC8]
+      - [0x1568, .data, prologue_scroll]
+      - [0x15CC, .data, st_update]
+      - [0x1618, .data, collision]
+      - [0x1978, .data, e_red_door]
+      - [0x1990, .data, st_common]
+      - [0x1B90, .data, e_collect]
+      - [0x1E3C, .data, e_collect] # g_collectVelocity
+      - [0x1E5C, .data, e_misc]
+      - [0x1F54, .data, e_particles]
+      - [0x1FD4, .data, e_room_fg]
+      - [0x2060, .data, gen/rooms]
+      - [0x2084, .data, 3AB08] # 3AB08 EntityBackgroundClouds
+      - [0x2184, .data, 3AB08] # EntityClockTower3D
+      - [0x2438, .data, 3AB08] # EntityCutscenePhotograph
+      - [0x24E8, .data, 3C5C0]
+      - [0x2690, .data, 3D8F0]
+      - [0x26B8, .data, gen/e_layout] # layout entries data
+      - [0x29D8, .data, cutscene_data]
+      - [0x2C58, .data, 3101C_psx]
+      - [0x3124, .data, stage_data]
+      - [0x226E0, .data, gen/sprites]
+      - [0x27984, .rodata, 2805C]
+      - [0x279E8, .rodata, cutscene] # ST0_EntityCutscene
+      - [0x27A74, .rodata, 2A218] # EntityCutscene
+      - [0x27AB4, .rodata, 2A8DC] # EntitySecretButton
+      - [0x27ACC, .rodata, 2A8DC] # EntitySecretStairs
+      - [0x27AE0, .rodata, title_card] # EntityStageTitleFadeout
+      - [0x27B00, .rodata, title_card] # EntityStageTitleCard
+      - [0x27B18, .rodata, 2C564] # func_801ABBBC
+      - [0x27B40, .rodata, 2C564] # EntityDracula
+      - [0x27B7C, .rodata, 2DAC8] # "charal %x\n"
+      - [0x27B8C, .rodata, 2DAC8] # EntityDraculaFinalForm
+      - [0x27BDC, .rodata, 2DAC8] # "can't get effect works!\n"
+      - [0x27BFC, .rodata, 2DAC8] # func_801AF774
+      - [0x27C1C, .rodata, prologue_scroll] # PrologueScroll
+      - [0x27C6C, .rodata, e_red_door] # EntityRedDoor
+      - [0x27C84, .rodata, e_collect] # c_HeartPrizes
+      - [0x27C8C, .rodata, e_collect]
+      - [0x27CAC, .rodata, e_collect] # EntityEquipItemDrop
+      - [0x27CC4, .rodata, e_misc]
+      - [0x27CFC, .rodata, 3AB08] # EntityCutscenePhotograph
+      - [0x27D30, .rodata, 3C5C0] # "d_step" string
+      - [0x27D3C, .rodata, prim_helpers]
+      - [0x27D44, .rodata, 3D8F0]
+      - [0x27D64, c, e_room_bg]
+      - [0x27E2C, c, e_lock_camera]
+      - [0x2805C, c]
+      - [0x28984, c, cutscene]
+      - [0x2A218, c]
+      - [0x2A8DC, c]
+      - [0x2B0C8, c, title_card]
+      - [0x2BBBC, c, 2C564] # EntityDracula
+      - [0x2DAC8, c]
+      - [0x30030, c, prologue_scroll]
+      - [0x3101C, c, 3101C_psx]
+      - [0x3186C, c, st_update]
+      - [0x31CA0, c, collision]
+      - [0x330E0, c, create_entity]
+      - [0x33C58, c, e_red_door]
+      - [0x34908, c, st_common]
+      - [0x35EC8, c, e_collect]
+      - [0x37308, c, e_misc]
+      - [0x39EA8, c, e_particles]
+      - [0x3A6EC, c, e_room_fg]
+      - [0x3A7D8, c, popup]
+      - [0x3AB08, c]
+      - [0x3C5C0, c]
+      - [0x3D0C0, c, prim_helpers]
+      - [0x3D8F0, c]
+      - [0x3E1B4, c, e_bg_vortex]
+      - [0x3EB04, bss, 3EB04]
+      - [0x3EB64, .bss, 2DAC8]
+      - [0x3EDFC, .bss, prologue_scroll]
+      - [0x3EE10, bss, 3EE10]
+      - [0x3EE90, .bss, 3101C_psx]
+      - [0x40090, bss, 40090]
+      - [0x400A0, .bss, create_entity]
+      - [0x400B6, .bss, bss]
+      - [0x406B0, .bss, 3D8F0]
+      - [0x41BC8, .bss, e_bg_vortex]
+      - [0x424C8, .bss, cutscene]
+      - [0x42578, .bss, 2C564]
+      - [0x4257C, .bss, 2A218]
+      - [0x42584, .bss, st_update]
+  - [0x425C4]

@@ -1,0 +1,8 @@
+spriteBanks = 0x8018002C;
+cluts = 0x801801C0;
+rooms_layers = 0x801804C4;
+gfxBanks = 0x8018072C;
+entityLayoutHorizontal = 0x8018077C;
+entityLayoutVertical = 0x80180850;
+rooms = 0x80183CDC;
+cutscene_data = 0x80184CE0;

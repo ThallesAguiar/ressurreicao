@@ -1,0 +1,35 @@
+name: Build and test
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check out saturn_sound_player
+        uses: actions/checkout@v7
+        with:
+          submodules: recursive
+
+      - name: Configure
+        run: >
+          cmake -S .
+          -B build
+          -G Ninja
+          -DCMAKE_BUILD_TYPE=Release
+          -DBUILD_TESTING=ON
+          -DSATURN_PLAYER_BUILD_GAME_TESTS=ON
+          -DSOTN_GAME_DIR=
+          -DSCORCHER_MUS_DIR=
+
+      - name: Build
+        run: cmake --build build
+
+      - name: Run self-contained tests
+        run: ctest --test-dir build --output-on-failure

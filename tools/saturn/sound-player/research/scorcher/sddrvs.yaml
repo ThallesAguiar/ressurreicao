@@ -1,0 +1,21 @@
+options:
+  target_path: /tmp/scorcher-runtime.bin.lowram
+  asm_path: /tmp/scorcher-sddrvs-dis/asm
+  ld_scripts_path: /tmp/scorcher-sddrvs-dis/ld
+  syms_path: /tmp/scorcher-sddrvs-dis/syms
+  src_path: /tmp/scorcher-sddrvs-dis/src
+  decomp_empty_funcs: false
+segments:
+  - name: scorcher_sddrvs
+    type: code
+    start: 0
+    end: 0x2000
+    vram: 0x00200000
+    subsegments:
+      - [0, .data, prefix]
+      - [0xED0, c, load_mus]
+      - [0x108C, .data, suffix]
+      - [0x20C8, c, set_volume]
+      - [0x2200, .data, remaining]
+      - [0x2798, c, resolve_area]
+      - [0x2838, .data, after_resolver]

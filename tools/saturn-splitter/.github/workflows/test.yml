@@ -1,0 +1,58 @@
+name: Build and test
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '*.md'
+      - '**/*.md'
+  pull_request_target:
+    paths-ignore:
+      - '.github/workflows/**'
+      - '*.md'
+      - '**/*.md'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.ref }}-${{ github.job }}-${{ github.event_name }}-${{ github.number }}
+  cancel-in-progress: false
+
+jobs:
+  build-and-test:
+    if: github.repository == 'sozud/saturn-splitter'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone main repo (PR)
+        if: github.event_name == 'pull_request_target'
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.after }}
+          submodules: false
+      - name: Clone main repo
+        if: github.event_name != 'pull_request_target'
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref }}
+          submodules: false
+      - name: Clone dependencies
+        uses: actions/checkout@v3
+        with:
+          repository: sozud/saturn-splitter-deps
+          token: ${{ secrets.ACCESS_TOKEN }}
+          path: 'saturn-splitter-deps'
+      - name: Deps setup
+        run: cp saturn-splitter-deps/T_BAT.PRG .
+      - name: Get compiler
+        run: sh scripts/get_gccsh.sh
+      - name: Build
+        run: cd rust-dis && cargo build --release
+      - name: Extract
+        run: cd rust-dis && cargo run
+      - name: Build docker containers
+        run: sh scripts/docker/build_docker.sh
+      # can't use due to docker username issue in dosemu container
+      # - name: Compile
+      #   run: sh scripts/compile_dosemu/compile_docker.sh   
+      # - name: Compare
+      #   run: sh scripts/compile_dosemu/compare_docker.sh

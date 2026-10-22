@@ -1,0 +1,42 @@
+options:
+  platform:     psx
+  basename:     tt_000
+  base_path:    ..
+  build_path:   build/us
+  target_path:  ../T_BAT.PRG
+  asm_path:     output/funcs
+  asset_path:   assets/servant/tt_000
+  ld_scripts_path: ld_scripts
+  syms_path: syms_path
+  decomp_empty_funcs: true
+  src_path:     output
+  compiler:     GCC
+  symbol_addrs_path:    config/generated.symbols.us.tt_000.txt
+  undefined_funcs_auto_path: config/undefined_funcs_auto.us.tt_000.txt
+  undefined_syms_auto_path:  config/undefined_syms_auto.us.tt_000.txt
+  find_file_boundaries: yes
+  use_legacy_include_asm: no
+  migrate_rodata_to_functions: no
+  section_order:
+    - ".rodata"
+    - ".text"
+    - ".data"
+segments:
+  - name: tt_000
+    type: code
+    start: 0x00000000
+    vram:  0x80170000
+    subalign: 2
+    subsegments:
+      - start: 0x0
+        type: data
+        file: 60
+        end: 0x5F
+      - start: 0x60
+        type: c
+        file: 60
+        end: 0x2857
+      - start: 0x2858
+        type: data
+        file: 60
+        end: 0x7000

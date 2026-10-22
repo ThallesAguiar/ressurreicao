@@ -1,0 +1,32 @@
+[submodule "tools/asm-differ"]
+	path = tools/asm-differ
+	url = https://github.com/simonlindholm/asm-differ.git
+[submodule "tools/m2c"]
+	path = tools/m2c
+	url = https://github.com/matt-kempster/m2c.git
+[submodule "tools/saturn-splitter"]
+	path = tools/saturn-splitter
+	url = https://github.com/sozud/saturn-splitter.git
+[submodule "tools/maspsx"]
+	path = tools/maspsx
+	url = https://github.com/mkst/maspsx.git
+[submodule "tools/mwccgap"]
+	path = tools/mwccgap
+	url = https://github.com/mkst/mwccgap.git
+[submodule "tools/decomp-permuter"]
+	path = tools/decomp-permuter
+	url = https://github.com/simonlindholm/decomp-permuter
+	update = checkout
+	branch = b44b0622269fb4bff29e79fbbad26b9f47beda79
+[submodule "tools/mipsmatch"]
+	path = tools/mipsmatch
+	url = https://github.com/ttkb-oss/mipsmatch
+[submodule "tools/sotn_utils"]
+	path = tools/sotn_utils
+	url = https://github.com/ProjectOblivion/sotn_utils.git
+[submodule "tools/psyz"]
+	path = tools/psyz
+	url = https://github.com/Xeeynamo/psyz
+[submodule "tools/saturn/sound-player"]
+	path = tools/saturn/sound-player
+	url = https://github.com/sozud/saturn-sound-player.git

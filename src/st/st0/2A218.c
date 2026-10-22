@@ -1,5 +1,61 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 #include "st0.h"
+#ifdef VERSION_PC
+#include <string.h>
+
+extern s16* sprites_st0_4[];
+
+static void PrepareJesusDialogueSprites(void) {
+    static s16 poses[14][24];
+    static bool prepared;
+    // Player animation frame 7 uses body image 6. Keep its exact stance
+    // when the dialogue switches from the player to the gesture actor.
+    u8* idle = g_PlOvlSpritesheet[6];
+    RECT rect = {65, 448, idle[0] / 4, idle[1]};
+    static const s16 legs[] = {
+        2, -13, -1, 24, 26, 0, 0, 4, 83, 28, 109};
+    // The native 2-frame transitions add a separate Richter arm to poses
+    // whose Jesus artwork already contains both arms. The native 1/10
+    // speaking loop also switches between unrelated neutral body images.
+    // Keep one neutral torso and use complete gesture images for returns;
+    // retain the original animation timing and pointing/open-arm poses.
+    static const u8 sourcePose[] = {
+        0, 2, 2, 2, 2, 2, 2, 7, 8, 9, 2, 11, 12, 9};
+    // Align the robe at the waist seam, rather than centering each crop.
+    // The body axis moves inside the atlas as the arms change position.
+    static const s16 torsoX[] = {
+        0, 0, -15, -15, -15, -15, -15, -13, -12, -12, -11, -15, -13, -11};
+
+    // The gesture atlas occupies (64,384), with unused rows below y=64.
+    // Leave one VRAM word (four texels) before the mirrored image. The
+    // renderer subtracts one from its left UV; zero would wrap to 255.
+    // Sprite flag 2 mirrors the existing idle image toward Morte.
+    LoadImage(&rect, (u_long*)(idle + 4));
+    if (prepared) {
+        return;
+    }
+    for (int frame = 1; frame <= 13; frame++) {
+        s16* pose = poses[frame];
+        s16* torso = pose + 12;
+        int source = sourcePose[frame];
+        const s16* original = sprites_st0_4[source];
+        memcpy(pose, original, (1 + original[0] * 11) * sizeof(s16));
+        memcpy(pose + 1, legs, sizeof(legs));
+        // Each torso previously included a second skirt/hip section over
+        // the shared legs. Stop at the waist and use one stable body axis.
+        int dx = torsoX[source] - torso[1];
+        int dy = ((torso[0] & 32) ? -21 : -20) - torso[2];
+        torso[1] += dx;
+        torso[2] += dy;
+        torso[4] = (torso[0] & 32) ? 20 : 19;
+        torso[10] = torso[8] + torso[4];
+    }
+    for (int frame = 1; frame <= 13; frame++) {
+        sprites_st0_4[frame] = poses[frame];
+    }
+    prepared = true;
+}
+#endif
 
 static void func_801AA218(s16 arg0) {
     s16 temp_a1 = ((0xE0 - arg0) / 2) + 0x80;
@@ -134,6 +190,9 @@ void EntityCutsceneSupport(Entity* self) {
         g_Player.demo_timer = 1;
         player->animCurFrame = self->animCurFrame;
         if (g_CutsceneFlags & 0x400) {
+#ifdef VERSION_PC
+            PrepareJesusDialogueSprites();
+#endif
             player->animCurFrame = 0;
             self->animSet = ANIMSET_OVL(5);
             self->animCurFrame = 1;

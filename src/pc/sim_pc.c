@@ -313,6 +313,71 @@ s32 LoadFileSimToMem(SimKind kind) {
     return 0;
 }
 
+// The prologue HUD box ("RICHTER x00 REST") is a 128x128 4bpp texture stored
+// at offset 0x18000 of BIN/F_GAME2.BIN. Redraw the name as "JESUS" in the
+// same 6px pixel font, only for ST0 and only if the original pixels match.
+#define HUD_TEX_OFFSET 0x18000
+#define HUD_TEX_STRIDE 0x40
+#define HUD_NAME_X 68
+#define HUD_NAME_Y 51
+#define HUD_NAME_W 32
+#define HUD_NAME_H 6
+#define HUD_COLOR_BG 9
+#define HUD_COLOR_FG 15
+
+static void HudSetPixel(u8* tex, int x, int y, u8 color) {
+    u8* p = tex + y * HUD_TEX_STRIDE + x / 2;
+    if (x & 1) {
+        *p = (*p & 0x0F) | (color << 4);
+    } else {
+        *p = (*p & 0xF0) | color;
+    }
+}
+
+static void PatchPrologueHudName(u8* data, size_t len) {
+    static const u8 originalRow[] = {
+        0xFF, 0x9F, 0xF9, 0xFF, 0x99, 0xFF, 0x99, 0x9F,
+        0xF9, 0xF9, 0xFF, 0x9F, 0xFF, 0x9F, 0xFF, 0x9F,
+    };
+    static const char* glyphJ[] = {
+        "..##", "...#", "...#", "...#", "#..#", ".##."};
+    static const char* glyphE[] = {"###", "#..", "###", "#..", "#..", "###"};
+    static const char* glyphS[] = {
+        ".###", "#...", ".##.", "...#", "...#", "###."};
+    static const char* glyphU[] = {
+        "#..#", "#..#", "#..#", "#..#", "#..#", ".##."};
+    const char** word[] = {glyphJ, glyphE, glyphS, glyphU, glyphS};
+    u8* tex = data + HUD_TEX_OFFSET;
+    int x, y, i, cx;
+
+    if (g_StageId != STAGE_ST0 ||
+        len < HUD_TEX_OFFSET + 128 * HUD_TEX_STRIDE) {
+        return;
+    }
+    if (memcmp(tex + HUD_NAME_Y * HUD_TEX_STRIDE + HUD_NAME_X / 2,
+               originalRow, sizeof(originalRow)) != 0) {
+        return;
+    }
+
+    for (y = 0; y < HUD_NAME_H; y++) {
+        for (x = 0; x < HUD_NAME_W; x++) {
+            HudSetPixel(tex, HUD_NAME_X + x, HUD_NAME_Y + y, HUD_COLOR_BG);
+        }
+    }
+    cx = HUD_NAME_X;
+    for (i = 0; i < LEN(word); i++) {
+        int w = strlen(word[i][0]);
+        for (y = 0; y < HUD_NAME_H; y++) {
+            for (x = 0; x < w; x++) {
+                if (word[i][y][x] == '#') {
+                    HudSetPixel(tex, cx + x, HUD_NAME_Y + y, HUD_COLOR_FG);
+                }
+            }
+        }
+        cx += w + 1;
+    }
+}
+
 bool LoadFilePc(const struct FileUseContent* file) {
     SimFile* sim = (SimFile*)file->param;
     if (sim->kind == SIM_VH || sim->kind == SIM_VB) {
@@ -324,6 +389,7 @@ bool LoadFilePc(const struct FileUseContent* file) {
     }
     switch (sim->kind) { // slowly replacing the original func
     case SIM_1:
+        PatchPrologueHudName(sim->addr, file->length);
         LoadStageTileset(sim->addr, file->length, 0x100);
         LoadImage(&g_Vram.D_800ACD98, D_800A04CC);
         LoadImage(&g_Vram.D_800ACDA8, (u8*)sim->addr + 0x40000);

@@ -622,7 +622,7 @@ static void PlatformBackend_Present(void) {
     if (disp_on) {
         glBlitFramebuffer(src.x * n, (src.y + src.h) * n, (src.x + src.w) * n,
                           src.y * n, dst.x, dst.y, dst.x + dst.w, dst.y + dst.h,
-                          GL_COLOR_BUFFER_BIT, GL_NEAREST);
+                          GL_COLOR_BUFFER_BIT, GL_LINEAR);
     }
     if (overlay_frame_cb) {
         overlay_frame_cb();

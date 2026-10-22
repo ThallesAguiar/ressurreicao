@@ -1,0 +1,222 @@
+{
+  "atlas": "assets/ric/jesus_glorificado_espada.png",
+  "frames": [
+    {
+      "name": "assets/ric/jesus_glorificado_arma/espada_0.png",
+      "layer": "espada",
+      "index": 0,
+      "width": 32,
+      "height": 32,
+      "pivot": [
+        18,
+        27
+      ],
+      "direction": "up",
+      "guard": [
+        18,
+        24
+      ]
+    },
+    {
+      "name": "assets/ric/jesus_glorificado_arma/espada_1.png",
+      "layer": "espada",
+      "index": 1,
+      "width": 32,
+      "height": 32,
+      "pivot": [
+        11,
+        26
+      ],
+      "direction": "up_right",
+      "guard": [
+        13,
+        24
+      ]
+    },
+    {
+      "name": "assets/ric/jesus_glorificado_arma/espada_2.png",
+      "layer": "espada",
+      "index": 2,
+      "width": 32,
+      "height": 32,
+      "pivot": [
+        6,
+        20
+      ],
+      "direction": "right",
+      "guard": [
+        9,
+        20
+      ]
+    },
+    {
+      "name": "assets/ric/jesus_glorificado_arma/espada_3.png",
+      "layer": "espada",
+      "index": 3,
+      "width": 32,
+      "height": 32,
+      "pivot": [
+        22,
+        26
+      ],
+      "direction": "up_left",
+      "guard": [
+        20,
+        24
+      ]
+    },
+    {
+      "name": "assets/ric/jesus_glorificado_arma/espada_4.png",
+      "layer": "espada",
+      "index": 4,
+      "width": 32,
+      "height": 32,
+      "pivot": [
+        18,
+        7
+      ],
+      "direction": "down",
+      "guard": [
+        18,
+        10
+      ]
+    },
+    {
+      "name": "assets/ric/jesus_glorificado_arma/espada_5.png",
+      "layer": "espada",
+      "index": 5,
+      "width": 32,
+      "height": 32,
+      "pivot": [
+        20,
+        9
+      ],
+      "direction": "down_left",
+      "guard": [
+        18,
+        11
+      ]
+    },
+    {
+      "name": "assets/ric/jesus_glorificado_arma/espada_6.png",
+      "layer": "espada",
+      "index": 6,
+      "width": 32,
+      "height": 32,
+      "pivot": [
+        24,
+        17
+      ],
+      "direction": "left",
+      "guard": [
+        21,
+        17
+      ]
+    },
+    {
+      "name": "assets/ric/jesus_glorificado_arma/espada_7.png",
+      "layer": "espada",
+      "index": 7,
+      "width": 32,
+      "height": 32,
+      "pivot": [
+        8,
+        9
+      ],
+      "direction": "down_right",
+      "guard": [
+        10,
+        11
+      ]
+    },
+    {
+      "name": "assets/ric/jesus_glorificado_arma/chamas_0.png",
+      "layer": "chamas",
+      "index": 0,
+      "width": 32,
+      "height": 32,
+      "pivot": [
+        16,
+        28
+      ]
+    },
+    {
+      "name": "assets/ric/jesus_glorificado_arma/chamas_1.png",
+      "layer": "chamas",
+      "index": 1,
+      "width": 32,
+      "height": 32,
+      "pivot": [
+        16,
+        28
+      ]
+    },
+    {
+      "name": "assets/ric/jesus_glorificado_arma/chamas_2.png",
+      "layer": "chamas",
+      "index": 2,
+      "width": 32,
+      "height": 32,
+      "pivot": [
+        16,
+        28
+      ]
+    },
+    {
+      "name": "assets/ric/jesus_glorificado_arma/chamas_3.png",
+      "layer": "chamas",
+      "index": 3,
+      "width": 32,
+      "height": 32,
+      "pivot": [
+        16,
+        28
+      ]
+    },
+    {
+      "name": "assets/ric/jesus_glorificado_arma/rastro_0.png",
+      "layer": "rastro",
+      "index": 0,
+      "width": 32,
+      "height": 32,
+      "pivot": [
+        5,
+        29
+      ]
+    },
+    {
+      "name": "assets/ric/jesus_glorificado_arma/rastro_1.png",
+      "layer": "rastro",
+      "index": 1,
+      "width": 32,
+      "height": 32,
+      "pivot": [
+        5,
+        29
+      ]
+    },
+    {
+      "name": "assets/ric/jesus_glorificado_arma/rastro_2.png",
+      "layer": "rastro",
+      "index": 2,
+      "width": 32,
+      "height": 32,
+      "pivot": [
+        5,
+        29
+      ]
+    },
+    {
+      "name": "assets/ric/jesus_glorificado_arma/rastro_3.png",
+      "layer": "rastro",
+      "index": 3,
+      "width": 32,
+      "height": 32,
+      "pivot": [
+        5,
+        29
+      ]
+    }
+  ],
+  "pivot_note": "Coordinates are native pixels. Sword pivot is the grip center; guard is the crossguard center. Effects have their own anchors. Animation timing and hitboxes belong to engine integration."
+}

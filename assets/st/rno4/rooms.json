@@ -1,0 +1,422 @@
+[
+  {
+    "left": 24,
+    "top": 27,
+    "right": 24,
+    "bottom": 37,
+    "layerId": 0,
+    "tileDefId": 0,
+    "entityGfxId": 3,
+    "entityLayoutId": 1
+  },
+  {
+    "left": 24,
+    "top": 24,
+    "right": 24,
+    "bottom": 26,
+    "layerId": 1,
+    "tileDefId": 0,
+    "entityGfxId": 3,
+    "entityLayoutId": 2
+  },
+  {
+    "left": 24,
+    "top": 22,
+    "right": 24,
+    "bottom": 23,
+    "layerId": 2,
+    "tileDefId": 0,
+    "entityGfxId": 3,
+    "entityLayoutId": 3
+  },
+  {
+    "left": 25,
+    "top": 27,
+    "right": 25,
+    "bottom": 35,
+    "layerId": 3,
+    "tileDefId": 0,
+    "entityGfxId": 4,
+    "entityLayoutId": 4
+  },
+  {
+    "left": 26,
+    "top": 31,
+    "right": 26,
+    "bottom": 31,
+    "layerId": 4,
+    "tileDefId": 0,
+    "entityGfxId": 3,
+    "entityLayoutId": 27
+  },
+  {
+    "left": 26,
+    "top": 29,
+    "right": 26,
+    "bottom": 30,
+    "layerId": 5,
+    "tileDefId": 0,
+    "entityGfxId": 4,
+    "entityLayoutId": 6
+  },
+  {
+    "left": 20,
+    "top": 31,
+    "right": 20,
+    "bottom": 34,
+    "layerId": 6,
+    "tileDefId": 0,
+    "entityGfxId": 4,
+    "entityLayoutId": 7
+  },
+  {
+    "left": 19,
+    "top": 30,
+    "right": 19,
+    "bottom": 31,
+    "layerId": 7,
+    "tileDefId": 0,
+    "entityGfxId": 3,
+    "entityLayoutId": 8
+  },
+  {
+    "left": 27,
+    "top": 36,
+    "right": 27,
+    "bottom": 36,
+    "layerId": 8,
+    "tileDefId": 0,
+    "entityGfxId": 3,
+    "entityLayoutId": 28
+  },
+  {
+    "left": 25,
+    "top": 36,
+    "right": 26,
+    "bottom": 36,
+    "layerId": 9,
+    "tileDefId": 0,
+    "entityGfxId": 4,
+    "entityLayoutId": 29
+  },
+  {
+    "left": 26,
+    "top": 35,
+    "right": 26,
+    "bottom": 35,
+    "layerId": 10,
+    "tileDefId": 0,
+    "entityGfxId": 3,
+    "entityLayoutId": 11
+  },
+  {
+    "left": 21,
+    "top": 34,
+    "right": 23,
+    "bottom": 34,
+    "layerId": 11,
+    "tileDefId": 0,
+    "entityGfxId": 4,
+    "entityLayoutId": 30
+  },
+  {
+    "left": 9,
+    "top": 22,
+    "right": 10,
+    "bottom": 22,
+    "layerId": 12,
+    "tileDefId": 0,
+    "entityGfxId": 3,
+    "entityLayoutId": 13
+  },
+  {
+    "left": 8,
+    "top": 22,
+    "right": 8,
+    "bottom": 22,
+    "layerId": 13,
+    "tileDefId": 0,
+    "entityGfxId": 3,
+    "entityLayoutId": 14
+  },
+  {
+    "left": 38,
+    "top": 26,
+    "right": 38,
+    "bottom": 26,
+    "layerId": 14,
+    "tileDefId": 0,
+    "entityGfxId": 3,
+    "entityLayoutId": 15
+  },
+  {
+    "left": 34,
+    "top": 26,
+    "right": 37,
+    "bottom": 26,
+    "layerId": 15,
+    "tileDefId": 0,
+    "entityGfxId": 2,
+    "entityLayoutId": 16
+  },
+  {
+    "left": 34,
+    "top": 25,
+    "right": 34,
+    "bottom": 25,
+    "layerId": 16,
+    "tileDefId": 0,
+    "entityGfxId": 3,
+    "entityLayoutId": 17
+  },
+  {
+    "left": 41,
+    "top": 26,
+    "right": 41,
+    "bottom": 26,
+    "layerId": 17,
+    "tileDefId": 0,
+    "entityGfxId": 3,
+    "entityLayoutId": 18
+  },
+  {
+    "left": 38,
+    "top": 21,
+    "right": 38,
+    "bottom": 21,
+    "layerId": 18,
+    "tileDefId": 0,
+    "entityGfxId": 2,
+    "entityLayoutId": 19
+  },
+  {
+    "left": 41,
+    "top": 21,
+    "right": 41,
+    "bottom": 21,
+    "layerId": 19,
+    "tileDefId": 0,
+    "entityGfxId": 3,
+    "entityLayoutId": 20
+  },
+  {
+    "left": 46,
+    "top": 22,
+    "right": 47,
+    "bottom": 22,
+    "layerId": 20,
+    "tileDefId": 0,
+    "entityGfxId": 3,
+    "entityLayoutId": 21
+  },
+  {
+    "left": 55,
+    "top": 21,
+    "right": 55,
+    "bottom": 21,
+    "layerId": 21,
+    "tileDefId": 0,
+    "entityGfxId": 3,
+    "entityLayoutId": 22
+  },
+  {
+    "left": 25,
+    "top": 25,
+    "right": 33,
+    "bottom": 26,
+    "layerId": 22,
+    "tileDefId": 0,
+    "entityGfxId": 2,
+    "entityLayoutId": 23
+  },
+  {
+    "left": 11,
+    "top": 21,
+    "right": 23,
+    "bottom": 22,
+    "layerId": 23,
+    "tileDefId": 0,
+    "entityGfxId": 2,
+    "entityLayoutId": 24
+  },
+  {
+    "left": 23,
+    "top": 25,
+    "right": 23,
+    "bottom": 25,
+    "layerId": 24,
+    "tileDefId": 0,
+    "entityGfxId": 2,
+    "entityLayoutId": 25
+  },
+  {
+    "left": 42,
+    "top": 20,
+    "right": 54,
+    "bottom": 21,
+    "layerId": 25,
+    "tileDefId": 0,
+    "entityGfxId": 2,
+    "entityLayoutId": 26
+  },
+  {
+    "left": 39,
+    "top": 21,
+    "right": 40,
+    "bottom": 26,
+    "layerId": 26,
+    "tileDefId": 0,
+    "entityGfxId": 3,
+    "entityLayoutId": 5
+  },
+  {
+    "left": 18,
+    "top": 25,
+    "right": 22,
+    "bottom": 25,
+    "layerId": 27,
+    "tileDefId": 0,
+    "entityGfxId": 2,
+    "entityLayoutId": 9
+  },
+  {
+    "left": 23,
+    "top": 24,
+    "right": 23,
+    "bottom": 24,
+    "layerId": 28,
+    "tileDefId": 0,
+    "entityGfxId": 3,
+    "entityLayoutId": 10
+  },
+  {
+    "left": 18,
+    "top": 24,
+    "right": 22,
+    "bottom": 24,
+    "layerId": 29,
+    "tileDefId": 0,
+    "entityGfxId": 3,
+    "entityLayoutId": 12
+  },
+  {
+    "left": 28,
+    "top": 36,
+    "right": 28,
+    "bottom": 36,
+    "layerId": 30,
+    "tileDefId": 0,
+    "entityGfxId": 3,
+    "entityLayoutId": 31
+  },
+  {
+    "left": 48,
+    "top": 22,
+    "right": 48,
+    "bottom": 22,
+    "layerId": 31,
+    "tileDefId": 0,
+    "entityGfxId": 0,
+    "entityLayoutId": 52
+  },
+  {
+    "left": 23,
+    "top": 37,
+    "right": 23,
+    "bottom": 37,
+    "layerId": 32,
+    "tileDefId": 0,
+    "entityGfxId": 0,
+    "entityLayoutId": 50
+  },
+  {
+    "left": 35,
+    "top": 25,
+    "right": 35,
+    "bottom": 25,
+    "layerId": 33,
+    "tileDefId": 0,
+    "entityGfxId": 0,
+    "entityLayoutId": 51
+  },
+  {
+    "left": 20,
+    "top": 30,
+    "right": 20,
+    "bottom": 30,
+    "layerId": 34,
+    "tileDefId": 0,
+    "entityGfxId": 0,
+    "entityLayoutId": 49
+  },
+  {
+    "left": 23,
+    "top": 26,
+    "right": 23,
+    "bottom": 26,
+    "layerId": 35,
+    "tileDefId": 0,
+    "entityGfxId": 0,
+    "entityLayoutId": 48
+  },
+  {
+    "left": 23,
+    "top": 36,
+    "right": 23,
+    "bottom": 36,
+    "layerId": 36,
+    "tileDefId": 0,
+    "entityGfxId": 0,
+    "entityLayoutId": 46
+  },
+  {
+    "left": 18,
+    "top": 30,
+    "right": 18,
+    "bottom": 30,
+    "layerId": 37,
+    "tileDefId": 0,
+    "entityGfxId": 0,
+    "entityLayoutId": 47
+  },
+  {
+    "left": 49,
+    "top": 22,
+    "right": 49,
+    "bottom": 22,
+    "layerId": 48,
+    "tileDefId": -1,
+    "entityGfxId": 0,
+    "entityLayoutId": 0
+  },
+  {
+    "left": 36,
+    "top": 25,
+    "right": 36,
+    "bottom": 25,
+    "layerId": 50,
+    "tileDefId": -1,
+    "entityGfxId": 0,
+    "entityLayoutId": 0
+  },
+  {
+    "left": 17,
+    "top": 30,
+    "right": 17,
+    "bottom": 30,
+    "layerId": 51,
+    "tileDefId": -1,
+    "entityGfxId": 0,
+    "entityLayoutId": 0
+  },
+  {
+    "left": 22,
+    "top": 37,
+    "right": 22,
+    "bottom": 37,
+    "layerId": 49,
+    "tileDefId": -1,
+    "entityGfxId": 0,
+    "entityLayoutId": 0
+  }
+]

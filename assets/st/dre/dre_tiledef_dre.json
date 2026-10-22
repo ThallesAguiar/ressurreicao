@@ -1,0 +1,6 @@
+{
+  "tiles": "dre_tiledef_dre_tiles.bin",
+  "pages": "dre_tiledef_dre_pages.bin",
+  "cluts": "dre_tiledef_dre_cluts.bin",
+  "collisions": "dre_tiledef_dre_cols.bin"
+}

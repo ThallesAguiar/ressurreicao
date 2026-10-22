@@ -1,0 +1,216 @@
+{
+  "cluts": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "defs": [
+    {
+      "kind": 5,
+      "entries": [
+        {
+          "destination": 8192,
+          "length": 96,
+          "name": "D_us_80190A54.palbin"
+        },
+        {
+          "destination": 8288,
+          "length": 32,
+          "name": "pal_flea_rider.palbin"
+        },
+        {
+          "destination": 8320,
+          "length": 16,
+          "name": "D_us_801911F4.palbin"
+        },
+        {
+          "destination": 8448,
+          "length": 128,
+          "name": "D_us_80190BF4.palbin"
+        },
+        {
+          "destination": 8576,
+          "length": 128,
+          "name": "D_us_80190DF4.palbin"
+        },
+        {
+          "destination": 8704,
+          "length": 128,
+          "name": "D_us_80190FF4.palbin"
+        },
+        {
+          "destination": 8960,
+          "length": 16,
+          "name": "D_us_80191654.palbin"
+        },
+        {
+          "destination": 9088,
+          "length": 128,
+          "name": "pal_breakable.palbin"
+        },
+        {
+          "destination": 9216,
+          "length": 48,
+          "name": "pal_blue_axe_knight.palbin"
+        }
+      ]
+    },
+    {
+      "kind": 3,
+      "freq": 6,
+      "destination": 1536,
+      "count": 16,
+      "data": [
+        {
+          "name": "D_us_80180094.palbin"
+        },
+        {
+          "name": "D_us_801800B4.palbin"
+        },
+        {
+          "name": "D_us_801800D4.palbin"
+        },
+        {
+          "name": "D_us_801800B4.palbin"
+        }
+      ]
+    },
+    {
+      "kind": 3,
+      "freq": 8,
+      "destination": 1584,
+      "count": 16,
+      "data": [
+        {
+          "name": "D_us_801800F4.palbin"
+        },
+        {
+          "name": "D_us_80180114.palbin"
+        },
+        {
+          "name": "D_us_80180134.palbin"
+        },
+        {
+          "name": "D_us_80180114.palbin"
+        }
+      ]
+    },
+    {
+      "kind": 3,
+      "freq": 8,
+      "destination": 2064,
+      "count": 16,
+      "data": [
+        {
+          "name": "D_us_80180154.palbin"
+        },
+        {
+          "name": "D_us_80180174.palbin"
+        },
+        {
+          "name": "D_us_80180194.palbin"
+        },
+        {
+          "name": "D_us_80180174.palbin"
+        }
+      ]
+    },
+    {
+      "kind": 3,
+      "freq": 8,
+      "destination": 2112,
+      "count": 16,
+      "data": [
+        {
+          "name": "D_us_801801B4.palbin"
+        },
+        {
+          "name": "D_us_801801D4.palbin"
+        },
+        {
+          "name": "D_us_801801F4.palbin"
+        },
+        {
+          "name": "D_us_801801D4.palbin"
+        }
+      ]
+    },
+    {
+      "kind": 3,
+      "freq": 2,
+      "destination": 1728,
+      "count": 16,
+      "data": [
+        {
+          "name": "D_us_80180214.palbin"
+        },
+        {
+          "name": "D_us_80180234.palbin"
+        }
+      ]
+    },
+    {
+      "kind": 3,
+      "freq": 2,
+      "destination": 1632,
+      "count": 16,
+      "data": [
+        {
+          "name": "D_us_80180254.palbin"
+        },
+        {
+          "name": "D_us_80180274.palbin"
+        }
+      ]
+    },
+    {
+      "kind": 3,
+      "freq": 2,
+      "destination": 2016,
+      "count": 16,
+      "data": [
+        {
+          "name": "D_us_80180294.palbin"
+        },
+        {
+          "name": "D_us_801802B4.palbin"
+        }
+      ]
+    },
+    {
+      "kind": 3,
+      "freq": 2,
+      "destination": 1664,
+      "count": 16,
+      "data": [
+        {
+          "name": "D_us_801802D4.palbin"
+        },
+        {
+          "name": "D_us_801802F4.palbin"
+        }
+      ]
+    },
+    {
+      "kind": 3,
+      "freq": 2,
+      "destination": 1696,
+      "count": 16,
+      "data": [
+        {
+          "name": "D_us_80180314.palbin"
+        },
+        {
+          "name": "D_us_80180334.palbin"
+        }
+      ]
+    }
+  ]
+}

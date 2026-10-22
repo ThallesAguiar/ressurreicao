@@ -1,0 +1,6 @@
+{
+  "tiles": "cat_tiledef_cat_tiles.bin",
+  "pages": "cat_tiledef_cat_pages.bin",
+  "cluts": "cat_tiledef_cat_cluts.bin",
+  "collisions": "cat_tiledef_cat_cols.bin"
+}

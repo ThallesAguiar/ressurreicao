@@ -1,0 +1,6 @@
+{
+  "tiles": "rbo5_tiledef_rbo5_tiles.bin",
+  "pages": "rbo5_tiledef_rbo5_pages.bin",
+  "cluts": "rbo5_tiledef_rbo5_cluts.bin",
+  "collisions": "rbo5_tiledef_rbo5_cols.bin"
+}

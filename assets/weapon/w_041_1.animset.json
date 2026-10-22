@@ -1,0 +1,273 @@
+[
+  null,
+  [
+    {
+      "flags": 32,
+      "x": -11,
+      "y": -24,
+      "width": 24,
+      "height": 32,
+      "clut": 0,
+      "tileset": 0,
+      "left": 64,
+      "top": 0,
+      "right": 88,
+      "bottom": 32
+    }
+  ],
+  [
+    {
+      "flags": 32,
+      "x": -11,
+      "y": -18,
+      "width": 24,
+      "height": 24,
+      "clut": 0,
+      "tileset": 0,
+      "left": 88,
+      "top": 0,
+      "right": 112,
+      "bottom": 24
+    }
+  ],
+  [
+    {
+      "flags": 0,
+      "x": -11,
+      "y": -10,
+      "width": 24,
+      "height": 16,
+      "clut": 0,
+      "tileset": 0,
+      "left": 64,
+      "top": 32,
+      "right": 88,
+      "bottom": 48
+    }
+  ],
+  [
+    {
+      "flags": 0,
+      "x": -11,
+      "y": -8,
+      "width": 24,
+      "height": 24,
+      "clut": 0,
+      "tileset": 0,
+      "left": 88,
+      "top": 32,
+      "right": 112,
+      "bottom": 56
+    }
+  ],
+  [
+    {
+      "flags": 0,
+      "x": -11,
+      "y": -5,
+      "width": 24,
+      "height": 24,
+      "clut": 0,
+      "tileset": 0,
+      "left": 64,
+      "top": 56,
+      "right": 88,
+      "bottom": 80
+    }
+  ],
+  [
+    {
+      "flags": 0,
+      "x": -11,
+      "y": -8,
+      "width": 24,
+      "height": 32,
+      "clut": 0,
+      "tileset": 0,
+      "left": 88,
+      "top": 56,
+      "right": 112,
+      "bottom": 88
+    }
+  ],
+  [
+    {
+      "flags": 0,
+      "x": -11,
+      "y": -8,
+      "width": 24,
+      "height": 32,
+      "clut": 0,
+      "tileset": 0,
+      "left": 64,
+      "top": 80,
+      "right": 88,
+      "bottom": 112
+    }
+  ],
+  [
+    {
+      "flags": 0,
+      "x": -11,
+      "y": -13,
+      "width": 24,
+      "height": 32,
+      "clut": 0,
+      "tileset": 0,
+      "left": 88,
+      "top": 88,
+      "right": 112,
+      "bottom": 120
+    }
+  ],
+  [
+    {
+      "flags": 8,
+      "x": -11,
+      "y": -11,
+      "width": 24,
+      "height": 32,
+      "clut": 0,
+      "tileset": 0,
+      "left": 24,
+      "top": 96,
+      "right": 48,
+      "bottom": 128
+    }
+  ],
+  [
+    {
+      "flags": 16,
+      "x": -11,
+      "y": -7,
+      "width": 24,
+      "height": 16,
+      "clut": 0,
+      "tileset": 0,
+      "left": 0,
+      "top": 96,
+      "right": 24,
+      "bottom": 112
+    }
+  ],
+  [
+    {
+      "flags": 0,
+      "x": -3,
+      "y": -7,
+      "width": 8,
+      "height": 16,
+      "clut": 0,
+      "tileset": 0,
+      "left": 56,
+      "top": 64,
+      "right": 64,
+      "bottom": 80
+    }
+  ],
+  [
+    {
+      "flags": 0,
+      "x": -7,
+      "y": -7,
+      "width": 16,
+      "height": 16,
+      "clut": 2,
+      "tileset": 0,
+      "left": 48,
+      "top": 96,
+      "right": 64,
+      "bottom": 112
+    }
+  ],
+  [
+    {
+      "flags": 0,
+      "x": -11,
+      "y": -11,
+      "width": 24,
+      "height": 24,
+      "clut": 2,
+      "tileset": 0,
+      "left": 32,
+      "top": 64,
+      "right": 56,
+      "bottom": 88
+    }
+  ],
+  [
+    {
+      "flags": 16,
+      "x": -15,
+      "y": -15,
+      "width": 32,
+      "height": 32,
+      "clut": 2,
+      "tileset": 0,
+      "left": 0,
+      "top": 64,
+      "right": 32,
+      "bottom": 96
+    }
+  ],
+  [
+    {
+      "flags": 48,
+      "x": -31,
+      "y": -31,
+      "width": 64,
+      "height": 64,
+      "clut": 1,
+      "tileset": 0,
+      "left": 0,
+      "top": 0,
+      "right": 64,
+      "bottom": 64
+    }
+  ],
+  [
+    {
+      "flags": 50,
+      "x": -32,
+      "y": -31,
+      "width": 64,
+      "height": 64,
+      "clut": 1,
+      "tileset": 0,
+      "left": 0,
+      "top": 0,
+      "right": 64,
+      "bottom": 64
+    }
+  ],
+  [
+    {
+      "flags": 51,
+      "x": -32,
+      "y": -32,
+      "width": 64,
+      "height": 64,
+      "clut": 1,
+      "tileset": 0,
+      "left": 0,
+      "top": 0,
+      "right": 64,
+      "bottom": 64
+    }
+  ],
+  [
+    {
+      "flags": 49,
+      "x": -31,
+      "y": -32,
+      "width": 64,
+      "height": 64,
+      "clut": 1,
+      "tileset": 0,
+      "left": 0,
+      "top": 0,
+      "right": 64,
+      "bottom": 64
+    }
+  ]
+]

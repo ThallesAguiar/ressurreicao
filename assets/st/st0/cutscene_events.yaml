@@ -1,0 +1,3 @@
+events:
+  - [0, SPAWN_ENTITY, 0x81, E_CUTSCENE_SUPPORT, 128, 128]
+  - [END]

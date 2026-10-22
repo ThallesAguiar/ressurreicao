@@ -1,0 +1,780 @@
+BP_SKID_SMOKE:
+  entity: E_SMOKE_PUFF
+  amount: 5
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 2
+  kind: B_DECORATION
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_SMOKE_PUFF:
+  entity: E_SMOKE_PUFF
+  amount: 3
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 4
+  kind: B_DECORATION
+  origin: B_ORIGIN_FOLLOW_PLAYER_WHILE_PLAYER_IS_RUNNING
+  timerDelay: 0
+BP_SUBWPN_CROSS:
+  entity: E_SUBWPN_CROSS
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_WEAPON
+  origin: B_ORIGIN_FOLLOW_PLAYER_WHILE_PLAYER_IS_HIT
+  timerDelay: 8
+BP_SUBWPN_CROSS_PARTICLES:
+  entity: E_80169C10
+  amount: 3
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 2
+  kind: B_DECORATION
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_EMBERS:
+  entity: E_HIT_BY_CUT_BLOOD
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_DECORATION
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_5:
+  entity: E_SUBWPN_CROSS_TRAIL
+  amount: 4
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 4
+  kind: B_DECORATION
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 4
+BP_SUBWPN_HOLYWATER:
+  entity: E_SUBWPN_HOLY_WATER
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_WEAPON
+  origin: B_ORIGIN_FOLLOW_PLAYER_WHILE_PLAYER_IS_HIT
+  timerDelay: 8
+BP_HOLYWATER_FIRE:
+  entity: E_SUBWPN_HOLY_WATER_FLAME
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_WEAPON
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_HIT_BY_FIRE:
+  entity: E_80161C2C
+  amount: 6
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 12
+  kind: B_DECORATION
+  origin: B_ORIGIN_FOLLOW_PLAYER_WHILE_PLAYER_IS_NOT_HIT
+  timerDelay: 0
+BP_HOLYWATER_FLAMES:
+  entity: E_80161C2C
+  amount: 128
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 3
+  kind: B_DECORATION
+  origin: B_ORIGIN_FOLLOW_PLAYER_WHILE_PLAYER_IS_NOT_HIT
+  timerDelay: 8
+BP_WHIP:
+  entity: E_WHIP
+  amount: 15
+  nPerCycle: 15
+  isNonCritical: false
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_WEAPON_UNIQUE
+  origin: B_ORIGIN_FOLLOW_PLAYER_WHILE_PLAYER_IS_HIT
+  timerDelay: 0
+BP_MULTIPLE_EMBERS:
+  entity: E_HIT_BY_CUT_BLOOD
+  amount: 72
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 2
+  kind: B_EFFECTS
+  origin: B_ORIGIN_FOLLOW_PLAYER
+  timerDelay: 0
+BP_HYDROSTORM:
+  entity: E_CRASH_HYDROSTORM
+  amount: 48
+  nPerCycle: 1
+  isNonCritical: false
+  incParamsKind: true
+  timerCycle: 6
+  kind: B_WEAPON
+  origin: B_ORIGIN_FOLLOW_PLAYER
+  timerDelay: 48
+BP_CRASH_CROSS:
+  entity: E_CRASH_CROSS_ROTATING
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: false
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_WEAPON
+  origin: B_ORIGIN_FOLLOW_CAMERA
+  timerDelay: 0
+BP_CRASH_CROSSES_ONLY:
+  entity: E_CRASH_CROSS_BEAM
+  amount: 6
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 24
+  kind: B_WEAPON
+  origin: B_ORIGIN_FOLLOW_CAMERA
+  timerDelay: 0
+BP_NOT_IMPLEMENTED_1:
+  entity: E_NOT_IMPLEMENTED_1
+  amount: 16
+  nPerCycle: 16
+  isNonCritical: false
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_DECORATION
+  origin: B_ORIGIN_FOLLOW_PLAYER_WHILE_PLAYER_IS_HIT
+  timerDelay: 0
+BP_NOT_IMPLEMENTED_2:
+  entity: E_NOT_IMPLEMENTED_2
+  amount: 15
+  nPerCycle: 15
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_DECORATION
+  origin: B_ORIGIN_FOLLOW_PLAYER_WHILE_PLAYER_IS_HIT
+  timerDelay: 0
+BP_ARM_BRANDISH_WHIP:
+  entity: E_ARM_BRANDISH_WHIP
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: false
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_WHIP
+  origin: B_ORIGIN_FOLLOW_PLAYER_WHILE_PLAYER_IS_HIT
+  timerDelay: 0
+BP_18:
+  entity: E_80167964
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_DECORATION
+  origin: B_ORIGIN_FOLLOW_CAMERA
+  timerDelay: 0
+BP_AXE:
+  entity: E_SUBWPN_AXE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_WEAPON
+  origin: B_ORIGIN_FOLLOW_PLAYER_WHILE_PLAYER_IS_HIT
+  timerDelay: 8
+BP_20:
+  entity: E_80161EF8
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_DECORATION
+  origin: B_ORIGIN_FOLLOW_PARENT_ENTITY
+  timerDelay: 0
+BP_NOT_IMPLEMENTED_3:
+  entity: E_NOT_IMPLEMENTED_3
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_DECORATION
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_REVIVAL_COLUMN:
+  entity: E_REVIVAL_COLUMN
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: false
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_EFFECTS
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_MARIA_POWERS_APPLIED:
+  entity: E_APPLY_MARIA_POWER_ANIM
+  amount: 4
+  nPerCycle: 1
+  isNonCritical: false
+  incParamsKind: true
+  timerCycle: 24
+  kind: B_EFFECTS
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_SLIDE:
+  entity: E_SMOKE_PUFF
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_DECORATION
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_25:
+  entity: E_SLIDE_KICK
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_WEAPON
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_BLADE_DASH:
+  entity: E_BLADE_DASH
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_WEAPON
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_BLUE_CIRCLE:
+  entity: E_801623E0
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_EFFECTS
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_BLUE_SPHERE:
+  entity: E_80162604
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_EFFECTS
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_MARIA:
+  entity: E_MARIA
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: false
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_CUTSCENE_MARIA
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_MARIA_POWERS_INVOKED:
+  entity: E_MARIA_POWERS
+  amount: 4
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 4
+  kind: B_EFFECTS
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_31:
+  entity: E_80160D2C
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_WEAPON
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_NOT_IMPLEMENTED_4:
+  entity: E_NOT_IMPLEMENTED_4
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_DECORATION
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_RIC_BLINK:
+  entity: E_BLINK_WHITE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_DECORATION
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_CRASH_CROSS_PARTICLES:
+  entity: E_SUBWPN_CRASH_CROSS_PARTICLES
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_DECORATION
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_35:
+  entity: E_801641A0
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_DECORATION
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_36:
+  entity: E_SHRINKING_POWERUP_RING
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_DECORATION
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_37:
+  entity: E_SHRINKING_POWERUP_RING
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_DECORATION
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 4
+BP_38:
+  entity: E_SHRINKING_POWERUP_RING
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_DECORATION
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 8
+BP_39:
+  entity: E_SHRINKING_POWERUP_RING
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_DECORATION
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 12
+BP_HOLYWATER_GLASS:
+  entity: E_HOLYWATER_BREAK_GLASS
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_DECORATION
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_CRASH_AXE:
+  entity: E_CRASH_AXE
+  amount: 8
+  nPerCycle: 8
+  isNonCritical: false
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_WEAPON
+  origin: B_ORIGIN_FOLLOW_PLAYER
+  timerDelay: 32
+BP_42:
+  entity: E_HIT_BY_CUT_BLOOD
+  amount: 3
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 3
+  kind: B_DECORATION
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_SUBWPN_DAGGER:
+  entity: E_SUBWPN_DAGGER
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_WEAPON
+  origin: B_ORIGIN_FOLLOW_PLAYER_WHILE_PLAYER_IS_HIT
+  timerDelay: 8
+BP_CRASH_DAGGER:
+  entity: E_SUBWPN_DAGGER
+  amount: 128
+  nPerCycle: 1
+  isNonCritical: false
+  incParamsKind: true
+  timerCycle: 4
+  kind: B_WEAPON_CHILDREN
+  origin: B_ORIGIN_SUBWEAPON_CRASH_PARTICLE
+  timerDelay: 8
+BP_HIGH_JUMP:
+  entity: E_80160F0C
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_WEAPON
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_HIT_BY_CUT:
+  entity: E_HIT_BY_CUT_BLOOD
+  amount: 12
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 2
+  kind: B_DECORATION
+  origin: B_ORIGIN_FOLLOW_PLAYER_WHILE_PLAYER_IS_NOT_HIT
+  timerDelay: 0
+BP_HIT_BY_ICE:
+  entity: E_HIT_BY_ICE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_DECORATION
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_HIT_BY_THUNDER:
+  entity: E_HIT_BY_LIGHTNING
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_DECORATION
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_VIBHUTI:
+  entity: E_SUBWPN_VIBHUTI
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_WEAPON
+  origin: B_ORIGIN_FOLLOW_PLAYER
+  timerDelay: 8
+BP_REBOUND_STONE:
+  entity: E_SUBWPN_REBOUND_STONE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_WEAPON
+  origin: B_ORIGIN_FOLLOW_PLAYER
+  timerDelay: 4
+BP_AGUNEA:
+  entity: E_SUBWPN_AGUNEA
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_WEAPON
+  origin: B_ORIGIN_FOLLOW_PLAYER
+  timerDelay: 4
+BP_AGUNEA_HIT_ENEMY:
+  entity: E_SUBWPN_AGUNEA_HIT_ENEMY
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_DECORATION
+  origin: B_ORIGIN_FOLLOW_PLAYER
+  timerDelay: 0
+BP_DEATH_BY_FIRE:
+  entity: E_80161C2C
+  amount: 72
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 2
+  kind: B_EFFECTS
+  origin: B_ORIGIN_FOLLOW_PLAYER
+  timerDelay: 16
+BP_CRASH_VITHUBI:
+  entity: E_CRASH_VIBHUTI
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: false
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_DECORATION
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 18
+BP_VITHUBI_CRASH_CLOUD:
+  entity: E_CRASH_VIBHUTI_CLOUD
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_WEAPON_CHILDREN
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_CRASH_REBOUND_STONE:
+  entity: E_CRASH_REBOUND_STONE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: false
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_DECORATION
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_57:
+  entity: E_8016D9C4
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_WEAPON
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_CRASH_REBOUND_STONE_EXPLOSION:
+  entity: E_CRASH_REBOUND_STONE_EXPLOSION
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: false
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_WEAPON
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_CRASH_BIBLE:
+  entity: E_CRASH_BIBLE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: false
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_WEAPON
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_CRASH_BIBLE_BEAM:
+  entity: E_CRASH_BIBLE_BEAM
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_WEAPON
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_BIBLE:
+  entity: E_SUBWPN_BIBLE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_WEAPON
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_BIBLE_TRAIL:
+  entity: E_SUBWPN_BIBLE_TRAIL
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_DECORATION
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_SUBWPN_STOPWATCH:
+  entity: E_SUBWPN_STOPWATCH
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_WEAPON
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_STOPWATCH_CIRCLE:
+  entity: E_SUBWPN_STOPWATCH_CIRCLE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_DECORATION
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_CRASH_STOPWATCH:
+  entity: E_CRASH_STOPWATCH
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: false
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_DECORATION
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_66:
+  entity: E_8016F198
+  amount: 2
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 2
+  kind: B_DECORATION
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_CRASH_AGUNEA:
+  entity: E_AGUNEA_CIRCLE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: false
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_WEAPON
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 20
+BP_CRASH_AGUNEA_THUNDER:
+  entity: E_AGUNEA_LIGHTNING
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_DECORATION
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_CRASH_REBOUND_STONE_PARTICLES:
+  entity: E_CRASH_REBOUND_STONE_PARTICLES
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_EFFECTS
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_HIT_BY_DARK:
+  entity: E_HIT_BY_DARK
+  amount: 96
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 4
+  kind: B_DECORATION
+  origin: B_ORIGIN_FOLLOW_PLAYER_WHILE_PLAYER_IS_HIT
+  timerDelay: 0
+BP_HIT_BY_HOLY:
+  entity: E_HIT_BY_HOLY
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_DECORATION
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_AGUNEA_THUNDER:
+  entity: E_CRASH_STOPWATCH_DONE_PARTICLE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_DECORATION
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_CRASH_STOPWATCH_LIGHTNING:
+  entity: E_CRASH_STOPWATCH_LIGHTNING
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_WEAPON
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_SMOKE_PUFF_2:
+  entity: E_SMOKE_PUFF
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_WEAPON
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_SKID_SMOKE_2:
+  entity: E_SMOKE_PUFF
+  amount: 4
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 2
+  kind: B_DECORATION
+  origin: B_ORIGIN_6
+  timerDelay: 0
+BP_SKID_SMOKE_3:
+  entity: E_SMOKE_PUFF
+  amount: 6
+  nPerCycle: 6
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_DECORATION
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_TELEPORT:
+  entity: E_TELEPORT
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: false
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_EFFECTS
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0

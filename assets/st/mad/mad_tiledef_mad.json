@@ -1,0 +1,6 @@
+{
+  "tiles": "mad_tiledef_mad_tiles.bin",
+  "pages": "mad_tiledef_mad_pages.bin",
+  "cluts": "mad_tiledef_mad_cluts.bin",
+  "collisions": "mad_tiledef_mad_cols.bin"
+}

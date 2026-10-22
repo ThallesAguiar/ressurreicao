@@ -1,0 +1,1181 @@
+{
+  "entities": [
+    [
+      {
+        "x": -2,
+        "y": -2,
+        "id": "E_NONE",
+        "flags": 0,
+        "slot": 0,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 0
+      },
+      {
+        "x": -1,
+        "y": -1,
+        "id": "E_NONE",
+        "flags": 0,
+        "slot": 0,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 1
+      }
+    ],
+    [
+      {
+        "x": -2,
+        "y": -2,
+        "id": "E_NONE",
+        "flags": 0,
+        "slot": 0,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 0
+      },
+      {
+        "x": 128,
+        "y": 896,
+        "id": "E_ID_19",
+        "flags": 0,
+        "slot": 148,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 39
+      },
+      {
+        "x": 128,
+        "y": 896,
+        "id": "E_ID_1A",
+        "flags": 0,
+        "slot": 144,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 40
+      },
+      {
+        "x": 128,
+        "y": 384,
+        "id": "E_ID_19",
+        "flags": 0,
+        "slot": 148,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 33
+      },
+      {
+        "x": 128,
+        "y": 384,
+        "id": "E_ID_1A",
+        "flags": 0,
+        "slot": 144,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 34
+      },
+      {
+        "x": 128,
+        "y": 128,
+        "id": "E_ID_19",
+        "flags": 0,
+        "slot": 148,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 4
+      },
+      {
+        "x": 128,
+        "y": 128,
+        "id": "E_ID_1A",
+        "flags": 0,
+        "slot": 144,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 5
+      },
+      {
+        "x": 128,
+        "y": 1664,
+        "id": "E_ID_19",
+        "flags": 0,
+        "slot": 148,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 59
+      },
+      {
+        "x": 128,
+        "y": 1664,
+        "id": "E_ID_1A",
+        "flags": 0,
+        "slot": 144,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 60
+      },
+      {
+        "x": 192,
+        "y": 128,
+        "id": "E_BREAKABLE",
+        "flags": 160,
+        "slot": 36,
+        "spawnId": 21,
+        "params": 24576,
+        "yOrder": 25
+      },
+      {
+        "x": 240,
+        "y": 1708,
+        "id": "E_YORICK",
+        "flags": 0,
+        "slot": 48,
+        "spawnId": 33,
+        "params": 2,
+        "yOrder": 61
+      },
+      {
+        "x": 272,
+        "y": 128,
+        "id": "E_BREAKABLE",
+        "flags": 160,
+        "slot": 35,
+        "spawnId": 20,
+        "params": 24576,
+        "yOrder": 24
+      },
+      {
+        "x": 352,
+        "y": 128,
+        "id": "E_BREAKABLE",
+        "flags": 160,
+        "slot": 34,
+        "spawnId": 19,
+        "params": 24576,
+        "yOrder": 23
+      },
+      {
+        "x": 432,
+        "y": 1152,
+        "id": "E_ID_12",
+        "flags": 0,
+        "slot": 120,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 50
+      },
+      {
+        "x": 432,
+        "y": 128,
+        "id": "E_BREAKABLE",
+        "flags": 160,
+        "slot": 33,
+        "spawnId": 18,
+        "params": 24576,
+        "yOrder": 22
+      },
+      {
+        "x": 440,
+        "y": 1192,
+        "id": "E_ID_17",
+        "flags": 0,
+        "slot": 72,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 53
+      },
+      {
+        "x": 480,
+        "y": 1152,
+        "id": "E_BREAKABLE",
+        "flags": 160,
+        "slot": 44,
+        "spawnId": 29,
+        "params": 12304,
+        "yOrder": 52
+      },
+      {
+        "x": 520,
+        "y": 128,
+        "id": "E_BREAKABLE",
+        "flags": 160,
+        "slot": 32,
+        "spawnId": 17,
+        "params": 24576,
+        "yOrder": 21
+      },
+      {
+        "x": 520,
+        "y": 136,
+        "id": "E_TOMBSTONE",
+        "flags": 0,
+        "slot": 50,
+        "spawnId": 34,
+        "params": 0,
+        "yOrder": 26
+      },
+      {
+        "x": 608,
+        "y": 1240,
+        "id": "E_ID_12",
+        "flags": 0,
+        "slot": 121,
+        "spawnId": 0,
+        "params": 1,
+        "yOrder": 54
+      },
+      {
+        "x": 616,
+        "y": 1256,
+        "id": "E_ID_16",
+        "flags": 0,
+        "slot": 112,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 55
+      },
+      {
+        "x": 616,
+        "y": 128,
+        "id": "E_BREAKABLE",
+        "flags": 160,
+        "slot": 31,
+        "spawnId": 16,
+        "params": 24576,
+        "yOrder": 20
+      },
+      {
+        "x": 624,
+        "y": 1276,
+        "id": "E_STAIR_SEGMENT",
+        "flags": 0,
+        "slot": 113,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 56
+      },
+      {
+        "x": 640,
+        "y": 640,
+        "id": "E_ID_19",
+        "flags": 0,
+        "slot": 148,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 36
+      },
+      {
+        "x": 640,
+        "y": 640,
+        "id": "E_ID_1A",
+        "flags": 0,
+        "slot": 144,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 37
+      },
+      {
+        "x": 640,
+        "y": 1152,
+        "id": "E_ID_19",
+        "flags": 0,
+        "slot": 148,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 48
+      },
+      {
+        "x": 640,
+        "y": 1152,
+        "id": "E_ID_1A",
+        "flags": 0,
+        "slot": 144,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 49
+      },
+      {
+        "x": 664,
+        "y": 1104,
+        "id": "E_BREAKABLE",
+        "flags": 160,
+        "slot": 43,
+        "spawnId": 28,
+        "params": 12288,
+        "yOrder": 46
+      },
+      {
+        "x": 712,
+        "y": 128,
+        "id": "E_BREAKABLE",
+        "flags": 160,
+        "slot": 30,
+        "spawnId": 15,
+        "params": 24576,
+        "yOrder": 19
+      },
+      {
+        "x": 768,
+        "y": 1121,
+        "id": "E_BREAKABLE",
+        "flags": 160,
+        "slot": 42,
+        "spawnId": 27,
+        "params": 28674,
+        "yOrder": 47
+      },
+      {
+        "x": 808,
+        "y": 128,
+        "id": "E_BREAKABLE",
+        "flags": 160,
+        "slot": 29,
+        "spawnId": 14,
+        "params": 24576,
+        "yOrder": 18
+      },
+      {
+        "x": 808,
+        "y": 136,
+        "id": "E_TOMBSTONE",
+        "flags": 0,
+        "slot": 51,
+        "spawnId": 35,
+        "params": 0,
+        "yOrder": 27
+      },
+      {
+        "x": 872,
+        "y": 1104,
+        "id": "E_BREAKABLE",
+        "flags": 160,
+        "slot": 41,
+        "spawnId": 26,
+        "params": 12288,
+        "yOrder": 45
+      },
+      {
+        "x": 904,
+        "y": 128,
+        "id": "E_BREAKABLE",
+        "flags": 160,
+        "slot": 28,
+        "spawnId": 13,
+        "params": 24576,
+        "yOrder": 17
+      },
+      {
+        "x": 1000,
+        "y": 128,
+        "id": "E_BREAKABLE",
+        "flags": 160,
+        "slot": 27,
+        "spawnId": 12,
+        "params": 24576,
+        "yOrder": 16
+      },
+      {
+        "x": 1024,
+        "y": 608,
+        "id": "E_SKULL_LORD",
+        "flags": 0,
+        "slot": 56,
+        "spawnId": 48,
+        "params": 0,
+        "yOrder": 35
+      },
+      {
+        "x": 1040,
+        "y": 1104,
+        "id": "E_BREAKABLE",
+        "flags": 160,
+        "slot": 40,
+        "spawnId": 25,
+        "params": 8192,
+        "yOrder": 44
+      },
+      {
+        "x": 1096,
+        "y": 128,
+        "id": "E_BREAKABLE",
+        "flags": 160,
+        "slot": 26,
+        "spawnId": 11,
+        "params": 24576,
+        "yOrder": 15
+      },
+      {
+        "x": 1096,
+        "y": 136,
+        "id": "E_TOMBSTONE",
+        "flags": 0,
+        "slot": 52,
+        "spawnId": 36,
+        "params": 0,
+        "yOrder": 28
+      },
+      {
+        "x": 1104,
+        "y": 1104,
+        "id": "E_BREAKABLE",
+        "flags": 160,
+        "slot": 39,
+        "spawnId": 24,
+        "params": 12288,
+        "yOrder": 43
+      },
+      {
+        "x": 1192,
+        "y": 128,
+        "id": "E_BREAKABLE",
+        "flags": 160,
+        "slot": 25,
+        "spawnId": 10,
+        "params": 24576,
+        "yOrder": 14
+      },
+      {
+        "x": 1192,
+        "y": 136,
+        "id": "E_TOMBSTONE",
+        "flags": 0,
+        "slot": 53,
+        "spawnId": 37,
+        "params": 0,
+        "yOrder": 29
+      },
+      {
+        "x": 1200,
+        "y": 1104,
+        "id": "E_BREAKABLE",
+        "flags": 160,
+        "slot": 38,
+        "spawnId": 23,
+        "params": 12288,
+        "yOrder": 42
+      },
+      {
+        "x": 1264,
+        "y": 1104,
+        "id": "E_BREAKABLE",
+        "flags": 160,
+        "slot": 37,
+        "spawnId": 22,
+        "params": 8209,
+        "yOrder": 41
+      },
+      {
+        "x": 1288,
+        "y": 128,
+        "id": "E_BREAKABLE",
+        "flags": 160,
+        "slot": 24,
+        "spawnId": 9,
+        "params": 24576,
+        "yOrder": 13
+      },
+      {
+        "x": 1384,
+        "y": 128,
+        "id": "E_BREAKABLE",
+        "flags": 160,
+        "slot": 22,
+        "spawnId": 7,
+        "params": 24576,
+        "yOrder": 12
+      },
+      {
+        "x": 1480,
+        "y": 128,
+        "id": "E_BREAKABLE",
+        "flags": 160,
+        "slot": 21,
+        "spawnId": 6,
+        "params": 24576,
+        "yOrder": 11
+      },
+      {
+        "x": 1480,
+        "y": 136,
+        "id": "E_TOMBSTONE",
+        "flags": 0,
+        "slot": 54,
+        "spawnId": 38,
+        "params": 0,
+        "yOrder": 30
+      },
+      {
+        "x": 1536,
+        "y": 1152,
+        "id": "E_ID_12",
+        "flags": 0,
+        "slot": 122,
+        "spawnId": 0,
+        "params": 2,
+        "yOrder": 51
+      },
+      {
+        "x": 1576,
+        "y": 128,
+        "id": "E_BREAKABLE",
+        "flags": 160,
+        "slot": 20,
+        "spawnId": 5,
+        "params": 24576,
+        "yOrder": 10
+      },
+      {
+        "x": 1632,
+        "y": 281,
+        "id": "E_PERSISTENT_ITEM_DROP",
+        "flags": 0,
+        "slot": 6,
+        "spawnId": 1,
+        "params": 22,
+        "yOrder": 31
+      },
+      {
+        "x": 1663,
+        "y": 841,
+        "id": "E_ID_1B",
+        "flags": 0,
+        "slot": 2,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 38
+      },
+      {
+        "x": 1663,
+        "y": 329,
+        "id": "E_ID_1B",
+        "flags": 0,
+        "slot": 4,
+        "spawnId": 0,
+        "params": 1,
+        "yOrder": 32
+      },
+      {
+        "x": 1664,
+        "y": 1408,
+        "id": "E_ID_19",
+        "flags": 0,
+        "slot": 148,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 57
+      },
+      {
+        "x": 1664,
+        "y": 1408,
+        "id": "E_ID_1A",
+        "flags": 0,
+        "slot": 144,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 58
+      },
+      {
+        "x": 1672,
+        "y": 128,
+        "id": "E_BREAKABLE",
+        "flags": 160,
+        "slot": 19,
+        "spawnId": 4,
+        "params": 24576,
+        "yOrder": 9
+      },
+      {
+        "x": 1760,
+        "y": 128,
+        "id": "E_BREAKABLE",
+        "flags": 160,
+        "slot": 18,
+        "spawnId": 3,
+        "params": 24576,
+        "yOrder": 8
+      },
+      {
+        "x": 1840,
+        "y": 128,
+        "id": "E_BREAKABLE",
+        "flags": 160,
+        "slot": 17,
+        "spawnId": 2,
+        "params": 24576,
+        "yOrder": 7
+      },
+      {
+        "x": 1920,
+        "y": 128,
+        "id": "E_ID_19",
+        "flags": 0,
+        "slot": 148,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 2
+      },
+      {
+        "x": 1920,
+        "y": 128,
+        "id": "E_ID_1A",
+        "flags": 0,
+        "slot": 144,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 3
+      },
+      {
+        "x": 1920,
+        "y": 128,
+        "id": "E_BREAKABLE",
+        "flags": 160,
+        "slot": 16,
+        "spawnId": 1,
+        "params": 24576,
+        "yOrder": 6
+      },
+      {
+        "x": 2040,
+        "y": 97,
+        "id": "E_RED_DOOR",
+        "flags": 0,
+        "slot": 146,
+        "spawnId": 0,
+        "params": 256,
+        "yOrder": 1
+      },
+      {
+        "x": -1,
+        "y": -1,
+        "id": "E_NONE",
+        "flags": 0,
+        "slot": 0,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 62
+      }
+    ],
+    [
+      {
+        "x": -2,
+        "y": -2,
+        "id": "E_NONE",
+        "flags": 0,
+        "slot": 0,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 0
+      },
+      {
+        "x": 256,
+        "y": 128,
+        "id": "E_ID_1A",
+        "flags": 0,
+        "slot": 144,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 1
+      },
+      {
+        "x": -1,
+        "y": -1,
+        "id": "E_NONE",
+        "flags": 0,
+        "slot": 0,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 2
+      }
+    ],
+    [
+      {
+        "x": -2,
+        "y": -2,
+        "id": "E_NONE",
+        "flags": 0,
+        "slot": 0,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 0
+      },
+      {
+        "x": 128,
+        "y": 89,
+        "id": "E_BREAKABLE",
+        "flags": 160,
+        "slot": 2,
+        "spawnId": 2,
+        "params": 36875,
+        "yOrder": 8
+      },
+      {
+        "x": 192,
+        "y": 57,
+        "id": "E_BREAKABLE",
+        "flags": 160,
+        "slot": 8,
+        "spawnId": 8,
+        "params": 36874,
+        "yOrder": 7
+      },
+      {
+        "x": 224,
+        "y": 57,
+        "id": "E_BREAKABLE",
+        "flags": 160,
+        "slot": 5,
+        "spawnId": 5,
+        "params": 32777,
+        "yOrder": 6
+      },
+      {
+        "x": 256,
+        "y": 57,
+        "id": "E_BREAKABLE",
+        "flags": 160,
+        "slot": 4,
+        "spawnId": 4,
+        "params": 32776,
+        "yOrder": 5
+      },
+      {
+        "x": 384,
+        "y": 128,
+        "id": "E_ID_1A",
+        "flags": 0,
+        "slot": 144,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 10
+      },
+      {
+        "x": 496,
+        "y": 57,
+        "id": "E_BREAKABLE",
+        "flags": 160,
+        "slot": 10,
+        "spawnId": 10,
+        "params": 32775,
+        "yOrder": 4
+      },
+      {
+        "x": 544,
+        "y": 57,
+        "id": "E_BREAKABLE",
+        "flags": 160,
+        "slot": 9,
+        "spawnId": 9,
+        "params": 32774,
+        "yOrder": 3
+      },
+      {
+        "x": 592,
+        "y": 57,
+        "id": "E_BREAKABLE",
+        "flags": 160,
+        "slot": 7,
+        "spawnId": 7,
+        "params": 36869,
+        "yOrder": 2
+      },
+      {
+        "x": 640,
+        "y": 57,
+        "id": "E_BREAKABLE",
+        "flags": 160,
+        "slot": 3,
+        "spawnId": 3,
+        "params": 36868,
+        "yOrder": 1
+      },
+      {
+        "x": 704,
+        "y": 97,
+        "id": "E_BREAKABLE",
+        "flags": 160,
+        "slot": 1,
+        "spawnId": 1,
+        "params": 12289,
+        "yOrder": 9
+      },
+      {
+        "x": -1,
+        "y": -1,
+        "id": "E_NONE",
+        "flags": 0,
+        "slot": 0,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 11
+      }
+    ],
+    [
+      {
+        "x": -2,
+        "y": -2,
+        "id": "E_NONE",
+        "flags": 0,
+        "slot": 0,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 0
+      },
+      {
+        "x": 8,
+        "y": 97,
+        "id": "E_RED_DOOR",
+        "flags": 0,
+        "slot": 148,
+        "spawnId": 0,
+        "params": 2,
+        "yOrder": 1
+      },
+      {
+        "x": 96,
+        "y": 256,
+        "id": "E_ID_1D",
+        "flags": 0,
+        "slot": 146,
+        "spawnId": 0,
+        "params": 1,
+        "yOrder": 3
+      },
+      {
+        "x": 160,
+        "y": 256,
+        "id": "E_ID_1D",
+        "flags": 0,
+        "slot": 144,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 2
+      },
+      {
+        "x": -1,
+        "y": -1,
+        "id": "E_NONE",
+        "flags": 0,
+        "slot": 0,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 4
+      }
+    ],
+    [
+      {
+        "x": -2,
+        "y": -2,
+        "id": "E_NONE",
+        "flags": 0,
+        "slot": 0,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 0
+      },
+      {
+        "x": 8,
+        "y": 97,
+        "id": "E_RED_DOOR",
+        "flags": 0,
+        "slot": 136,
+        "spawnId": 0,
+        "params": 1,
+        "yOrder": 1
+      },
+      {
+        "x": -1,
+        "y": -1,
+        "id": "E_NONE",
+        "flags": 0,
+        "slot": 0,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 2
+      }
+    ],
+    [
+      {
+        "x": -2,
+        "y": -2,
+        "id": "E_NONE",
+        "flags": 0,
+        "slot": 0,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 0
+      },
+      {
+        "x": 104,
+        "y": 409,
+        "id": "E_PERSISTENT_ITEM_DROP",
+        "flags": 0,
+        "slot": 4,
+        "spawnId": 5,
+        "params": 21,
+        "yOrder": 6
+      },
+      {
+        "x": 240,
+        "y": 305,
+        "id": "E_PERSISTENT_ITEM_DROP",
+        "flags": 0,
+        "slot": 1,
+        "spawnId": 2,
+        "params": 18,
+        "yOrder": 3
+      },
+      {
+        "x": 256,
+        "y": 209,
+        "id": "E_PERSISTENT_ITEM_DROP",
+        "flags": 0,
+        "slot": 3,
+        "spawnId": 4,
+        "params": 20,
+        "yOrder": 2
+      },
+      {
+        "x": 352,
+        "y": 145,
+        "id": "E_PERSISTENT_ITEM_DROP",
+        "flags": 0,
+        "slot": 2,
+        "spawnId": 3,
+        "params": 19,
+        "yOrder": 1
+      },
+      {
+        "x": 368,
+        "y": 337,
+        "id": "E_PERSISTENT_ITEM_DROP",
+        "flags": 0,
+        "slot": 0,
+        "spawnId": 1,
+        "params": 17,
+        "yOrder": 4
+      },
+      {
+        "x": 384,
+        "y": 384,
+        "id": "E_ID_1A",
+        "flags": 0,
+        "slot": 144,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 5
+      },
+      {
+        "x": -1,
+        "y": -1,
+        "id": "E_NONE",
+        "flags": 0,
+        "slot": 0,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 7
+      }
+    ],
+    [
+      {
+        "x": -2,
+        "y": -2,
+        "id": "E_NONE",
+        "flags": 0,
+        "slot": 0,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 0
+      },
+      {
+        "x": 48,
+        "y": 185,
+        "id": "E_PERSISTENT_ITEM_DROP",
+        "flags": 0,
+        "slot": 4,
+        "spawnId": 5,
+        "params": 23,
+        "yOrder": 1
+      },
+      {
+        "x": -1,
+        "y": -1,
+        "id": "E_NONE",
+        "flags": 0,
+        "slot": 0,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 2
+      }
+    ],
+    [
+      {
+        "x": -2,
+        "y": -2,
+        "id": "E_NONE",
+        "flags": 0,
+        "slot": 0,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 0
+      },
+      {
+        "x": 96,
+        "y": 185,
+        "id": "E_PERSISTENT_ITEM_DROP",
+        "flags": 0,
+        "slot": 4,
+        "spawnId": 5,
+        "params": 24,
+        "yOrder": 2
+      },
+      {
+        "x": 128,
+        "y": 128,
+        "id": "E_ID_1A",
+        "flags": 0,
+        "slot": 144,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 1
+      },
+      {
+        "x": -1,
+        "y": -1,
+        "id": "E_NONE",
+        "flags": 0,
+        "slot": 0,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 3
+      }
+    ],
+    [
+      {
+        "x": -2,
+        "y": -2,
+        "id": "E_NONE",
+        "flags": 0,
+        "slot": 0,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 0
+      },
+      {
+        "x": 128,
+        "y": 208,
+        "id": "E_ROOM_FOREGROUND",
+        "flags": 0,
+        "slot": 128,
+        "spawnId": 0,
+        "params": 4,
+        "yOrder": 2
+      },
+      {
+        "x": 128,
+        "y": 64,
+        "id": "E_ROOM_FOREGROUND",
+        "flags": 0,
+        "slot": 136,
+        "spawnId": 0,
+        "params": 5,
+        "yOrder": 1
+      },
+      {
+        "x": -1,
+        "y": -1,
+        "id": "E_NONE",
+        "flags": 0,
+        "slot": 0,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 3
+      }
+    ],
+    [
+      {
+        "x": -2,
+        "y": -2,
+        "id": "E_NONE",
+        "flags": 0,
+        "slot": 0,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 0
+      },
+      {
+        "x": 0,
+        "y": 56,
+        "id": "E_ROOM_FOREGROUND",
+        "flags": 0,
+        "slot": 128,
+        "spawnId": 0,
+        "params": 3,
+        "yOrder": 1
+      },
+      {
+        "x": -1,
+        "y": -1,
+        "id": "E_NONE",
+        "flags": 0,
+        "slot": 0,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 2
+      }
+    ]
+  ],
+  "indices": [
+    0,
+    1,
+    0,
+    6,
+    0,
+    8,
+    5,
+    4,
+    7,
+    3,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    9,
+    10,
+    10,
+    10
+  ]
+}

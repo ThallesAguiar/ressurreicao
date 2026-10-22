@@ -1,0 +1,6 @@
+{
+  "tiles": "rdai_tiledef_rdai_tiles.bin",
+  "pages": "rdai_tiledef_rdai_pages.bin",
+  "cluts": "rdai_tiledef_rdai_cluts.bin",
+  "collisions": "rdai_tiledef_rdai_cols.bin"
+}

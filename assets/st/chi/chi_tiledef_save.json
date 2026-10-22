@@ -1,0 +1,6 @@
+{
+  "tiles": "chi_tiledef_save_tiles.bin",
+  "pages": "chi_tiledef_save_pages.bin",
+  "cluts": "chi_tiledef_save_cluts.bin",
+  "collisions": "chi_tiledef_save_cols.bin"
+}

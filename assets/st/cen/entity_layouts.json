@@ -1,0 +1,185 @@
+{
+  "entities": [
+    [
+      {
+        "x": -2,
+        "y": -2,
+        "id": "E_NONE",
+        "flags": 0,
+        "slot": 0,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 0
+      },
+      {
+        "x": -1,
+        "y": -1,
+        "id": "E_NONE",
+        "flags": 0,
+        "slot": 0,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 1
+      }
+    ],
+    [
+      {
+        "x": -2,
+        "y": -2,
+        "id": "E_NONE",
+        "flags": 0,
+        "slot": 0,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 0
+      },
+      {
+        "x": 312,
+        "y": 455,
+        "id": "E_BOSS_MARIA",
+        "flags": 0,
+        "slot": 139,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 2
+      },
+      {
+        "x": 384,
+        "y": 622,
+        "id": "E_BACKGROUND_BLOCK",
+        "flags": 0,
+        "slot": 140,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 5
+      },
+      {
+        "x": 384,
+        "y": 128,
+        "id": "E_ROOM_DARKNESS",
+        "flags": 0,
+        "slot": 138,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 1
+      },
+      {
+        "x": 384,
+        "y": 600,
+        "id": "E_PLATFORM",
+        "flags": 0,
+        "slot": 137,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 4
+      },
+      {
+        "x": 384,
+        "y": 544,
+        "id": "E_CUTSCENE",
+        "flags": 0,
+        "slot": 136,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 3
+      },
+      {
+        "x": -1,
+        "y": -1,
+        "id": "E_NONE",
+        "flags": 0,
+        "slot": 0,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 6
+      }
+    ],
+    [
+      {
+        "x": -2,
+        "y": -2,
+        "id": "E_NONE",
+        "flags": 0,
+        "slot": 0,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 0
+      },
+      {
+        "x": 128,
+        "y": 116,
+        "id": "E_ELEVATOR_STATIONARY_UNUSED",
+        "flags": 0,
+        "slot": 144,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 1
+      },
+      {
+        "x": -1,
+        "y": -1,
+        "id": "E_NONE",
+        "flags": 0,
+        "slot": 0,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 2
+      }
+    ]
+  ],
+  "indices": [
+    0,
+    2,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

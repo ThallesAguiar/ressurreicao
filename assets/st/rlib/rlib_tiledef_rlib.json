@@ -1,0 +1,6 @@
+{
+  "tiles": "rlib_tiledef_rlib_tiles.bin",
+  "pages": "rlib_tiledef_rlib_pages.bin",
+  "cluts": "rlib_tiledef_rlib_cluts.bin",
+  "collisions": "rlib_tiledef_rlib_cols.bin"
+}

@@ -1,0 +1,203 @@
+{
+  "entities": [
+    [
+      {
+        "x": -2,
+        "y": -2,
+        "id": "0x00",
+        "flags": 0,
+        "slot": 0,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 0
+      },
+      {
+        "x": -1,
+        "y": -1,
+        "id": "0x00",
+        "flags": 0,
+        "slot": 0,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 1
+      }
+    ],
+    [
+      {
+        "x": -2,
+        "y": -2,
+        "id": "0x00",
+        "flags": 0,
+        "slot": 0,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 0
+      },
+      {
+        "x": 16,
+        "y": 128,
+        "id": "0x1F",
+        "flags": 0,
+        "slot": 112,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 6
+      },
+      {
+        "x": 16,
+        "y": 128,
+        "id": "0x20",
+        "flags": 0,
+        "slot": 113,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 7
+      },
+      {
+        "x": 16,
+        "y": 32,
+        "id": "0x1D",
+        "flags": 0,
+        "slot": 128,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 1
+      },
+      {
+        "x": 16,
+        "y": 32,
+        "id": "0x1D",
+        "flags": 0,
+        "slot": 130,
+        "spawnId": 0,
+        "params": 1,
+        "yOrder": 2
+      },
+      {
+        "x": 256,
+        "y": 176,
+        "id": "0x17",
+        "flags": 0,
+        "slot": 16,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 10
+      },
+      {
+        "x": 256,
+        "y": 128,
+        "id": "0x1C",
+        "flags": 0,
+        "slot": 1,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 5
+      },
+      {
+        "x": 496,
+        "y": 32,
+        "id": "0x1D",
+        "flags": 0,
+        "slot": 128,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 3
+      },
+      {
+        "x": 496,
+        "y": 32,
+        "id": "0x1D",
+        "flags": 0,
+        "slot": 130,
+        "spawnId": 0,
+        "params": 1,
+        "yOrder": 4
+      },
+      {
+        "x": 496,
+        "y": 128,
+        "id": "0x1F",
+        "flags": 0,
+        "slot": 112,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 8
+      },
+      {
+        "x": 496,
+        "y": 128,
+        "id": "0x20",
+        "flags": 0,
+        "slot": 113,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 9
+      },
+      {
+        "x": -1,
+        "y": -1,
+        "id": "0x00",
+        "flags": 0,
+        "slot": 0,
+        "spawnId": 0,
+        "params": 0,
+        "yOrder": 11
+      }
+    ]
+  ],
+  "indices": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

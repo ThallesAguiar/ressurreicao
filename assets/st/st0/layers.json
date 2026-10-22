@@ -1,0 +1,85 @@
+[
+  {
+    "bg": {
+      "data": "st0_tilemap_1.bin",
+      "tiledef": "st0_tiledef_st0.json",
+      "left": 0,
+      "top": 2,
+      "right": 4,
+      "bottom": 3,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    },
+    "fg": {
+      "data": "st0_tilemap_0.bin",
+      "tiledef": "st0_tiledef_st0.json",
+      "left": 0,
+      "top": 2,
+      "right": 4,
+      "bottom": 3,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 160,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "st0_tilemap_2.bin",
+      "tiledef": "st0_tiledef_st0.json",
+      "left": 0,
+      "top": 0,
+      "right": 2,
+      "bottom": 0,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "st0_tilemap_3.bin",
+      "tiledef": "st0_tiledef_st0.json",
+      "left": 0,
+      "top": 4,
+      "right": 0,
+      "bottom": 4,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "st0_tilemap_4.bin",
+      "tiledef": "st0_tiledef_st0.json",
+      "left": 1,
+      "top": 1,
+      "right": 2,
+      "bottom": 1,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  }
+]

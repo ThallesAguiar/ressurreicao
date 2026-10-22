@@ -1,0 +1,231 @@
+{
+  "banks": [
+    {
+      "kind": 0,
+      "entries": [
+        {}
+      ]
+    },
+    {
+      "kind": 4,
+      "entries": [
+        {
+          "x": 256,
+          "y": 320,
+          "width": 128,
+          "height": 128,
+          "name": "gfx_unk_8934"
+        },
+        {
+          "x": 256,
+          "y": 352,
+          "width": 128,
+          "height": 128,
+          "name": "gfx_unk_5084"
+        },
+        {
+          "x": 384,
+          "y": 352,
+          "width": 128,
+          "height": 128,
+          "name": "gfx_unk_69B0"
+        },
+        {
+          "x": 384,
+          "y": 416,
+          "width": 128,
+          "height": 128,
+          "name": "gfx_breakable"
+        },
+        {
+          "x": 256,
+          "y": 128,
+          "width": 128,
+          "height": 128,
+          "name": "gfx_frozen_half_1"
+        },
+        {
+          "x": 256,
+          "y": 160,
+          "width": 128,
+          "height": 128,
+          "name": "gfx_frozen_half_2"
+        },
+        {
+          "x": 384,
+          "y": 128,
+          "width": 128,
+          "height": 128,
+          "name": "gfx_frozen_half_3"
+        },
+        {
+          "x": 256,
+          "y": 192,
+          "width": 128,
+          "height": 128,
+          "name": "gfx_salome_1"
+        },
+        {
+          "x": 256,
+          "y": 224,
+          "width": 128,
+          "height": 128,
+          "name": "gfx_salome_2"
+        },
+        {
+          "x": 256,
+          "y": 448,
+          "width": 128,
+          "height": 128,
+          "name": "gfx_unk_EC48"
+        },
+        {
+          "x": 256,
+          "y": 480,
+          "width": 128,
+          "height": 128,
+          "name": "gfx_blood_skeleton"
+        },
+        {
+          "x": 384,
+          "y": 448,
+          "width": 128,
+          "height": 128,
+          "name": "gfx_skeleton"
+        },
+        {
+          "x": 384,
+          "y": 480,
+          "width": 128,
+          "height": 128,
+          "name": "gfx_bat"
+        }
+      ]
+    },
+    {
+      "kind": 4,
+      "entries": [
+        {
+          "x": 256,
+          "y": 128,
+          "width": 128,
+          "height": 128,
+          "name": "gfx_frozen_half_1"
+        },
+        {
+          "x": 256,
+          "y": 160,
+          "width": 128,
+          "height": 128,
+          "name": "gfx_frozen_half_2"
+        },
+        {
+          "x": 384,
+          "y": 128,
+          "width": 128,
+          "height": 128,
+          "name": "gfx_frozen_half_3"
+        },
+        {
+          "x": 256,
+          "y": 192,
+          "width": 128,
+          "height": 128,
+          "name": "gfx_salome_1"
+        },
+        {
+          "x": 256,
+          "y": 224,
+          "width": 128,
+          "height": 128,
+          "name": "gfx_salome_2"
+        },
+        {
+          "x": 256,
+          "y": 448,
+          "width": 128,
+          "height": 128,
+          "name": "gfx_unk_EC48"
+        },
+        {
+          "x": 384,
+          "y": 416,
+          "width": 128,
+          "height": 128,
+          "name": "gfx_breakable"
+        },
+        {
+          "x": 256,
+          "y": 480,
+          "width": 128,
+          "height": 128,
+          "name": "gfx_blood_skeleton"
+        },
+        {
+          "x": 384,
+          "y": 448,
+          "width": 128,
+          "height": 128,
+          "name": "gfx_skeleton"
+        },
+        {
+          "x": 384,
+          "y": 480,
+          "width": 128,
+          "height": 128,
+          "name": "gfx_bat"
+        }
+      ]
+    },
+    {
+      "kind": 4,
+      "entries": [
+        {
+          "x": 384,
+          "y": 416,
+          "width": 128,
+          "height": 128,
+          "name": "gfx_breakable"
+        },
+        {
+          "x": 256,
+          "y": 480,
+          "width": 128,
+          "height": 128,
+          "name": "gfx_blood_skeleton"
+        },
+        {
+          "x": 384,
+          "y": 448,
+          "width": 128,
+          "height": 128,
+          "name": "gfx_skeleton"
+        },
+        {
+          "x": 384,
+          "y": 480,
+          "width": 128,
+          "height": 128,
+          "name": "gfx_bat"
+        }
+      ]
+    }
+  ],
+  "indices": [
+    0,
+    2,
+    1,
+    3,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

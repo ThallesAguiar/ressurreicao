@@ -1,0 +1,6 @@
+{
+  "tiles": "chi_tiledef_chi_tiles.bin",
+  "pages": "chi_tiledef_chi_pages.bin",
+  "cluts": "chi_tiledef_chi_cluts.bin",
+  "collisions": "chi_tiledef_chi_cols.bin"
+}

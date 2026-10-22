@@ -1,0 +1,6 @@
+{
+  "tiles": "nz0_tiledef_nz0_tiles.bin",
+  "pages": "nz0_tiledef_nz0_pages.bin",
+  "cluts": "nz0_tiledef_nz0_cluts.bin",
+  "collisions": "nz0_tiledef_nz0_cols.bin"
+}

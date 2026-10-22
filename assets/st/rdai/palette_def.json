@@ -1,0 +1,52 @@
+{
+  "cluts": [
+    0
+  ],
+  "defs": [
+    {
+      "kind": 5,
+      "entries": [
+        {
+          "destination": 8192,
+          "length": 16,
+          "name": "pal_8C.palbin"
+        },
+        {
+          "destination": 8480,
+          "length": 32,
+          "name": "pal_A1E0.palbin"
+        },
+        {
+          "destination": 8512,
+          "length": 256,
+          "name": "pal_A220.palbin"
+        },
+        {
+          "destination": 8768,
+          "length": 144,
+          "name": "pal_A420.palbin"
+        },
+        {
+          "destination": 8912,
+          "length": 48,
+          "name": "pal_A4E0.palbin"
+        },
+        {
+          "destination": 8960,
+          "length": 128,
+          "name": "pal_A540.palbin"
+        },
+        {
+          "destination": 9088,
+          "length": 16,
+          "name": "pal_A640.palbin"
+        },
+        {
+          "destination": 11776,
+          "length": 256,
+          "name": "pal_9F20.palbin"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "cluts": [
+    0
+  ],
+  "defs": [
+    {
+      "kind": 5,
+      "entries": [
+        {
+          "destination": 8192,
+          "length": 144,
+          "name": "D_80193C2C.palbin"
+        },
+        {
+          "destination": 8336,
+          "length": 80,
+          "name": "D_80193D4C.palbin"
+        },
+        {
+          "destination": 8656,
+          "length": 256,
+          "name": "D_80193DEC.palbin"
+        },
+        {
+          "destination": 8912,
+          "length": 144,
+          "name": "D_80193FEC.palbin"
+        },
+        {
+          "destination": 9056,
+          "length": 64,
+          "name": "D_8019410C.palbin"
+        },
+        {
+          "destination": 9120,
+          "length": 64,
+          "name": "D_8019418C.palbin"
+        },
+        {
+          "destination": 9184,
+          "length": 64,
+          "name": "D_8019420C.palbin"
+        },
+        {
+          "destination": 9248,
+          "length": 80,
+          "name": "D_8019428C.palbin"
+        },
+        {
+          "destination": 9328,
+          "length": 80,
+          "name": "D_8019434C.palbin"
+        },
+        {
+          "destination": 9408,
+          "length": 32,
+          "name": "D_801944CC.palbin"
+        },
+        {
+          "destination": 9728,
+          "length": 48,
+          "name": "D_801943EC.palbin"
+        },
+        {
+          "destination": 9984,
+          "length": 64,
+          "name": "D_8019444C.palbin"
+        },
+        {
+          "destination": 11776,
+          "length": 256,
+          "name": "D_8019396C.palbin"
+        }
+      ]
+    }
+  ]
+}

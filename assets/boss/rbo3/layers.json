@@ -1,0 +1,34 @@
+[
+  {
+    "bg": {
+      "data": "rbo3_tilemap_1.bin",
+      "tiledef": "rbo3_tiledef_rbo3.json",
+      "left": 39,
+      "top": 50,
+      "right": 40,
+      "bottom": 50,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 32,
+      "flags": 3
+    },
+    "fg": {
+      "data": "rbo3_tilemap_0.bin",
+      "tiledef": "rbo3_tiledef_rbo3.json",
+      "left": 39,
+      "top": 50,
+      "right": 40,
+      "bottom": 50,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  }
+]

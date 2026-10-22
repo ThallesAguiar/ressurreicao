@@ -1,0 +1,6 @@
+{
+  "tiles": "rchi_tiledef_rchi_tiles.bin",
+  "pages": "rchi_tiledef_rchi_pages.bin",
+  "cluts": "rchi_tiledef_rchi_cluts.bin",
+  "collisions": "rchi_tiledef_rchi_cols.bin"
+}

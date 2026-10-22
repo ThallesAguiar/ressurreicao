@@ -1,0 +1,570 @@
+[
+  {
+    "fg": {
+      "data": "rnz0_tilemap_0.bin",
+      "tiledef": "rnz0_tiledef_rnz0.json",
+      "left": 50,
+      "top": 36,
+      "right": 50,
+      "bottom": 36,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "rnz0_tilemap_1.bin",
+      "tiledef": "rnz0_tiledef_rnz0.json",
+      "left": 58,
+      "top": 35,
+      "right": 58,
+      "bottom": 35,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "rnz0_tilemap_2.bin",
+      "tiledef": "rnz0_tiledef_rnz0.json",
+      "left": 56,
+      "top": 35,
+      "right": 57,
+      "bottom": 35,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "rnz0_tilemap_3.bin",
+      "tiledef": "rnz0_tiledef_rnz0.json",
+      "left": 45,
+      "top": 37,
+      "right": 48,
+      "bottom": 37,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "rnz0_tilemap_4.bin",
+      "tiledef": "rnz0_tiledef_rnz0.json",
+      "left": 47,
+      "top": 29,
+      "right": 47,
+      "bottom": 29,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "rnz0_tilemap_5.bin",
+      "tiledef": "rnz0_tiledef_rnz0.json",
+      "left": 53,
+      "top": 34,
+      "right": 53,
+      "bottom": 34,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "rnz0_tilemap_6.bin",
+      "tiledef": "rnz0_tiledef_rnz0.json",
+      "left": 47,
+      "top": 32,
+      "right": 47,
+      "bottom": 32,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "bg": {
+      "data": "rnz0_tilemap_8.bin",
+      "tiledef": "rnz0_tiledef_rnz0.json",
+      "left": 0,
+      "top": 0,
+      "right": 0,
+      "bottom": 0,
+      "scrollMode": 5,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 32,
+      "flags": 4099
+    },
+    "fg": {
+      "data": "rnz0_tilemap_7.bin",
+      "tiledef": "rnz0_tiledef_rnz0.json",
+      "left": 49,
+      "top": 30,
+      "right": 50,
+      "bottom": 30,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "rnz0_tilemap_9.bin",
+      "tiledef": "rnz0_tiledef_rnz0.json",
+      "left": 48,
+      "top": 30,
+      "right": 48,
+      "bottom": 30,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "rnz0_tilemap_10.bin",
+      "tiledef": "rnz0_tiledef_rnz0.json",
+      "left": 52,
+      "top": 29,
+      "right": 52,
+      "bottom": 29,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "bg": {
+      "data": "rnz0_tilemap_12.bin",
+      "tiledef": "rnz0_tiledef_rnz0.json",
+      "left": 0,
+      "top": 0,
+      "right": 0,
+      "bottom": 0,
+      "scrollMode": 5,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 32,
+      "flags": 4099
+    },
+    "fg": {
+      "data": "rnz0_tilemap_11.bin",
+      "tiledef": "rnz0_tiledef_rnz0.json",
+      "left": 47,
+      "top": 27,
+      "right": 49,
+      "bottom": 27,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "rnz0_tilemap_13.bin",
+      "tiledef": "rnz0_tiledef_rnz0.json",
+      "left": 55,
+      "top": 32,
+      "right": 55,
+      "bottom": 36,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "rnz0_tilemap_14.bin",
+      "tiledef": "rnz0_tiledef_rnz0.json",
+      "left": 52,
+      "top": 33,
+      "right": 52,
+      "bottom": 34,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "rnz0_tilemap_15.bin",
+      "tiledef": "rnz0_tiledef_rnz0.json",
+      "left": 52,
+      "top": 31,
+      "right": 52,
+      "bottom": 32,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "rnz0_tilemap_16.bin",
+      "tiledef": "rnz0_tiledef_rnz0.json",
+      "left": 51,
+      "top": 29,
+      "right": 51,
+      "bottom": 31,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "rnz0_tilemap_17.bin",
+      "tiledef": "rnz0_tiledef_rnz0.json",
+      "left": 51,
+      "top": 27,
+      "right": 51,
+      "bottom": 28,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "rnz0_tilemap_18.bin",
+      "tiledef": "rnz0_tiledef_rnz0.json",
+      "left": 51,
+      "top": 35,
+      "right": 54,
+      "bottom": 36,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "bg": {
+      "data": "rnz0_tilemap_20.bin",
+      "tiledef": "rnz0_tiledef_rnz0.json",
+      "left": 0,
+      "top": 0,
+      "right": 0,
+      "bottom": 0,
+      "scrollMode": 5,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 32,
+      "flags": 4099
+    },
+    "fg": {
+      "data": "rnz0_tilemap_19.bin",
+      "tiledef": "rnz0_tiledef_rnz0.json",
+      "left": 53,
+      "top": 32,
+      "right": 54,
+      "bottom": 33,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "bg": {
+      "data": "rnz0_tilemap_22.bin",
+      "tiledef": "rnz0_tiledef_rnz0.json",
+      "left": 0,
+      "top": 0,
+      "right": 0,
+      "bottom": 0,
+      "scrollMode": 5,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 32,
+      "flags": 4099
+    },
+    "fg": {
+      "data": "rnz0_tilemap_21.bin",
+      "tiledef": "rnz0_tiledef_rnz0.json",
+      "left": 48,
+      "top": 28,
+      "right": 50,
+      "bottom": 29,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "rnz0_tilemap_23.bin",
+      "tiledef": "rnz0_tiledef_rnz0.json",
+      "left": 49,
+      "top": 35,
+      "right": 50,
+      "bottom": 37,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "rnz0_tilemap_24.bin",
+      "tiledef": "rnz0_tiledef_rnz0.json",
+      "left": 43,
+      "top": 36,
+      "right": 44,
+      "bottom": 38,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "rnz0_tilemap_25.bin",
+      "tiledef": "rnz0_tiledef_rnz0.json",
+      "left": 47,
+      "top": 35,
+      "right": 48,
+      "bottom": 35,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "bg": {
+      "data": "rnz0_tilemap_27.bin",
+      "tiledef": "rnz0_tiledef_rnz0.json",
+      "left": 0,
+      "top": 0,
+      "right": 0,
+      "bottom": 0,
+      "scrollMode": 5,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 32,
+      "flags": 4099
+    },
+    "fg": {
+      "data": "rnz0_tilemap_26.bin",
+      "tiledef": "rnz0_tiledef_rnz0.json",
+      "left": 46,
+      "top": 29,
+      "right": 46,
+      "bottom": 35,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "rnz0_tilemap_28.bin",
+      "tiledef": "rnz0_tiledef_rsave.json",
+      "left": 56,
+      "top": 33,
+      "right": 56,
+      "bottom": 33,
+      "scrollMode": 0,
+      "hideOnMap": false,
+      "isSaveRoom": true,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 515
+    }
+  },
+  {
+    "fg": {
+      "data": "rnz0_tilemap_29.bin",
+      "tiledef": "rnz0_tiledef_rsave.json",
+      "left": 48,
+      "top": 36,
+      "right": 48,
+      "bottom": 36,
+      "scrollMode": 2,
+      "hideOnMap": false,
+      "isSaveRoom": true,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 515
+    }
+  },
+  {
+    "fg": {
+      "data": "rnz0_tilemap_30.bin",
+      "tiledef": "rnz0_tiledef_rsave.json",
+      "left": 47,
+      "top": 28,
+      "right": 47,
+      "bottom": 28,
+      "scrollMode": 2,
+      "hideOnMap": false,
+      "isSaveRoom": true,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 515
+    }
+  },
+  {
+    "fg": {
+      "data": "rnz0_tilemap_31.bin",
+      "tiledef": "rnz0_tiledef_rload.json",
+      "left": 42,
+      "top": 37,
+      "right": 42,
+      "bottom": 37,
+      "scrollMode": 0,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": true,
+      "unusedFlag": false,
+      "zPriority": 22,
+      "flags": 515
+    }
+  },
+  {
+    "fg": {
+      "data": "rnz0_tilemap_31.bin",
+      "tiledef": "rnz0_tiledef_rload.json",
+      "left": 59,
+      "top": 35,
+      "right": 59,
+      "bottom": 35,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": true,
+      "unusedFlag": false,
+      "zPriority": 23,
+      "flags": 515
+    }
+  },
+  {
+    "fg": {
+      "data": "rnz0_tilemap_31.bin",
+      "tiledef": "rnz0_tiledef_rload.json",
+      "left": 46,
+      "top": 27,
+      "right": 46,
+      "bottom": 27,
+      "scrollMode": 0,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": true,
+      "unusedFlag": false,
+      "zPriority": 21,
+      "flags": 515
+    }
+  }
+]

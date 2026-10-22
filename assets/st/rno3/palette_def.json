@@ -1,0 +1,47 @@
+{
+  "cluts": [
+    0
+  ],
+  "defs": [
+    {
+      "kind": 5,
+      "entries": [
+        {
+          "destination": 8192,
+          "length": 128,
+          "name": "pal_fire_warg.palbin"
+        },
+        {
+          "destination": 8384,
+          "length": 32,
+          "name": "pal_jacko_bones.palbin"
+        },
+        {
+          "destination": 8512,
+          "length": 80,
+          "name": "pal_nova_skeleton.palbin"
+        },
+        {
+          "destination": 8976,
+          "length": 80,
+          "name": "pal_dragons.palbin"
+        },
+        {
+          "destination": 9216,
+          "length": 656,
+          "name": "pal_venus_weed.palbin"
+        },
+        {
+          "destination": 9888,
+          "length": 16,
+          "name": "pal_dodo.palbin"
+        },
+        {
+          "destination": 11776,
+          "length": 256,
+          "name": "pal_2e0.palbin"
+        }
+      ]
+    }
+  ]
+}

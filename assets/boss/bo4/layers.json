@@ -1,0 +1,19 @@
+[
+  {
+    "fg": {
+      "data": "bo4_tilemap_0.bin",
+      "tiledef": "bo4_tiledef_bo4.json",
+      "left": 57,
+      "top": 23,
+      "right": 58,
+      "bottom": 23,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  }
+]

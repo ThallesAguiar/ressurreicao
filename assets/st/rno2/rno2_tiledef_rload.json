@@ -1,0 +1,6 @@
+{
+  "tiles": "rno2_tiledef_rload_tiles.bin",
+  "pages": "rno2_tiledef_rload_pages.bin",
+  "cluts": "rno2_tiledef_rload_cluts.bin",
+  "collisions": "rno2_tiledef_rload_cols.bin"
+}

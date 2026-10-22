@@ -1,0 +1,6 @@
+{
+  "tiles": "dai_tiledef_load_tiles.bin",
+  "pages": "dai_tiledef_load_pages.bin",
+  "cluts": "dai_tiledef_load_cluts.bin",
+  "collisions": "dai_tiledef_load_cols.bin"
+}

@@ -1,0 +1,53 @@
+[
+  {
+    "fg": {
+      "data": "rcen_tilemap_0.bin",
+      "tiledef": "rcen_tiledef_rcen.json",
+      "left": 31,
+      "top": 34,
+      "right": 31,
+      "bottom": 35,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "rcen_tilemap_1.bin",
+      "tiledef": "rcen_tiledef_rcen.json",
+      "left": 30,
+      "top": 31,
+      "right": 32,
+      "bottom": 33,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "rcen_tilemap_2.bin",
+      "tiledef": "rcen_tiledef_rcen.json",
+      "left": 31,
+      "top": 30,
+      "right": 31,
+      "bottom": 30,
+      "scrollMode": 0,
+      "hideOnMap": true,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  }
+]

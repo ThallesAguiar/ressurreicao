@@ -1,0 +1,34 @@
+[
+  {
+    "bg": {
+      "data": "bo1_tilemap_1.bin",
+      "tiledef": "bo1_tiledef_bo1.json",
+      "left": 18,
+      "top": 50,
+      "right": 19,
+      "bottom": 51,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 32,
+      "flags": 3
+    },
+    "fg": {
+      "data": "bo1_tilemap_0.bin",
+      "tiledef": "bo1_tiledef_bo1.json",
+      "left": 18,
+      "top": 50,
+      "right": 19,
+      "bottom": 51,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  }
+]

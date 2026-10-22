@@ -1,0 +1,34 @@
+[
+  {
+    "bg": {
+      "data": "mar_tilemap_1.bin",
+      "tiledef": "mar_tiledef_mar.json",
+      "left": 32,
+      "top": 26,
+      "right": 32,
+      "bottom": 26,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 32,
+      "flags": 3
+    },
+    "fg": {
+      "data": "mar_tilemap_0.bin",
+      "tiledef": "mar_tiledef_mar.json",
+      "left": 32,
+      "top": 26,
+      "right": 32,
+      "bottom": 26,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  }
+]

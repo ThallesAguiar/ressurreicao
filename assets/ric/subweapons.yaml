@@ -1,0 +1,482 @@
+PL_W_NONE:
+  attack: 0
+  heartcost: 30000
+  attackelement: []
+  chainlimit: 0
+  nframesinvincibility: 0
+  stunframes: 0
+  anim: 0
+  blueprint: BP_SKID_SMOKE
+  hitboxstate: 2
+  hiteffect: 1
+  crashid: PL_W_15
+  unk11: 0
+  entityroomindex: 0
+PL_W_DAGGER:
+  attack: 20
+  heartcost: 1
+  attackelement:
+  - ELEMENT_CUT
+  - ELEMENT_HOLY
+  chainlimit: 3
+  nframesinvincibility: 4
+  stunframes: 4
+  anim: 0
+  blueprint: BP_SUBWPN_DAGGER
+  hitboxstate: 2
+  hiteffect: 129
+  crashid: PL_W_21
+  unk11: 0
+  entityroomindex: 32
+PL_W_AXE:
+  attack: 50
+  heartcost: 1
+  attackelement:
+  - ELEMENT_CUT
+  - ELEMENT_HOLY
+  chainlimit: 3
+  nframesinvincibility: 32
+  stunframes: 4
+  anim: 0
+  blueprint: BP_AXE
+  hitboxstate: 2
+  hiteffect: 129
+  crashid: PL_W_20
+  unk11: 0
+  entityroomindex: 32
+PL_W_HOLYWATER:
+  attack: 5
+  heartcost: 1
+  attackelement:
+  - ELEMENT_HIT
+  chainlimit: 1
+  nframesinvincibility: 32
+  stunframes: 4
+  anim: 0
+  blueprint: BP_SUBWPN_HOLYWATER
+  hitboxstate: 2
+  hiteffect: 1
+  crashid: PL_W_HYDROSTORM
+  unk11: 0
+  entityroomindex: 0
+PL_W_CROSS:
+  attack: 40
+  heartcost: 1
+  attackelement:
+  - ELEMENT_HIT
+  - ELEMENT_HOLY
+  chainlimit: 4
+  nframesinvincibility: 32
+  stunframes: 4
+  anim: 0
+  blueprint: BP_SUBWPN_CROSS
+  hitboxstate: 2
+  hiteffect: 129
+  crashid: PL_W_CRASH_CROSS
+  unk11: 0
+  entityroomindex: 0
+PL_W_BIBLE:
+  attack: 5
+  heartcost: 5
+  attackelement:
+  - ELEMENT_HOLY
+  chainlimit: 2
+  nframesinvincibility: 24
+  stunframes: 4
+  anim: 0
+  blueprint: BP_BIBLE
+  hitboxstate: 2
+  hiteffect: 1
+  crashid: PL_W_CRASH_AGUNEA
+  unk11: 0
+  entityroomindex: 0
+PL_W_STOPWATCH:
+  attack: 0
+  heartcost: 10
+  attackelement: []
+  chainlimit: 1
+  nframesinvincibility: 50
+  stunframes: 0
+  anim: 0
+  blueprint: BP_SUBWPN_STOPWATCH
+  hitboxstate: 0
+  hiteffect: 0
+  crashid: PL_W_27
+  unk11: 0
+  entityroomindex: 0
+PL_W_REBNDSTONE:
+  attack: 40
+  heartcost: 1
+  attackelement:
+  - ELEMENT_HIT
+  - ELEMENT_HOLY
+  chainlimit: 3
+  nframesinvincibility: 32
+  stunframes: 4
+  anim: 0
+  blueprint: BP_REBOUND_STONE
+  hitboxstate: 2
+  hiteffect: 1
+  crashid: PL_W_CRASH_REBOUND_STONE
+  unk11: 0
+  entityroomindex: 0
+PL_W_VIBHUTI:
+  attack: 20
+  heartcost: 1
+  attackelement:
+  - ELEMENT_HOLY
+  chainlimit: 3
+  nframesinvincibility: 10
+  stunframes: 4
+  anim: 0
+  blueprint: BP_VIBHUTI
+  hitboxstate: 2
+  hiteffect: 1
+  crashid: PL_W_CRASH_VIBHUTI
+  unk11: 0
+  entityroomindex: 0
+PL_W_AGUNEA:
+  attack: 20
+  heartcost: 10
+  attackelement:
+  - ELEMENT_HOLY
+  - ELEMENT_THUNDER
+  chainlimit: 1
+  nframesinvincibility: 10
+  stunframes: 10
+  anim: 0
+  blueprint: BP_AGUNEA
+  hitboxstate: 2
+  hiteffect: 129
+  crashid: PL_W_28
+  unk11: 0
+  entityroomindex: 0
+PL_W_10:
+  attack: 15
+  heartcost: 30000
+  attackelement:
+  - ELEMENT_HOLY
+  chainlimit: 1
+  nframesinvincibility: 10
+  stunframes: 4
+  anim: 0
+  blueprint: BP_SKID_SMOKE
+  hitboxstate: 2
+  hiteffect: 1
+  crashid: PL_W_10
+  unk11: 0
+  entityroomindex: 0
+PL_W_HOLYWATER_FLAMES:
+  attack: 8
+  heartcost: 1
+  attackelement:
+  - ELEMENT_HOLY
+  - ELEMENT_FIRE
+  chainlimit: 2
+  nframesinvincibility: 16
+  stunframes: 4
+  anim: 0
+  blueprint: BP_HOLYWATER_FLAMES
+  hitboxstate: 2
+  hiteffect: 1
+  crashid: PL_W_NONE
+  unk11: 0
+  entityroomindex: 0
+PL_W_CRASH_CROSS:
+  attack: 40
+  heartcost: 20
+  attackelement:
+  - ELEMENT_HIT
+  - ELEMENT_HOLY
+  chainlimit: 1
+  nframesinvincibility: 32
+  stunframes: 4
+  anim: 0
+  blueprint: BP_CRASH_CROSS
+  hitboxstate: 2
+  hiteffect: 1
+  crashid: PL_W_NONE
+  unk11: 0
+  entityroomindex: 0
+PL_W_CRASH_CROSS_BEAM:
+  attack: 60
+  heartcost: 0
+  attackelement:
+  - ELEMENT_HIT
+  - ELEMENT_HOLY
+  chainlimit: 1
+  nframesinvincibility: 24
+  stunframes: 4
+  anim: 0
+  blueprint: BP_SKID_SMOKE
+  hitboxstate: 2
+  hiteffect: 1
+  crashid: PL_W_NONE
+  unk11: 0
+  entityroomindex: 0
+PL_W_WHIP:
+  attack: 32
+  heartcost: 5
+  attackelement:
+  - ELEMENT_HIT
+  - ELEMENT_HOLY
+  chainlimit: 1
+  nframesinvincibility: 32
+  stunframes: 4
+  anim: 0
+  blueprint: BP_SKID_SMOKE
+  hitboxstate: 2
+  hiteffect: 1
+  crashid: PL_W_NONE
+  unk11: 0
+  entityroomindex: 0
+PL_W_15:
+  attack: 64
+  heartcost: 15
+  attackelement:
+  - ELEMENT_HIT
+  - ELEMENT_HOLY
+  - ELEMENT_FIRE
+  chainlimit: 1
+  nframesinvincibility: 32
+  stunframes: 4
+  anim: 0
+  blueprint: BP_SKID_SMOKE
+  hitboxstate: 2
+  hiteffect: 1
+  crashid: PL_W_NONE
+  unk11: 0
+  entityroomindex: 32
+PL_W_HYDROSTORM:
+  attack: 80
+  heartcost: 15
+  attackelement:
+  - ELEMENT_HIT
+  - ELEMENT_HOLY
+  chainlimit: 1
+  nframesinvincibility: 32
+  stunframes: 24
+  anim: 0
+  blueprint: BP_HYDROSTORM
+  hitboxstate: 130
+  hiteffect: 1
+  crashid: PL_W_NONE
+  unk11: 0
+  entityroomindex: 0
+PL_W_BIBLE_BEAM:
+  attack: 80
+  heartcost: 0
+  attackelement:
+  - ELEMENT_HIT
+  chainlimit: 1
+  nframesinvincibility: 32
+  stunframes: 4
+  anim: 0
+  blueprint: BP_SKID_SMOKE
+  hitboxstate: 2
+  hiteffect: 1
+  crashid: PL_W_NONE
+  unk11: 0
+  entityroomindex: 32
+PL_W_KICK:
+  attack: 20
+  heartcost: 0
+  attackelement:
+  - ELEMENT_HIT
+  chainlimit: 1
+  nframesinvincibility: 32
+  stunframes: 4
+  anim: 0
+  blueprint: BP_SKID_SMOKE
+  hitboxstate: 2
+  hiteffect: 1
+  crashid: PL_W_NONE
+  unk11: 0
+  entityroomindex: 0
+PL_W_19:
+  attack: 5
+  heartcost: 0
+  attackelement:
+  - ELEMENT_HIT
+  - ELEMENT_HOLY
+  chainlimit: 1
+  nframesinvincibility: 32
+  stunframes: 4
+  anim: 0
+  blueprint: BP_SKID_SMOKE
+  hitboxstate: 2
+  hiteffect: 1
+  crashid: PL_W_NONE
+  unk11: 0
+  entityroomindex: 0
+PL_W_20:
+  attack: 40
+  heartcost: 10
+  attackelement:
+  - ELEMENT_CUT
+  - ELEMENT_HOLY
+  chainlimit: 1
+  nframesinvincibility: 32
+  stunframes: 4
+  anim: 0
+  blueprint: BP_CRASH_AXE
+  hitboxstate: 2
+  hiteffect: 129
+  crashid: PL_W_NONE
+  unk11: 0
+  entityroomindex: 32
+PL_W_21:
+  attack: 20
+  heartcost: 10
+  attackelement:
+  - ELEMENT_CUT
+  - ELEMENT_HOLY
+  chainlimit: 1
+  nframesinvincibility: 4
+  stunframes: 4
+  anim: 0
+  blueprint: BP_CRASH_DAGGER
+  hitboxstate: 2
+  hiteffect: 129
+  crashid: PL_W_NONE
+  unk11: 0
+  entityroomindex: 32
+PL_W_HIGHJUMP:
+  attack: 80
+  heartcost: 0
+  attackelement:
+  - ELEMENT_HIT
+  chainlimit: 1
+  nframesinvincibility: 32
+  stunframes: 4
+  anim: 0
+  blueprint: BP_SKID_SMOKE
+  hitboxstate: 2
+  hiteffect: 1
+  crashid: PL_W_NONE
+  unk11: 0
+  entityroomindex: 32
+PL_W_23:
+  attack: 60
+  heartcost: 0
+  attackelement:
+  - ELEMENT_HIT
+  chainlimit: 1
+  nframesinvincibility: 32
+  stunframes: 4
+  anim: 0
+  blueprint: BP_SKID_SMOKE
+  hitboxstate: 2
+  hiteffect: 1
+  crashid: PL_W_NONE
+  unk11: 0
+  entityroomindex: 128
+PL_W_CRASH_VIBHUTI:
+  attack: 20
+  heartcost: 10
+  attackelement:
+  - ELEMENT_HIT
+  - ELEMENT_HOLY
+  chainlimit: 1
+  nframesinvincibility: 32
+  stunframes: 4
+  anim: 0
+  blueprint: BP_CRASH_VITHUBI
+  hitboxstate: 2
+  hiteffect: 1
+  crashid: PL_W_NONE
+  unk11: 0
+  entityroomindex: 0
+PL_W_CRASH_REBOUND_STONE:
+  attack: 20
+  heartcost: 10
+  attackelement:
+  - ELEMENT_HIT
+  chainlimit: 1
+  nframesinvincibility: 32
+  stunframes: 4
+  anim: 0
+  blueprint: BP_CRASH_REBOUND_STONE
+  hitboxstate: 2
+  hiteffect: 1
+  crashid: PL_W_NONE
+  unk11: 0
+  entityroomindex: 0
+PL_W_CRASH_AGUNEA:
+  attack: 80
+  heartcost: 15
+  attackelement:
+  - ELEMENT_HIT
+  - ELEMENT_HOLY
+  chainlimit: 1
+  nframesinvincibility: 32
+  stunframes: 4
+  anim: 0
+  blueprint: BP_CRASH_BIBLE
+  hitboxstate: 2
+  hiteffect: 1
+  crashid: PL_W_NONE
+  unk11: 0
+  entityroomindex: 0
+PL_W_27:
+  attack: 0
+  heartcost: 20
+  attackelement:
+  - ELEMENT_HIT
+  chainlimit: 1
+  nframesinvincibility: 32
+  stunframes: 32
+  anim: 0
+  blueprint: BP_CRASH_STOPWATCH
+  hitboxstate: 2
+  hiteffect: 1
+  crashid: PL_W_NONE
+  unk11: 0
+  entityroomindex: 0
+PL_W_28:
+  attack: 80
+  heartcost: 20
+  attackelement:
+  - ELEMENT_HIT
+  - ELEMENT_THUNDER
+  chainlimit: 1
+  nframesinvincibility: 32
+  stunframes: 4
+  anim: 0
+  blueprint: BP_CRASH_AGUNEA
+  hitboxstate: 2
+  hiteffect: 1
+  crashid: PL_W_NONE
+  unk11: 0
+  entityroomindex: 0
+PL_W_CRASH_REBOUND_EXPLOSION:
+  attack: 10
+  heartcost: 30000
+  attackelement:
+  - ELEMENT_HIT
+  chainlimit: 1
+  nframesinvincibility: 32
+  stunframes: 4
+  anim: 0
+  blueprint: BP_SKID_SMOKE
+  hitboxstate: 2
+  hiteffect: 1
+  crashid: PL_W_NONE
+  unk11: 0
+  entityroomindex: 0
+PL_W_30:
+  attack: 15
+  heartcost: 30000
+  attackelement:
+  - ELEMENT_HIT
+  - ELEMENT_THUNDER
+  chainlimit: 1
+  nframesinvincibility: 32
+  stunframes: 64
+  anim: 0
+  blueprint: BP_SKID_SMOKE
+  hitboxstate: 2
+  hiteffect: 1
+  crashid: PL_W_NONE
+  unk11: 0
+  entityroomindex: 0

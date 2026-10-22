@@ -1,0 +1,111 @@
+{
+  "cluts": [
+    1,
+    0
+  ],
+  "defs": [
+    {
+      "kind": 3,
+      "freq": 6,
+      "destination": 2400,
+      "count": 16,
+      "data": [
+        {
+          "name": "pal_90.palbin"
+        },
+        {
+          "name": "pal_B0.palbin"
+        },
+        {
+          "name": "pal_D0.palbin"
+        },
+        {
+          "name": "pal_F0.palbin"
+        },
+        {
+          "name": "pal_110.palbin"
+        }
+      ]
+    },
+    {
+      "kind": 5,
+      "entries": [
+        {
+          "destination": 8192,
+          "length": 16,
+          "name": "pal_cavern_door.palbin"
+        },
+        {
+          "destination": 8208,
+          "length": 32,
+          "name": "pal_blade_master.palbin"
+        },
+        {
+          "destination": 8240,
+          "length": 32,
+          "name": "pal_blade_soldier.palbin"
+        },
+        {
+          "destination": 8272,
+          "length": 64,
+          "name": "pal_bone_musket.palbin"
+        },
+        {
+          "destination": 8336,
+          "length": 112,
+          "name": "pal_owl_knight.palbin"
+        },
+        {
+          "destination": 8448,
+          "length": 48,
+          "name": "pal_valhalla_knight.palbin"
+        },
+        {
+          "destination": 8496,
+          "length": 48,
+          "name": "pal_blue_axe_knight.palbin"
+        },
+        {
+          "destination": 8544,
+          "length": 96,
+          "name": "pal_armor_lord.palbin"
+        },
+        {
+          "destination": 8640,
+          "length": 48,
+          "name": "pal_hunting_girl.palbin"
+        },
+        {
+          "destination": 8688,
+          "length": 48,
+          "name": "pal_paranthropus.palbin"
+        },
+        {
+          "destination": 8736,
+          "length": 48,
+          "name": "pal_flea_man_armor.palbin"
+        },
+        {
+          "destination": 8784,
+          "length": 16,
+          "name": "pal_bone_scimitar.palbin"
+        },
+        {
+          "destination": 8800,
+          "length": 48,
+          "name": "pal_plate_lord.palbin"
+        },
+        {
+          "destination": 8848,
+          "length": 32,
+          "name": "pal_grave_keeper_tombstone.palbin"
+        },
+        {
+          "destination": 11776,
+          "length": 256,
+          "name": "pal_puff_opaque.palbin"
+        }
+      ]
+    }
+  ]
+}

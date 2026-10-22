@@ -1,0 +1,92 @@
+{
+  "cluts": [
+    0
+  ],
+  "defs": [
+    {
+      "kind": 5,
+      "entries": [
+        {
+          "destination": 8192,
+          "length": 48,
+          "name": "pal_skelerang_spittle_bone.palbin"
+        },
+        {
+          "destination": 8256,
+          "length": 16,
+          "name": "pal_stained_glass.palbin"
+        },
+        {
+          "destination": 8528,
+          "length": 16,
+          "name": "pal_corner_guard.palbin"
+        },
+        {
+          "destination": 8544,
+          "length": 64,
+          "name": "pal_bone_pillar.palbin"
+        },
+        {
+          "destination": 8608,
+          "length": 256,
+          "name": "pal_bone_pillar_fire.palbin"
+        },
+        {
+          "destination": 8864,
+          "length": 16,
+          "name": "pal_bone_halberd.palbin"
+        },
+        {
+          "destination": 8880,
+          "length": 16,
+          "name": "pal_winged_guard.palbin"
+        },
+        {
+          "destination": 8896,
+          "length": 48,
+          "name": "pal_ghost_bat.palbin"
+        },
+        {
+          "destination": 8944,
+          "length": 32,
+          "name": "pal_crow.palbin"
+        },
+        {
+          "destination": 8976,
+          "length": 48,
+          "name": "pal_hunting_girl.palbin"
+        },
+        {
+          "destination": 9024,
+          "length": 256,
+          "name": "pal_spectral_sword.palbin"
+        },
+        {
+          "destination": 9280,
+          "length": 80,
+          "name": "pal_sealed_door.palbin"
+        },
+        {
+          "destination": 9360,
+          "length": 128,
+          "name": "pal_breakable.palbin"
+        },
+        {
+          "destination": 9488,
+          "length": 16,
+          "name": "pal_cutscene.palbin"
+        },
+        {
+          "destination": 9600,
+          "length": 128,
+          "name": "pal_portrait_alucard.palbin"
+        },
+        {
+          "destination": 9728,
+          "length": 128,
+          "name": "pal_portrait_maria.palbin"
+        }
+      ]
+    }
+  ]
+}

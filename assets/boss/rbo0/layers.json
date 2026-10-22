@@ -1,0 +1,19 @@
+[
+  {
+    "fg": {
+      "data": "rbo0_tilemap_0.bin",
+      "tiledef": "rbo0_tiledef_rbo0.json",
+      "left": 43,
+      "top": 41,
+      "right": 44,
+      "bottom": 41,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  }
+]

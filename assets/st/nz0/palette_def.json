@@ -1,0 +1,97 @@
+{
+  "cluts": [
+    0
+  ],
+  "defs": [
+    {
+      "kind": 5,
+      "entries": [
+        {
+          "destination": 8192,
+          "length": 64,
+          "name": "e_blood_skeleton_p.palbin"
+        },
+        {
+          "destination": 8256,
+          "length": 16,
+          "name": "e_slinger_p.palbin"
+        },
+        {
+          "destination": 8272,
+          "length": 64,
+          "name": "e_axe_knight_p.palbin"
+        },
+        {
+          "destination": 8336,
+          "length": 48,
+          "name": "e_bloody_zombie_p.palbin"
+        },
+        {
+          "destination": 8384,
+          "length": 16,
+          "name": "e_skeleton_p.palbin"
+        },
+        {
+          "destination": 8400,
+          "length": 48,
+          "name": "e_skelerang_p.palbin"
+        },
+        {
+          "destination": 8464,
+          "length": 64,
+          "name": "e_table_with_alembic_p.palbin"
+        },
+        {
+          "destination": 8528,
+          "length": 64,
+          "name": "e_table_blue_flame_p.palbin"
+        },
+        {
+          "destination": 8592,
+          "length": 64,
+          "name": "e_table_with_globe_p.palbin"
+        },
+        {
+          "destination": 8656,
+          "length": 160,
+          "name": "e_cloche_p.palbin"
+        },
+        {
+          "destination": 8816,
+          "length": 48,
+          "name": "e_slogra_p.palbin"
+        },
+        {
+          "destination": 8864,
+          "length": 128,
+          "name": "e_gaibon_p.palbin"
+        },
+        {
+          "destination": 8992,
+          "length": 80,
+          "name": "e_sealed_door_p.palbin"
+        },
+        {
+          "destination": 9072,
+          "length": 16,
+          "name": "e_maria_nz0_p.palbin"
+        },
+        {
+          "destination": 9088,
+          "length": 128,
+          "name": "D_8019665C.palbin"
+        },
+        {
+          "destination": 9216,
+          "length": 128,
+          "name": "D_8019685C.palbin"
+        },
+        {
+          "destination": 11776,
+          "length": 256,
+          "name": "e_explosion_p.palbin"
+        }
+      ]
+    }
+  ]
+}

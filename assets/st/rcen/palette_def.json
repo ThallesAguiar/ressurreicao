@@ -1,0 +1,37 @@
+{
+  "cluts": [
+    0
+  ],
+  "defs": [
+    {
+      "kind": 5,
+      "entries": [
+        {
+          "destination": 8192,
+          "length": 256,
+          "name": "pal_shaft.palbin"
+        },
+        {
+          "destination": 8448,
+          "length": 128,
+          "name": "pal_portrait_alucard.palbin"
+        },
+        {
+          "destination": 8576,
+          "length": 128,
+          "name": "pal_portrait_shaft.palbin"
+        },
+        {
+          "destination": 9216,
+          "length": 32,
+          "name": "pal_elevator.palbin"
+        },
+        {
+          "destination": 11776,
+          "length": 256,
+          "name": "pal_flame.palbin"
+        }
+      ]
+    }
+  ]
+}

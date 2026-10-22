@@ -24,7 +24,7 @@ format-symbols.run
 
 # Matches in repo root folder only
 /*.map
-/assets/
+# /assets/
 
 # ninja stuff
 .ninja_lock

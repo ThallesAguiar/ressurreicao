@@ -1,0 +1,212 @@
+{
+  "cluts": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    11,
+    9,
+    10
+  ],
+  "defs": [
+    {
+      "kind": 5,
+      "entries": [
+        {
+          "destination": 8192,
+          "length": 96,
+          "name": "pal_frozen_half.palbin"
+        },
+        {
+          "destination": 8288,
+          "length": 176,
+          "name": "pal_salome.palbin"
+        },
+        {
+          "destination": 8608,
+          "length": 256,
+          "name": "pal_21A.palbin"
+        },
+        {
+          "destination": 8864,
+          "length": 176,
+          "name": "pal_22A.palbin"
+        },
+        {
+          "destination": 9040,
+          "length": 32,
+          "name": "pal_235.palbin"
+        },
+        {
+          "destination": 9072,
+          "length": 128,
+          "name": "pal_breakable.palbin"
+        },
+        {
+          "destination": 9216,
+          "length": 48,
+          "name": "pal_bat.palbin"
+        },
+        {
+          "destination": 9472,
+          "length": 64,
+          "name": "pal_blood_skeleton.palbin"
+        },
+        {
+          "destination": 9728,
+          "length": 16,
+          "name": "pal_skeleton.palbin"
+        }
+      ]
+    },
+    {
+      "kind": 3,
+      "freq": 2,
+      "destination": 752,
+      "count": 16,
+      "data": [
+        {
+          "name": "pal_02F.palbin"
+        },
+        {
+          "name": "pal_02F.palbin",
+          "offset": 16
+        }
+      ]
+    },
+    {
+      "kind": 3,
+      "freq": 1,
+      "destination": 1984,
+      "count": 48,
+      "data": [
+        {
+          "name": "pal_07C.palbin"
+        },
+        {
+          "name": "pal_07C.palbin",
+          "offset": 48
+        },
+        {
+          "name": "pal_07C.palbin",
+          "offset": 96
+        },
+        {
+          "name": "pal_07C.palbin",
+          "offset": 144
+        }
+      ]
+    },
+    {
+      "kind": 3,
+      "freq": 2,
+      "destination": 2320,
+      "count": 16,
+      "data": [
+        {
+          "name": "pal_091.palbin"
+        },
+        {
+          "name": "pal_091.palbin",
+          "offset": 16
+        }
+      ]
+    },
+    {
+      "kind": 5,
+      "entries": [
+        {
+          "destination": 2320,
+          "length": 16,
+          "name": "pal_091.palbin",
+          "offset": 64
+        }
+      ]
+    },
+    {
+      "kind": 3,
+      "freq": 2,
+      "destination": 2400,
+      "count": 16,
+      "data": [
+        {
+          "name": "pal_096.palbin"
+        },
+        {
+          "name": "pal_096.palbin",
+          "offset": 16
+        }
+      ]
+    },
+    {
+      "kind": 5,
+      "entries": [
+        {
+          "destination": 2400,
+          "length": 16,
+          "name": "pal_096.palbin",
+          "offset": 32
+        }
+      ]
+    },
+    {
+      "kind": 5,
+      "entries": [
+        {
+          "destination": 2368,
+          "length": 16,
+          "name": "pal_094.palbin"
+        }
+      ]
+    },
+    {
+      "kind": 5,
+      "entries": [
+        {
+          "destination": 2496,
+          "length": 16,
+          "name": "pal_09C.palbin"
+        }
+      ]
+    },
+    {
+      "kind": 5,
+      "entries": [
+        {
+          "length": 16,
+          "name": "pal_3CC.palbin"
+        }
+      ]
+    },
+    {
+      "kind": 5,
+      "entries": [
+        {
+          "length": 16,
+          "name": "pal_3CC.palbin",
+          "offset": 16
+        }
+      ]
+    },
+    {
+      "kind": 3,
+      "freq": 7,
+      "destination": 2560,
+      "count": 80,
+      "data": [
+        {
+          "name": "pal_0A0.palbin"
+        },
+        {
+          "name": "pal_0A0.palbin",
+          "offset": 96
+        }
+      ]
+    }
+  ]
+}

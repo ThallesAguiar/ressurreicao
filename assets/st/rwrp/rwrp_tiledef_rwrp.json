@@ -1,0 +1,6 @@
+{
+  "tiles": "rwrp_tiledef_rwrp_tiles.bin",
+  "pages": "rwrp_tiledef_rwrp_pages.bin",
+  "cluts": "rwrp_tiledef_rwrp_cluts.bin",
+  "collisions": "rwrp_tiledef_rwrp_cols.bin"
+}

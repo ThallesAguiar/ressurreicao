@@ -1,0 +1,97 @@
+{
+  "cluts": [
+    1,
+    0
+  ],
+  "defs": [
+    {
+      "kind": 3,
+      "freq": 4,
+      "destination": 896,
+      "count": 16,
+      "data": [
+        {
+          "name": "pal_08C.palbin"
+        },
+        {
+          "name": "pal_0AC.palbin"
+        }
+      ]
+    },
+    {
+      "kind": 5,
+      "entries": [
+        {
+          "destination": 8192,
+          "length": 48,
+          "name": "pal_dhuron.palbin"
+        },
+        {
+          "destination": 8352,
+          "length": 32,
+          "name": "pal_flying_zombie.palbin"
+        },
+        {
+          "destination": 8448,
+          "length": 160,
+          "name": "pal_librarian.palbin"
+        },
+        {
+          "destination": 8704,
+          "length": 128,
+          "name": "pal_portrait_alucard.palbin"
+        },
+        {
+          "destination": 8832,
+          "length": 128,
+          "name": "portrait_master_librarian.palbin"
+        },
+        {
+          "destination": 9184,
+          "length": 176,
+          "name": "pal_ectoplasm.palbin"
+        },
+        {
+          "destination": 9360,
+          "length": 144,
+          "name": "pal_lesser_demon.palbin"
+        },
+        {
+          "destination": 9504,
+          "length": 64,
+          "name": "pal_thornweed.palbin"
+        },
+        {
+          "destination": 9568,
+          "length": 64,
+          "name": "pal_corpseweed.palbin"
+        },
+        {
+          "destination": 9632,
+          "length": 272,
+          "name": "pal_spellbook.palbin"
+        },
+        {
+          "destination": 9904,
+          "length": 16,
+          "name": "pal_skeleton.palbin"
+        },
+        {
+          "destination": 9920,
+          "length": 128,
+          "name": "pal_breakable.palbin"
+        },
+        {
+          "destination": 10048,
+          "length": 48,
+          "name": "pal_flea_man_armor.palbin"
+        },
+        {
+          "destination": 10096,
+          "length": 32,
+          "name": "pal_mudman.palbin"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,137 @@
+{
+  "cluts": [
+    0
+  ],
+  "defs": [
+    {
+      "kind": 5,
+      "entries": [
+        {
+          "destination": 3328,
+          "length": 256,
+          "name": "e_explosion_p.palbin"
+        },
+        {
+          "destination": 8192,
+          "length": 2240,
+          "name": "e_skyswirl_p.palbin"
+        },
+        {
+          "destination": 10432,
+          "length": 96,
+          "name": "e_merman_p.palbin"
+        },
+        {
+          "destination": 10528,
+          "length": 32,
+          "name": "D_80197918.palbin"
+        },
+        {
+          "destination": 10560,
+          "length": 32,
+          "name": "D_80197958.palbin"
+        },
+        {
+          "destination": 10592,
+          "length": 32,
+          "name": "D_80197998.palbin"
+        },
+        {
+          "destination": 10624,
+          "length": 32,
+          "name": "D_801979D8.palbin"
+        },
+        {
+          "destination": 10656,
+          "length": 32,
+          "name": "D_80197A18.palbin"
+        },
+        {
+          "destination": 10688,
+          "length": 32,
+          "name": "D_80197A58.palbin"
+        },
+        {
+          "destination": 10720,
+          "length": 32,
+          "name": "D_80197A98.palbin"
+        },
+        {
+          "destination": 10752,
+          "length": 32,
+          "name": "D_80197AD8.palbin"
+        },
+        {
+          "destination": 10784,
+          "length": 32,
+          "name": "D_80197B18.palbin"
+        },
+        {
+          "destination": 10816,
+          "length": 32,
+          "name": "D_80197B58.palbin"
+        },
+        {
+          "destination": 10848,
+          "length": 32,
+          "name": "D_80197B98.palbin"
+        },
+        {
+          "destination": 10880,
+          "length": 32,
+          "name": "D_80197BD8.palbin"
+        },
+        {
+          "destination": 10912,
+          "length": 32,
+          "name": "D_80197C18.palbin"
+        },
+        {
+          "destination": 10944,
+          "length": 32,
+          "name": "D_80197C58.palbin"
+        },
+        {
+          "destination": 11040,
+          "length": 304,
+          "name": "D_80197C98.palbin"
+        },
+        {
+          "destination": 11344,
+          "length": 48,
+          "name": "e_slinger_p.palbin"
+        },
+        {
+          "destination": 11392,
+          "length": 48,
+          "name": "e_ghost_bat_p.palbin"
+        },
+        {
+          "destination": 11440,
+          "length": 128,
+          "name": "e_warg_rider_p.palbin"
+        },
+        {
+          "destination": 11568,
+          "length": 48,
+          "name": "e_zombie_p.palbin"
+        },
+        {
+          "destination": 11616,
+          "length": 48,
+          "name": "e_death_p.palbin"
+        },
+        {
+          "destination": 11776,
+          "length": 128,
+          "name": "D_80198118.palbin"
+        },
+        {
+          "destination": 11904,
+          "length": 128,
+          "name": "D_80198318.palbin"
+        }
+      ]
+    }
+  ]
+}

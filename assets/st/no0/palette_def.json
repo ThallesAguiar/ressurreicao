@@ -1,0 +1,87 @@
+{
+  "cluts": [
+    0
+  ],
+  "defs": [
+    {
+      "kind": 5,
+      "entries": [
+        {
+          "destination": 8192,
+          "length": 16,
+          "name": "e_ghost_pal.palbin"
+        },
+        {
+          "destination": 8208,
+          "length": 32,
+          "name": "e_marionette_pal.palbin"
+        },
+        {
+          "destination": 8240,
+          "length": 16,
+          "name": "e_slinger_pal.palbin"
+        },
+        {
+          "destination": 8256,
+          "length": 48,
+          "name": "e_flea_man_pal.palbin"
+        },
+        {
+          "destination": 8304,
+          "length": 16,
+          "name": "e_skeleton_pal.palbin"
+        },
+        {
+          "destination": 8416,
+          "length": 256,
+          "name": "e_diplocephalus_pal.palbin"
+        },
+        {
+          "destination": 8752,
+          "length": 32,
+          "name": "e_elevator_pal.palbin"
+        },
+        {
+          "destination": 8832,
+          "length": 48,
+          "name": "e_skelerang_pal.palbin"
+        },
+        {
+          "destination": 8880,
+          "length": 48,
+          "name": "e_plate_lord_pal.palbin"
+        },
+        {
+          "destination": 8928,
+          "length": 160,
+          "name": "e_stone_rose_pal.palbin"
+        },
+        {
+          "destination": 9088,
+          "length": 80,
+          "name": "e_ctulhu_pal.palbin"
+        },
+        {
+          "destination": 9168,
+          "length": 64,
+          "name": "e_axe_knight_axe_pal.palbin"
+        },
+        {
+          "destination": 9232,
+          "length": 48,
+          "name": "e_ouija_table_pal.palbin"
+        },
+        {
+          "destination": 9280,
+          "length": 80,
+          "name": "e_door_pal.palbin"
+        },
+        {
+          "destination": 11264,
+          "length": 256,
+          "name": "e_diplocephalus_fireball_pal.palbin"
+        }
+      ]
+    }
+  ]
+}

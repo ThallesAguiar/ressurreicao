@@ -1,0 +1,56 @@
+{
+  "cluts": [
+    0,
+    1,
+    2
+  ],
+  "defs": [
+    {
+      "kind": 5,
+      "entries": [
+        {
+          "destination": 8192,
+          "length": 16,
+          "name": "D_us_8018A0F0.palbin"
+        },
+        {
+          "destination": 11776,
+          "length": 256,
+          "name": "D_us_80189E30.palbin"
+        }
+      ]
+    },
+    {
+      "kind": 3,
+      "flags": 49152,
+      "freq": 6,
+      "destination": 1136,
+      "count": 16,
+      "data": [
+        {
+          "name": "D_us_80189D70.palbin"
+        },
+        {
+          "name": "D_us_80189D90.palbin"
+        },
+        {
+          "name": "D_us_80189DB0.palbin"
+        },
+        {
+          "name": "D_us_80189DD0.palbin"
+        }
+      ]
+    },
+    {
+      "kind": 5,
+      "flags": 49152,
+      "entries": [
+        {
+          "destination": 1136,
+          "length": 16,
+          "name": "D_us_8018008C.palbin"
+        }
+      ]
+    }
+  ]
+}

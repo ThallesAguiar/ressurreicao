@@ -1,0 +1,19 @@
+[
+  {
+    "fg": {
+      "data": "bo6_tilemap_0.bin",
+      "tiledef": "bo6_tiledef_bo6.json",
+      "left": 33,
+      "top": 8,
+      "right": 33,
+      "bottom": 8,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  }
+]

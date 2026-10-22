@@ -1,0 +1,6 @@
+{
+  "tiles": "bo3_tiledef_save_tiles.bin",
+  "pages": "bo3_tiledef_save_pages.bin",
+  "cluts": "bo3_tiledef_save_cluts.bin",
+  "collisions": "bo3_tiledef_save_cols.bin"
+}

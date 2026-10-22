@@ -1,0 +1,6 @@
+{
+  "tiles": "lib_tiledef_save_tiles.bin",
+  "pages": "lib_tiledef_save_pages.bin",
+  "cluts": "lib_tiledef_save_cluts.bin",
+  "collisions": "lib_tiledef_save_cols.bin"
+}

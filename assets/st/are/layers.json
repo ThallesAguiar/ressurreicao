@@ -1,0 +1,323 @@
+[
+  {
+    "fg": {
+      "data": "are_tilemap_0.bin",
+      "tiledef": "are_tiledef_are.json",
+      "left": 19,
+      "top": 20,
+      "right": 20,
+      "bottom": 20,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "are_tilemap_1.bin",
+      "tiledef": "are_tiledef_are.json",
+      "left": 17,
+      "top": 21,
+      "right": 17,
+      "bottom": 21,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "are_tilemap_2.bin",
+      "tiledef": "are_tiledef_are.json",
+      "left": 18,
+      "top": 21,
+      "right": 21,
+      "bottom": 21,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "are_tilemap_3.bin",
+      "tiledef": "are_tiledef_are.json",
+      "left": 22,
+      "top": 21,
+      "right": 22,
+      "bottom": 21,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "are_tilemap_4.bin",
+      "tiledef": "are_tiledef_are.json",
+      "left": 14,
+      "top": 22,
+      "right": 18,
+      "bottom": 22,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "are_tilemap_5.bin",
+      "tiledef": "are_tiledef_are.json",
+      "left": 19,
+      "top": 22,
+      "right": 20,
+      "bottom": 22,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "are_tilemap_6.bin",
+      "tiledef": "are_tiledef_are.json",
+      "left": 21,
+      "top": 22,
+      "right": 25,
+      "bottom": 22,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "are_tilemap_7.bin",
+      "tiledef": "are_tiledef_are.json",
+      "left": 15,
+      "top": 23,
+      "right": 18,
+      "bottom": 24,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "are_tilemap_8.bin",
+      "tiledef": "are_tiledef_are.json",
+      "left": 19,
+      "top": 23,
+      "right": 20,
+      "bottom": 23,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "bg": {
+      "data": "are_tilemap_10.bin",
+      "tiledef": "are_tiledef_are.json",
+      "left": 19,
+      "top": 24,
+      "right": 19,
+      "bottom": 24,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 32,
+      "flags": 3
+    },
+    "fg": {
+      "data": "are_tilemap_9.bin",
+      "tiledef": "are_tiledef_are.json",
+      "left": 19,
+      "top": 24,
+      "right": 19,
+      "bottom": 24,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 160,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "are_tilemap_11.bin",
+      "tiledef": "are_tiledef_are.json",
+      "left": 20,
+      "top": 24,
+      "right": 20,
+      "bottom": 24,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "are_tilemap_12.bin",
+      "tiledef": "are_tiledef_are.json",
+      "left": 21,
+      "top": 23,
+      "right": 24,
+      "bottom": 24,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "are_tilemap_13.bin",
+      "tiledef": "are_tiledef_are.json",
+      "left": 13,
+      "top": 24,
+      "right": 14,
+      "bottom": 24,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "are_tilemap_14.bin",
+      "tiledef": "are_tiledef_are.json",
+      "left": 25,
+      "top": 24,
+      "right": 26,
+      "bottom": 24,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "are_tilemap_15.bin",
+      "tiledef": "are_tiledef_load.json",
+      "left": 13,
+      "top": 22,
+      "right": 13,
+      "bottom": 22,
+      "scrollMode": 0,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": true,
+      "unusedFlag": false,
+      "zPriority": 52,
+      "flags": 515
+    }
+  },
+  {
+    "fg": {
+      "data": "are_tilemap_15.bin",
+      "tiledef": "are_tiledef_load.json",
+      "left": 26,
+      "top": 22,
+      "right": 26,
+      "bottom": 22,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": true,
+      "unusedFlag": false,
+      "zPriority": 53,
+      "flags": 515
+    }
+  },
+  {
+    "fg": {
+      "data": "are_tilemap_16.bin",
+      "tiledef": "are_tiledef_save.json",
+      "left": 14,
+      "top": 23,
+      "right": 14,
+      "bottom": 23,
+      "scrollMode": 0,
+      "hideOnMap": false,
+      "isSaveRoom": true,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 515
+    }
+  },
+  {
+    "fg": {
+      "data": "are_tilemap_17.bin",
+      "tiledef": "are_tiledef_save.json",
+      "left": 25,
+      "top": 23,
+      "right": 25,
+      "bottom": 23,
+      "scrollMode": 2,
+      "hideOnMap": false,
+      "isSaveRoom": true,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 515
+    }
+  }
+]

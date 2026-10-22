@@ -1,0 +1,304 @@
+[
+  {
+    "fg": {
+      "data": "chi_tilemap_0.bin",
+      "tiledef": "chi_tiledef_chi.json",
+      "left": 27,
+      "top": 38,
+      "right": 27,
+      "bottom": 41,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "chi_tilemap_1.bin",
+      "tiledef": "chi_tiledef_chi.json",
+      "left": 28,
+      "top": 40,
+      "right": 29,
+      "bottom": 40,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "chi_tilemap_2.bin",
+      "tiledef": "chi_tiledef_chi.json",
+      "left": 30,
+      "top": 40,
+      "right": 31,
+      "bottom": 40,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "bg": {
+      "data": "chi_tilemap_4.bin",
+      "tiledef": "chi_tiledef_chi.json",
+      "left": 0,
+      "top": 0,
+      "right": 0,
+      "bottom": 2,
+      "scrollMode": 4,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 32,
+      "flags": 3
+    },
+    "fg": {
+      "data": "chi_tilemap_3.bin",
+      "tiledef": "chi_tiledef_chi.json",
+      "left": 32,
+      "top": 40,
+      "right": 32,
+      "bottom": 43,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "chi_tilemap_5.bin",
+      "tiledef": "chi_tiledef_chi.json",
+      "left": 33,
+      "top": 40,
+      "right": 36,
+      "bottom": 40,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "chi_tilemap_6.bin",
+      "tiledef": "chi_tiledef_chi.json",
+      "left": 37,
+      "top": 40,
+      "right": 37,
+      "bottom": 41,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "chi_tilemap_7.bin",
+      "tiledef": "chi_tiledef_chi.json",
+      "left": 36,
+      "top": 41,
+      "right": 36,
+      "bottom": 41,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "chi_tilemap_8.bin",
+      "tiledef": "chi_tiledef_chi.json",
+      "left": 31,
+      "top": 44,
+      "right": 33,
+      "bottom": 44,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "bg": {
+      "data": "chi_tilemap_10.bin",
+      "tiledef": "chi_tiledef_chi.json",
+      "left": 0,
+      "top": 0,
+      "right": 0,
+      "bottom": 2,
+      "scrollMode": 4,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 32,
+      "flags": 3
+    },
+    "fg": {
+      "data": "chi_tilemap_9.bin",
+      "tiledef": "chi_tiledef_chi.json",
+      "left": 32,
+      "top": 45,
+      "right": 32,
+      "bottom": 48,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "chi_tilemap_11.bin",
+      "tiledef": "chi_tiledef_chi.json",
+      "left": 31,
+      "top": 48,
+      "right": 31,
+      "bottom": 48,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "chi_tilemap_12.bin",
+      "tiledef": "chi_tiledef_chi.json",
+      "left": 33,
+      "top": 48,
+      "right": 33,
+      "bottom": 49,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "chi_tilemap_13.bin",
+      "tiledef": "chi_tiledef_chi.json",
+      "left": 29,
+      "top": 44,
+      "right": 30,
+      "bottom": 44,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "chi_tilemap_14.bin",
+      "tiledef": "chi_tiledef_load.json",
+      "left": 32,
+      "top": 49,
+      "right": 32,
+      "bottom": 49,
+      "scrollMode": 0,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": true,
+      "unusedFlag": false,
+      "zPriority": 18,
+      "flags": 515
+    }
+  },
+  {
+    "fg": {
+      "data": "chi_tilemap_14.bin",
+      "tiledef": "chi_tiledef_load.json",
+      "left": 34,
+      "top": 44,
+      "right": 34,
+      "bottom": 44,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": true,
+      "unusedFlag": false,
+      "zPriority": 20,
+      "flags": 515
+    }
+  },
+  {
+    "fg": {
+      "data": "chi_tilemap_14.bin",
+      "tiledef": "chi_tiledef_load.json",
+      "left": 28,
+      "top": 38,
+      "right": 28,
+      "bottom": 38,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": true,
+      "unusedFlag": false,
+      "zPriority": 19,
+      "flags": 515
+    }
+  },
+  {
+    "fg": {
+      "data": "chi_tilemap_15.bin",
+      "tiledef": "chi_tiledef_save.json",
+      "left": 28,
+      "top": 41,
+      "right": 28,
+      "bottom": 41,
+      "scrollMode": 2,
+      "hideOnMap": false,
+      "isSaveRoom": true,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 515
+    }
+  }
+]

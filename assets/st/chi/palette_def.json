@@ -1,0 +1,37 @@
+{
+  "cluts": [
+    0
+  ],
+  "defs": [
+    {
+      "kind": 5,
+      "entries": [
+        {
+          "destination": 8192,
+          "length": 64,
+          "name": "bn_pal_gremlin.palbin"
+        },
+        {
+          "destination": 8256,
+          "length": 32,
+          "name": "bn_pal_salem_witch.palbin"
+        },
+        {
+          "destination": 8288,
+          "length": 64,
+          "name": "bn_pal_thornweed_corpseweed.palbin"
+        },
+        {
+          "destination": 8352,
+          "length": 656,
+          "name": "bn_pal_venus_weed.palbin"
+        },
+        {
+          "destination": 11776,
+          "length": 256,
+          "name": "bn_pal_salem_witch_projectiles.palbin"
+        }
+      ]
+    }
+  ]
+}

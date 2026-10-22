@@ -1,0 +1,32 @@
+[
+  {
+    "left": 23,
+    "top": 24,
+    "right": 23,
+    "bottom": 24,
+    "layerId": 0,
+    "tileDefId": 0,
+    "entityGfxId": 0,
+    "entityLayoutId": 10
+  },
+  {
+    "left": 22,
+    "top": 24,
+    "right": 22,
+    "bottom": 24,
+    "layerId": 74,
+    "tileDefId": -1,
+    "entityGfxId": 0,
+    "entityLayoutId": 0
+  },
+  {
+    "left": 24,
+    "top": 24,
+    "right": 24,
+    "bottom": 24,
+    "layerId": 73,
+    "tileDefId": -1,
+    "entityGfxId": 0,
+    "entityLayoutId": 0
+  }
+]

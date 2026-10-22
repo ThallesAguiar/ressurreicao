@@ -1,0 +1,82 @@
+{
+  "banks": [
+    {
+      "kind": 0,
+      "entries": [
+        {}
+      ]
+    },
+    {
+      "kind": 4,
+      "entries": [
+        {
+          "x": 256,
+          "y": 128,
+          "width": 128,
+          "height": 128,
+          "name": "e_maria_cen_g0"
+        },
+        {
+          "x": 256,
+          "y": 160,
+          "width": 128,
+          "height": 128,
+          "name": "e_maria_cen_g1"
+        }
+      ]
+    },
+    {
+      "kind": 4,
+      "entries": [
+        {
+          "x": 256,
+          "y": 64,
+          "width": 128,
+          "height": 128,
+          "name": "stage_title_cen_jp"
+        },
+        {
+          "x": 256,
+          "y": 96,
+          "width": 128,
+          "height": 128,
+          "name": "stage_placeholder_cen"
+        }
+      ]
+    },
+    {
+      "kind": 4,
+      "entries": [
+        {
+          "x": 256,
+          "y": 128,
+          "width": 128,
+          "height": 128,
+          "name": "e_elevator_cen_g"
+        }
+      ]
+    }
+  ],
+  "indices": [
+    0,
+    1,
+    3,
+    0,
+    0,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "tiles": "rcen_tiledef_rcen_tiles.bin",
+  "pages": "rcen_tiledef_rcen_pages.bin",
+  "cluts": "rcen_tiledef_rcen_cluts.bin",
+  "collisions": "rcen_tiledef_rcen_cols.bin"
+}

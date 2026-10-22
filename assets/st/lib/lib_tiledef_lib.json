@@ -1,0 +1,6 @@
+{
+  "tiles": "lib_tiledef_lib_tiles.bin",
+  "pages": "lib_tiledef_lib_pages.bin",
+  "cluts": "lib_tiledef_lib_cluts.bin",
+  "collisions": "lib_tiledef_lib_cols.bin"
+}

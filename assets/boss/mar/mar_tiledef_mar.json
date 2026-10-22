@@ -1,0 +1,6 @@
+{
+  "tiles": "mar_tiledef_mar_tiles.bin",
+  "pages": "mar_tiledef_mar_pages.bin",
+  "cluts": "mar_tiledef_mar_cluts.bin",
+  "collisions": "mar_tiledef_mar_cols.bin"
+}

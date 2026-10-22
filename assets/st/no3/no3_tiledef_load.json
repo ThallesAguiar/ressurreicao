@@ -1,0 +1,6 @@
+{
+  "tiles": "no3_tiledef_load_tiles.bin",
+  "pages": "no3_tiledef_load_pages.bin",
+  "cluts": "no3_tiledef_load_cluts.bin",
+  "collisions": "no3_tiledef_load_cols.bin"
+}

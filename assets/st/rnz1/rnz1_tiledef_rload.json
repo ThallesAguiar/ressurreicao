@@ -1,0 +1,6 @@
+{
+  "tiles": "rnz1_tiledef_rload_tiles.bin",
+  "pages": "rnz1_tiledef_rload_pages.bin",
+  "cluts": "rnz1_tiledef_rload_cluts.bin",
+  "collisions": "rnz1_tiledef_rload_cols.bin"
+}

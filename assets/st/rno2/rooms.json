@@ -1,0 +1,252 @@
+[
+  {
+    "left": 34,
+    "top": 38,
+    "right": 34,
+    "bottom": 40,
+    "layerId": 0,
+    "tileDefId": 0,
+    "entityGfxId": 7,
+    "entityLayoutId": 1
+  },
+  {
+    "left": 35,
+    "top": 40,
+    "right": 35,
+    "bottom": 40,
+    "layerId": 1,
+    "tileDefId": 0,
+    "entityGfxId": 6,
+    "entityLayoutId": 2
+  },
+  {
+    "left": 34,
+    "top": 41,
+    "right": 36,
+    "bottom": 42,
+    "layerId": 2,
+    "tileDefId": 0,
+    "entityGfxId": 5,
+    "entityLayoutId": 3
+  },
+  {
+    "left": 31,
+    "top": 41,
+    "right": 33,
+    "bottom": 41,
+    "layerId": 3,
+    "tileDefId": 0,
+    "entityGfxId": 3,
+    "entityLayoutId": 4
+  },
+  {
+    "left": 30,
+    "top": 42,
+    "right": 33,
+    "bottom": 42,
+    "layerId": 4,
+    "tileDefId": 0,
+    "entityGfxId": 3,
+    "entityLayoutId": 5
+  },
+  {
+    "left": 29,
+    "top": 42,
+    "right": 29,
+    "bottom": 42,
+    "layerId": 5,
+    "tileDefId": 0,
+    "entityGfxId": 6,
+    "entityLayoutId": 6
+  },
+  {
+    "left": 28,
+    "top": 42,
+    "right": 28,
+    "bottom": 47,
+    "layerId": 6,
+    "tileDefId": 0,
+    "entityGfxId": 6,
+    "entityLayoutId": 7
+  },
+  {
+    "left": 28,
+    "top": 48,
+    "right": 33,
+    "bottom": 48,
+    "layerId": 7,
+    "tileDefId": 0,
+    "entityGfxId": 3,
+    "entityLayoutId": 8
+  },
+  {
+    "left": 33,
+    "top": 44,
+    "right": 38,
+    "bottom": 47,
+    "layerId": 8,
+    "tileDefId": 0,
+    "entityGfxId": 4,
+    "entityLayoutId": 9
+  },
+  {
+    "left": 31,
+    "top": 45,
+    "right": 32,
+    "bottom": 45,
+    "layerId": 9,
+    "tileDefId": 0,
+    "entityGfxId": 6,
+    "entityLayoutId": 10
+  },
+  {
+    "left": 30,
+    "top": 45,
+    "right": 30,
+    "bottom": 45,
+    "layerId": 10,
+    "tileDefId": 0,
+    "entityGfxId": 6,
+    "entityLayoutId": 11
+  },
+  {
+    "left": 39,
+    "top": 47,
+    "right": 42,
+    "bottom": 47,
+    "layerId": 11,
+    "tileDefId": 0,
+    "entityGfxId": 2,
+    "entityLayoutId": 12
+  },
+  {
+    "left": 43,
+    "top": 46,
+    "right": 44,
+    "bottom": 47,
+    "layerId": 12,
+    "tileDefId": 0,
+    "entityGfxId": 6,
+    "entityLayoutId": 13
+  },
+  {
+    "left": 45,
+    "top": 47,
+    "right": 47,
+    "bottom": 47,
+    "layerId": 13,
+    "tileDefId": 0,
+    "entityGfxId": 6,
+    "entityLayoutId": 14
+  },
+  {
+    "left": 43,
+    "top": 45,
+    "right": 44,
+    "bottom": 45,
+    "layerId": 14,
+    "tileDefId": 0,
+    "entityGfxId": 6,
+    "entityLayoutId": 15
+  },
+  {
+    "left": 39,
+    "top": 44,
+    "right": 45,
+    "bottom": 44,
+    "layerId": 15,
+    "tileDefId": 0,
+    "entityGfxId": 3,
+    "entityLayoutId": 16
+  },
+  {
+    "left": 32,
+    "top": 46,
+    "right": 32,
+    "bottom": 46,
+    "layerId": 16,
+    "tileDefId": 0,
+    "entityGfxId": 0,
+    "entityLayoutId": 48
+  },
+  {
+    "left": 33,
+    "top": 38,
+    "right": 33,
+    "bottom": 38,
+    "layerId": 17,
+    "tileDefId": 0,
+    "entityGfxId": 0,
+    "entityLayoutId": 49
+  },
+  {
+    "left": 37,
+    "top": 41,
+    "right": 37,
+    "bottom": 41,
+    "layerId": 18,
+    "tileDefId": 0,
+    "entityGfxId": 0,
+    "entityLayoutId": 50
+  },
+  {
+    "left": 27,
+    "top": 42,
+    "right": 27,
+    "bottom": 42,
+    "layerId": 19,
+    "tileDefId": 0,
+    "entityGfxId": 0,
+    "entityLayoutId": 51
+  },
+  {
+    "left": 46,
+    "top": 44,
+    "right": 46,
+    "bottom": 44,
+    "layerId": 20,
+    "tileDefId": 0,
+    "entityGfxId": 0,
+    "entityLayoutId": 52
+  },
+  {
+    "left": 32,
+    "top": 38,
+    "right": 32,
+    "bottom": 38,
+    "layerId": 24,
+    "tileDefId": -1,
+    "entityGfxId": 0,
+    "entityLayoutId": 0
+  },
+  {
+    "left": 38,
+    "top": 41,
+    "right": 38,
+    "bottom": 41,
+    "layerId": 26,
+    "tileDefId": -1,
+    "entityGfxId": 0,
+    "entityLayoutId": 0
+  },
+  {
+    "left": 26,
+    "top": 42,
+    "right": 26,
+    "bottom": 42,
+    "layerId": 27,
+    "tileDefId": -1,
+    "entityGfxId": 0,
+    "entityLayoutId": 0
+  },
+  {
+    "left": 47,
+    "top": 44,
+    "right": 47,
+    "bottom": 44,
+    "layerId": 25,
+    "tileDefId": -1,
+    "entityGfxId": 0,
+    "entityLayoutId": 0
+  }
+]

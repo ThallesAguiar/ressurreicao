@@ -1,0 +1,1038 @@
+[
+  {
+    "bg": {
+      "data": "rno4_tilemap_1.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 0,
+      "top": 0,
+      "right": 0,
+      "bottom": 0,
+      "scrollMode": 0,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 32,
+      "flags": 3
+    },
+    "fg": {
+      "data": "rno4_tilemap_0.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 24,
+      "top": 27,
+      "right": 24,
+      "bottom": 37,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "bg": {
+      "data": "rno4_tilemap_3.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 24,
+      "top": 24,
+      "right": 24,
+      "bottom": 26,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 32,
+      "flags": 3
+    },
+    "fg": {
+      "data": "rno4_tilemap_2.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 24,
+      "top": 24,
+      "right": 24,
+      "bottom": 26,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 160,
+      "flags": 3
+    }
+  },
+  {
+    "bg": {
+      "data": "rno4_tilemap_5.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 24,
+      "top": 22,
+      "right": 24,
+      "bottom": 23,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 32,
+      "flags": 3
+    },
+    "fg": {
+      "data": "rno4_tilemap_4.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 24,
+      "top": 22,
+      "right": 24,
+      "bottom": 23,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 160,
+      "flags": 3
+    }
+  },
+  {
+    "bg": {
+      "data": "rno4_tilemap_7.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 0,
+      "top": 0,
+      "right": 0,
+      "bottom": 0,
+      "scrollMode": 0,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 32,
+      "flags": 3
+    },
+    "fg": {
+      "data": "rno4_tilemap_6.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 25,
+      "top": 27,
+      "right": 25,
+      "bottom": 35,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "rno4_tilemap_8.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 26,
+      "top": 31,
+      "right": 26,
+      "bottom": 31,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "bg": {
+      "data": "rno4_tilemap_10.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 26,
+      "top": 29,
+      "right": 26,
+      "bottom": 30,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 32,
+      "flags": 3
+    },
+    "fg": {
+      "data": "rno4_tilemap_9.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 26,
+      "top": 29,
+      "right": 26,
+      "bottom": 30,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "bg": {
+      "data": "rno4_tilemap_12.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 20,
+      "top": 31,
+      "right": 20,
+      "bottom": 34,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 32,
+      "flags": 3
+    },
+    "fg": {
+      "data": "rno4_tilemap_11.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 20,
+      "top": 31,
+      "right": 20,
+      "bottom": 34,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "bg": {
+      "data": "rno4_tilemap_14.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 19,
+      "top": 30,
+      "right": 19,
+      "bottom": 31,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 32,
+      "flags": 3
+    },
+    "fg": {
+      "data": "rno4_tilemap_13.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 19,
+      "top": 30,
+      "right": 19,
+      "bottom": 31,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "rno4_tilemap_15.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 27,
+      "top": 36,
+      "right": 27,
+      "bottom": 36,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "rno4_tilemap_16.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 25,
+      "top": 36,
+      "right": 26,
+      "bottom": 36,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "bg": {
+      "data": "rno4_tilemap_18.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 26,
+      "top": 35,
+      "right": 26,
+      "bottom": 35,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 32,
+      "flags": 3
+    },
+    "fg": {
+      "data": "rno4_tilemap_17.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 26,
+      "top": 35,
+      "right": 26,
+      "bottom": 35,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "rno4_tilemap_19.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 21,
+      "top": 34,
+      "right": 23,
+      "bottom": 34,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "bg": {
+      "data": "rno4_tilemap_21.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 9,
+      "top": 22,
+      "right": 10,
+      "bottom": 22,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 32,
+      "flags": 3
+    },
+    "fg": {
+      "data": "rno4_tilemap_20.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 9,
+      "top": 22,
+      "right": 10,
+      "bottom": 22,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 160,
+      "flags": 3
+    }
+  },
+  {
+    "bg": {
+      "data": "rno4_tilemap_23.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 8,
+      "top": 22,
+      "right": 8,
+      "bottom": 22,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 32,
+      "flags": 3
+    },
+    "fg": {
+      "data": "rno4_tilemap_22.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 8,
+      "top": 22,
+      "right": 8,
+      "bottom": 22,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 160,
+      "flags": 3
+    }
+  },
+  {
+    "bg": {
+      "data": "rno4_tilemap_25.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 38,
+      "top": 26,
+      "right": 38,
+      "bottom": 26,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 32,
+      "flags": 3
+    },
+    "fg": {
+      "data": "rno4_tilemap_24.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 38,
+      "top": 26,
+      "right": 38,
+      "bottom": 26,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 160,
+      "flags": 3
+    }
+  },
+  {
+    "bg": {
+      "data": "rno4_tilemap_27.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 34,
+      "top": 26,
+      "right": 37,
+      "bottom": 26,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 32,
+      "flags": 3
+    },
+    "fg": {
+      "data": "rno4_tilemap_26.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 34,
+      "top": 26,
+      "right": 37,
+      "bottom": 26,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 160,
+      "flags": 3
+    }
+  },
+  {
+    "bg": {
+      "data": "rno4_tilemap_29.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 34,
+      "top": 25,
+      "right": 34,
+      "bottom": 25,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 32,
+      "flags": 3
+    },
+    "fg": {
+      "data": "rno4_tilemap_28.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 34,
+      "top": 25,
+      "right": 34,
+      "bottom": 25,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 160,
+      "flags": 3
+    }
+  },
+  {
+    "bg": {
+      "data": "rno4_tilemap_31.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 41,
+      "top": 26,
+      "right": 41,
+      "bottom": 26,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 32,
+      "flags": 3
+    },
+    "fg": {
+      "data": "rno4_tilemap_30.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 41,
+      "top": 26,
+      "right": 41,
+      "bottom": 26,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 160,
+      "flags": 3
+    }
+  },
+  {
+    "bg": {
+      "data": "rno4_tilemap_33.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 38,
+      "top": 21,
+      "right": 38,
+      "bottom": 21,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 32,
+      "flags": 3
+    },
+    "fg": {
+      "data": "rno4_tilemap_32.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 38,
+      "top": 21,
+      "right": 38,
+      "bottom": 21,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 160,
+      "flags": 3
+    }
+  },
+  {
+    "bg": {
+      "data": "rno4_tilemap_35.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 41,
+      "top": 21,
+      "right": 41,
+      "bottom": 21,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 32,
+      "flags": 3
+    },
+    "fg": {
+      "data": "rno4_tilemap_34.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 41,
+      "top": 21,
+      "right": 41,
+      "bottom": 21,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 160,
+      "flags": 3
+    }
+  },
+  {
+    "bg": {
+      "data": "rno4_tilemap_37.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 46,
+      "top": 22,
+      "right": 47,
+      "bottom": 22,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 32,
+      "flags": 3
+    },
+    "fg": {
+      "data": "rno4_tilemap_36.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 46,
+      "top": 22,
+      "right": 47,
+      "bottom": 22,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 160,
+      "flags": 3
+    }
+  },
+  {
+    "bg": {
+      "data": "rno4_tilemap_39.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 55,
+      "top": 21,
+      "right": 55,
+      "bottom": 21,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 32,
+      "flags": 3
+    },
+    "fg": {
+      "data": "rno4_tilemap_38.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 55,
+      "top": 21,
+      "right": 55,
+      "bottom": 21,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 160,
+      "flags": 3
+    }
+  },
+  {
+    "bg": {
+      "data": "rno4_tilemap_41.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 25,
+      "top": 25,
+      "right": 33,
+      "bottom": 26,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    },
+    "fg": {
+      "data": "rno4_tilemap_40.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 25,
+      "top": 25,
+      "right": 33,
+      "bottom": 26,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 160,
+      "flags": 3
+    }
+  },
+  {
+    "bg": {
+      "data": "rno4_tilemap_43.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 11,
+      "top": 21,
+      "right": 23,
+      "bottom": 22,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    },
+    "fg": {
+      "data": "rno4_tilemap_42.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 11,
+      "top": 21,
+      "right": 23,
+      "bottom": 22,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 160,
+      "flags": 3
+    }
+  },
+  {
+    "bg": {
+      "data": "rno4_tilemap_45.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 23,
+      "top": 25,
+      "right": 23,
+      "bottom": 25,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    },
+    "fg": {
+      "data": "rno4_tilemap_44.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 23,
+      "top": 25,
+      "right": 23,
+      "bottom": 25,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 160,
+      "flags": 3
+    }
+  },
+  {
+    "bg": {
+      "data": "rno4_tilemap_47.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 42,
+      "top": 20,
+      "right": 54,
+      "bottom": 21,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    },
+    "fg": {
+      "data": "rno4_tilemap_46.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 42,
+      "top": 20,
+      "right": 54,
+      "bottom": 21,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 160,
+      "flags": 3
+    }
+  },
+  {
+    "bg": {
+      "data": "rno4_tilemap_49.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 39,
+      "top": 21,
+      "right": 40,
+      "bottom": 26,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    },
+    "fg": {
+      "data": "rno4_tilemap_48.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 39,
+      "top": 21,
+      "right": 40,
+      "bottom": 26,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 160,
+      "flags": 3
+    }
+  },
+  {
+    "bg": {
+      "data": "rno4_tilemap_51.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 18,
+      "top": 25,
+      "right": 22,
+      "bottom": 25,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    },
+    "fg": {
+      "data": "rno4_tilemap_50.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 18,
+      "top": 25,
+      "right": 22,
+      "bottom": 25,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 160,
+      "flags": 3
+    }
+  },
+  {
+    "bg": {
+      "data": "rno4_tilemap_53.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 23,
+      "top": 24,
+      "right": 23,
+      "bottom": 24,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    },
+    "fg": {
+      "data": "rno4_tilemap_52.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 23,
+      "top": 24,
+      "right": 23,
+      "bottom": 24,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 160,
+      "flags": 3
+    }
+  },
+  {
+    "bg": {
+      "data": "rno4_tilemap_55.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 18,
+      "top": 24,
+      "right": 22,
+      "bottom": 24,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    },
+    "fg": {
+      "data": "rno4_tilemap_54.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 18,
+      "top": 24,
+      "right": 22,
+      "bottom": 24,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 160,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "rno4_tilemap_56.bin",
+      "tiledef": "rno4_tiledef_rno4.json",
+      "left": 28,
+      "top": 36,
+      "right": 28,
+      "bottom": 36,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    }
+  },
+  {
+    "fg": {
+      "data": "rno4_tilemap_57.bin",
+      "tiledef": "rno4_tiledef_rload.json",
+      "left": 48,
+      "top": 22,
+      "right": 48,
+      "bottom": 22,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": true,
+      "unusedFlag": false,
+      "zPriority": 48,
+      "flags": 515
+    }
+  },
+  {
+    "fg": {
+      "data": "rno4_tilemap_57.bin",
+      "tiledef": "rno4_tiledef_rload.json",
+      "left": 23,
+      "top": 37,
+      "right": 23,
+      "bottom": 37,
+      "scrollMode": 0,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": true,
+      "unusedFlag": false,
+      "zPriority": 49,
+      "flags": 515
+    }
+  },
+  {
+    "fg": {
+      "data": "rno4_tilemap_57.bin",
+      "tiledef": "rno4_tiledef_rload.json",
+      "left": 35,
+      "top": 25,
+      "right": 35,
+      "bottom": 25,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": true,
+      "unusedFlag": false,
+      "zPriority": 50,
+      "flags": 515
+    }
+  },
+  {
+    "fg": {
+      "data": "rno4_tilemap_58.bin",
+      "tiledef": "rno4_tiledef_rsave.json",
+      "left": 20,
+      "top": 30,
+      "right": 20,
+      "bottom": 30,
+      "scrollMode": 0,
+      "hideOnMap": false,
+      "isSaveRoom": true,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 515
+    }
+  },
+  {
+    "fg": {
+      "data": "rno4_tilemap_59.bin",
+      "tiledef": "rno4_tiledef_rsave.json",
+      "left": 23,
+      "top": 26,
+      "right": 23,
+      "bottom": 26,
+      "scrollMode": 2,
+      "hideOnMap": false,
+      "isSaveRoom": true,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 515
+    }
+  },
+  {
+    "fg": {
+      "data": "rno4_tilemap_60.bin",
+      "tiledef": "rno4_tiledef_rsave.json",
+      "left": 23,
+      "top": 36,
+      "right": 23,
+      "bottom": 36,
+      "scrollMode": 2,
+      "hideOnMap": false,
+      "isSaveRoom": true,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 515
+    }
+  },
+  {
+    "fg": {
+      "data": "rno4_tilemap_61.bin",
+      "tiledef": "rno4_tiledef_rsave.json",
+      "left": 18,
+      "top": 30,
+      "right": 18,
+      "bottom": 30,
+      "scrollMode": 2,
+      "hideOnMap": false,
+      "isSaveRoom": true,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 515
+    }
+  }
+]

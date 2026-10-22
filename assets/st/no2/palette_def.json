@@ -1,0 +1,62 @@
+{
+  "cluts": [
+    0
+  ],
+  "defs": [
+    {
+      "kind": 5,
+      "entries": [
+        {
+          "destination": 8192,
+          "length": 48,
+          "name": "e_skelerang_pal.palbin"
+        },
+        {
+          "destination": 8240,
+          "length": 32,
+          "name": "D_80194548.palbin"
+        },
+        {
+          "destination": 8304,
+          "length": 48,
+          "name": "e_valhalla_knight_pal.palbin"
+        },
+        {
+          "destination": 8624,
+          "length": 16,
+          "name": "D_80194588.palbin"
+        },
+        {
+          "destination": 8640,
+          "length": 112,
+          "name": "e_owl_knight_pal.palbin"
+        },
+        {
+          "destination": 8752,
+          "length": 48,
+          "name": "e_bloody_zombie_pal.palbin"
+        },
+        {
+          "destination": 8800,
+          "length": 288,
+          "name": "D_801946E8.palbin"
+        },
+        {
+          "destination": 9088,
+          "length": 144,
+          "name": "D_80194A08.palbin"
+        },
+        {
+          "destination": 9232,
+          "length": 256,
+          "name": "e_spectral_sword_pal.palbin"
+        },
+        {
+          "destination": 9488,
+          "length": 128,
+          "name": "e_breakable_pal.palbin"
+        }
+      ]
+    }
+  ]
+}

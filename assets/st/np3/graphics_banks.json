@@ -1,0 +1,248 @@
+{
+  "banks": [
+    {
+      "kind": 0,
+      "entries": [
+        {}
+      ]
+    },
+    {
+      "kind": 4,
+      "entries": [
+        {
+          "x": 256,
+          "y": 64,
+          "width": 128,
+          "height": 128,
+          "name": "stage_title_np3_jp"
+        },
+        {
+          "x": 256,
+          "y": 96,
+          "width": 128,
+          "height": 128,
+          "name": "stage_placeholder_np3"
+        }
+      ]
+    },
+    {
+      "kind": 4,
+      "entries": [
+        {
+          "x": 256,
+          "y": 128,
+          "width": 128,
+          "height": 128,
+          "name": "e_slogra_g0"
+        },
+        {
+          "x": 256,
+          "y": 160,
+          "width": 128,
+          "height": 128,
+          "name": "e_slogra_g1"
+        },
+        {
+          "x": 384,
+          "y": 128,
+          "width": 128,
+          "height": 128,
+          "name": "e_slogra_g2"
+        },
+        {
+          "x": 256,
+          "y": 192,
+          "width": 128,
+          "height": 128,
+          "name": "e_gaibon_g0"
+        },
+        {
+          "x": 256,
+          "y": 224,
+          "width": 128,
+          "height": 128,
+          "name": "e_gaibon_g1"
+        },
+        {
+          "x": 384,
+          "y": 288,
+          "width": 128,
+          "height": 128,
+          "name": "e_explosion_g"
+        }
+      ]
+    },
+    {
+      "kind": 4,
+      "entries": [
+        {
+          "x": 256,
+          "y": 128,
+          "width": 128,
+          "height": 128,
+          "name": "e_merman_g0"
+        },
+        {
+          "x": 256,
+          "y": 160,
+          "width": 128,
+          "height": 128,
+          "name": "e_merman_g1"
+        },
+        {
+          "x": 384,
+          "y": 128,
+          "width": 128,
+          "height": 128,
+          "name": "e_merman_g2"
+        },
+        {
+          "x": 384,
+          "y": 160,
+          "width": 128,
+          "height": 128,
+          "name": "e_merman_g3"
+        },
+        {
+          "x": 256,
+          "y": 192,
+          "width": 128,
+          "height": 128,
+          "name": "e_ghost_bat_g"
+        },
+        {
+          "x": 384,
+          "y": 288,
+          "width": 128,
+          "height": 128,
+          "name": "e_explosion_g"
+        }
+      ]
+    },
+    {
+      "kind": 4,
+      "entries": [
+        {
+          "x": 256,
+          "y": 128,
+          "width": 128,
+          "height": 128,
+          "name": "e_slinger_g"
+        },
+        {
+          "x": 384,
+          "y": 128,
+          "width": 128,
+          "height": 128,
+          "name": "e_bloody_zombie_g"
+        },
+        {
+          "x": 384,
+          "y": 288,
+          "width": 128,
+          "height": 128,
+          "name": "e_explosion_g"
+        }
+      ]
+    },
+    {
+      "kind": 4,
+      "entries": [
+        {
+          "x": 256,
+          "y": 160,
+          "width": 128,
+          "height": 128,
+          "name": "e_owlknight_g0"
+        },
+        {
+          "x": 384,
+          "y": 128,
+          "width": 128,
+          "height": 128,
+          "name": "e_owlknight_g1"
+        },
+        {
+          "x": 384,
+          "y": 160,
+          "width": 128,
+          "height": 128,
+          "name": "e_owlknight_g2"
+        },
+        {
+          "x": 384,
+          "y": 288,
+          "width": 128,
+          "height": 128,
+          "name": "e_explosion_g"
+        }
+      ]
+    },
+    {
+      "kind": 4,
+      "entries": [
+        {
+          "x": 384,
+          "y": 128,
+          "width": 128,
+          "height": 128,
+          "name": "e_bloody_zombie_g"
+        },
+        {
+          "x": 256,
+          "y": 224,
+          "width": 128,
+          "height": 128,
+          "name": "e_zombie_g"
+        },
+        {
+          "x": 384,
+          "y": 288,
+          "width": 128,
+          "height": 128,
+          "name": "e_explosion_g"
+        }
+      ]
+    },
+    {
+      "kind": 4,
+      "entries": [
+        {
+          "x": 256,
+          "y": 192,
+          "width": 128,
+          "height": 128,
+          "name": "e_gurkha_g"
+        },
+        {
+          "x": 384,
+          "y": 288,
+          "width": 128,
+          "height": 128,
+          "name": "e_explosion_g"
+        }
+      ]
+    }
+  ],
+  "indices": [
+    0,
+    2,
+    3,
+    4,
+    5,
+    1,
+    6,
+    7,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

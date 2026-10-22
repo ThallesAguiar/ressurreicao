@@ -1,0 +1,167 @@
+{
+  "cluts": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    11,
+    9,
+    10
+  ],
+  "defs": [
+    {
+      "kind": 5,
+      "entries": [
+        {
+          "destination": 8192,
+          "length": 96,
+          "name": "pal_granfaloon.palbin"
+        },
+        {
+          "destination": 11776,
+          "length": 256,
+          "name": "pal_explosion_flame.palbin"
+        }
+      ]
+    },
+    {
+      "kind": 3,
+      "freq": 2,
+      "destination": 752,
+      "count": 16,
+      "data": [
+        {
+          "name": "pal_8C.palbin"
+        },
+        {
+          "name": "pal_AC.palbin"
+        }
+      ]
+    },
+    {
+      "kind": 3,
+      "freq": 1,
+      "destination": 1984,
+      "count": 48,
+      "data": [
+        {
+          "name": "pal_CC.palbin"
+        },
+        {
+          "name": "pal_12C.palbin"
+        },
+        {
+          "name": "pal_18C.palbin"
+        },
+        {
+          "name": "pal_1EC.palbin"
+        }
+      ]
+    },
+    {
+      "kind": 3,
+      "freq": 2,
+      "destination": 2320,
+      "count": 16,
+      "data": [
+        {
+          "name": "pal_24C.palbin"
+        },
+        {
+          "name": "pal_26C.palbin"
+        }
+      ]
+    },
+    {
+      "kind": 5,
+      "entries": [
+        {
+          "destination": 2320,
+          "length": 16,
+          "name": "pal_2CC.palbin"
+        }
+      ]
+    },
+    {
+      "kind": 3,
+      "freq": 2,
+      "destination": 2400,
+      "count": 16,
+      "data": [
+        {
+          "name": "pal_2EC.palbin"
+        },
+        {
+          "name": "pal_30C.palbin"
+        }
+      ]
+    },
+    {
+      "kind": 5,
+      "entries": [
+        {
+          "destination": 2400,
+          "length": 16,
+          "name": "pal_32C.palbin"
+        }
+      ]
+    },
+    {
+      "kind": 5,
+      "entries": [
+        {
+          "destination": 2368,
+          "length": 16,
+          "name": "pal_34C.palbin"
+        }
+      ]
+    },
+    {
+      "kind": 5,
+      "entries": [
+        {
+          "destination": 2496,
+          "length": 16,
+          "name": "pal_38C.palbin"
+        }
+      ]
+    },
+    {
+      "kind": 5,
+      "entries": [
+        {
+          "length": 16,
+          "name": "pal_3CC.palbin"
+        }
+      ]
+    },
+    {
+      "kind": 5,
+      "entries": [
+        {
+          "length": 16,
+          "name": "pal_3EC.palbin"
+        }
+      ]
+    },
+    {
+      "kind": 3,
+      "freq": 7,
+      "destination": 2560,
+      "count": 80,
+      "data": [
+        {
+          "name": "pal_40C.palbin"
+        },
+        {
+          "name": "pal_4CC.palbin"
+        }
+      ]
+    }
+  ]
+}

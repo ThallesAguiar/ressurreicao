@@ -1,0 +1,6 @@
+{
+  "tiles": "bo1_tiledef_bo1_tiles.bin",
+  "pages": "bo1_tiledef_bo1_pages.bin",
+  "cluts": "bo1_tiledef_bo1_cluts.bin",
+  "collisions": "bo1_tiledef_bo1_cols.bin"
+}

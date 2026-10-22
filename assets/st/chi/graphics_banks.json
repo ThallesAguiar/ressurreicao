@@ -1,0 +1,141 @@
+{
+  "banks": [
+    {
+      "kind": 0,
+      "entries": [
+        {}
+      ]
+    },
+    {
+      "kind": 4,
+      "entries": [
+        {
+          "x": 256,
+          "y": 64,
+          "width": 128,
+          "height": 128,
+          "name": "bn_gfx_stage_name_en"
+        },
+        {
+          "x": 256,
+          "y": 96,
+          "width": 128,
+          "height": 128,
+          "name": "bn_gfx_stage_name_jp_lg"
+        }
+      ]
+    },
+    {
+      "kind": 4,
+      "entries": [
+        {
+          "x": 256,
+          "y": 128,
+          "width": 128,
+          "height": 128,
+          "name": "bn_gfx_gremlin"
+        }
+      ]
+    },
+    {
+      "kind": 4,
+      "entries": [
+        {
+          "x": 256,
+          "y": 128,
+          "width": 128,
+          "height": 128,
+          "name": "bn_gfx_gremlin"
+        }
+      ]
+    },
+    {
+      "kind": 4,
+      "entries": [
+        {
+          "x": 256,
+          "y": 128,
+          "width": 128,
+          "height": 128,
+          "name": "bn_gfx_salem_witch_1"
+        },
+        {
+          "x": 256,
+          "y": 160,
+          "width": 128,
+          "height": 128,
+          "name": "bn_gfx_salem_witch_2"
+        },
+        {
+          "x": 384,
+          "y": 128,
+          "width": 128,
+          "height": 128,
+          "name": "bn_gfx_salem_witch_4"
+        },
+        {
+          "x": 384,
+          "y": 160,
+          "width": 128,
+          "height": 128,
+          "name": "bn_gfx_salem_witch_5"
+        },
+        {
+          "x": 256,
+          "y": 448,
+          "width": 128,
+          "height": 128,
+          "name": "bn_gfx_salem_witch_3"
+        }
+      ]
+    },
+    {
+      "kind": 4,
+      "entries": [
+        {
+          "x": 256,
+          "y": 192,
+          "width": 128,
+          "height": 128,
+          "name": "bn_gfx_thornweed_corpseweed"
+        },
+        {
+          "x": 256,
+          "y": 256,
+          "width": 128,
+          "height": 128,
+          "name": "bn_gfx_venus_weed_1"
+        },
+        {
+          "x": 256,
+          "y": 288,
+          "width": 128,
+          "height": 128,
+          "name": "bn_gfx_venus_weed_2"
+        }
+      ]
+    }
+  ],
+  "indices": [
+    0,
+    1,
+    2,
+    4,
+    5,
+    3,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

@@ -1,0 +1,1150 @@
+BP_0:
+  entity: E_EXPLOSION
+  amount: 5
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 2
+  kind: B_KIND_0
+  origin: B_ORIGIN_4
+  timerDelay: 0
+BP_1:
+  entity: E_EXPLOSION
+  amount: 3
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 4
+  kind: B_KIND_0
+  origin: B_ORIGIN_8
+  timerDelay: 16
+BP_GRAVITY_BOOT_BEAM:
+  entity: E_PRIZE_DROP
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_0
+  origin: B_ORIGIN_4
+  timerDelay: 0
+BP_KNIFE:
+  entity: E_NUMERIC_DAMAGE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_2
+  origin: B_ORIGIN_4
+  timerDelay: 0
+BP_4:
+  entity: E_RED_DOOR
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_0
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_5:
+  entity: E_NONE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_6
+  origin: B_ORIGIN_10
+  timerDelay: 0
+BP_CRASH_CROSS:
+  entity: E_NONE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_2
+  origin: B_ORIGIN_2
+  timerDelay: 0
+BP_CRASH_CROSS_CROSSES_ONLY:
+  entity: E_NONE
+  amount: 6
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 24
+  kind: B_KIND_2
+  origin: B_ORIGIN_2
+  timerDelay: 0
+BP_CRASH_CROSS_BLUE_PARTICLES:
+  entity: E_NONE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_2
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_AXE:
+  entity: E_NONE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_2
+  origin: B_ORIGIN_4
+  timerDelay: 0
+BP_REBOUND_STONE_HIT:
+  entity: E_RED_DOOR
+  amount: 3
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 3
+  kind: B_KIND_0
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_11:
+  entity: E_RED_DOOR
+  amount: 3
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 3
+  kind: B_KIND_0
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_12:
+  entity: E_EXPLOSION
+  amount: 6
+  nPerCycle: 6
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_0
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_13:
+  entity: E_RED_DOOR
+  amount: 2
+  nPerCycle: 2
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_0
+  origin: B_ORIGIN_4
+  timerDelay: 0
+BP_14:
+  entity: E_RED_DOOR
+  amount: 16
+  nPerCycle: 2
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 5
+  kind: B_KIND_0
+  origin: B_ORIGIN_4
+  timerDelay: 0
+BP_15:
+  entity: E_EXPLOSION
+  amount: 8
+  nPerCycle: 2
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 1
+  kind: B_KIND_0
+  origin: B_ORIGIN_4
+  timerDelay: 0
+BP_16:
+  entity: E_EXPLOSION
+  amount: 10
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 2
+  kind: B_KIND_0
+  origin: B_ORIGIN_12
+  timerDelay: 0
+BP_17:
+  entity: E_ID_10
+  amount: 6
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 12
+  kind: B_KIND_0
+  origin: B_ORIGIN_14
+  timerDelay: 0
+BP_18:
+  entity: E_ID_10
+  amount: 128
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 3
+  kind: B_KIND_0
+  origin: B_ORIGIN_14
+  timerDelay: 16
+BP_19:
+  entity: E_ID_10
+  amount: 5
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 3
+  kind: B_KIND_0
+  origin: B_ORIGIN_14
+  timerDelay: 0
+BP_20:
+  entity: E_RED_DOOR
+  amount: 12
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 2
+  kind: B_KIND_0
+  origin: B_ORIGIN_14
+  timerDelay: 0
+BP_21:
+  entity: E_RED_DOOR
+  amount: 6
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 2
+  kind: B_KIND_0
+  origin: B_ORIGIN_14
+  timerDelay: 0
+BP_22:
+  entity: E_NONE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_2
+  origin: B_ORIGIN_4
+  timerDelay: 0
+BP_23:
+  entity: E_NONE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_0
+  origin: B_ORIGIN_4
+  timerDelay: 0
+BP_REBOUND_STONE:
+  entity: E_EXPLOSION_VARIANTS
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_2
+  origin: B_ORIGIN_4
+  timerDelay: 0
+BP_LEVEL_UP_TEXT:
+  entity: E_NONE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: false
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_0
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_VIBHUTI:
+  entity: E_NONE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_2
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_HOLYWATER:
+  entity: E_NONE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_2
+  origin: B_ORIGIN_4
+  timerDelay: 0
+BP_HOLYWATER_GREEN_FIRE:
+  entity: E_NONE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_2
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_29:
+  entity: E_EXPLOSION
+  amount: 24
+  nPerCycle: 2
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 2
+  kind: B_KIND_0
+  origin: B_ORIGIN_12
+  timerDelay: 0
+BP_30:
+  entity: E_EXPLOSION
+  amount: 8
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 2
+  kind: B_KIND_0
+  origin: B_ORIGIN_12
+  timerDelay: 0
+BP_31:
+  entity: E_EXPLOSION
+  amount: 4
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 2
+  kind: B_KIND_0
+  origin: B_ORIGIN_12
+  timerDelay: 0
+BP_32:
+  entity: E_NONE
+  amount: 24
+  nPerCycle: 2
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 2
+  kind: B_KIND_0
+  origin: B_ORIGIN_12
+  timerDelay: 0
+BP_HELLFIRE:
+  entity: E_NONE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_2
+  origin: B_ORIGIN_2
+  timerDelay: 0
+BP_HELLFIRE_SMALL_FIREBALL:
+  entity: E_NONE
+  amount: 3
+  nPerCycle: 3
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_2
+  origin: B_ORIGIN_4
+  timerDelay: 57
+BP_HELLFIRE_BIG_FIREBALL:
+  entity: E_NONE
+  amount: 2
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 16
+  kind: B_KIND_2
+  origin: B_ORIGIN_4
+  timerDelay: 53
+BP_36:
+  entity: E_NONE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_2
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_37:
+  entity: E_NONE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_2
+  origin: B_ORIGIN_4
+  timerDelay: 0
+BP_38:
+  entity: E_NONE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_2
+  origin: B_ORIGIN_2
+  timerDelay: 0
+BP_39:
+  entity: E_ID_20
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: false
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_0
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_RIPPLE_OUTLINE:
+  entity: E_ID_1F
+  amount: 6
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 5
+  kind: B_KIND_0
+  origin: B_ORIGIN_4
+  timerDelay: 0
+BP_41:
+  entity: E_NONE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 1
+  kind: B_KIND_0
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_42:
+  entity: E_NONE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_3
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_43:
+  entity: E_NONE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_3
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_BLINK_WHITE:
+  entity: E_RELIC_ORB
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_0
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_45:
+  entity: E_ID_1E
+  amount: 4
+  nPerCycle: 4
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_0
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_HIT_BY_ICE:
+  entity: E_ID_21
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_0
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_47:
+  entity: E_NONE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_0
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_48:
+  entity: E_ID_37
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_3
+  origin: B_ORIGIN_4
+  timerDelay: 0
+BP_49:
+  entity: E_RED_DOOR
+  amount: 56
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 3
+  kind: B_KIND_0
+  origin: B_ORIGIN_5
+  timerDelay: 0
+BP_50:
+  entity: E_NONE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_6
+  origin: B_ORIGIN_4
+  timerDelay: 0
+BP_51:
+  entity: E_ID_10
+  amount: 88
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 2
+  kind: B_KIND_0
+  origin: B_ORIGIN_5
+  timerDelay: 16
+BP_52:
+  entity: E_NONE
+  amount: 4
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 4
+  kind: B_KIND_6
+  origin: B_ORIGIN_4
+  timerDelay: 0
+BP_53:
+  entity: E_NONE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_0
+  origin: B_ORIGIN_4
+  timerDelay: 0
+BP_54:
+  entity: E_FACTORY
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_3
+  origin: B_ORIGIN_4
+  timerDelay: 0
+BP_55:
+  entity: E_NONE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_0
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_56:
+  entity: E_FACTORY
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_6
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_57:
+  entity: E_ID_1F
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 1
+  kind: B_KIND_0
+  origin: B_ORIGIN_4
+  timerDelay: 0
+BP_58:
+  entity: E_FACTORY
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_0
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_59:
+  entity: E_NONE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_0
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_60:
+  entity: E_EXPLOSION
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_3
+  origin: B_ORIGIN_4
+  timerDelay: 0
+BP_61:
+  entity: E_ID_1F
+  amount: 3
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 5
+  kind: B_KIND_0
+  origin: B_ORIGIN_4
+  timerDelay: 0
+BP_62:
+  entity: E_EXPLOSION
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_6
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_63:
+  entity: E_RED_DOOR
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_6
+  origin: B_ORIGIN_4
+  timerDelay: 0
+BP_64:
+  entity: E_EXPLOSION
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_0
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_WING_SMASH_TRAIL:
+  entity: E_ID_23
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_0
+  origin: B_ORIGIN_4
+  timerDelay: 0
+BP_66:
+  entity: E_PRIZE_DROP
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_3
+  origin: B_ORIGIN_4
+  timerDelay: 0
+BP_67:
+  entity: E_ID_24
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_6
+  origin: B_ORIGIN_10
+  timerDelay: 0
+BP_68:
+  entity: E_PRIZE_DROP
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_6
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_69:
+  entity: E_EXPLOSION
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_0
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_70:
+  entity: E_PRIZE_DROP
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_1
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_71:
+  entity: E_NONE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_2
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_72:
+  entity: E_FACTORY
+  amount: 5
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 3
+  kind: B_KIND_6
+  origin: B_ORIGIN_4
+  timerDelay: 0
+BP_73:
+  entity: E_MIST
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_3
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_74:
+  entity: E_FACTORY
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_4
+  origin: B_ORIGIN_4
+  timerDelay: 0
+BP_STOPWATCH_ACTIVATE:
+  entity: E_NONE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_0
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_76:
+  entity: E_NUMERIC_DAMAGE
+  amount: 14
+  nPerCycle: 2
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 3
+  kind: B_KIND_0
+  origin: B_ORIGIN_1
+  timerDelay: 0
+BP_77:
+  entity: E_NONE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_2
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_78:
+  entity: E_NUMERIC_DAMAGE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_6
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_79:
+  entity: E_NONE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_0
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_80:
+  entity: E_EXPLOSION
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_5
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_BAT_FIREBALL:
+  entity: E_NONE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_2
+  origin: B_ORIGIN_4
+  timerDelay: 0
+BP_82:
+  entity: E_EXPLOSION
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_6
+  origin: B_ORIGIN_4
+  timerDelay: 0
+BP_83:
+  entity: E_NONE
+  amount: 17
+  nPerCycle: 17
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_2
+  origin: B_ORIGIN_4
+  timerDelay: 0
+BP_84:
+  entity: E_EXPLOSION
+  amount: 4
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 2
+  kind: B_KIND_2
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_85:
+  entity: E_NONE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: false
+  timerCycle: 0
+  kind: B_KIND_0
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_86:
+  entity: E_ROOM_FOREGROUND
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_6
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_87:
+  entity: E_NONE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_3
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_88:
+  entity: E_STAGE_NAME_POPUP
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_6
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_89:
+  entity: E_RED_DOOR
+  amount: 3
+  nPerCycle: 3
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_2
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_90:
+  entity: E_STAGE_NAME_POPUP
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_0
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_91:
+  entity: E_FACTORY
+  amount: 8
+  nPerCycle: 8
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_6
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_92:
+  entity: E_STAGE_NAME_POPUP
+  amount: 8
+  nPerCycle: 8
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_6
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_93:
+  entity: E_PRIZE_DROP
+  amount: 8
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 1
+  kind: B_KIND_6
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_94:
+  entity: E_EQUIP_ITEM_DROP
+  amount: 24
+  nPerCycle: 24
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_0
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_95:
+  entity: E_NUMERIC_DAMAGE
+  amount: 8
+  nPerCycle: 8
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_1
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 4
+BP_96:
+  entity: E_STAGE_NAME_POPUP
+  amount: 32
+  nPerCycle: 32
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 1
+  kind: B_KIND_0
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_97:
+  entity: E_NUMERIC_DAMAGE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_0
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_98:
+  entity: E_STAGE_NAME_POPUP
+  amount: 2
+  nPerCycle: 2
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_6
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_SMALL_RISING_HEART:
+  entity: E_NONE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_0
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_100:
+  entity: E_EQUIP_ITEM_DROP
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_1
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_101:
+  entity: E_RED_DOOR
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_1
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_102:
+  entity: E_STAGE_NAME_POPUP
+  amount: 3
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 6
+  kind: B_KIND_6
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_BAT_ECHO:
+  entity: E_NONE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_1
+  origin: B_ORIGIN_1
+  timerDelay: 0
+BP_104:
+  entity: E_RED_DOOR
+  amount: 3
+  nPerCycle: 3
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_1
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_105:
+  entity: E_RED_DOOR
+  amount: 3
+  nPerCycle: 3
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_1
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_106:
+  entity: E_NUMERIC_DAMAGE
+  amount: 2
+  nPerCycle: 2
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_1
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_107:
+  entity: E_NUMERIC_DAMAGE
+  amount: 2
+  nPerCycle: 2
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_1
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_108:
+  entity: E_RED_DOOR
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_1
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_109:
+  entity: E_RED_DOOR
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_1
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_110:
+  entity: E_NUMERIC_DAMAGE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_5
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_111:
+  entity: E_NUMERIC_DAMAGE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_5
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0
+BP_112:
+  entity: E_NONE
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_1
+  origin: B_ORIGIN_1
+  timerDelay: 0
+BP_113:
+  entity: E_ID_36
+  amount: 96
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 4
+  kind: B_KIND_0
+  origin: B_ORIGIN_14
+  timerDelay: 0
+BP_114:
+  entity: E_ID_2F
+  amount: 1
+  nPerCycle: 1
+  isNonCritical: true
+  incParamsKind: true
+  timerCycle: 0
+  kind: B_KIND_0
+  origin: B_ORIGIN_DEFAULT
+  timerDelay: 0

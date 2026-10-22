@@ -1,0 +1,4 @@
+events:
+  - [0, SPAWN_ENTITY, 0x81, E_UNK4D, 128, 128]
+  - [0, SPAWN_ENTITY, 0x82, E_UNK4C, 0, 131]
+  - [END]

@@ -1,0 +1,6 @@
+{
+  "tiles": "no4_tiledef_save_tiles.bin",
+  "pages": "no4_tiledef_save_pages.bin",
+  "cluts": "no4_tiledef_save_cluts.bin",
+  "collisions": "no4_tiledef_save_cols.bin"
+}

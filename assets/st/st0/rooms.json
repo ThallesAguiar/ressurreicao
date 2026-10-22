@@ -1,0 +1,42 @@
+[
+  {
+    "left": 0,
+    "top": 2,
+    "right": 4,
+    "bottom": 3,
+    "layerId": 0,
+    "tileDefId": 0,
+    "entityGfxId": 2,
+    "entityLayoutId": 1
+  },
+  {
+    "left": 0,
+    "top": 0,
+    "right": 2,
+    "bottom": 0,
+    "layerId": 1,
+    "tileDefId": 0,
+    "entityGfxId": 0,
+    "entityLayoutId": 2
+  },
+  {
+    "left": 0,
+    "top": 4,
+    "right": 0,
+    "bottom": 4,
+    "layerId": 2,
+    "tileDefId": 0,
+    "entityGfxId": 0,
+    "entityLayoutId": 3
+  },
+  {
+    "left": 1,
+    "top": 1,
+    "right": 2,
+    "bottom": 1,
+    "layerId": 3,
+    "tileDefId": 0,
+    "entityGfxId": 0,
+    "entityLayoutId": 4
+  }
+]

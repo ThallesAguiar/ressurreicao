@@ -1,0 +1,32 @@
+{
+  "cluts": [
+    0
+  ],
+  "defs": [
+    {
+      "kind": 5,
+      "entries": [
+        {
+          "destination": 8192,
+          "length": 128,
+          "name": "D_8018658C.palbin"
+        },
+        {
+          "destination": 8320,
+          "length": 128,
+          "name": "D_8018678C.palbin"
+        },
+        {
+          "destination": 8448,
+          "length": 16,
+          "name": "e_maria_cen_p.palbin"
+        },
+        {
+          "destination": 8752,
+          "length": 32,
+          "name": "e_elevator_cen_p.palbin"
+        }
+      ]
+    }
+  ]
+}

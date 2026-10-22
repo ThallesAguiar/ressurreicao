@@ -1,0 +1,109 @@
+{
+  "banks": [
+    [
+      null,
+      [
+        {
+          "flags": 0,
+          "x": -4,
+          "y": -4,
+          "width": 8,
+          "height": 8,
+          "clut": 6,
+          "tileset": 60,
+          "left": 128,
+          "top": 128,
+          "right": 136,
+          "bottom": 136
+        }
+      ],
+      [
+        {
+          "flags": 0,
+          "x": -4,
+          "y": -4,
+          "width": 8,
+          "height": 8,
+          "clut": 6,
+          "tileset": 60,
+          "left": 128,
+          "top": 136,
+          "right": 136,
+          "bottom": 144
+        }
+      ],
+      [
+        {
+          "flags": 0,
+          "x": -4,
+          "y": -8,
+          "width": 8,
+          "height": 16,
+          "clut": 6,
+          "tileset": 60,
+          "left": 128,
+          "top": 144,
+          "right": 136,
+          "bottom": 160
+        }
+      ],
+      [
+        {
+          "flags": 0,
+          "x": -8,
+          "y": -8,
+          "width": 16,
+          "height": 16,
+          "clut": 6,
+          "tileset": 60,
+          "left": 136,
+          "top": 128,
+          "right": 152,
+          "bottom": 144
+        }
+      ],
+      [
+        {
+          "flags": 0,
+          "x": -8,
+          "y": -8,
+          "width": 16,
+          "height": 16,
+          "clut": 6,
+          "tileset": 60,
+          "left": 136,
+          "top": 144,
+          "right": 152,
+          "bottom": 160
+        }
+      ],
+      null
+    ]
+  ],
+  "indices": [
+    -1,
+    0,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1
+  ]
+}

@@ -1,0 +1,1458 @@
+- name: ----
+  description: Unequip
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 184
+  icon_palette: 184
+  equip_type: 1
+- name: Cloth tunic
+  description: Simple cloth tunic
+  attack_bonus: 0
+  defense_bonus: 1
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 185
+  icon_palette: 185
+  equip_type: 1
+- name: Hide cuirass
+  description: Tanned leather cuirass
+  attack_bonus: 0
+  defense_bonus: 2
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 186
+  icon_palette: 186
+  equip_type: 1
+- name: Bronze cuirass
+  description: Bronze cuirass
+  attack_bonus: 0
+  defense_bonus: 3
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 187
+  icon_palette: 187
+  equip_type: 1
+- name: Iron cuirass
+  description: Iron cuirass
+  attack_bonus: 0
+  defense_bonus: 4
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 188
+  icon_palette: 188
+  equip_type: 1
+- name: Steel cuirass
+  description: Steel cuirass
+  attack_bonus: 0
+  defense_bonus: 5
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 189
+  icon_palette: 189
+  equip_type: 1
+- name: Silver plate
+  description: Silver breastplate
+  attack_bonus: 0
+  defense_bonus: 6
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 190
+  icon_palette: 190
+  equip_type: 1
+- name: Gold plate
+  description: Gold breastplate
+  attack_bonus: 0
+  defense_bonus: 8
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 191
+  icon_palette: 191
+  equip_type: 1
+- name: Platinum mail
+  description: Platinum breastplate
+  attack_bonus: 0
+  defense_bonus: 10
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 192
+  icon_palette: 192
+  equip_type: 1
+- name: Diamond plate
+  description: Diamond breastplate
+  attack_bonus: 0
+  defense_bonus: 15
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 193
+  icon_palette: 193
+  equip_type: 1
+- name: Fire mail
+  description: Strong vs． fire－based attacks
+  attack_bonus: 0
+  defense_bonus: 4
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements:
+  - ELEMENT_FIRE
+  immune_elements: []
+  absorb_elements: []
+  icon: 194
+  icon_palette: 194
+  equip_type: 1
+- name: Lightning mail
+  description: Strong vs． lightning attacks
+  attack_bonus: 0
+  defense_bonus: 8
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements:
+  - ELEMENT_THUNDER
+  immune_elements: []
+  absorb_elements: []
+  icon: 195
+  icon_palette: 195
+  equip_type: 1
+- name: Ice mail
+  description: Strong vs． ice－based attacks
+  attack_bonus: 0
+  defense_bonus: 8
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements:
+  - ELEMENT_ICE
+  immune_elements: []
+  absorb_elements: []
+  icon: 196
+  icon_palette: 196
+  equip_type: 1
+- name: Mirror cuirass
+  description: Polished to resist stoning
+  attack_bonus: 0
+  defense_bonus: 3
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements:
+  - ELEMENT_STONE
+  absorb_elements: []
+  icon: 197
+  icon_palette: 197
+  equip_type: 1
+- name: Spike Breaker
+  description: Spike－breaking armor
+  attack_bonus: 0
+  defense_bonus: 12
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements:
+  - ELEMENT_UNK_10
+  absorb_elements: []
+  icon: 198
+  icon_palette: 198
+  equip_type: 1
+- name: Alucard mail
+  description: Resists fire， lightning， ice
+  attack_bonus: 0
+  defense_bonus: 20
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements:
+  - ELEMENT_ICE
+  - ELEMENT_THUNDER
+  - ELEMENT_FIRE
+  immune_elements: []
+  absorb_elements: []
+  icon: 199
+  icon_palette: 199
+  equip_type: 1
+- name: Dark armor
+  description: Impervious to evil attacks
+  attack_bonus: 0
+  defense_bonus: 8
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements:
+  - ELEMENT_HOLY
+  resist_elements: []
+  immune_elements:
+  - ELEMENT_DARK
+  absorb_elements: []
+  icon: 200
+  icon_palette: 200
+  equip_type: 1
+- name: Healing mail
+  description: Restores HP while walking
+  attack_bonus: 0
+  defense_bonus: 4
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 201
+  icon_palette: 201
+  equip_type: 1
+- name: Holy mail
+  description: Strong vs． holy attacks
+  attack_bonus: 0
+  defense_bonus: 11
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements:
+  - ELEMENT_HOLY
+  immune_elements: []
+  absorb_elements: []
+  icon: 202
+  icon_palette: 202
+  equip_type: 1
+- name: Walk armor
+  description: DEF increases with map coverage
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 0
+  - 0
+  - 251
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 203
+  icon_palette: 203
+  equip_type: 1
+- name: Brilliant mail
+  description: Increases sub－weapon strength
+  attack_bonus: 0
+  defense_bonus: 12
+  stats_bonus:
+  - 0
+  - 0
+  - 1
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 204
+  icon_palette: 204
+  equip_type: 1
+- name: Mojo mail
+  description: Increases magic attack power
+  attack_bonus: 0
+  defense_bonus: 15
+  stats_bonus:
+  - 0
+  - 0
+  - 1
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 205
+  icon_palette: 205
+  equip_type: 1
+- name: Fury plate
+  description: DEF goes up when damage taken
+  attack_bonus: 1
+  defense_bonus: 13
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 206
+  icon_palette: 206
+  equip_type: 1
+- name: Dracula tunic
+  description: Embroidered nobleman’s tunic
+  attack_bonus: 2
+  defense_bonus: 14
+  stats_bonus:
+  - 1
+  - 1
+  - 1
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 207
+  icon_palette: 207
+  equip_type: 1
+- name: God's Garb
+  description: Strongest of all armor
+  attack_bonus: 0
+  defense_bonus: 25
+  stats_bonus:
+  - 0
+  - 2
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 208
+  icon_palette: 208
+  equip_type: 1
+- name: Axe Lord armor
+  description: Wearer becomes an Axe Knight
+  attack_bonus: 2
+  defense_bonus: 15
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements:
+  - ELEMENT_STONE
+  absorb_elements: []
+  icon: 209
+  icon_palette: 209
+  equip_type: 1
+- name: ----
+  description: Unequip
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 159
+  icon_palette: 159
+  equip_type: 0
+- name: Sunglasses
+  description: Cool looking sunglasses
+  attack_bonus: 0
+  defense_bonus: 1
+  stats_bonus:
+  - 0
+  - 0
+  - 255
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 160
+  icon_palette: 160
+  equip_type: 0
+- name: Ballroom mask
+  description: Mask used at a ball
+  attack_bonus: 0
+  defense_bonus: 2
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 161
+  icon_palette: 161
+  equip_type: 0
+- name: Bandanna
+  description: Protects sensitive head parts
+  attack_bonus: 0
+  defense_bonus: 2
+  stats_bonus:
+  - 0
+  - 0
+  - 1
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 162
+  icon_palette: 162
+  equip_type: 0
+- name: Felt hat
+  description: Felt hat
+  attack_bonus: 0
+  defense_bonus: 1
+  stats_bonus:
+  - 0
+  - 0
+  - 1
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 163
+  icon_palette: 163
+  equip_type: 0
+- name: Velvet hat
+  description: Velvet hat
+  attack_bonus: 0
+  defense_bonus: 1
+  stats_bonus:
+  - 0
+  - 0
+  - 2
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 164
+  icon_palette: 164
+  equip_type: 0
+- name: Goggles
+  description: Comfortable eye protection
+  attack_bonus: 0
+  defense_bonus: 1
+  stats_bonus:
+  - 0
+  - 0
+  - 4
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 165
+  icon_palette: 165
+  equip_type: 0
+- name: Leather hat
+  description: Tanned leather hat
+  attack_bonus: 0
+  defense_bonus: 2
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 166
+  icon_palette: 166
+  equip_type: 0
+- name: Holy glasses
+  description: Sees beyond magical curses
+  attack_bonus: 0
+  defense_bonus: 1
+  stats_bonus:
+  - 0
+  - 0
+  - 5
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 167
+  icon_palette: 167
+  equip_type: 0
+- name: Steel helm
+  description: Standard adventurer’s helm
+  attack_bonus: 0
+  defense_bonus: 3
+  stats_bonus:
+  - 0
+  - 0
+  - 1
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 168
+  icon_palette: 168
+  equip_type: 0
+- name: Stone mask
+  description: Ancient ceremonial stone mask
+  attack_bonus: 0
+  defense_bonus: 2
+  stats_bonus:
+  - 0
+  - 0
+  - 4
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 169
+  icon_palette: 169
+  equip_type: 0
+- name: Circlet
+  description: Circlet
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 0
+  - 0
+  - 5
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 170
+  icon_palette: 170
+  equip_type: 0
+- name: Gold circlet
+  description: Restores HP by holy damage
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 0
+  - 0
+  - 6
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements:
+  - ELEMENT_HOLY
+  icon: 171
+  icon_palette: 171
+  equip_type: 0
+- name: Ruby circlet
+  description: Restores HP by fire damage
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 0
+  - 0
+  - 10
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements:
+  - ELEMENT_FIRE
+  icon: 172
+  icon_palette: 147
+  equip_type: 0
+- name: Opal circlet
+  description: Restores HP by ice damage
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 0
+  - 0
+  - 10
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements:
+  - ELEMENT_ICE
+  icon: 172
+  icon_palette: 151
+  equip_type: 0
+- name: Topaz circlet
+  description: Restores HP by poison damage
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 0
+  - 0
+  - 10
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements:
+  - ELEMENT_POISON
+  icon: 172
+  icon_palette: 149
+  equip_type: 0
+- name: Beryl circlet
+  description: Heals HP by lightning damage
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 0
+  - 0
+  - 10
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements:
+  - ELEMENT_THUNDER
+  icon: 173
+  icon_palette: 150
+  equip_type: 0
+- name: Cat-eye circl.
+  description: Big HP restore by cat damage
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 0
+  - 0
+  - 8
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 173
+  icon_palette: 149
+  equip_type: 0
+- name: "Coral circlet "
+  description: Immune to curses
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 0
+  - 0
+  - 7
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements:
+  - ELEMENT_CURSE
+  absorb_elements: []
+  icon: 170
+  icon_palette: 172
+  equip_type: 0
+- name: Dragon helm
+  description: Frightens enemy， lowers DEF
+  attack_bonus: 0
+  defense_bonus: 3
+  stats_bonus:
+  - 4
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 178
+  icon_palette: 178
+  equip_type: 0
+- name: Silver crown
+  description: Increases Intelligence
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 0
+  - 0
+  - 12
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 179
+  icon_palette: 179
+  equip_type: 0
+- name: Wizard hat
+  description: Wide－brimmed for protection
+  attack_bonus: 0
+  defense_bonus: 5
+  stats_bonus:
+  - 1
+  - 1
+  - 7
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 180
+  icon_palette: 180
+  equip_type: 0
+- name: ----
+  description: Unequip
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 215
+  icon_palette: 215
+  equip_type: 2
+- name: Cloth cape
+  description: Well－made but shabby looking
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 0
+  - 1
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 216
+  icon_palette: 216
+  equip_type: 2
+- name: Reverse cloak
+  description: Dual colored reversible cape
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 0
+  - 3
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 217
+  icon_palette: 217
+  equip_type: 2
+- name: Elven cloak
+  description: Perfect for forest camouflage
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 0
+  - 5
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 218
+  icon_palette: 218
+  equip_type: 2
+- name: Crystal cloak
+  description: "Enchanted semi－invisible cape "
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 0
+  - 6
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 219
+  icon_palette: 219
+  equip_type: 2
+- name: Royal cloak
+  description: Gorgeous blue cape
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 0
+  - 8
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 220
+  icon_palette: 220
+  equip_type: 2
+- name: Blood cloak
+  description: Converts damage to hearts
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 0
+  - 4
+  - 0
+  - 255
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 221
+  icon_palette: 221
+  equip_type: 2
+- name: Joseph's cloak
+  description: Select color ［System Menu］
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 0
+  - 9
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 222
+  icon_palette: 222
+  equip_type: 2
+- name: Twilight cloak
+  description: Black cape for vampires
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 0
+  - 10
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 223
+  icon_palette: 223
+  equip_type: 2
+- name: ----
+  description: Unequip
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 215
+  icon_palette: 215
+  equip_type: 3
+- name: Moonstone
+  description: Improves status after sunset
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 224
+  icon_palette: 224
+  equip_type: 3
+- name: Sunstone
+  description: Improves status after sunrise
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 225
+  icon_palette: 225
+  equip_type: 3
+- name: Bloodstone
+  description: Improves blood－healing ability
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 226
+  icon_palette: 226
+  equip_type: 3
+- name: Staurolite
+  description: Strengthens power of cross
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 227
+  icon_palette: 227
+  equip_type: 3
+- name: Ring of Pales
+  description: Ring with holy powers
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 1
+  - 1
+  - 1
+  - 1
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 228
+  icon_palette: 228
+  equip_type: 3
+- name: Zircon
+  description: Sparkling ring ［salable］
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 230
+  icon_palette: 150
+  equip_type: 3
+- name: Aquamarine
+  description: Fairly valuable ring ［salable］
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 230
+  icon_palette: 151
+  equip_type: 3
+- name: Turquoise
+  description: Fairly valuable ring ［salable］
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 230
+  icon_palette: 153
+  equip_type: 3
+- name: Onyx
+  description: Valuable ring ［salable］
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 230
+  icon_palette: 154
+  equip_type: 3
+- name: Garnet
+  description: Valuable ring ［salable］
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 230
+  icon_palette: 148
+  equip_type: 3
+- name: Opal
+  description: Valuable ring ［salable］
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 230
+  icon_palette: 149
+  equip_type: 3
+- name: Diamond
+  description: Highly valuable ring ［salable］
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 229
+  icon_palette: 229
+  equip_type: 3
+- name: Lapis lazuli
+  description: Jewel which brings luck
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 20
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 230
+  icon_palette: 145
+  equip_type: 3
+- name: Ring of Ares
+  description: Confers strength of ２４ men
+  attack_bonus: 0
+  defense_bonus: -24
+  stats_bonus:
+  - 24
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 237
+  icon_palette: 237
+  equip_type: 3
+- name: Gold Ring
+  description: Inscription ””Wear．．．Clock．．．””
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 239
+  icon_palette: 239
+  equip_type: 3
+- name: Silver Ring
+  description: Inscription ””．．．in．．．Tower””
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 238
+  icon_palette: 238
+  equip_type: 3
+- name: Ring of Varda
+  description: Golden ring to rule over all！
+  attack_bonus: 10
+  defense_bonus: 10
+  stats_bonus:
+  - 30
+  - 10
+  - 30
+  - 5
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 240
+  icon_palette: 240
+  equip_type: 3
+- name: Ring of Arcana
+  description: Increases rare item appearance
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 241
+  icon_palette: 149
+  equip_type: 3
+- name: Mystic pendant
+  description: Increases MP restoration rate
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 242
+  icon_palette: 242
+  equip_type: 3
+- name: Heart broach
+  description: Reduces heart consumption
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 243
+  icon_palette: 243
+  equip_type: 3
+- name: Necklace of J
+  description: DEF＋５
+  attack_bonus: 0
+  defense_bonus: 5
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 244
+  icon_palette: 244
+  equip_type: 3
+- name: Gauntlet
+  description: ATT＋５
+  attack_bonus: 5
+  defense_bonus: 0
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 245
+  icon_palette: 245
+  equip_type: 3
+- name: Ankh of Life
+  description: Improves heal item power
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 246
+  icon_palette: 246
+  equip_type: 3
+- name: Ring of Feanor
+  description: Increases overall strength
+  attack_bonus: 1
+  defense_bonus: 1
+  stats_bonus:
+  - 7
+  - 7
+  - 7
+  - 2
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 247
+  icon_palette: 247
+  equip_type: 3
+- name: Medal
+  description: DEF＋１ ATT ＋１
+  attack_bonus: 1
+  defense_bonus: 1
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 248
+  icon_palette: 248
+  equip_type: 3
+- name: Talisman
+  description: May absorb damage taken
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 249
+  icon_palette: 249
+  equip_type: 3
+- name: Duplicator
+  description: Duplicates ［use］ items
+  attack_bonus: 0
+  defense_bonus: -20
+  stats_bonus:
+  - 0
+  - 246
+  - 246
+  - 246
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 250
+  icon_palette: 250
+  equip_type: 3
+- name: King's stone
+  description: Gemstone buckle STR＋１０
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 10
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 251
+  icon_palette: 251
+  equip_type: 3
+- name: Covenant stone
+  description: Gemstone buckle STR＋１５
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 15
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 252
+  icon_palette: 252
+  equip_type: 3
+- name: Nauglamir
+  description: "Dwarven necklace DEF＋１５ "
+  attack_bonus: 0
+  defense_bonus: 15
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 253
+  icon_palette: 253
+  equip_type: 3
+- name: Secret boots
+  description: Discreetly increases height！
+  attack_bonus: 0
+  defense_bonus: 0
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 254
+  icon_palette: 254
+  equip_type: 3
+- name: Alucart mail
+  description: Resists fire， lightning， ice？
+  attack_bonus: 0
+  defense_bonus: 2
+  stats_bonus:
+  - 0
+  - 0
+  - 0
+  - 0
+  weak_to_elements: []
+  resist_elements: []
+  immune_elements: []
+  absorb_elements: []
+  icon: 199
+  icon_palette: 199
+  equip_type: 1

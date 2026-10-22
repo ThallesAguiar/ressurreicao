@@ -1,0 +1,52 @@
+[
+  {
+    "left": 41,
+    "top": 38,
+    "right": 45,
+    "bottom": 38,
+    "layerId": 0,
+    "tileDefId": 0,
+    "entityGfxId": 2,
+    "entityLayoutId": 28
+  },
+  {
+    "left": 40,
+    "top": 39,
+    "right": 40,
+    "bottom": 39,
+    "layerId": 1,
+    "tileDefId": 0,
+    "entityGfxId": 2,
+    "entityLayoutId": 29
+  },
+  {
+    "left": 41,
+    "top": 39,
+    "right": 45,
+    "bottom": 39,
+    "layerId": 2,
+    "tileDefId": 0,
+    "entityGfxId": 0,
+    "entityLayoutId": 30
+  },
+  {
+    "left": 40,
+    "top": 38,
+    "right": 40,
+    "bottom": 38,
+    "layerId": 3,
+    "tileDefId": 0,
+    "entityGfxId": 0,
+    "entityLayoutId": 25
+  },
+  {
+    "left": 39,
+    "top": 39,
+    "right": 39,
+    "bottom": 39,
+    "layerId": 110,
+    "tileDefId": -1,
+    "entityGfxId": 0,
+    "entityLayoutId": 0
+  }
+]

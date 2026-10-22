@@ -1,0 +1,51 @@
+{
+  "banks": [
+    {
+      "kind": 0,
+      "entries": [
+        {}
+      ]
+    },
+    {
+      "kind": 4,
+      "entries": [
+        {
+          "x": 256,
+          "y": 64,
+          "width": 128,
+          "height": 128,
+          "name": "stage_title_rwrp_jp"
+        },
+        {
+          "x": 256,
+          "y": 96,
+          "width": 128,
+          "height": 128,
+          "name": "stage_placeholder_rwrp"
+        }
+      ]
+    }
+  ],
+  "indices": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

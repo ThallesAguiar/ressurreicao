@@ -1,0 +1,62 @@
+{
+  "cluts": [
+    0
+  ],
+  "defs": [
+    {
+      "kind": 5,
+      "entries": [
+        {
+          "destination": 8192,
+          "length": 112,
+          "name": "e_dracula_p.palbin"
+        },
+        {
+          "destination": 8448,
+          "length": 32,
+          "name": "stage_title_p.palbin"
+        },
+        {
+          "destination": 8480,
+          "length": 128,
+          "name": "e_breakables_p.palbin"
+        },
+        {
+          "destination": 8608,
+          "length": 48,
+          "name": "D_8019AD70.palbin"
+        },
+        {
+          "destination": 8656,
+          "length": 80,
+          "name": "e_smoke_p.palbin"
+        },
+        {
+          "destination": 8736,
+          "length": 96,
+          "name": "D_8019AE70.palbin"
+        },
+        {
+          "destination": 8832,
+          "length": 112,
+          "name": "e_secret_stairs_p.palbin"
+        },
+        {
+          "destination": 8960,
+          "length": 128,
+          "name": "D_8019A830.palbin"
+        },
+        {
+          "destination": 9344,
+          "length": 128,
+          "name": "D_8019AA30.palbin"
+        },
+        {
+          "destination": 10240,
+          "length": 256,
+          "name": "bg_moon_p.palbin"
+        }
+      ]
+    }
+  ]
+}

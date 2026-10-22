@@ -1,0 +1,34 @@
+[
+  {
+    "bg": {
+      "data": "rbo5_tilemap_1.bin",
+      "tiledef": "rbo5_tiledef_rbo5.json",
+      "left": 23,
+      "top": 24,
+      "right": 23,
+      "bottom": 24,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 96,
+      "flags": 3
+    },
+    "fg": {
+      "data": "rbo5_tilemap_0.bin",
+      "tiledef": "rbo5_tiledef_rbo5.json",
+      "left": 23,
+      "top": 24,
+      "right": 23,
+      "bottom": 24,
+      "scrollMode": 1,
+      "hideOnMap": false,
+      "isSaveRoom": false,
+      "isLoadingRoom": false,
+      "unusedFlag": false,
+      "zPriority": 160,
+      "flags": 3
+    }
+  }
+]

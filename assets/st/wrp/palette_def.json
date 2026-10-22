@@ -1,0 +1,17 @@
+{
+  "cluts": [
+    0
+  ],
+  "defs": [
+    {
+      "kind": 5,
+      "entries": [
+        {
+          "destination": 8192,
+          "length": 16,
+          "name": "D_80181D08.palbin"
+        }
+      ]
+    }
+  ]
+}

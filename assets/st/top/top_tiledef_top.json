@@ -1,0 +1,6 @@
+{
+  "tiles": "top_tiledef_top_tiles.bin",
+  "pages": "top_tiledef_top_pages.bin",
+  "cluts": "top_tiledef_top_cluts.bin",
+  "collisions": "top_tiledef_top_cols.bin"
+}

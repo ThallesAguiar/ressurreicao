@@ -1,0 +1,172 @@
+[
+  {
+    "left": 40,
+    "top": 10,
+    "right": 40,
+    "bottom": 10,
+    "layerId": 0,
+    "tileDefId": 0,
+    "entityGfxId": 2,
+    "entityLayoutId": 1
+  },
+  {
+    "left": 41,
+    "top": 10,
+    "right": 43,
+    "bottom": 10,
+    "layerId": 1,
+    "tileDefId": 0,
+    "entityGfxId": 13,
+    "entityLayoutId": 2
+  },
+  {
+    "left": 42,
+    "top": 11,
+    "right": 42,
+    "bottom": 11,
+    "layerId": 2,
+    "tileDefId": 0,
+    "entityGfxId": 14,
+    "entityLayoutId": 3
+  },
+  {
+    "left": 43,
+    "top": 10,
+    "right": 49,
+    "bottom": 11,
+    "layerId": 3,
+    "tileDefId": 0,
+    "entityGfxId": 11,
+    "entityLayoutId": 4
+  },
+  {
+    "left": 49,
+    "top": 8,
+    "right": 53,
+    "bottom": 9,
+    "layerId": 4,
+    "tileDefId": 0,
+    "entityGfxId": 3,
+    "entityLayoutId": 5
+  },
+  {
+    "left": 49,
+    "top": 14,
+    "right": 49,
+    "bottom": 14,
+    "layerId": 5,
+    "tileDefId": 0,
+    "entityGfxId": 0,
+    "entityLayoutId": 7
+  },
+  {
+    "left": 50,
+    "top": 11,
+    "right": 50,
+    "bottom": 14,
+    "layerId": 6,
+    "tileDefId": 2,
+    "entityGfxId": 8,
+    "entityLayoutId": 8
+  },
+  {
+    "left": 51,
+    "top": 12,
+    "right": 51,
+    "bottom": 14,
+    "layerId": 7,
+    "tileDefId": 2,
+    "entityGfxId": 9,
+    "entityLayoutId": 15
+  },
+  {
+    "left": 52,
+    "top": 12,
+    "right": 52,
+    "bottom": 14,
+    "layerId": 8,
+    "tileDefId": 2,
+    "entityGfxId": 10,
+    "entityLayoutId": 16
+  },
+  {
+    "left": 50,
+    "top": 10,
+    "right": 52,
+    "bottom": 11,
+    "layerId": 9,
+    "tileDefId": 0,
+    "entityGfxId": 12,
+    "entityLayoutId": 6
+  },
+  {
+    "left": 53,
+    "top": 11,
+    "right": 58,
+    "bottom": 15,
+    "layerId": 10,
+    "tileDefId": 0,
+    "entityGfxId": 4,
+    "entityLayoutId": 9
+  },
+  {
+    "left": 59,
+    "top": 14,
+    "right": 59,
+    "bottom": 15,
+    "layerId": 11,
+    "tileDefId": 0,
+    "entityGfxId": 6,
+    "entityLayoutId": 10
+  },
+  {
+    "left": 59,
+    "top": 11,
+    "right": 59,
+    "bottom": 11,
+    "layerId": 12,
+    "tileDefId": 0,
+    "entityGfxId": 5,
+    "entityLayoutId": 12
+  },
+  {
+    "left": 60,
+    "top": 14,
+    "right": 60,
+    "bottom": 14,
+    "layerId": 13,
+    "tileDefId": 0,
+    "entityGfxId": 0,
+    "entityLayoutId": 51
+  },
+  {
+    "left": 39,
+    "top": 10,
+    "right": 39,
+    "bottom": 10,
+    "layerId": 14,
+    "tileDefId": 0,
+    "entityGfxId": 0,
+    "entityLayoutId": 52
+  },
+  {
+    "left": 38,
+    "top": 10,
+    "right": 38,
+    "bottom": 10,
+    "layerId": 9,
+    "tileDefId": -1,
+    "entityGfxId": 0,
+    "entityLayoutId": 0
+  },
+  {
+    "left": 61,
+    "top": 14,
+    "right": 61,
+    "bottom": 14,
+    "layerId": 10,
+    "tileDefId": -1,
+    "entityGfxId": 0,
+    "entityLayoutId": 0
+  }
+]

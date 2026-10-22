@@ -1,0 +1,6 @@
+{
+  "tiles": "rno4_tiledef_rno4_tiles.bin",
+  "pages": "rno4_tiledef_rno4_pages.bin",
+  "cluts": "rno4_tiledef_rno4_cluts.bin",
+  "collisions": "rno4_tiledef_rno4_cols.bin"
+}

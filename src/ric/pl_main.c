@@ -523,6 +523,13 @@ void RicMain(void) {
         }
 #endif
     }
+#ifdef VERSION_PC
+    // The wounded form cannot jump, including high jumps and slide kicks.
+    // Filter before edge detection so every jump input uses the same rule.
+    if (g_StageId == STAGE_ST0 && !IsPlayerRicGlorified()) {
+        g_Player.padPressed &= ~PAD_CROSS;
+    }
+#endif
     g_Player.padTapped =
         g_Player.padPressed & (g_Player.padHeld ^ g_Player.padPressed);
     if (PLAYER.step != PL_S_DEAD) {

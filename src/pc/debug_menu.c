@@ -5,6 +5,9 @@
 // so either entry point controls the same behavior.
 #include <game.h>
 #include "pc.h"
+
+// Release builds (native and web) must never expose the in-game debug menu.
+#ifndef NDEBUG
 #include <psxsdk/libgpu.h>
 #include <stdio.h>
 
@@ -103,3 +106,6 @@ void DebugMenu_Update(void) {
     }
     FntFlush(-1);
 }
+#else
+void DebugMenu_Update(void) {}
+#endif

@@ -217,7 +217,7 @@ extern u32 D_894568C;
 #include "../cutscene_events.h"
 #else
 static const char* actor_names[] = {
-    _S("Jesus"), _S("Death"),
+    _S("Jesus"), _S("Morte"),
 #ifdef VERSION_PC
     _S("Deus, o Pai"),
 #endif

@@ -1629,6 +1629,19 @@ add_custom_command(
     COMMENT "Packing the Father's dialogue portrait")
 add_custom_target(jesus_blessing_portrait DEPENDS "${JESUS_BLESSING_PORTRAIT}")
 add_dependencies(jesus_sprites jesus_blessing_portrait)
+set(JESUS_ENDING_TITLE "${CMAKE_SOURCE_DIR}/src/pc/gen/ending_title.h")
+add_custom_command(
+    OUTPUT "${JESUS_ENDING_TITLE}"
+    COMMAND "${Python3_EXECUTABLE}"
+        "${CMAKE_SOURCE_DIR}/tools/build_ending_title.py"
+        "${CMAKE_SOURCE_DIR}/assets/st/st0/da_cruz_a_gloria.png"
+        "${JESUS_ENDING_TITLE}"
+    DEPENDS "${CMAKE_SOURCE_DIR}/tools/build_ending_title.py"
+        "${CMAKE_SOURCE_DIR}/assets/st/st0/da_cruz_a_gloria.png"
+    VERBATIM
+    COMMENT "Packing Da Cruz a Gloria ending title")
+add_custom_target(jesus_ending_title DEPENDS "${JESUS_ENDING_TITLE}")
+add_dependencies(jesus_sprites jesus_ending_title)
 add_dependencies(${PROJECT_NAME} jesus_sprites)
 
 target_include_directories(${PROJECT_NAME} PUBLIC

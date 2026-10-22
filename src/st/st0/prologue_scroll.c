@@ -11,6 +11,7 @@
 
 #ifdef VERSION_PC
 extern bool g_IsQuitRequested;
+#include "../../pc/gen/ending_title.h"
 #endif
 
 static ProloguePrimitive D_80181568[] = {
@@ -263,6 +264,15 @@ void PrologueScroll(void) {
         break;
     case 2: // 0x801B07DC
         // transition to black
+#ifdef VERSION_PC
+        {
+            // Reuse the original logo's texture, palette and fade primitives.
+            RECT texture = {704, 0, 32, 128};
+            RECT palette = {512, 8, 16, 1};
+            LoadImage(&texture, (u_long*)ending_title_pixels);
+            LoadImage(&palette, (u_long*)ending_title_palette);
+        }
+#endif
         SetTitleDisplayBuffer();
         prim = &g_PrimBuf[D_801BEE08];
         for (i = 0; i < 12; i++) {

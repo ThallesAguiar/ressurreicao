@@ -1,5 +1,8 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 #include <game.h>
+#ifdef VERSION_PC
+#include <stage.h>
+#endif
 
 // NOTE: take care here, this may appear merged with the end of the previous
 // data split but should reside here!

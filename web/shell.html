@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="pt-BR">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Da Cruz à Glória</title>
+<link rel="icon" href="data:,">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; width: 100%; height: 100%; background: #090b12; color: #eee; font: 16px system-ui; }
+  body { display: grid; place-items: center; overflow: hidden; touch-action: none; }
+  canvas { display: block; width: min(100vw, 114vh); height: auto; max-height: 100dvh; image-rendering: pixelated; outline: none; }
+  #loading { position: fixed; inset: 0; display: grid; place-content: center; gap: 20px; text-align: center; background: #090b12; padding: 24px; }
+  h1 { font-size: clamp(25px, 6vw, 45px); margin: 0; color: #f1ce8e; }
+  p { margin: 0; max-width: 440px; line-height: 1.5; }
+  button { font: inherit; color: #fff; border: 1px solid #a9864d; background: #493a25; padding: 14px 22px; border-radius: 10px; cursor: pointer; touch-action: none; user-select: none; }
+  button:disabled { opacity: .5; cursor: wait; }
+  .pad { position: fixed; bottom: max(12px, env(safe-area-inset-bottom)); display: none; gap: 6px; }
+  #directions { left: 12px; grid-template: repeat(2, 54px) / repeat(3, 54px); }
+  #actions { right: 12px; align-items: end; }
+  .pad button { padding: 10px; background: #241f1bcc; min-width: 54px; min-height: 54px; }
+  #up { grid-column: 2; } #left { grid-column: 1; }
+  #pause { position: fixed; top: max(10px, env(safe-area-inset-top)); right: 10px; display: none; padding: 8px 12px; background: #241f1bcc; }
+  @media (pointer: coarse) { .pad { display: grid; } #pause { display: block; } }
+  body:not(.playing) .pad, body:not(.playing) #pause { display: none; }
+  [hidden] { display: none !important; }
+</style>
+<canvas id="canvas" tabindex="0" aria-label="Da Cruz à Glória" oncontextmenu="event.preventDefault()"></canvas>
+<div id="loading">
+  <h1>Da Cruz à Glória</h1>
+  <p id="status" role="status">Carregando o jogo…</p>
+  <button id="play" disabled>Jogar</button>
+  <p>Setas: mover · Z: atacar · X: pular após a transformação · Enter: pausar<br>No celular, use os botões na tela.</p>
+</div>
+<div class="pad" id="directions" aria-label="Movimento">
+  <button id="up" data-key="ArrowUp" aria-label="Cima">▲</button>
+  <button id="left" data-key="ArrowLeft" aria-label="Esquerda">◀</button>
+  <button data-key="ArrowDown" aria-label="Agachar">▼</button>
+  <button data-key="ArrowRight" aria-label="Direita">▶</button>
+</div>
+<div class="pad" id="actions">
+  <button data-key="KeyX">Pular</button><button data-key="KeyZ">Atacar</button>
+</div>
+<button id="pause" data-key="Enter" aria-label="Pausar">Ⅱ</button>
+<script>
+const canvas = document.getElementById('canvas');
+const status = document.getElementById('status');
+const play = document.getElementById('play');
+let shouldReload = false;
+const keys = { ArrowUp: [38, 'ArrowUp'], ArrowDown: [40, 'ArrowDown'],
+  ArrowLeft: [37, 'ArrowLeft'], ArrowRight: [39, 'ArrowRight'],
+  KeyZ: [90, 'z'], KeyX: [88, 'x'], Enter: [13, 'Enter'] };
+const active = new Map();
+function keyEvent(code, down) {
+  const [keyCode, key] = keys[code];
+  window.dispatchEvent(new KeyboardEvent(down ? 'keydown' : 'keyup',
+    { code, key, keyCode, which: keyCode, bubbles: true, cancelable: true }));
+}
+function release(pointer) {
+  const code = active.get(pointer);
+  active.delete(pointer);
+  if (code && ![...active.values()].includes(code)) keyEvent(code, false);
+}
+document.querySelectorAll('[data-key]').forEach(button => {
+  button.addEventListener('pointerdown', event => {
+    event.preventDefault();
+    button.setPointerCapture(event.pointerId);
+    active.set(event.pointerId, button.dataset.key);
+    keyEvent(button.dataset.key, true);
+  });
+  ['pointerup', 'pointercancel', 'lostpointercapture'].forEach(type =>
+    button.addEventListener(type, event => release(event.pointerId)));
+});
+window.addEventListener('blur', () => [...active.keys()].forEach(release));
+canvas.addEventListener('pointerdown', () => canvas.focus());
+window.addEventListener('keydown', event => {
+  if (keys[event.code]) event.preventDefault();
+});
+
+function mountAudio() {
+  const map = JSON.parse(FS.readFile('/cd-map.json', { encoding: 'utf8' }));
+  const audio = FS.readFile('/cd-audio.bin');
+  FS.createDataFile('/', 'track.bin', new Uint8Array(), true, false);
+  const node = FS.lookupPath('/track.bin').node;
+  node.usedBytes = map.size;
+  node.stream_ops = { ...node.stream_ops, read(stream, buffer, offset, length, position) {
+    length = Math.max(0, Math.min(length, map.size - position));
+    buffer.fill(0, offset, offset + length);
+    let low = 0, high = map.ranges.length;
+    while (low < high) {
+      const mid = (low + high) >>> 1;
+      if (map.ranges[mid][1] <= position) low = mid + 1;
+      else high = mid;
+    }
+    for (let i = low; i < map.ranges.length; i++) {
+      const [start, end, packed] = map.ranges[i];
+      if (start >= position + length) break;
+      const from = Math.max(start, position), to = Math.min(end, position + length);
+      buffer.set(audio.subarray(packed + from - start, packed + to - start),
+        offset + from - position);
+    }
+    return length;
+  }};
+}
+var Module = {
+  canvas, noInitialRun: true,
+  print: text => console.log(text),
+  printErr: text => console.error(text),
+  setStatus: text => { if (play.disabled) status.textContent = text?.includes('Downloading') ? 'Baixando o jogo…' : 'Preparando o jogo…'; },
+  onAbort: () => { document.getElementById('loading').hidden = false;
+    document.body.classList.remove('playing');
+    shouldReload = true;
+    play.disabled = false;
+    play.textContent = 'Tentar novamente';
+    status.textContent = 'Não foi possível iniciar. Tente carregar o jogo novamente.'; },
+  onExit: () => {
+    document.getElementById('loading').hidden = false;
+    document.body.classList.remove('playing');
+    shouldReload = true;
+    play.disabled = false;
+    play.textContent = 'Jogar novamente';
+    status.textContent = 'Obrigado por jogar.';
+  },
+  onRuntimeInitialized: () => {
+    mountAudio();
+    play.disabled = false;
+    status.textContent = 'Pronto para jogar.';
+  }
+};
+play.addEventListener('click', () => {
+  if (shouldReload) { location.reload(); return; }
+  document.getElementById('loading').hidden = true;
+  document.body.classList.add('playing');
+  canvas.focus();
+  Module.callMain(['--stage', 'st0', '--disk', '/disc.cue']);
+});
+</script>
+{{{ SCRIPT }}}
+</html>

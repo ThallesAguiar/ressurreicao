@@ -208,6 +208,20 @@ void HitDetection(void);
 s32 Random();
 
 #ifdef FIX_UB
+#ifdef __EMSCRIPTEN__
+void MoveEntity(void);
+void SetStep(u8 step);
+void SetSubStep(u8 step);
+void PreventEntityFromRespawning(Entity* entity);
+void ReplaceBreakableWithItemDrop(Entity* entity);
+void CheckFieldCollision(s16* sensors, s16 count);
+void CreateEntityFromCurrentEntity(u16 entityId, Entity* entity);
+void CreateEntityFromEntity(u16 entityId, Entity* source, Entity* entity);
+void UnkPolyFunc2(Primitive* prim);
+void UnkPrimHelper(Primitive* prim);
+void BottomCornerText(u8* text, u8 leftAlign);
+void UnkEntityFunc0(u16 slope, s16 speed);
+#endif
 // BUG! on non-MIPS processors, not adding this forward declaration results to
 // the caller receiving an undefined numbers that can be random and
 // mis-representative of the actual return value.

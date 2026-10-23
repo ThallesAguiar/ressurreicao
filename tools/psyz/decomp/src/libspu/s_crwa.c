@@ -1,6 +1,10 @@
 #include "libspu_private.h"
 
+#ifdef FIX_UB
+long WaitEvent(unsigned long event);
+#else
 void WaitEvent(s32);
+#endif
 s32 _SpuIsInAllocateArea_(u32);
 extern s32 _spu_zerobuf[];
 

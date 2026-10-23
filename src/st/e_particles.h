@@ -5,7 +5,9 @@ extern EInit g_EInitObtainable;
 
 // the signature is purposely wrong for this file
 // this is how the original source code worked
+#ifndef FIX_UB
 void MoveEntity(Entity*);
+#endif
 
 #if defined(VERSION_HD) && !defined(STAGE_IS_TEK)
 static u32 padding = 0;
@@ -124,7 +126,11 @@ void EntitySoulStealOrb(Entity* self) {
         self->ext.soulStealOrb.angle = angle = LimitAngleChange(
             self->ext.soulStealOrb.unk7E, self->ext.soulStealOrb.angle, angle);
         UnkEntityFunc0(angle, self->ext.soulStealOrb.unk80);
+#ifdef FIX_UB
+        MoveEntity();
+#else
         MoveEntity(self);
+#endif
         prim = &g_PrimBuf[self->primIndex];
         AnimateEntity(g_ESoulStealOrbAnim, self);
 #ifdef STAGE_IS_TEK
@@ -254,7 +260,11 @@ void EntityEnemyBlood(Entity* self) {
                 self->velocityX += self->ext.bloodDroplets.speed;
 
                 x = self->posX.i.hi;
+#ifdef FIX_UB
+                MoveEntity();
+#else
                 MoveEntity(self);
+#endif
                 x -= self->posX.i.hi;
                 if (x < 0) {
                     x = -x;

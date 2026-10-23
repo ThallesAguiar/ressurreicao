@@ -68,6 +68,9 @@ void MoveEntity();
 void EntityExplosion(Entity*);
 void EntityExplosionVariants(Entity* entity);
 void EntityGreyPuff(Entity* entity);
+#ifdef FIX_UB
+void func_801B1298(Entity* self);
+#endif
 
 extern EInit g_EInitBreakable;
 extern EInit g_EInitParticle;

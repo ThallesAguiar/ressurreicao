@@ -16,7 +16,7 @@ void InitCARD(long val) {
     ExitCriticalSection();
 }
 
-void StartCARD2(void);
+long StartCARD2(void);
 long StartCARD(void) {
     EnterCriticalSection();
     StartCARD2();
@@ -24,7 +24,7 @@ long StartCARD(void) {
     ExitCriticalSection();
 }
 
-void StopCARD2(void);
+long StopCARD2(void);
 void _ExitCard(void);
 long StopCARD(void) {
     StopCARD2();

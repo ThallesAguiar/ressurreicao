@@ -1399,7 +1399,11 @@ void func_80127CC8(Entity* self) {
 
     if (PLAYER.step != Player_SpellHellfire) {
         // @bug Should be DestroyEntity(self)
+#ifdef FIX_UB
+        DestroyEntity(self);
+#else
         DestroyEntity();
+#endif
         return;
     }
 

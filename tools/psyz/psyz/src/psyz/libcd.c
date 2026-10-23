@@ -936,8 +936,8 @@ int CD_getsector(void* madr, int size) {
     }
     return 0;
 }
-int CD_getsector2(void) { NOT_IMPLEMENTED; }
-void CD_datasync(int mode) { NOT_IMPLEMENTED; }
+int CD_getsector2(void* madr, int size) { NOT_IMPLEMENTED; }
+int CD_datasync(int mode) { NOT_IMPLEMENTED; }
 
 int CD_initvol(void) {
     CdlATV vol = {128, 0, 128, 0};

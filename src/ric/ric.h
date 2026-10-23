@@ -322,3 +322,46 @@ extern AnimationFrame D_801558DC[];
 extern AnimationFrame D_8015591C[];
 extern AnimationFrame D_80155950[];
 extern FrameProperty D_80155964[];
+
+#ifdef FIX_UB
+// Match the player step and collision implementations across translation units.
+void DisableAfterImage(s32 resetAnims, s32 arg1);
+void DrawRicAfterImage(void);
+void InitRicAfterImage(void);
+void RicCheckCeiling(void);
+void RicCheckFloor(void);
+void RicCheckWallLeft(void);
+void RicCheckWallRight(void);
+void RicDebugOff(void);
+void RicSetBladeDash(void);
+void RicSetDeadPrologue(void);
+void RicSetHighJump(void);
+void RicSetInit(s32 step_s);
+void RicSetInvincibilityFrames(s32 kind, s16 invincibilityFrames);
+void RicSetJump(void);
+void RicSetSlide(void);
+void RicSetSlideKick(void);
+void RicSetStep(s16 step);
+void RicStepBossGrab(void);
+void RicStepCrouch(void);
+void RicStepDead( s32 damageEffects, s32 damageKind, s32 prevStep, s32 prevStepS);
+void RicStepDeadPrologue(void);
+void RicStepEnableFlameWhip(void);
+void RicStepFall(void);
+void RicStepGenericSubwpnCrash(void);
+void RicStepHighJump(void);
+void RicStepHit(s32 damageEffect, u32 damageKind, s16 prevStep, s32 prevStepS);
+void RicStepHydrostorm(void);
+void RicStepJump(void);
+void RicStepRun(void);
+void RicStepSlide(void);
+void RicStepSlideKick(void);
+void RicStepStand(void);
+void RicStepStandInAir(void);
+void RicStepTeleport(void);
+void RicStepThrowDaggers(void);
+void RicStepWalk(void);
+void func_8015CAAC(s32 speed);
+void func_8015CC28(void);
+void func_8015FA5C(s32 arg0);
+#endif

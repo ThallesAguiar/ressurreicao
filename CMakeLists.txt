@@ -2,6 +2,10 @@ cmake_minimum_required(VERSION 3.21)
 
 project(sotn)
 
+if(EMSCRIPTEN)
+    add_compile_definitions(FIX_UB)
+endif()
+
 set(CMAKE_C_STANDARD 17)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_STANDARD 17)
@@ -77,6 +81,9 @@ endif()
 set(SOTN_STR_TARGET_DIR "${CMAKE_BINARY_DIR}/sotn_str")
 set(SOTN_STR_BIN
     "${SOTN_STR_TARGET_DIR}/release/sotn_str${CMAKE_EXECUTABLE_SUFFIX}")
+if(CMAKE_HOST_WIN32)
+    set(SOTN_STR_BIN "${SOTN_STR_TARGET_DIR}/release/sotn_str.exe")
+endif()
 add_custom_command(
     OUTPUT "${SOTN_STR_BIN}"
     COMMAND ${CMAKE_COMMAND} -E env
@@ -1677,6 +1684,10 @@ endif()
 psyz_exports(${PROJECT_NAME})
 
 function(add_overlay name)
+    # The standalone browser game contains only the playable prologue.
+    if(EMSCRIPTEN AND NOT name STREQUAL "st0")
+        return()
+    endif()
     psyz_add_module(${name} SOURCES ${ARGN} HOST ${PROJECT_NAME})
     set(_target ${name})
 
@@ -1700,7 +1711,11 @@ function(add_overlay name)
         OVERLAY_BUILD
     )
 
-    if(NOT MSVC AND NOT APPLE)
+    if(EMSCRIPTEN)
+        set_target_properties(${name} PROPERTIES SUFFIX ".wasm")
+        target_compile_options(${name} PRIVATE -sSIDE_MODULE=1 -sASYNCIFY)
+        target_link_options(${name} PRIVATE -sSIDE_MODULE=1 -sASYNCIFY)
+    elseif(NOT MSVC AND NOT APPLE)
         target_link_options(${name} PRIVATE -Wl,-Bsymbolic)
     endif()
 
@@ -1727,6 +1742,10 @@ add_overlay(wrp ${SOURCE_FILES_STAGE_WRP})
 add_overlay(dre ${SOURCE_FILES_STAGE_DRE})
 add_overlay(st0 ${SOURCE_FILES_STAGE_ST0})
 add_dependencies(${st0_COMPILE_TARGET} jesus_sprites)
+if(EMSCRIPTEN)
+    include(cmake/web.cmake)
+    return()
+endif()
 add_overlay(rwrp ${SOURCE_FILES_STAGE_RWRP})
 add_overlay(no3 ${SOURCE_FILES_STAGE_NO3})
 add_overlay(lib ${SOURCE_FILES_STAGE_LIB})

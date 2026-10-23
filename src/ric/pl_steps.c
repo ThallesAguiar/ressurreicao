@@ -346,7 +346,11 @@ void RicStepCrouch(void) {
     }
     if ((g_Player.padTapped & PAD_CROSS) && !g_Player.unk46 &&
         (!g_Player.unk72)) {
+#ifdef FIX_UB
+        RicSetJump();
+#else
         RicSetJump(1);
+#endif
         return;
     } else if (!g_Player.unk72 && !g_Player.unk46 &&
                (g_Player.padTapped & PAD_TRIANGLE) && RicDoCrash()) {

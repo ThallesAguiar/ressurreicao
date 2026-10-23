@@ -137,7 +137,11 @@ u16 D_800AC910[] = {
 #ifndef VERSION_US
     '踪', '眷', '翔', '彷', '徨', '苺', '獰', '賤', '贄',
 #endif
+#ifdef VERSION_PC
+    0xACB1, // Preserve GCC's UTF-8 multichar value in the 16-bit lookup table.
+#else
     '鬱', // last one should be a copyright symbol
+#endif
 };
 
 u8 D_800AC914[][30] = {

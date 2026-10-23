@@ -12,6 +12,9 @@ typedef enum {
     ENGINE_INIT_SERVANT_2,
     MENU_SAME_SERVANT
 } InitializeMode;
+#ifdef FIX_UB
+void InitializeServant(InitializeMode mode);
+#endif
 
 #define SERVANT_ENTITY_START 0xD0
 #define SERVANT_ID(id) (SERVANT_ENTITY_START + (id))

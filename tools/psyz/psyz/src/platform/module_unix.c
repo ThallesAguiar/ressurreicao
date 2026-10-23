@@ -10,6 +10,8 @@
 #if defined(__APPLE__)
 #include <mach-o/dyld.h>
 #define PSYZ_MODULE_EXT ".dylib"
+#elif defined(__EMSCRIPTEN__)
+#define PSYZ_MODULE_EXT ".wasm"
 #else
 #include <unistd.h>
 #define PSYZ_MODULE_EXT ".so"
@@ -50,6 +52,9 @@ static bool GetHostExecutablePath(char* dir, size_t size) {
                 *lastSep = '\0';
             }
         }
+#elif defined(__EMSCRIPTEN__)
+        strcpy(cached, "/");
+        is_ok = true;
 #else
         ssize_t len = readlink("/proc/self/exe", cached, sizeof(cached) - 1);
         if (len > 0) {

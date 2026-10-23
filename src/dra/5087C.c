@@ -1914,7 +1914,11 @@ void RunMainEngine(void) {
                         }
                     } else {
                         if (g_unkGraphicsStruct.unk28 != 0xFF) {
+#ifdef FIX_UB
+                            func_8010DF70();
+#else
                             func_8010DF70(g_unkGraphicsStruct.unk28);
+#endif
                             UpdatePlayerEntities();
                         }
                         g_api.o.UpdateStageEntities();

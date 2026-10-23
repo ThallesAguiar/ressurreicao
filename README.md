@@ -1,4 +1,4 @@
-# Ressurreição
+# Da Cruz À Glória
 
 Projeto original que reimagina a história de *Castlevania: Symphony of
 the Night* como o confronto entre **Jesus e a Morte**: o prólogo jogável

@@ -1,105 +1,52 @@
-# Da Cruz À Glória
+# Da Cruz à Glória
 
-Projeto original que reimagina a história de *Castlevania: Symphony of
-the Night* como o confronto entre **Jesus e a Morte**: o prólogo jogável
-foi reescrito para contar a vitória sobre a morte e a ressurreição,
-construído sobre a engine recriada pela decompilação open-source
-[sotn-decomp](https://github.com/Xeeynamo/sotn-decomp).
+Um jogo curto de ação em pixel art sobre Jesus e seu confronto com Morte.
+Desenvolvido com o **REA**, para fins de estudo e sem fins lucrativos.
 
-## O que mudou
+## Jogar no Windows
 
-- Diálogo e narração do prólogo reescritos (Richter/Drácula → Jesus/Morte)
-- Scroll de abertura com novo texto
-- Port nativo para Windows (via [psyz](https://github.com/Xeeynamo/psyz) +
-  SDL3), sem emulador
-- Jesus ferido jogável, com 197 quadros em pixel art e paleta própria;
-  as sprites são incorporadas automaticamente ao recompilar o port de PC.
-- Renderização de texto no PC (fonte Shinonome 14dot, domínio público)
-- Menu de debug in-game (**R2**) com God Mode, One-Hit-Kill, No-Clip,
-  Corações Infinitos e Dar Todos os Itens — além das flags equivalentes
-  por linha de comando
+Dê dois cliques em **[run-prologo.cmd](run-prologo.cmd)**, na pasta do
+projeto. O jogo abre diretamente no prólogo, com música e vozes.
 
-## Como jogar e usar
+## Jogar no navegador
 
-### Jeito rápido — o prólogo
+1. Dê dois cliques em **[run-web.cmd](run-web.cmd)**.
+2. Abra **<http://localhost:8080>** e clique em **Jogar**.
+3. Mantenha a janela do servidor aberta enquanto joga.
 
-Dê dois cliques em [`run-prologo.cmd`](run-prologo.cmd) (na pasta raiz do
-projeto). Ele abre a janela direto no prólogo jogável.
+Para abrir essa versão local, é necessário ter o **Python** instalado.
+Na versão hospedada, basta acessar o link do jogo, sem instalar nada.
 
-### Rodar manualmente
+## Controles
 
-```cmd
-cd /d C:\www\rea\sotn-decomp
-build\pc\sotn.exe
-```
-
-Sem argumentos, o jogo liga normal: tela de título → prólogo → fase
-jogável. Para música e vozes (áudio XA do CD), aponte `--disk` para o
-`.cue` do disco:
-
-```cmd
-build\pc\sotn.exe --disk "disks\sotn.us.cue"
-```
-
-### Flags de debug úteis
-
-| Opção | O que faz |
+| Tecla | Ação |
 |---|---|
-| `--god-mode` | Jogador não recebe dano |
-| `--one-hit-kill` | Qualquer acerto mata o alvo |
-| `--no-clip` | Liga o modo voador/no-clip (alterna com **L2** no jogo) |
-| `--infinite-hearts` | Sub-armas nunca gastam corações |
-| `--give-all-items` | Começa com todos os itens/equipamentos |
+| Setas | Mover e agachar |
+| Z | Atacar |
+| X | Pular após a transformação |
+| Enter | Pausar e confirmar |
 
-**Menu de debug in-game:** aperte **R2** durante o jogo para abrir um menu
-com os mesmos toggles. **Cima/Baixo** navega, **X (Cross)** liga/desliga,
-**R2** de novo fecha. Funciona independente das flags de linha de comando.
+Jesus ferido não consegue pular. O salto fica disponível na forma glorificada.
+No celular, use os botões na tela e prefira jogar na horizontal.
 
-### Controles (teclado, jogador 1)
+## Primeira execução ou recompilação
 
-| Tecla | Botão do PS1 | Ação |
-|---|---|---|
-| Setas | D-Pad | Mover / navegar menus |
-| **X** | ✕ CROSS | Pular |
-| **Z** | □ SQUARE | Atacar |
-| **Enter** | START | Pausa / confirmar |
-| **Backspace** | SELECT | Menu |
+Os atalhos precisam dos arquivos compilados em `build/pc` ou `build/web`.
+Essas pastas não acompanham uma cópia recém-clonada do repositório.
 
-Qualquer controle reconhecido pelo SDL3 (Xbox, DualShock, DualSense,
-Switch Pro) funciona com o mapeamento padrão.
+- **Windows:** siga o [guia de preparação e compilação](TUTORIAL.md).
+  Essa versão usa os dados extraídos do jogo em `disks/us` e o disco
+  configurado em `disks/sotn.us.cue`, obtidos de uma cópia própria.
+- **Navegador:** siga o [guia da versão web](docs/WEB.md) para compilar
+  e gerar o ZIP de publicação.
 
-### Como compilar (build)
+## Créditos e licença
 
-Precisa de **Git, Go, Python 3.12+, MinGW-w64 (GCC), CMake e Rust/cargo**
-instalados, além de uma cópia própria do disco do jogo (`.cue` + `.bin`).
+Projeto de fã, não oficial e sem vínculo com a **Konami**. Créditos à
+Konami por *Castlevania: Symphony of the Night* e pelos personagens,
+gráficos, músicas e demais elementos originais utilizados.
 
-```cmd
-git clone --recurse-submodules https://github.com/Xeeynamo/sotn-decomp.git
-:: coloque o disco como disks\sotn.us.cue (+ as trilhas .bin)
-sotn-disk extract disks/sotn.us.cue disks/us
-sotn-assets extract-assets config/assets.us.yaml
-sotn-assets build-assets config/assets.us.yaml
-cmake -S . -B build/pc -G Ninja -DCMAKE_BUILD_TYPE=Release -DENABLE_ASAN=OFF -DPSYZ_RENDERER=sdl3_gl
-cmake --build build/pc
-```
-
-O executável gerado fica em `build\pc\sotn.exe`. Depois de editar código,
-basta rodar `cmake --build build/pc` de novo pra recompilar.
-
-Guia completo — som, exportar o jogo compilado, recompilar do zero e
-editar o texto do prólogo — em [TUTORIAL.md](TUTORIAL.md).
-
-## Créditos
-
-**Castlevania: Symphony of the Night** e todos os seus personagens,
-gráficos, músicas e fases são propriedade da **Konami**. Este é um
-projeto original, feito para a **REA**, sem fins lucrativos — não há
-venda, monetização ou distribuição comercial de nenhum tipo. É um projeto
-de fã, educacional/ministerial, criado para uso próprio da comunidade.
-
-## Licença e aviso legal
-
-O **código** desta decompilação é licenciado sob **AGPL-3.0-or-later**.
-Os **assets originais do jogo** (gráficos, música, fases) pertencem à
-Konami e não são redistribuídos por este repositório — cada pessoa precisa
-da sua própria cópia do disco original para gerar o executável.
+Baseado em [sotn-decomp](https://github.com/Xeeynamo/sotn-decomp) e
+[psyz](https://github.com/Xeeynamo/psyz). O código segue a licença
+[AGPL-3.0-or-later](LICENSE); os elementos originais do jogo pertencem
+aos seus respectivos titulares.
